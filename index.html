@@ -174,7 +174,7 @@
     <li class="stat"><b>9</b><span>languages shipped</span></li>
     <li class="stat"><b>2,949</b><span>tests green at handoff</span></li>
     <li class="stat"><b>3.2k</b><span>dead lines retired</span></li>
-    <li class="stat"><b>18</b><span>logged shipments</span></li>
+    <li class="stat"><b>70+</b><span>pull requests merged in 8 weeks</span></li>
     <li class="stat"><b>A+</b><span>in Human-Computer Interaction</span></li>
   </ul>
 </section>
@@ -185,27 +185,31 @@
     <span class="panel__n">01</span>
     <h2 class="panel__title">Experience</h2>
     <span class="panel__rule" aria-hidden="true"></span>
-    <span class="panel__meta">2 roles</span>
+    <span class="panel__meta">4 roles</span>
   </div>
   <div class="panel__body">
 
     <article class="role reveal">
       <header class="role__head">
         <h3 class="role__org">Sollo</h3>
-        <p class="role__title">Software engineering &amp; design intern</p>
+        <p class="role__title">UI/UX engineering intern</p>
         <p class="role__meta"><span>Tokyo, Japan</span><span>June 2026 to August 2026</span></p>
       </header>
       <p class="role__lede">
         An AI assistant that makes Japanese government paperwork navigable for foreign residents.
-        I worked the whole width of it: Figma handoff to Flutter, the FastAPI server behind the
-        companion, and the review gate in front of both.
+        I worked across design, mobile frontend and Python backend as a designer-engineer.
       </p>
       <ul class="role__points">
-        <li>Shipped the beta home surface, onboarding, in-app feedback, iPad support and language switching.</li>
-        <li>Built the feedback channel end to end: FastAPI endpoint, rate limit, offline-safe Flutter form.</li>
+        <li>Shipped <strong>70+ merged pull requests</strong> to the production Flutter app in eight weeks.</li>
+        <li>Rebuilt the entire post-authentication app onto a new design system, extracting the colour,
+          spacing and type tokens and the widget and icon library the team now builds against.</li>
+        <li>Translated Figma handoffs into production Flutter: onboarding, an app-wide navigation
+          overhaul, and an animated reading-progress indicator.</li>
+        <li>Designed and enforced a WCAG AA light and dark brand theme, rejecting handoff colours that
+          failed the standard.</li>
         <li>Cut the core browse flow from 1,033&nbsp;ms to 125&nbsp;ms by fixing four separate defects.</li>
-        <li>Retired ~3,200 dead lines and 3.1&nbsp;MB of assets with no loss of quality.</li>
-        <li>Authored nine locales from the start, English and two Japanese registers first-class.</li>
+        <li>Authored every interface string across nine locales with gen-l10n, verified on device in
+          both themes.</li>
       </ul>
       <p class="chips"><span>Flutter</span><span>Dart</span><span>FastAPI</span><span>Python</span><span>Supabase / Postgres</span><span>pgvector + pgroonga</span><span>Cloud Run</span><span>Figma</span></p>
     </article>
@@ -222,6 +226,32 @@
         <li>Handle records and data entry, and tune the internal web application.</li>
       </ul>
       <p class="chips"><span>SQL</span><span>Microsoft SQL Server</span><span>Oracle</span><span>Epic</span></p>
+    </article>
+
+    <article class="role reveal">
+      <header class="role__head">
+        <h3 class="role__org">University of Iowa Parking &amp; Transportation</h3>
+        <p class="role__title">Parking field service officer</p>
+        <p class="role__meta"><span>Iowa City, Iowa</span><span>February 2023 to present</span></p>
+      </header>
+      <ul class="role__points">
+        <li>Coordinate with a team of five across telecommunications platforms to keep enforcement
+          coverage consistent campus-wide.</li>
+      </ul>
+    </article>
+
+    <h4 class="sub">Leadership</h4>
+
+    <article class="role reveal">
+      <header class="role__head">
+        <h3 class="role__org">League of United Latin American Citizens</h3>
+        <p class="role__title">Public relations officer &middot; Collegiate Council #373</p>
+        <p class="role__meta"><span>University of Iowa</span><span>March 2025 to present</span></p>
+      </header>
+      <ul class="role__points">
+        <li>Helped drive the rechartering of the council, revitalizing its presence on campus.</li>
+        <li>Manage and grow its social platforms to build engagement and visibility.</li>
+      </ul>
     </article>
 
   </div>
@@ -467,30 +497,30 @@
         <li class="course"><span class="course__c">CS 2520</span><span class="course__n">Human-Computer Interaction</span><span class="course__g">A+</span></li>
         <li class="course"><span class="course__c">CS 2110</span><span class="course__n">Programming for Informatics</span><span class="course__g"></span></li>
         <li class="course"><span class="course__c">CS 2420</span><span class="course__n">Analyzing Data for Informatics</span><span class="course__g"></span></li>
-        <li class="course"><span class="course__c">CS 1020</span><span class="course__n">Principles of Computing</span><span class="course__g"></span></li>
         <li class="course"><span class="course__c">JMC 3505</span><span class="course__n">Audiences and Analytics</span><span class="course__g">A</span></li>
         <li class="course"><span class="course__c">PSY 2811</span><span class="course__n">Research Methods and Data Analysis in Psychology</span><span class="course__g"></span></li>
         <li class="course"><span class="course__c">PSY 2601</span><span class="course__n">Introduction to Cognitive Psychology</span><span class="course__g"></span></li>
         <li class="course"><span class="course__c">ARTS 1070</span><span class="course__n">Elements of Graphic Design</span><span class="course__g">A&minus;</span></li>
-        <li class="course"><span class="course__c">ARTS 1020</span><span class="course__n">Elements of 3D Design</span><span class="course__g">A&minus;</span></li>
       </ul>
     </article>
 
     <article class="edu reveal">
       <h4 class="sub">What I work in</h4>
       <dl class="kit">
-        <dt>Frontend &amp; mobile</dt>
-        <dd>Flutter, Dart, go_router, gen-l10n internationalization, Material Design and custom design systems</dd>
-        <dt>Backend</dt>
-        <dd>Python, FastAPI, Supabase (Postgres, Auth, Storage), pgroonga and pgvector search via RPCs, Google Cloud Run, self-hosted LLM serving</dd>
-        <dt>Data</dt>
-        <dd>SQL, Microsoft SQL Server, Oracle, Epic extracts</dd>
+        <dt>Programming</dt>
+        <dd>Dart (Flutter), Python, SQL, Swift, JavaScript, HTML and CSS</dd>
+        <dt>Frameworks &amp; platforms</dt>
+        <dd>Flutter, FastAPI, Supabase, Firebase, Google Cloud Run, Git and GitHub, Xcode, VS Code</dd>
+        <dt>Databases &amp; data</dt>
+        <dd>Microsoft SQL Server, Oracle, PostgreSQL, pgroonga and pgvector search, Epic extracts</dd>
         <dt>Design</dt>
-        <dd>Figma, brand and palette systems, WCAG AA accessibility, adaptive light and dark theming, SVG iconography, design-to-implementation handoff</dd>
+        <dd>Figma, design systems and tokens, WCAG AA accessibility, adaptive light and dark theming,
+          Photoshop, Illustrator, InDesign, Premiere Pro</dd>
         <dt>Practice</dt>
-        <dd>Conventional Commits, git hooks, widget and service tests, mutation testing, green analyze and test gates, internationalization-first authoring</dd>
+        <dd>Conventional Commits, git hooks, widget and service tests, mutation testing, green analyze
+          and test gates, internationalization-first authoring</dd>
         <dt>Languages</dt>
-        <dd>English, Spanish</dd>
+        <dd>Fluent in Spanish and English</dd>
       </dl>
     </article>
 
