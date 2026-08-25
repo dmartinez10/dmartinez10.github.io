@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="David Martinez">
+  <rect width="64" height="64" rx="14" fill="#131A2E"/>
+  <path d="M17 44V20h9c7.2 0 11.5 4.3 11.5 12S33.2 44 26 44h-9Zm7.5-6H26c3.2 0 5-2.1 5-6s-1.8-6-5-6h-1.5v12Z" fill="#F1F2ED"/>
+  <path d="M43 26h9v4h-9zM43 34h9v4h-9z" fill="#0E7C57"/>
+</svg>
