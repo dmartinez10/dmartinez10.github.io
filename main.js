@@ -1,85 +1,167 @@
 /* David Martinez, portfolio
-   Three small jobs: say where you are, reveal on scroll, filter the log. */
+   Drives the HUD: the radial navigator, the status telemetry,
+   panel reveals, the log filters, and the screenshot lightbox. */
 
 (function () {
   'use strict';
 
-  document.documentElement.classList.remove('no-js');
+  var doc = document;
+  doc.documentElement.classList.remove('no-js');
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canAnimate = !reduced && 'IntersectionObserver' in window;
+  // Only now is it safe to hide things: everything above ran without throwing.
+  if (canAnimate) doc.documentElement.classList.add('anim');
+  var $  = function (s, r) { return (r || doc).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || doc).querySelectorAll(s)); };
 
-  /* ── year ─────────────────────────────────────────────── */
-  var year = document.getElementById('year');
+  var year = $('#year');
   if (year) year.textContent = String(new Date().getFullYear());
 
-  /* ── the bar: name / where you are ────────────────────── */
-  var bar = document.getElementById('bar');
-  var here = document.getElementById('bar-here');
-  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-here]'));
-
-  function onScroll() {
-    if (bar) bar.classList.toggle('is-stuck', window.scrollY > 8);
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  if (here && sections.length && 'IntersectionObserver' in window) {
-    // The section whose top edge sits closest above the reading line wins.
-    var visible = new Map();
-    var spy = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        visible.set(e.target, e.isIntersecting);
-      });
-      for (var i = sections.length - 1; i >= 0; i--) {
-        if (visible.get(sections[i])) {
-          var label = sections[i].getAttribute('data-here');
-          if (here.textContent !== label) here.textContent = label;
-          break;
-        }
-      }
-    }, { rootMargin: '-25% 0px -60% 0px', threshold: 0 });
-    sections.forEach(function (s) { spy.observe(s); });
+  /* ── tick marks around the outer ring ──────────────────── */
+  var ticks = $('#ticks');
+  if (ticks) {
+    var marks = '';
+    for (var t = 0; t < 72; t++) {
+      var major = t % 6 === 0;
+      var len = major ? 10 : 5;
+      marks += '<line x1="200" y1="' + (10 + 0) + '" x2="200" y2="' + (10 + len) +
+               '" transform="rotate(' + (t * 5) + ' 200 200)"' +
+               (major ? ' opacity=".8"' : '') + '/>';
+    }
+    ticks.innerHTML = marks;
   }
 
-  /* ── reveal on scroll ─────────────────────────────────── */
-  var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  /* ── the radial navigator ──────────────────────────────── */
+  var sections = $$('[data-sec]');
+  var nodes    = $$('#nodes a');
+  var sweep    = $('#sweep');
+  var coreN    = $('#core-n');
+  var coreL    = $('#core-l');
+  var readSec  = $('#read-sec');
+  var readPct  = $('#read-pct');
+  var readFill = $('#read-fill');
 
-  if (reduced || !('IntersectionObserver' in window)) {
-    reveals.forEach(function (el) { el.classList.add('is-in'); });
+  var STEP = 360 / nodes.length;          // nodes sit evenly around the ring
+  var current = -1;
+
+  function point(i) {
+    if (sweep) sweep.style.transform = 'rotate(' + (i * STEP) + 'deg)';
+  }
+
+  function setActive(i, fromHover) {
+    var node = nodes[i];
+    if (!node) return;
+    if (coreN) coreN.textContent = node.dataset.n;
+    if (coreL) coreL.textContent = node.dataset.label;
+    point(i);
+    if (fromHover) return;
+    if (i === current) return;
+    current = i;
+    nodes.forEach(function (n, k) { n.classList.toggle('is-active', k === i); });
+    if (readSec) readSec.textContent = node.dataset.n + ' ' + node.dataset.label;
+  }
+
+  // Hovering previews a destination; leaving snaps back to where you actually are.
+  nodes.forEach(function (n, i) {
+    n.addEventListener('mouseenter', function () { setActive(i, true); });
+    n.addEventListener('focus',      function () { setActive(i, true); });
+    n.addEventListener('mouseleave', function () { restore(); });
+    n.addEventListener('blur',       function () { restore(); });
+  });
+
+  function restore() {
+    var node = nodes[current];
+    if (!node) return;
+    if (coreN) coreN.textContent = node.dataset.n;
+    if (coreL) coreL.textContent = node.dataset.label;
+    point(current);
+  }
+
+  /* ── scroll telemetry ──────────────────────────────────── */
+  var ticking = false;
+
+  function telemetry() {
+    ticking = false;
+
+    var h = doc.documentElement.scrollHeight - window.innerHeight;
+    var pct = h > 0 ? Math.min(100, Math.max(0, Math.round(window.scrollY / h * 100))) : 0;
+    if (readPct)  readPct.textContent = pct + '%';
+    if (readFill) readFill.style.width = pct + '%';
+
+    // the section whose top has most recently passed the reading line
+    var line = window.scrollY + window.innerHeight * 0.33;
+    var idx = 0;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].offsetTop <= line) idx = i;
+    }
+    setActive(idx, false);
+  }
+
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(telemetry);
+  }, { passive: true });
+
+  window.addEventListener('resize', telemetry, { passive: true });
+
+  /* ── boot + reveals ────────────────────────────────────── */
+  var boots = $$('.boot');
+  var reveals = $$('.reveal');
+
+  if (!canAnimate) {
+    boots.concat(reveals).forEach(function (el) { el.classList.add('is-in'); });
   } else {
+    // hero plays immediately; a rAF lets the initial styles settle first
+    requestAnimationFrame(function () {
+      boots.forEach(function (el) { el.classList.add('is-in'); });
+    });
+    // belt and braces: if anything stalls, show the hero anyway
+    setTimeout(function () {
+      boots.forEach(function (el) { el.classList.add('is-in'); });
+    }, 800);
+
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
         e.target.classList.add('is-in');
         io.unobserve(e.target);
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.04 });
     reveals.forEach(function (el) { io.observe(el); });
 
-    // The hero is above the fold; play its stagger on load rather than on scroll.
-    requestAnimationFrame(function () {
-      document.querySelectorAll('.hero .reveal').forEach(function (el) {
-        el.classList.add('is-in');
-        io.unobserve(el);
+    // a scan line crosses each panel the first time it comes into view
+    var panels = $$('.panel__body');
+    var scanIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        scanIO.unobserve(e.target);
+        var line = doc.createElement('span');
+        line.className = 'scanline';
+        line.style.setProperty('--h', e.target.offsetHeight + 'px');
+        e.target.appendChild(line);
+        requestAnimationFrame(function () { line.classList.add('is-run'); });
+        setTimeout(function () { line.remove(); }, 1400);
       });
-    });
+    }, { threshold: 0.12 });
+    panels.forEach(function (p) { scanIO.observe(p); });
   }
 
-  /* ── log filters ──────────────────────────────────────── */
-  var filters = Array.prototype.slice.call(document.querySelectorAll('.chipbtn'));
-  var rows = Array.prototype.slice.call(document.querySelectorAll('.log__row'));
-  var note = document.getElementById('log-note');
+  /* ── log filters ───────────────────────────────────────── */
+  var filters = $$('.fbtn');
+  var rows = $$('.row');
+  var note = $('#log-note');
+  var count = $('#log-count');
 
-  function apply(kind) {
+  if (count) count.textContent = String(rows.length);
+
+  function applyFilter(kind) {
     var shown = 0;
     rows.forEach(function (row) {
-      var match = kind === 'all' || row.getAttribute('data-kind') === kind;
+      var match = kind === 'all' || row.dataset.kind === kind;
       row.hidden = !match;
-      if (match) {
-        shown++;
-        row.classList.add('is-in'); // a filtered-in row must never stay invisible
-      }
+      if (match) { shown++; row.classList.add('is-in'); }
     });
     if (note) {
       note.textContent = kind === 'all'
@@ -88,13 +170,66 @@
     }
   }
 
+  var logList = $('#log-list');
+  var more = $('#log-more');
+  if (more && logList) {
+    more.addEventListener('click', function () {
+      var open = logList.classList.toggle('is-open');
+      more.setAttribute('aria-expanded', String(open));
+      more.textContent = open ? 'Show fewer' : 'Show all ' + rows.length + ' entries';
+    });
+  }
+
   filters.forEach(function (btn) {
     btn.addEventListener('click', function () {
       filters.forEach(function (b) { b.classList.remove('is-on'); });
       btn.classList.add('is-on');
-      apply(btn.getAttribute('data-filter'));
+      var kind = btn.dataset.filter;
+      // a filtered view shows every match, not just the first six
+      if (logList) logList.classList.toggle('is-open', kind !== 'all');
+      if (more) {
+        more.hidden = kind !== 'all';
+        more.setAttribute('aria-expanded', String(kind !== 'all'));
+        more.textContent = 'Show all ' + rows.length + ' entries';
+      }
+      applyFilter(kind);
     });
   });
+  if (rows.length) applyFilter('all');
 
-  if (rows.length) apply('all');
+  /* ── screenshot lightbox ───────────────────────────────── */
+  var lb    = $('#lb');
+  var lbImg = $('#lb-img');
+  var lbCap = $('#lb-cap');
+  var lbX   = $('#lb-x');
+  var lastFocus = null;
+
+  function openShot(btn) {
+    if (!lb) return;
+    lastFocus = btn;
+    lbImg.src = btn.dataset.src;
+    var img = btn.querySelector('img');
+    lbImg.alt = img ? img.alt : '';
+    lbCap.textContent = btn.dataset.cap || '';
+    lb.hidden = false;
+    doc.body.style.overflow = 'hidden';
+    $('.lb__panel', lb).focus();
+  }
+
+  function closeShot() {
+    if (!lb || lb.hidden) return;
+    lb.hidden = true;
+    lbImg.src = '';
+    doc.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  $$('.shot').forEach(function (btn) {
+    btn.addEventListener('click', function () { openShot(btn); });
+  });
+  if (lbX) lbX.addEventListener('click', closeShot);
+  if (lb) lb.addEventListener('click', function (e) { if (e.target === lb) closeShot(); });
+  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeShot(); });
+
+  telemetry();
 })();

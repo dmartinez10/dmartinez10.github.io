@@ -28,17 +28,31 @@ python3 -m http.server 8000
 
 ## Design notes
 
-The direction is transit wayfinding: signage navy on a paper ground, with one
-accent borrowed from the green of an exit sign. Everything on the site was built
-for someone trying to find the way out of a system that wasn't designed for them,
-so the palette says that too.
+The direction is a heads-up display. The work is about people who are lost inside
+somebody else's system, and a HUD is the instrument that tells you where you are,
+so the chrome is a wayfinding instrument and the content is the payload.
 
-- **Display:** Archivo, a grotesque with signage lineage
-- **Body:** Newsreader, a serif made for reading on screen
-- **Utility:** IBM Plex Mono, for dates, measurements and labels
+Chrome glows. Text does not: every text colour is flat and sits at WCAG AA or
+better on the surface it is on.
 
-The measurements in *The log* are real, captured on device, and carried over from
-my working log. Nothing there is rounded up.
+- **Display:** Chakra Petch, angular and technical
+- **Body:** IBM Plex Sans
+- **Readouts:** IBM Plex Mono, for dates, telemetry and labels
+- **Accent:** cyan for the instrument, gold for measurements
+
+The radial navigator in the hero is the signature. Nodes are real links, so it is
+keyboard navigable, and the text nav in the status bar does the same job for
+anyone who would rather not use it.
+
+Content is **visible by default**. `main.js` adds an `.anim` class to `<html>`
+only once it knows it can drive the animation, so a script failure can never
+leave the page blank.
+
+## Screenshots
+
+`assets/shots/` holds the Sollo App Store panels, resized to 640px wide WebP
+(300KB for all six). To swap or add one, drop a file in and point a `.shot`
+button's `data-src` and its `<img src>` at it.
 
 ## Editing
 

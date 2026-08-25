@@ -11,330 +11,465 @@
 <meta property="og:title" content="David Martinez &middot; Designer-Engineer">
 <meta property="og:description" content="I build software for people who are lost inside somebody else's system. Flutter, FastAPI, design systems. University of Iowa, Informatics (HCI).">
 <meta property="og:url" content="https://dmartinez10.github.io/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://dmartinez10.github.io/assets/shots/sollo-01-home.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#050A12">
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://dmartinez10.github.io/">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="bar" id="bar">
-  <a class="bar__home" href="#top">David Martinez</a>
-  <span class="bar__sep" aria-hidden="true">/</span>
-  <span class="bar__here" id="bar-here">Intro</span>
-  <nav class="bar__nav" aria-label="Sections">
+<!-- ══ fixed HUD frame: chrome only, never traps a click ══ -->
+<div class="frame" aria-hidden="true">
+  <span class="frame__c frame__c--tl"></span>
+  <span class="frame__c frame__c--tr"></span>
+  <span class="frame__c frame__c--bl"></span>
+  <span class="frame__c frame__c--br"></span>
+  <span class="frame__rail frame__rail--l"></span>
+  <span class="frame__rail frame__rail--r"></span>
+</div>
+
+<header class="status">
+  <a class="status__id" href="#top">
+    <span class="status__mark" aria-hidden="true"></span>
+    David Martinez
+  </a>
+  <p class="status__read">
+    <span class="status__k">SEC</span>
+    <span class="status__v" id="read-sec">00 INTRO</span>
+    <span class="status__bar" aria-hidden="true"><i id="read-fill"></i></span>
+    <span class="status__v status__v--dim" id="read-pct">0%</span>
+  </p>
+  <nav class="status__nav" aria-label="Sections">
     <a href="#experience">Experience</a>
-    <a href="#log">The log</a>
+    <a href="#log">Log</a>
     <a href="#projects">Projects</a>
-    <a href="#education">Courses</a>
+    <a href="#courses">Courses</a>
     <a href="#about">About</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
 
 <main id="main">
 
-<!-- ─────────────────────────── HERO ─────────────────────────── -->
-<section class="hero" id="top" data-here="Intro">
-  <p class="eyebrow reveal">Designer-engineer &middot; Iowa City, Iowa</p>
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="hero" id="top" data-sec="00" data-name="INTRO">
+  <div class="hero__grid">
 
-  <h1 class="hero__name reveal" style="--d:1">David<br>Martinez</h1>
+    <!-- ── the radial navigator: the instrument ── -->
+    <div class="nav-wrap">
+      <div class="reticle" id="reticle">
+        <svg viewBox="0 0 400 400" class="reticle__svg" role="group" aria-label="Radial section navigator">
+          <defs>
+            <radialGradient id="core" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="var(--cyan)" stop-opacity=".30"/>
+              <stop offset="70%" stop-color="var(--cyan)" stop-opacity=".04"/>
+              <stop offset="100%" stop-color="var(--cyan)" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
 
-  <p class="hero__thesis reveal" style="--d:2">
-    I build software for people who are lost inside somebody else&rsquo;s system.
-  </p>
+          <circle cx="200" cy="200" r="120" fill="url(#core)"/>
 
-  <p class="hero__sub reveal" style="--d:3">
-    Most recently that was <strong>Sollo</strong>, an assistant that makes Japanese government
-    information navigable for the residents it was never written for. Flutter on the front,
-    FastAPI and a self-hosted model behind it, nine languages across both.
-  </p>
+          <!-- outer tick ring, rotates slowly -->
+          <g class="ring ring--out">
+            <circle cx="200" cy="200" r="190" class="ring__line"/>
+            <g class="ring__ticks" id="ticks"></g>
+          </g>
 
-  <ul class="hero__links reveal" style="--d:4">
-    <li><a href="mailto:davmartinez10911@gmail.com">Email</a></li>
-    <li><a href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a></li>
-    <li><a href="https://github.com/dmartinez10" rel="noopener">GitHub</a></li>
+          <!-- node ring -->
+          <circle cx="200" cy="200" r="150" class="ring__line ring__line--faint"/>
+
+          <!-- inner ring, counter-rotates -->
+          <g class="ring ring--in">
+            <circle cx="200" cy="200" r="110" class="ring__line ring__line--faint"/>
+            <path d="M200 90 A110 110 0 0 1 295 145" class="ring__arc"/>
+            <path d="M200 310 A110 110 0 0 1 105 255" class="ring__arc"/>
+          </g>
+
+          <!-- sweep arm: points at the section you are in -->
+          <g class="sweep" id="sweep">
+            <line x1="200" y1="200" x2="200" y2="58" class="sweep__line"/>
+            <polygon points="200,44 195,58 205,58" class="sweep__head"/>
+          </g>
+
+          <!-- crosshair -->
+          <g class="cross">
+            <line x1="200" y1="176" x2="200" y2="186"/>
+            <line x1="200" y1="214" x2="200" y2="224"/>
+            <line x1="176" y1="200" x2="186" y2="200"/>
+            <line x1="214" y1="200" x2="224" y2="200"/>
+          </g>
+        </svg>
+
+        <!-- nodes are real links, laid over the svg -->
+        <ul class="nodes" id="nodes">
+          <li style="--x:200; --y:50"><a href="#top"        data-n="00" data-label="INTRO">00</a></li>
+          <li style="--x:317.27; --y:106.48"><a href="#experience" data-n="01" data-label="EXPERIENCE">01</a></li>
+          <li style="--x:346.24; --y:233.38"><a href="#log"        data-n="02" data-label="THE LOG">02</a></li>
+          <li style="--x:265.08; --y:335.15"><a href="#projects"   data-n="03" data-label="PROJECTS">03</a></li>
+          <li style="--x:134.92; --y:335.15"><a href="#courses"    data-n="04" data-label="COURSES">04</a></li>
+          <li style="--x:53.76;  --y:233.38"><a href="#about"      data-n="05" data-label="ABOUT">05</a></li>
+          <li style="--x:82.73;  --y:106.48"><a href="#contact"    data-n="06" data-label="CONTACT">06</a></li>
+        </ul>
+
+        <!-- center readout -->
+        <div class="core" aria-hidden="true">
+          <p class="core__n" id="core-n">00</p>
+          <p class="core__l" id="core-l">INTRO</p>
+        </div>
+      </div>
+      <p class="nav-hint">Select a node, or scroll</p>
+    </div>
+
+    <!-- ── identity block ── -->
+    <div class="ident">
+      <p class="tag boot" style="--d:0">
+        <span class="tag__dot" aria-hidden="true"></span>
+        Designer-engineer &middot; Iowa City, Iowa
+      </p>
+
+      <h1 class="ident__name boot" style="--d:1">
+        <span class="glitch" data-text="David">David</span>
+        <span class="glitch" data-text="Martinez">Martinez</span>
+      </h1>
+
+      <p class="ident__thesis boot" style="--d:2">
+        I build software for people who are lost inside somebody else&rsquo;s system.
+      </p>
+
+      <p class="ident__sub boot" style="--d:3">
+        Designer who ships the build. Most recently <strong>Sollo</strong>, an AI assistant for
+        navigating Japanese government paperwork.
+      </p>
+
+      <dl class="spec boot" style="--d:4">
+        <div><dt>Now</dt><dd>Iowa City</dd></div>
+        <div><dt>Studying</dt><dd>Informatics, HCI</dd></div>
+        <div><dt>Grad</dt><dd>May 2027</dd></div>
+        <div><dt>Seeking</dt><dd>UI/UX + SWE</dd></div>
+      </dl>
+
+      <ul class="ident__links boot" style="--d:5">
+        <li><a href="mailto:davmartinez10911@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/dmartinez10" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═════════════════ AT A GLANCE ═════════════════ -->
+<section class="glance" aria-label="At a glance">
+  <ul class="stats">
+    <li class="stat"><b>8&times;</b><span>faster core browse flow</span></li>
+    <li class="stat"><b>9</b><span>languages shipped</span></li>
+    <li class="stat"><b>2,949</b><span>tests green at handoff</span></li>
+    <li class="stat"><b>3.2k</b><span>dead lines retired</span></li>
+    <li class="stat"><b>18</b><span>logged shipments</span></li>
+    <li class="stat"><b>A+</b><span>in Human-Computer Interaction</span></li>
   </ul>
 </section>
 
-<!-- ──────────────────────── EXPERIENCE ──────────────────────── -->
-<section class="section" id="experience" data-here="Experience">
-  <div class="section__label"><span>Experience</span></div>
-  <div class="section__body">
+<!-- ═══════════════════ EXPERIENCE ═══════════════════ -->
+<section class="panel" id="experience" data-sec="01" data-name="EXPERIENCE">
+  <div class="panel__head">
+    <span class="panel__n">01</span>
+    <h2 class="panel__title">Experience</h2>
+    <span class="panel__rule" aria-hidden="true"></span>
+    <span class="panel__meta">2 roles</span>
+  </div>
+  <div class="panel__body">
 
-    <article class="role">
+    <article class="role reveal">
       <header class="role__head">
-        <h2 class="role__org">Sollo</h2>
+        <h3 class="role__org">Sollo</h3>
         <p class="role__title">Software engineering &amp; design intern</p>
         <p class="role__meta"><span>Tokyo, Japan</span><span>June 2026 to August 2026</span></p>
       </header>
       <p class="role__lede">
-        A government-information assistant for foreign residents of Japan: category-first browsing,
-        CJK full-text and semantic search, situation checklists, and a RAG companion answering over
-        the official corpus. I worked the whole width of it: Figma handoff to Flutter, the FastAPI
-        server behind the companion, and the review gate in front of both.
+        An AI assistant that makes Japanese government paperwork navigable for foreign residents.
+        I worked the whole width of it: Figma handoff to Flutter, the FastAPI server behind the
+        companion, and the review gate in front of both.
       </p>
       <ul class="role__points">
-        <li>Shipped the public-beta home surface, the onboarding flow, in-app feedback and bug
-          reporting, iPad support, and the app&rsquo;s language switching, from design handoff through
-          to merged, device-verified release.</li>
-        <li>Built the feedback channel end to end: an authenticated <code>POST /feedback</code> FastAPI
-          endpoint with a database-backed rate limit and idempotent retry, plus the native Flutter form
-          that survives a dropped train connection without losing or double-filing a report.</li>
-        <li>Cut the core browse flow from 1,033&nbsp;ms to 125&nbsp;ms by tracing one &ldquo;cards open
-          slowly&rdquo; report to four independent defects and fixing each at its root. Every figure was
-          captured frame-by-frame on a device, not inferred from a test.</li>
-        <li>Retired roughly 3,200 lines of provably dead UI and 3.1&nbsp;MB of shipped assets without
-          lowering a single quality bar, then documented the constraints I found rather than forcing
-          past them.</li>
-        <li>Turned a static-analysis gate that had never been runnable into a 40-second CI job on every
-          server change; enabling it surfaced two real latent defects the test suite could not catch.</li>
-        <li>Authored the app in nine locales from the start, with English, Japanese and an
-          easy-Japanese register all first-class, then verified the switching path end to end, including
-          the one route that reported a save it had not made.</li>
+        <li>Shipped the beta home surface, onboarding, in-app feedback, iPad support and language switching.</li>
+        <li>Built the feedback channel end to end: FastAPI endpoint, rate limit, offline-safe Flutter form.</li>
+        <li>Cut the core browse flow from 1,033&nbsp;ms to 125&nbsp;ms by fixing four separate defects.</li>
+        <li>Retired ~3,200 dead lines and 3.1&nbsp;MB of assets with no loss of quality.</li>
+        <li>Authored nine locales from the start, English and two Japanese registers first-class.</li>
       </ul>
-      <p class="role__stack"><span>Flutter</span><span>Dart</span><span>FastAPI</span><span>Python</span><span>Supabase / Postgres</span><span>pgvector + pgroonga</span><span>Google Cloud Run</span><span>Figma</span></p>
+      <p class="chips"><span>Flutter</span><span>Dart</span><span>FastAPI</span><span>Python</span><span>Supabase / Postgres</span><span>pgvector + pgroonga</span><span>Cloud Run</span><span>Figma</span></p>
     </article>
 
-    <article class="role">
+    <article class="role reveal">
       <header class="role__head">
-        <h2 class="role__org">University of Iowa Health Care</h2>
+        <h3 class="role__org">University of Iowa Health Care</h3>
         <p class="role__title">Student database assistant &middot; Department of Internal Medicine</p>
         <p class="role__meta"><span>Iowa City, Iowa</span><span>May 2026 to present</span></p>
       </header>
       <ul class="role__points">
-        <li>Write and tune SQL against Microsoft SQL Server and Oracle for departmental research staff.</li>
-        <li>Maintain and update the department&rsquo;s recurring reports, and consolidate data out of Epic
-          into the form researchers actually need it in.</li>
-        <li>Handle records and data entry, and tune the department&rsquo;s internal web application.</li>
+        <li>Write and tune SQL against Microsoft SQL Server and Oracle for research staff.</li>
+        <li>Maintain the department&rsquo;s recurring reports and consolidate data out of Epic.</li>
+        <li>Handle records and data entry, and tune the internal web application.</li>
       </ul>
-      <p class="role__stack"><span>SQL</span><span>Microsoft SQL Server</span><span>Oracle</span><span>Epic</span></p>
+      <p class="chips"><span>SQL</span><span>Microsoft SQL Server</span><span>Oracle</span><span>Epic</span></p>
     </article>
 
   </div>
 </section>
 
-<!-- ─────────────────────────── LOG ──────────────────────────── -->
-<section class="section section--log" id="log" data-here="The log">
-  <div class="section__label"><span>The log</span></div>
-  <div class="section__body">
+<!-- ══════════════════════ LOG ══════════════════════ -->
+<section class="panel panel--log" id="log" data-sec="02" data-name="THE LOG">
+  <div class="panel__head">
+    <span class="panel__n">02</span>
+    <h2 class="panel__title">The log</h2>
+    <span class="panel__rule" aria-hidden="true"></span>
+    <span class="panel__meta"><span id="log-count">18</span> entries</span>
+  </div>
+  <div class="panel__body">
 
-    <p class="log__lede">
+    <p class="lede">
       Every piece of work I ship gets written down the same day, with the number that proves it and the
       part I got wrong. This is that log, unedited except for length. The measurements are the point:
       I would rather show you a figure I captured than a word like <em>optimized</em>.
     </p>
 
-    <div class="log__filters" role="group" aria-label="Filter the log">
-      <button class="chipbtn is-on" data-filter="all">All</button>
-      <button class="chipbtn" data-filter="shipped">Shipped</button>
-      <button class="chipbtn" data-filter="fixed">Fixed</button>
-      <button class="chipbtn" data-filter="retired">Retired</button>
-      <button class="chipbtn" data-filter="reviewed">Reviewed</button>
+    <div class="filters" role="group" aria-label="Filter the log">
+      <button class="fbtn is-on" data-filter="all">All</button>
+      <button class="fbtn" data-filter="shipped">Shipped</button>
+      <button class="fbtn" data-filter="fixed">Fixed</button>
+      <button class="fbtn" data-filter="retired">Retired</button>
+      <button class="fbtn" data-filter="reviewed">Reviewed</button>
     </div>
 
     <ol class="log" id="log-list">
-
-      <li class="log__row reveal" data-kind="fixed">
-        <time class="log__date" datetime="2026-08-06">06 Aug 2026</time>
-        <p class="log__title">Replaced the app icon, then deleted half my own fix once I measured that this codebase did not have the problem I was solving.</p>
-        <p class="log__delta">2,949 tests green</p>
+      <li class="row reveal" data-kind="fixed">
+        <time class="row__t" datetime="2026-08-06">06 AUG 26</time>
+        <p class="row__x">Replaced the app icon, then deleted my own fix after measuring.</p>
+        <p class="row__d">2,949 tests green</p>
       </li>
-
-      <li class="log__row reveal" data-kind="shipped">
-        <time class="log__date" datetime="2026-08-05">05 Aug 2026</time>
-        <p class="log__title">Turned the dead trail at the bottom of a page into the way back, and refused to reconstruct a route the reader never walked.</p>
+      <li class="row reveal" data-kind="shipped">
+        <time class="row__t" datetime="2026-08-05">05 AUG 26</time>
+        <p class="row__x">Turned a dead trail at the page bottom into the way back.</p>
       </li>
-
-      <li class="log__row reveal" data-kind="shipped">
-        <time class="log__date" datetime="2026-08-04">04 Aug 2026</time>
-        <p class="log__title">Built a &ldquo;how far in am I&rdquo; indicator for the topic drill-down, and refused the two halves of its spec that could not both be true.</p>
+      <li class="row reveal" data-kind="shipped">
+        <time class="row__t" datetime="2026-08-04">04 AUG 26</time>
+        <p class="row__x">Built a depth indicator, and refused the half of its spec that could not be true.</p>
       </li>
-
-      <li class="log__row reveal" data-kind="fixed">
-        <time class="log__date" datetime="2026-08-03">03 Aug 2026</time>
-        <p class="log__title">Verified language switching end to end and found the one path that reported a save it had never made.</p>
-        <p class="log__delta">9 locales</p>
+      <li class="row reveal" data-kind="fixed">
+        <time class="row__t" datetime="2026-08-03">03 AUG 26</time>
+        <p class="row__x">Found the one language path that reported a save it never made.</p>
+        <p class="row__d">9 locales</p>
       </li>
-
-      <li class="log__row reveal" data-kind="fixed">
-        <time class="log__date" datetime="2026-07-31">31 Jul 2026</time>
-        <p class="log__title">Made reopening a conversation land where the reader left off, then found the same defect hiding in three more places.</p>
-        <p class="log__delta">4 surfaces</p>
+      <li class="row reveal" data-kind="fixed">
+        <time class="row__t" datetime="2026-07-31">31 JUL 26</time>
+        <p class="row__x">Made conversations reopen where the reader left off.</p>
+        <p class="row__d">4 surfaces</p>
       </li>
-
-      <li class="log__row reveal" data-kind="reviewed">
-        <time class="log__date" datetime="2026-07-31">31 Jul 2026</time>
-        <p class="log__title">Reviewed, hardened and shipped another engineer&rsquo;s animation fix, and closed the gaps its own tests had left open.</p>
+      <li class="row reveal" data-kind="reviewed">
+        <time class="row__t" datetime="2026-07-31">31 JUL 26</time>
+        <p class="row__x">Reviewed and hardened another engineer&rsquo;s animation fix.</p>
       </li>
-
-      <li class="log__row reveal" data-kind="retired">
-        <time class="log__date" datetime="2026-07-30">30 Jul 2026</time>
-        <p class="log__title">Retired two browse screens the app could never reach, kept alive for months by their own passing tests.</p>
-        <p class="log__delta">&minus;1,046 lines</p>
+      <li class="row reveal" data-kind="retired" data-extra="1">
+        <time class="row__t" datetime="2026-07-30">30 JUL 26</time>
+        <p class="row__x">Deleted two browse screens the app could never reach.</p>
+        <p class="row__d">&minus;1,046 lines</p>
       </li>
-
-      <li class="log__row reveal" data-kind="shipped">
-        <time class="log__date" datetime="2026-07-29">29 Jul 2026</time>
-        <p class="log__title">Shipped the app onto iPad and made one phone-first layout correct on every device in both stores.</p>
-        <p class="log__delta">667 cases &middot; 20/20 mutations</p>
+      <li class="row reveal" data-kind="shipped" data-extra="1">
+        <time class="row__t" datetime="2026-07-29">29 JUL 26</time>
+        <p class="row__x">Shipped the app onto iPad, correct on every device in both stores.</p>
+        <p class="row__d">667 cases</p>
       </li>
-
-      <li class="log__row reveal" data-kind="fixed">
-        <time class="log__date" datetime="2026-07-29">29 Jul 2026</time>
-        <p class="log__title">Fixed a location feature that silently did nothing, and extended it from one city to the whole country.</p>
+      <li class="row reveal" data-kind="fixed" data-extra="1">
+        <time class="row__t" datetime="2026-07-29">29 JUL 26</time>
+        <p class="row__x">Fixed a location feature that silently did nothing.</p>
+        <p class="row__d">1 city to nationwide</p>
       </li>
-
-      <li class="log__row reveal" data-kind="fixed">
-        <time class="log__date" datetime="2026-07-27">27 Jul 2026</time>
-        <p class="log__title">Traced one &ldquo;cards open slowly&rdquo; report to four independent defects and fixed each at its root, on the tap&rsquo;s own frame.</p>
-        <p class="log__delta">1,033 ms &rarr; 125 ms</p>
+      <li class="row reveal" data-kind="fixed" data-extra="1">
+        <time class="row__t" datetime="2026-07-27">27 JUL 26</time>
+        <p class="row__x">Traced &ldquo;cards open slowly&rdquo; to four defects and fixed each.</p>
+        <p class="row__d">1,033 ms &rarr; 125 ms</p>
       </li>
-
-      <li class="log__row reveal" data-kind="shipped">
-        <time class="log__date" datetime="2026-07-24">24 Jul 2026</time>
-        <p class="log__title">Built production-grade in-app feedback and bug reporting, full-stack, for the public beta.</p>
-        <p class="log__delta">Flutter &rarr; FastAPI &rarr; alert in minutes</p>
+      <li class="row reveal" data-kind="shipped" data-extra="1">
+        <time class="row__t" datetime="2026-07-24">24 JUL 26</time>
+        <p class="row__x">Built in-app feedback and bug reporting, full-stack.</p>
+        <p class="row__d">Flutter &rarr; FastAPI</p>
       </li>
-
-      <li class="log__row reveal" data-kind="shipped">
-        <time class="log__date" datetime="2026-07-24">24 Jul 2026</time>
-        <p class="log__title">Turned a phantom lint gate into a real one that runs on every server change.</p>
-        <p class="log__delta">40 s CI job &middot; 2 latent defects found</p>
+      <li class="row reveal" data-kind="shipped" data-extra="1">
+        <time class="row__t" datetime="2026-07-24">24 JUL 26</time>
+        <p class="row__x">Made a phantom lint gate real and CI-enforced.</p>
+        <p class="row__d">40 s &middot; 2 defects</p>
       </li>
-
-      <li class="log__row reveal" data-kind="shipped">
-        <time class="log__date" datetime="2026-07-24">24 Jul 2026</time>
-        <p class="log__title">Redesigned the app&rsquo;s main page for public beta: design-led, and shipped the same week.</p>
+      <li class="row reveal" data-kind="shipped" data-extra="1">
+        <time class="row__t" datetime="2026-07-24">24 JUL 26</time>
+        <p class="row__x">Redesigned the app&rsquo;s main page for public beta.</p>
       </li>
-
-      <li class="log__row reveal" data-kind="retired">
-        <time class="log__date" datetime="2026-07-22">22 Jul 2026</time>
-        <p class="log__title">Retired a superseded home surface and the asset it had been pinning in the bundle.</p>
-        <p class="log__delta">&minus;2,200 lines &middot; &minus;342 KB</p>
+      <li class="row reveal" data-kind="retired" data-extra="1">
+        <time class="row__t" datetime="2026-07-22">22 JUL 26</time>
+        <p class="row__x">Retired a superseded home surface and the asset it pinned.</p>
+        <p class="row__d">&minus;2,200 lines</p>
       </li>
-
-      <li class="log__row reveal" data-kind="shipped">
-        <time class="log__date" datetime="2026-07-21">21 Jul 2026</time>
-        <p class="log__title">Cut the shipped bundle without lowering any quality bar. Dead weight, not fidelity, verified against a reference image.</p>
-        <p class="log__delta">4.8 MB &rarr; 1.7 MB</p>
+      <li class="row reveal" data-kind="shipped" data-extra="1">
+        <time class="row__t" datetime="2026-07-21">21 JUL 26</time>
+        <p class="row__x">Cut the shipped bundle with no loss of quality.</p>
+        <p class="row__d">4.8 &rarr; 1.7 MB</p>
       </li>
-
-      <li class="log__row reveal" data-kind="reviewed">
-        <time class="log__date" datetime="2026-07-21">21 Jul 2026</time>
-        <p class="log__title">Caught a performance defect a code review had just declared closed, and split a bundled PR along its risk seam to unblock two thirds of it.</p>
+      <li class="row reveal" data-kind="reviewed" data-extra="1">
+        <time class="row__t" datetime="2026-07-21">21 JUL 26</time>
+        <p class="row__x">Caught a performance defect a review had just declared closed.</p>
       </li>
-
-      <li class="log__row reveal" data-kind="shipped">
-        <time class="log__date" datetime="2026-07-02">02 Jul 2026</time>
-        <p class="log__title">Led an app-navigation overhaul and redesigned the companion&rsquo;s ask bar: Figma to Flutter, on device, in nine locales.</p>
+      <li class="row reveal" data-kind="shipped" data-extra="1">
+        <time class="row__t" datetime="2026-07-02">02 JUL 26</time>
+        <p class="row__x">Led an app-navigation overhaul, Figma to Flutter.</p>
+        <p class="row__d">9 locales</p>
       </li>
-
-      <li class="log__row reveal" data-kind="shipped">
-        <time class="log__date" datetime="2026-06-30">30 Jun 2026</time>
-        <p class="log__title">Shipped the two-screen onboarding flow, straight from the Figma file.</p>
+      <li class="row reveal" data-kind="shipped" data-extra="1">
+        <time class="row__t" datetime="2026-06-30">30 JUN 26</time>
+        <p class="row__x">Shipped the two-screen onboarding flow from Figma.</p>
       </li>
-
     </ol>
+
+    <button class="more" id="log-more" aria-expanded="false">Show all 18 entries</button>
 
     <p class="log__note" id="log-note" aria-live="polite"></p>
   </div>
 </section>
 
-<!-- ───────────────────────── PROJECTS ───────────────────────── -->
-<section class="section" id="projects" data-here="Projects">
-  <div class="section__label"><span>Projects</span></div>
-  <div class="section__body">
+<!-- ═══════════════════ PROJECTS ═══════════════════ -->
+<section class="panel" id="projects" data-sec="03" data-name="PROJECTS">
+  <div class="panel__head">
+    <span class="panel__n">03</span>
+    <h2 class="panel__title">Projects</h2>
+    <span class="panel__rule" aria-hidden="true"></span>
+    <span class="panel__meta">3 builds</span>
+  </div>
+  <div class="panel__body">
 
-    <article class="proj">
-      <h2 class="proj__name">Sollo</h2>
-      <p class="proj__for">For a foreign resident of Japan facing a system written in a language and a
-        format they were never the audience for.</p>
+    <article class="proj reveal">
+      <div class="proj__top">
+        <h3 class="proj__name">Sollo</h3>
+        <p class="proj__for">For a foreign resident of Japan facing a system written in a language and a
+          format they were never the audience for.</p>
+      </div>
       <p class="proj__body">
-        A Flutter app over a shared Supabase corpus of officially translated Japanese government
-        content, with a FastAPI RAG companion running a self-hosted model on Cloud Run. Category-first
-        browsing, CJK full-text and semantic search over Postgres RPCs, situation journeys you can work
-        as checklists, and answers grounded in the real corpus rather than in the model&rsquo;s memory.
-        Nine locales, English and both Japanese registers fully authored.
+        Flutter over a Supabase corpus of officially translated government content, with a FastAPI
+        RAG companion on Cloud Run. Category browsing, CJK and semantic search, checklists you can
+        work through, and answers grounded in the real corpus. Nine locales.
       </p>
-      <p class="proj__stack"><span>Flutter</span><span>FastAPI</span><span>Supabase</span><span>pgvector</span><span>Cloud Run</span></p>
+
+      <div class="shots">
+        <p class="shots__label">
+          <span class="shots__k">STORE LISTING</span>
+          Six surfaces I designed and shipped. Select one to enlarge.
+        </p>
+        <ul class="shots__rail">
+          <li><button class="shot" data-src="assets/shots/sollo-01-home.webp" data-cap="Home: category-first browsing, with journeys in progress underneath.">
+            <img src="assets/shots/sollo-01-home.webp" width="640" height="1385" alt="Sollo home screen: Japan's paperwork in plain language, with category tiles for visa, work, money, healthcare, daily life and support." loading="lazy" decoding="async">
+            <span class="shot__n">01</span><span class="shot__t">Home</span></button></li>
+          <li><button class="shot" data-src="assets/shots/sollo-02-answers.webp" data-cap="A guide rendered in plain language, with the breadcrumb trail I built across the top.">
+            <img src="assets/shots/sollo-02-answers.webp" width="640" height="1385" alt="Sollo guide screen: the National Pension explained clearly, with contributions and exemptions broken out." loading="lazy" decoding="async">
+            <span class="shot__n">02</span><span class="shot__t">Clear answers</span></button></li>
+          <li><button class="shot" data-src="assets/shots/sollo-03-sources.webp" data-cap="Every claim carries a footnote back to the government page it came from.">
+            <img src="assets/shots/sollo-03-sources.webp" width="640" height="1385" alt="Sollo sources screen: a guide showing numbered references linking out to the official government pages behind each claim." loading="lazy" decoding="async">
+            <span class="shot__n">03</span><span class="shot__t">Sources</span></button></li>
+          <li><button class="shot" data-src="assets/shots/sollo-04-plan.webp" data-cap="A guide turned into a checklist you can actually work through.">
+            <img src="assets/shots/sollo-04-plan.webp" width="640" height="1385" alt="Sollo action plan screen: a National Pension guide converted into a step-by-step checklist with progress." loading="lazy" decoding="async">
+            <span class="shot__n">04</span><span class="shot__t">Action plan</span></button></li>
+          <li><button class="shot" data-src="assets/shots/sollo-05-journeys.webp" data-cap="Journeys: every process in flight, with progress and the next step surfaced.">
+            <img src="assets/shots/sollo-05-journeys.webp" width="640" height="1385" alt="Sollo journeys screen: in-progress and completed processes with percentage complete and next steps." loading="lazy" decoding="async">
+            <span class="shot__n">05</span><span class="shot__t">Journeys</span></button></li>
+          <li><button class="shot" data-src="assets/shots/sollo-06-close.webp" data-cap="The closing panel, in the dark theme I made adaptive across the app.">
+            <img src="assets/shots/sollo-06-close.webp" width="640" height="1385" alt="Sollo closing panel: life in Japan, one clear step at a time, in dark mode." loading="lazy" decoding="async">
+            <span class="shot__n">06</span><span class="shot__t">Close</span></button></li>
+        </ul>
+      </div>
+
+      <p class="chips"><span>Flutter</span><span>FastAPI</span><span>Supabase</span><span>pgvector</span><span>Cloud Run</span></p>
       <p class="proj__links">
         <a href="https://sollo.my" rel="noopener">sollo.my</a>
-        <span class="proj__private">Source is private, happy to walk through it</span>
+        <span class="proj__note">Source is private, happy to walk through it</span>
       </p>
     </article>
 
-    <article class="proj">
-      <h2 class="proj__name">Centline</h2>
-      <p class="proj__for">For a one-truck owner-operator deciding, at a loading dock at night, whether
-        a load is worth taking.</p>
+    <article class="proj reveal">
+      <div class="proj__top">
+        <h3 class="proj__name">Centline</h3>
+        <p class="proj__for">For a one-truck owner-operator deciding, at a loading dock at night,
+          whether a load is worth taking.</p>
+      </div>
       <p class="proj__body">
-        A broker quotes dollars per <em>loaded</em> mile. The empty miles you drive to reach the pickup
-        cost exactly the same and pay nothing, which is the usual reason a new carrier goes under.
-        Centline takes the truck&rsquo;s real costs once, works out a true cost per mile, and answers what a
-        load nets <em>after deadhead</em>, then builds the detention clock, the invoice, and the
-        broker payment record on that same number. No backend, no accounts, no network calls, no
-        analytics: it all runs on the device.
+        Brokers quote dollars per <em>loaded</em> mile. The empty miles cost the same and pay nothing,
+        which is why new carriers go under. Centline works out a true cost per mile and answers what a
+        load nets <em>after deadhead</em>. Everything runs on the device.
       </p>
-      <p class="proj__stack"><span>Flutter</span><span>On-device only</span><span>563 tests</span><span>Accessibility-asserted</span></p>
-      <p class="proj__links"><span class="proj__private">Prototype 2, running on hardware. Source private</span></p>
+      <p class="chips"><span>Flutter</span><span>On-device only</span><span>563 tests</span><span>Accessibility-asserted</span></p>
+      <p class="proj__links"><span class="proj__note">Prototype 2, running on hardware. Source private</span></p>
     </article>
 
-    <article class="proj">
-      <h2 class="proj__name">sollo.my</h2>
-      <p class="proj__for">For someone who has heard the app exists and needs to understand it in their
-        own language before they trust it.</p>
+    <article class="proj reveal">
+      <div class="proj__top">
+        <h3 class="proj__name">sollo.my</h3>
+        <p class="proj__for">For someone who has heard the app exists and needs to understand it in
+          their own language before they trust it.</p>
+      </div>
       <p class="proj__body">
-        The Sollo landing site: a static, no-build page shipped in eleven languages, including
-        right-to-left Arabic. Localized feedback forms post to a serverless function behind a
-        Turnstile check.
+        The Sollo landing site: static, no build step, eleven languages including right-to-left
+        Arabic.
       </p>
-      <p class="proj__stack"><span>Static HTML/CSS/JS</span><span>11 languages</span><span>RTL</span><span>Vercel Functions</span></p>
+      <p class="chips"><span>Static HTML/CSS/JS</span><span>11 languages</span><span>RTL</span><span>Vercel Functions</span></p>
       <p class="proj__links"><a href="https://sollo.my" rel="noopener">Visit sollo.my</a></p>
     </article>
 
   </div>
 </section>
 
-<!-- ──────────────────── EDUCATION & COURSES ─────────────────── -->
-<section class="section" id="education" data-here="Courses">
-  <div class="section__label"><span>Courses</span></div>
-  <div class="section__body">
+<!-- ═══════════════════ COURSES ═══════════════════ -->
+<section class="panel" id="courses" data-sec="04" data-name="COURSES">
+  <div class="panel__head">
+    <span class="panel__n">04</span>
+    <h2 class="panel__title">Courses</h2>
+    <span class="panel__rule" aria-hidden="true"></span>
+    <span class="panel__meta">BA Informatics, HCI</span>
+  </div>
+  <div class="panel__body">
 
-    <article class="edu">
-      <h2 class="edu__school">The University of Iowa</h2>
+    <article class="edu reveal">
+      <h3 class="edu__school">The University of Iowa</h3>
       <p class="edu__degree">Bachelor of Arts, Informatics (Human-Computer Interaction)</p>
-      <p class="edu__meta"><span>Iowa City, Iowa</span><span>Anticipated May 2027</span></p>
+      <p class="role__meta"><span>Iowa City, Iowa</span><span>Anticipated May 2027</span></p>
       <p class="edu__minors">Minors in Spanish and Psychology.</p>
 
-      <h3 class="edu__sub">Honors</h3>
-      <ul class="edu__list">
+      <h4 class="sub">Honors</h4>
+      <ul class="role__points">
         <li>Dean&rsquo;s List, Spring 2026</li>
         <li>CIEE Tokyo Global Internship, Summer 2026, the academic vehicle for the Sollo internship</li>
       </ul>
 
-      <h3 class="edu__sub">Coursework, ordered by how much of it I use</h3>
+      <h4 class="sub">Coursework, ordered by how much of it I use</h4>
       <ul class="courses">
-        <li class="course"><span class="course__code">CS 2520</span><span class="course__name">Human-Computer Interaction</span><span class="course__grade">A+</span></li>
-        <li class="course"><span class="course__code">CS 2110</span><span class="course__name">Programming for Informatics</span><span class="course__grade"></span></li>
-        <li class="course"><span class="course__code">CS 2420</span><span class="course__name">Analyzing Data for Informatics</span><span class="course__grade"></span></li>
-        <li class="course"><span class="course__code">CS 1020</span><span class="course__name">Principles of Computing</span><span class="course__grade"></span></li>
-        <li class="course"><span class="course__code">JMC 3505</span><span class="course__name">Audiences and Analytics</span><span class="course__grade">A</span></li>
-        <li class="course"><span class="course__code">PSY 2811</span><span class="course__name">Research Methods and Data Analysis in Psychology</span><span class="course__grade"></span></li>
-        <li class="course"><span class="course__code">PSY 2601</span><span class="course__name">Introduction to Cognitive Psychology</span><span class="course__grade"></span></li>
-        <li class="course"><span class="course__code">ARTS 1070</span><span class="course__name">Elements of Graphic Design</span><span class="course__grade">A&minus;</span></li>
-        <li class="course"><span class="course__code">ARTS 1020</span><span class="course__name">Elements of 3D Design</span><span class="course__grade">A&minus;</span></li>
+        <li class="course"><span class="course__c">CS 2520</span><span class="course__n">Human-Computer Interaction</span><span class="course__g">A+</span></li>
+        <li class="course"><span class="course__c">CS 2110</span><span class="course__n">Programming for Informatics</span><span class="course__g"></span></li>
+        <li class="course"><span class="course__c">CS 2420</span><span class="course__n">Analyzing Data for Informatics</span><span class="course__g"></span></li>
+        <li class="course"><span class="course__c">CS 1020</span><span class="course__n">Principles of Computing</span><span class="course__g"></span></li>
+        <li class="course"><span class="course__c">JMC 3505</span><span class="course__n">Audiences and Analytics</span><span class="course__g">A</span></li>
+        <li class="course"><span class="course__c">PSY 2811</span><span class="course__n">Research Methods and Data Analysis in Psychology</span><span class="course__g"></span></li>
+        <li class="course"><span class="course__c">PSY 2601</span><span class="course__n">Introduction to Cognitive Psychology</span><span class="course__g"></span></li>
+        <li class="course"><span class="course__c">ARTS 1070</span><span class="course__n">Elements of Graphic Design</span><span class="course__g">A&minus;</span></li>
+        <li class="course"><span class="course__c">ARTS 1020</span><span class="course__n">Elements of 3D Design</span><span class="course__g">A&minus;</span></li>
       </ul>
     </article>
 
-    <article class="edu edu--kit">
-      <h3 class="edu__sub">What I work in</h3>
+    <article class="edu reveal">
+      <h4 class="sub">What I work in</h4>
       <dl class="kit">
         <dt>Frontend &amp; mobile</dt>
         <dd>Flutter, Dart, go_router, gen-l10n internationalization, Material Design and custom design systems</dd>
@@ -354,61 +489,47 @@
   </div>
 </section>
 
-<!-- ──────────────────────────  ABOUT ────────────────────────── -->
-<section class="section" id="about" data-here="About">
-  <div class="section__label"><span>About</span></div>
-  <div class="section__body">
-    <div class="about">
+<!-- ═══════════════════ ABOUT ═══════════════════ -->
+<section class="panel" id="about" data-sec="05" data-name="ABOUT">
+  <div class="panel__head">
+    <span class="panel__n">05</span>
+    <h2 class="panel__title">About</h2>
+    <span class="panel__rule" aria-hidden="true"></span>
+  </div>
+  <div class="panel__body">
+    <div class="about reveal">
       <p class="about__big">
-        I study informatics at Iowa, specifically human-computer interaction, with minors in Spanish
-        and psychology. That combination is not incidental.
+        I study informatics at Iowa, human-computer interaction, with minors in Spanish and psychology.
+        That combination is not incidental.
       </p>
       <p>
-        Almost everything I have built is for someone operating inside a language or a system that was
-        not designed with them in mind: a resident reading a government page written for citizens, a
-        driver quoted a rate that hides the empty miles, a diner holding a menu they cannot read. The
-        design half of my training is what makes me ask who is on the other side of the screen. The
-        engineering half is what lets me ship the answer.
+        Almost everything I build is for someone operating inside a language or a system that was not
+        designed with them in mind. The design half of my training makes me ask who is on the other
+        side of the screen. The engineering half lets me ship the answer.
       </p>
       <p>
-        I work on both sides of the handoff. I take a Figma file and ship it, and I argue with it when
-        the spec and the device cannot both be right. The habit I would most like to be judged on is the
-        one in the log above: I measure before I claim, I write down the reasoning that is not obvious
-        so the next person does not have to rediscover it, and when I am wrong I go and check rather
-        than defend it.
-      </p>
-      <p>
-        In practice that meant Flutter and FastAPI for Sollo in Tokyo this past summer. I am back in
-        Iowa City now, writing SQL for the Department of Internal Medicine at University of Iowa Health
-        Care and finishing my degree. I am looking for UI/UX design and software engineering work:
-        full-stack, mobile-leaning, and close to the people using it.
+        The habit I would most like to be judged on is in the log: I measure before I claim, and when
+        I am wrong I go and check rather than defend it.
       </p>
     </div>
   </div>
 </section>
 
-<!-- ───────────────────────── CONTACT ────────────────────────── -->
-<section class="section section--contact" id="contact" data-here="Contact">
-  <div class="section__label"><span>Contact</span></div>
-  <div class="section__body">
-    <p class="contact__line">Tell me what you are building and who it is for.</p>
-    <ul class="contact__list">
-      <li>
-        <span class="contact__k">Email</span>
-        <a class="contact__v" href="mailto:davmartinez10911@gmail.com">davmartinez10911@gmail.com</a>
-      </li>
-      <li>
-        <span class="contact__k">LinkedIn</span>
-        <a class="contact__v" href="https://www.linkedin.com/in/davidmuiux" rel="noopener">linkedin.com/in/davidmuiux</a>
-      </li>
-      <li>
-        <span class="contact__k">GitHub</span>
-        <a class="contact__v" href="https://github.com/dmartinez10" rel="noopener">github.com/dmartinez10</a>
-      </li>
-      <li>
-        <span class="contact__k">Based</span>
-        <span class="contact__v contact__v--plain">Iowa City, Iowa</span>
-      </li>
+<!-- ═══════════════════ CONTACT ═══════════════════ -->
+<section class="panel" id="contact" data-sec="06" data-name="CONTACT">
+  <div class="panel__head">
+    <span class="panel__n">06</span>
+    <h2 class="panel__title">Contact</h2>
+    <span class="panel__rule" aria-hidden="true"></span>
+    <span class="panel__meta">Open to work</span>
+  </div>
+  <div class="panel__body">
+    <p class="about__big reveal">Tell me what you are building and who it is for.</p>
+    <ul class="contact reveal">
+      <li><span class="contact__k">Email</span><a class="contact__v" href="mailto:davmartinez10911@gmail.com">davmartinez10911@gmail.com</a></li>
+      <li><span class="contact__k">LinkedIn</span><a class="contact__v" href="https://www.linkedin.com/in/davidmuiux" rel="noopener">linkedin.com/in/davidmuiux</a></li>
+      <li><span class="contact__k">GitHub</span><a class="contact__v" href="https://github.com/dmartinez10" rel="noopener">github.com/dmartinez10</a></li>
+      <li><span class="contact__k">Based</span><span class="contact__v contact__v--plain">Iowa City, Iowa</span></li>
     </ul>
   </div>
 </section>
@@ -416,9 +537,19 @@
 </main>
 
 <footer class="foot">
-  <p>Built by hand. No framework, no build step. <a href="https://github.com/dmartinez10/dmartinez10.github.io" rel="noopener">Source</a></p>
-  <p class="foot__year">&copy; <span id="year">2026</span> David Martinez</p>
+  <p>Built by hand. No framework, no build step.
+    <a href="https://github.com/dmartinez10/dmartinez10.github.io" rel="noopener">Source</a></p>
+  <p class="foot__y">&copy; <span id="year">2026</span> David Martinez</p>
 </footer>
+
+<!-- lightbox for the screenshot rail -->
+<div class="lb" id="lb" hidden>
+  <div class="lb__panel" role="dialog" aria-modal="true" aria-label="Screenshot" tabindex="-1">
+    <button class="lb__x" id="lb-x" aria-label="Close">CLOSE &times;</button>
+    <img id="lb-img" src="" alt="">
+    <p class="lb__cap" id="lb-cap"></p>
+  </div>
+</div>
 
 <script src="main.js"></script>
 </body>
