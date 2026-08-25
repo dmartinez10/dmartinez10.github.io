@@ -1,4 +1,4 @@
-/* David Martinez — portfolio
+/* David Martinez, portfolio
    Three small jobs: say where you are, reveal on scroll, filter the log. */
 
 (function () {
@@ -84,7 +84,7 @@
     if (note) {
       note.textContent = kind === 'all'
         ? shown + ' entries'
-        : shown + (shown === 1 ? ' entry' : ' entries') + ' — ' + kind;
+        : shown + (shown === 1 ? ' entry' : ' entries') + ': ' + kind;
     }
   }
 
