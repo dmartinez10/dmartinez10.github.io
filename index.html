@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>David Martinez — Designer-Engineer</title>
+<meta name="description" content="David Martinez builds software for people who are lost inside somebody else's system. Designer-engineer working in Flutter, FastAPI and design systems. University of Iowa, Informatics (HCI).">
+<meta name="author" content="David Martinez">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="David Martinez — Designer-Engineer">
+<meta property="og:description" content="I build software for people who are lost inside somebody else's system. Flutter, FastAPI, design systems. University of Iowa, Informatics (HCI).">
+<meta property="og:url" content="https://dmartinez10.github.io/">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://dmartinez10.github.io/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar" id="bar">
+  <a class="bar__home" href="#top">David Martinez</a>
+  <span class="bar__sep" aria-hidden="true">/</span>
+  <span class="bar__here" id="bar-here">Intro</span>
+  <nav class="bar__nav" aria-label="Sections">
+    <a href="#experience">Experience</a>
+    <a href="#log">The log</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Courses</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- ─────────────────────────── HERO ─────────────────────────── -->
+<section class="hero" id="top" data-here="Intro">
+  <p class="eyebrow reveal">Designer-engineer &middot; Iowa &amp; Tokyo</p>
+
+  <h1 class="hero__name reveal" style="--d:1">David<br>Martinez</h1>
+
+  <p class="hero__thesis reveal" style="--d:2">
+    I build software for people who are lost inside somebody else&rsquo;s system.
+  </p>
+
+  <p class="hero__sub reveal" style="--d:3">
+    Right now that is <strong>Sollo</strong> &mdash; an assistant that makes Japanese government
+    information navigable for the residents it was never written for. Flutter on the front,
+    FastAPI and a self-hosted model behind it, nine languages across both.
+  </p>
+
+  <ul class="hero__links reveal" style="--d:4">
+    <li><a href="mailto:davmartinez10911@gmail.com">Email</a></li>
+    <li><a href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a></li>
+    <li><a href="https://github.com/dmartinez10" rel="noopener">GitHub</a></li>
+  </ul>
+</section>
+
+<!-- ──────────────────────── EXPERIENCE ──────────────────────── -->
+<section class="section" id="experience" data-here="Experience">
+  <div class="section__label"><span>Experience</span></div>
+  <div class="section__body">
+
+    <article class="role">
+      <header class="role__head">
+        <h2 class="role__org">Sollo</h2>
+        <p class="role__title">Software engineering &amp; design intern</p>
+        <p class="role__meta"><span>Tokyo, Japan</span><span>June 2026 &ndash; present</span></p>
+      </header>
+      <p class="role__lede">
+        A government-information assistant for foreign residents of Japan: category-first browsing,
+        CJK full-text and semantic search, situation checklists, and a RAG companion answering over
+        the official corpus. I work the whole width of it &mdash; Figma handoff to Flutter, the FastAPI
+        server behind the companion, and the review gate in front of both.
+      </p>
+      <ul class="role__points">
+        <li>Shipped the public-beta home surface, the onboarding flow, in-app feedback and bug
+          reporting, iPad support, and the app&rsquo;s language switching &mdash; design handoff through
+          merged, device-verified release.</li>
+        <li>Built the feedback channel end to end: an authenticated <code>POST /feedback</code> FastAPI
+          endpoint with a database-backed rate limit and idempotent retry, plus the native Flutter form
+          that survives a dropped train connection without losing or double-filing a report.</li>
+        <li>Cut the core browse flow from 1,033&nbsp;ms to 125&nbsp;ms by tracing one &ldquo;cards open
+          slowly&rdquo; report to four independent defects and fixing each at its root &mdash; every figure
+          captured frame-by-frame on a device, not inferred from a test.</li>
+        <li>Retired roughly 3,200 lines of provably dead UI and 3.1&nbsp;MB of shipped assets without
+          lowering a single quality bar, then documented the constraints I found rather than forcing
+          past them.</li>
+        <li>Turned a static-analysis gate that had never been runnable into a 40-second CI job on every
+          server change; enabling it surfaced two real latent defects the test suite could not catch.</li>
+        <li>Authored the app in nine locales from the start &mdash; English, Japanese and an
+          easy-Japanese register first-class &mdash; and verified the switching path end to end, including
+          the one route that reported a save it had not made.</li>
+      </ul>
+      <p class="role__stack"><span>Flutter</span><span>Dart</span><span>FastAPI</span><span>Python</span><span>Supabase / Postgres</span><span>pgvector + pgroonga</span><span>Google Cloud Run</span><span>Figma</span></p>
+    </article>
+
+    <article class="role">
+      <header class="role__head">
+        <h2 class="role__org">University of Iowa Health Care</h2>
+        <p class="role__title">Student database assistant &middot; Department of Internal Medicine</p>
+        <p class="role__meta"><span>Iowa City, Iowa</span><span>May 2026 &ndash; present</span></p>
+      </header>
+      <ul class="role__points">
+        <li>Write and tune SQL against Microsoft SQL Server and Oracle for departmental research staff.</li>
+        <li>Maintain and update the department&rsquo;s recurring reports, and consolidate data out of Epic
+          into the form researchers actually need it in.</li>
+        <li>Handle records and data entry, and tune the department&rsquo;s internal web application.</li>
+      </ul>
+      <p class="role__stack"><span>SQL</span><span>Microsoft SQL Server</span><span>Oracle</span><span>Epic</span></p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ─────────────────────────── LOG ──────────────────────────── -->
+<section class="section section--log" id="log" data-here="The log">
+  <div class="section__label"><span>The log</span></div>
+  <div class="section__body">
+
+    <p class="log__lede">
+      Every piece of work I ship gets written down the same day, with the number that proves it and the
+      part I got wrong. This is that log, unedited except for length. The measurements are the point:
+      I would rather show you a figure I captured than a word like <em>optimized</em>.
+    </p>
+
+    <div class="log__filters" role="group" aria-label="Filter the log">
+      <button class="chipbtn is-on" data-filter="all">All</button>
+      <button class="chipbtn" data-filter="shipped">Shipped</button>
+      <button class="chipbtn" data-filter="fixed">Fixed</button>
+      <button class="chipbtn" data-filter="retired">Retired</button>
+      <button class="chipbtn" data-filter="reviewed">Reviewed</button>
+    </div>
+
+    <ol class="log" id="log-list">
+
+      <li class="log__row reveal" data-kind="fixed">
+        <time class="log__date" datetime="2026-08-06">06 Aug 2026</time>
+        <p class="log__title">Replaced the app icon &mdash; then deleted half my own fix once I measured that this codebase did not have the problem I was solving.</p>
+        <p class="log__delta">2,949 tests green</p>
+      </li>
+
+      <li class="log__row reveal" data-kind="shipped">
+        <time class="log__date" datetime="2026-08-05">05 Aug 2026</time>
+        <p class="log__title">Turned the dead trail at the bottom of a page into the way back &mdash; and refused to reconstruct a route the reader never walked.</p>
+      </li>
+
+      <li class="log__row reveal" data-kind="shipped">
+        <time class="log__date" datetime="2026-08-04">04 Aug 2026</time>
+        <p class="log__title">Built a &ldquo;how far in am I&rdquo; indicator for the topic drill-down, and refused the two halves of its spec that could not both be true.</p>
+      </li>
+
+      <li class="log__row reveal" data-kind="fixed">
+        <time class="log__date" datetime="2026-08-03">03 Aug 2026</time>
+        <p class="log__title">Verified language switching end to end and found the one path that reported a save it had never made.</p>
+        <p class="log__delta">9 locales</p>
+      </li>
+
+      <li class="log__row reveal" data-kind="fixed">
+        <time class="log__date" datetime="2026-07-31">31 Jul 2026</time>
+        <p class="log__title">Made reopening a conversation land where the reader left off, then found the same defect hiding in three more places.</p>
+        <p class="log__delta">4 surfaces</p>
+      </li>
+
+      <li class="log__row reveal" data-kind="reviewed">
+        <time class="log__date" datetime="2026-07-31">31 Jul 2026</time>
+        <p class="log__title">Reviewed, hardened and shipped another engineer&rsquo;s animation fix, and closed the gaps its own tests had left open.</p>
+      </li>
+
+      <li class="log__row reveal" data-kind="retired">
+        <time class="log__date" datetime="2026-07-30">30 Jul 2026</time>
+        <p class="log__title">Retired two browse screens the app could never reach &mdash; kept alive for months by their own passing tests.</p>
+        <p class="log__delta">&minus;1,046 lines</p>
+      </li>
+
+      <li class="log__row reveal" data-kind="shipped">
+        <time class="log__date" datetime="2026-07-29">29 Jul 2026</time>
+        <p class="log__title">Shipped the app onto iPad and made one phone-first layout correct on every device in both stores.</p>
+        <p class="log__delta">667 cases &middot; 20/20 mutations</p>
+      </li>
+
+      <li class="log__row reveal" data-kind="fixed">
+        <time class="log__date" datetime="2026-07-29">29 Jul 2026</time>
+        <p class="log__title">Fixed a location feature that silently did nothing, and extended it from one city to the whole country.</p>
+      </li>
+
+      <li class="log__row reveal" data-kind="fixed">
+        <time class="log__date" datetime="2026-07-27">27 Jul 2026</time>
+        <p class="log__title">Traced one &ldquo;cards open slowly&rdquo; report to four independent defects and fixed each at its root, on the tap&rsquo;s own frame.</p>
+        <p class="log__delta">1,033 ms &rarr; 125 ms</p>
+      </li>
+
+      <li class="log__row reveal" data-kind="shipped">
+        <time class="log__date" datetime="2026-07-24">24 Jul 2026</time>
+        <p class="log__title">Built production-grade in-app feedback and bug reporting, full-stack, for the public beta.</p>
+        <p class="log__delta">Flutter &rarr; FastAPI &rarr; alert in minutes</p>
+      </li>
+
+      <li class="log__row reveal" data-kind="shipped">
+        <time class="log__date" datetime="2026-07-24">24 Jul 2026</time>
+        <p class="log__title">Turned a phantom lint gate into a real one that runs on every server change.</p>
+        <p class="log__delta">40 s CI job &middot; 2 latent defects found</p>
+      </li>
+
+      <li class="log__row reveal" data-kind="shipped">
+        <time class="log__date" datetime="2026-07-24">24 Jul 2026</time>
+        <p class="log__title">Redesigned the app&rsquo;s main page for public beta &mdash; design-led, and shipped the same week.</p>
+      </li>
+
+      <li class="log__row reveal" data-kind="retired">
+        <time class="log__date" datetime="2026-07-22">22 Jul 2026</time>
+        <p class="log__title">Retired a superseded home surface and the asset it had been pinning in the bundle.</p>
+        <p class="log__delta">&minus;2,200 lines &middot; &minus;342 KB</p>
+      </li>
+
+      <li class="log__row reveal" data-kind="shipped">
+        <time class="log__date" datetime="2026-07-21">21 Jul 2026</time>
+        <p class="log__title">Cut the shipped bundle without lowering any quality bar &mdash; dead weight, not fidelity, verified against a reference image.</p>
+        <p class="log__delta">4.8 MB &rarr; 1.7 MB</p>
+      </li>
+
+      <li class="log__row reveal" data-kind="reviewed">
+        <time class="log__date" datetime="2026-07-21">21 Jul 2026</time>
+        <p class="log__title">Caught a performance defect a code review had just declared closed, and split a bundled PR along its risk seam to unblock two thirds of it.</p>
+      </li>
+
+      <li class="log__row reveal" data-kind="shipped">
+        <time class="log__date" datetime="2026-07-02">02 Jul 2026</time>
+        <p class="log__title">Led an app-navigation overhaul and redesigned the companion&rsquo;s ask bar &mdash; Figma to Flutter, on device, in nine locales.</p>
+      </li>
+
+      <li class="log__row reveal" data-kind="shipped">
+        <time class="log__date" datetime="2026-06-30">30 Jun 2026</time>
+        <p class="log__title">Shipped the two-screen onboarding flow, straight from the Figma file.</p>
+      </li>
+
+    </ol>
+
+    <p class="log__note" id="log-note" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- ───────────────────────── PROJECTS ───────────────────────── -->
+<section class="section" id="projects" data-here="Projects">
+  <div class="section__label"><span>Projects</span></div>
+  <div class="section__body">
+
+    <article class="proj">
+      <h2 class="proj__name">Sollo</h2>
+      <p class="proj__for">For a foreign resident of Japan facing a system written in a language and a
+        format they were never the audience for.</p>
+      <p class="proj__body">
+        A Flutter app over a shared Supabase corpus of officially translated Japanese government
+        content, with a FastAPI RAG companion running a self-hosted model on Cloud Run. Category-first
+        browsing, CJK full-text and semantic search over Postgres RPCs, situation journeys you can work
+        as checklists, and answers grounded in the real corpus rather than in the model&rsquo;s memory.
+        Nine locales, English and both Japanese registers fully authored.
+      </p>
+      <p class="proj__stack"><span>Flutter</span><span>FastAPI</span><span>Supabase</span><span>pgvector</span><span>Cloud Run</span></p>
+      <p class="proj__links">
+        <a href="https://sollo.my" rel="noopener">sollo.my</a>
+        <span class="proj__private">Source is private &mdash; happy to walk through it</span>
+      </p>
+    </article>
+
+    <article class="proj">
+      <h2 class="proj__name">Centline</h2>
+      <p class="proj__for">For a one-truck owner-operator deciding, at a loading dock at night, whether
+        a load is worth taking.</p>
+      <p class="proj__body">
+        A broker quotes dollars per <em>loaded</em> mile. The empty miles you drive to reach the pickup
+        cost exactly the same and pay nothing, which is the usual reason a new carrier goes under.
+        Centline takes the truck&rsquo;s real costs once, works out a true cost per mile, and answers what a
+        load nets <em>after deadhead</em> &mdash; then builds the detention clock, the invoice, and the
+        broker payment record on that same number. No backend, no accounts, no network calls, no
+        analytics: it all runs on the device.
+      </p>
+      <p class="proj__stack"><span>Flutter</span><span>On-device only</span><span>563 tests</span><span>Accessibility-asserted</span></p>
+      <p class="proj__links"><span class="proj__private">Prototype 2, running on hardware &mdash; source private</span></p>
+    </article>
+
+    <article class="proj">
+      <h2 class="proj__name">sollo.my</h2>
+      <p class="proj__for">For someone who has heard the app exists and needs to understand it in their
+        own language before they trust it.</p>
+      <p class="proj__body">
+        The Sollo landing site: a static, no-build page shipped in eleven languages, including
+        right-to-left Arabic. Localized feedback forms post to a serverless function behind a
+        Turnstile check.
+      </p>
+      <p class="proj__stack"><span>Static HTML/CSS/JS</span><span>11 languages</span><span>RTL</span><span>Vercel Functions</span></p>
+      <p class="proj__links"><a href="https://sollo.my" rel="noopener">Visit sollo.my</a></p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ──────────────────── EDUCATION & COURSES ─────────────────── -->
+<section class="section" id="education" data-here="Courses">
+  <div class="section__label"><span>Courses</span></div>
+  <div class="section__body">
+
+    <article class="edu">
+      <h2 class="edu__school">The University of Iowa</h2>
+      <p class="edu__degree">Bachelor of Arts, Informatics &mdash; Human-Computer Interaction</p>
+      <p class="edu__meta"><span>Iowa City, Iowa</span><span>Anticipated May 2027</span></p>
+      <p class="edu__minors">Minors in Spanish and Psychology.</p>
+
+      <h3 class="edu__sub">Honors</h3>
+      <ul class="edu__list">
+        <li>Dean&rsquo;s List, Spring 2026</li>
+        <li>CIEE Tokyo Global Internship, Summer 2026 &mdash; the academic vehicle for the Sollo internship</li>
+      </ul>
+
+      <h3 class="edu__sub">Coursework, ordered by how much of it I use</h3>
+      <ul class="courses">
+        <li class="course"><span class="course__code">CS 2520</span><span class="course__name">Human-Computer Interaction</span><span class="course__grade">A+</span></li>
+        <li class="course"><span class="course__code">CS 2110</span><span class="course__name">Programming for Informatics</span><span class="course__grade"></span></li>
+        <li class="course"><span class="course__code">CS 2420</span><span class="course__name">Analyzing Data for Informatics</span><span class="course__grade"></span></li>
+        <li class="course"><span class="course__code">CS 1020</span><span class="course__name">Principles of Computing</span><span class="course__grade"></span></li>
+        <li class="course"><span class="course__code">JMC 3505</span><span class="course__name">Audiences and Analytics</span><span class="course__grade">A</span></li>
+        <li class="course"><span class="course__code">PSY 2811</span><span class="course__name">Research Methods and Data Analysis in Psychology</span><span class="course__grade"></span></li>
+        <li class="course"><span class="course__code">PSY 2601</span><span class="course__name">Introduction to Cognitive Psychology</span><span class="course__grade"></span></li>
+        <li class="course"><span class="course__code">ARTS 1070</span><span class="course__name">Elements of Graphic Design</span><span class="course__grade">A&minus;</span></li>
+        <li class="course"><span class="course__code">ARTS 1020</span><span class="course__name">Elements of 3D Design</span><span class="course__grade">A&minus;</span></li>
+      </ul>
+    </article>
+
+    <article class="edu edu--kit">
+      <h3 class="edu__sub">What I work in</h3>
+      <dl class="kit">
+        <dt>Frontend &amp; mobile</dt>
+        <dd>Flutter, Dart, go_router, gen-l10n internationalization, Material Design and custom design systems</dd>
+        <dt>Backend</dt>
+        <dd>Python, FastAPI, Supabase (Postgres, Auth, Storage), pgroonga and pgvector search via RPCs, Google Cloud Run, self-hosted LLM serving</dd>
+        <dt>Data</dt>
+        <dd>SQL, Microsoft SQL Server, Oracle, Epic extracts</dd>
+        <dt>Design</dt>
+        <dd>Figma, brand and palette systems, WCAG AA accessibility, adaptive light and dark theming, SVG iconography, design-to-implementation handoff</dd>
+        <dt>Practice</dt>
+        <dd>Conventional Commits, git hooks, widget and service tests, mutation testing, green analyze and test gates, internationalization-first authoring</dd>
+        <dt>Languages</dt>
+        <dd>English, Spanish</dd>
+      </dl>
+    </article>
+
+  </div>
+</section>
+
+<!-- ──────────────────────────  ABOUT ────────────────────────── -->
+<section class="section" id="about" data-here="About">
+  <div class="section__label"><span>About</span></div>
+  <div class="section__body">
+    <div class="about">
+      <p class="about__big">
+        I study informatics at Iowa &mdash; human-computer interaction &mdash; with minors in Spanish and
+        psychology. That combination is not incidental.
+      </p>
+      <p>
+        Almost everything I have built is for someone operating inside a language or a system that was
+        not designed with them in mind: a resident reading a government page written for citizens, a
+        driver quoted a rate that hides the empty miles, a diner holding a menu they cannot read. The
+        design half of my training is what makes me ask who is on the other side of the screen. The
+        engineering half is what lets me ship the answer.
+      </p>
+      <p>
+        I work on both sides of the handoff. I take a Figma file and ship it, and I argue with it when
+        the spec and the device cannot both be right. The habit I would most like to be judged on is the
+        one in the log above: I measure before I claim, I write down the reasoning that is not obvious
+        so the next person does not have to rediscover it, and when I am wrong I go and check rather
+        than defend it.
+      </p>
+      <p>
+        Right now that is Flutter and FastAPI for Sollo in Tokyo, and SQL for the Department of Internal
+        Medicine at University of Iowa Health Care in Iowa City. I am looking for UI/UX design and
+        software engineering work &mdash; full-stack, mobile-leaning, and close to the people using it.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────── CONTACT ────────────────────────── -->
+<section class="section section--contact" id="contact" data-here="Contact">
+  <div class="section__label"><span>Contact</span></div>
+  <div class="section__body">
+    <p class="contact__line">Tell me what you are building and who it is for.</p>
+    <ul class="contact__list">
+      <li>
+        <span class="contact__k">Email</span>
+        <a class="contact__v" href="mailto:davmartinez10911@gmail.com">davmartinez10911@gmail.com</a>
+      </li>
+      <li>
+        <span class="contact__k">LinkedIn</span>
+        <a class="contact__v" href="https://www.linkedin.com/in/davidmuiux" rel="noopener">linkedin.com/in/davidmuiux</a>
+      </li>
+      <li>
+        <span class="contact__k">GitHub</span>
+        <a class="contact__v" href="https://github.com/dmartinez10" rel="noopener">github.com/dmartinez10</a>
+      </li>
+      <li>
+        <span class="contact__k">Based</span>
+        <span class="contact__v contact__v--plain">Iowa, United States &middot; currently Tokyo</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <p>Built by hand &mdash; no framework, no build step. <a href="https://github.com/dmartinez10/dmartinez10.github.io" rel="noopener">Source</a></p>
+  <p class="foot__year">&copy; <span id="year">2026</span> David Martinez</p>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
