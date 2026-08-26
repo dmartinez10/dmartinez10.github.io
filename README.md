@@ -13,7 +13,9 @@ Google Fonts.
 index.html      the whole page
 styles.css      design tokens + layout
 main.js         section indicator, scroll reveals, log filters
-assets/         favicon
+assets/og/      the 1200x630 share card
+assets/shots/   Sollo App Store panels, WebP
+tools/          source for the share card, not part of the page
 .nojekyll       tells GitHub Pages to serve the files as-is
 ```
 
@@ -47,6 +49,30 @@ anyone who would rather not use it.
 Content is **visible by default**. `main.js` adds an `.anim` class to `<html>`
 only once it knows it can drive the animation, so a script failure can never
 leave the page blank.
+
+## The share card
+
+`assets/og/share-card.png` is what LinkedIn, Slack and X show when the link is
+posted. It is **1200x630**, and that matters: those platforms render a link
+preview at roughly 1.91:1, so pointing `og:image` at a tall phone screenshot
+crops it to an unreadable sliver with no name on it. This site did exactly that
+until 2026-08-26.
+
+`tools/og-card.html` is the source. It renders at exactly 1200x630 using the
+same tokens as `styles.css`. To change the card, edit that file and re-render:
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  --headless --disable-gpu --hide-scrollbars \
+  --window-size=1200,630 --force-device-scale-factor=1 \
+  --virtual-time-budget=12000 \
+  --screenshot=assets/og/share-card.png \
+  tools/og-card.html
+```
+
+Keep it PNG. Keep `og:image:width` and `og:image:height` in `index.html` in step
+with the real file, and after changing it, re-scrape the URL in LinkedIn's Post
+Inspector, because the preview is cached per URL.
 
 ## Screenshots
 
