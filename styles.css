@@ -130,7 +130,9 @@ a:hover{ text-decoration:underline; text-underline-offset:3px; }
 .sect__n{ font-family:var(--mono); font-size:.76rem; color:var(--ink-4); }
 
 /* ══ work cards ══ */
-.work{ display:grid; grid-template-columns:1fr; gap:1.25rem; }
+/* align-items:start so a card with screenshots does not stretch its neighbour
+   into a column of dead space. */
+.work{ display:grid; grid-template-columns:1fr; gap:1.25rem; align-items:start; }
 @media (min-width:46rem){ .work{ grid-template-columns:repeat(2,1fr); } }
 .card{
   position:relative; display:flex; flex-direction:column;
@@ -255,3 +257,17 @@ a:hover{ text-decoration:underline; text-underline-offset:3px; }
   border:1px solid var(--rule); border-radius:10px; background:var(--bg-sub);
   font-size:.95rem; line-height:1.6; color:var(--ink-2);
 }
+
+/* ── App Store panels: wide content scrolls inside its own container ── */
+.shots{
+  display:flex; gap:.55rem; margin:0 0 .5rem;
+  /* min-width:0 so this scrolls inside the card instead of widening it, the
+     same trap the nav links hit. */
+  min-width:0; overflow-x:auto; overscroll-behavior-x:contain;
+  padding-bottom:.4rem; scrollbar-width:thin;
+}
+.shots img{
+  flex:none; width:auto; height:9.5rem; border-radius:7px;
+  border:1px solid var(--rule); background:var(--bg-sub);
+}
+.shots__cap{ margin:0 0 1.15rem; font-size:.8rem; color:var(--ink-3); }
