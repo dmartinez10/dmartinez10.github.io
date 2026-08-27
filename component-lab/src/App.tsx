@@ -69,6 +69,7 @@ export default function App() {
 
   return (
     <div className="lab">
+      <a className="lab__skip" href="#main">Skip to content</a>
       <header className="lab__top">
         <a className="lab__back" href="/">David Martinez</a>
         <Switch
@@ -78,7 +79,7 @@ export default function App() {
         />
       </header>
 
-      <main className="lab__main">
+      <main className="lab__main" id="main">
         <p className="lab__kicker">React &middot; TypeScript &middot; No UI library</p>
         <h1 className="lab__h1">Component lab</h1>
         <p className="lab__lede">

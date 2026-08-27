@@ -7,7 +7,8 @@
   transition:border-color .14s ease, box-shadow .14s ease;
 }
 .ms__control:hover{ border-color:var(--ink-3); }
-.ms__control--open{
+.ms__control--open,
+.ms__control:focus-within{
   border-color:var(--focus);
   box-shadow:0 0 0 3px color-mix(in srgb, var(--focus) 22%, transparent);
 }
@@ -23,6 +24,8 @@
 }
 .ms__x:hover{ background:color-mix(in srgb, var(--accent) 18%, transparent); }
 .ms__input{
+  /* The ring lives on .ms__control via :focus-within, so the chips and the
+     input read as one field rather than two nested rings. */
   flex:1; min-width:7ch; border:0; outline:none; background:transparent;
   color:var(--ink); font-family:inherit; font-size:.94rem; padding:4px 2px;
 }
