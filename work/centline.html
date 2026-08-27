@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centline &middot; Case study &middot; David Martinez</title>
+<meta name="description" content="Centline: a load-pricing app for a one-truck owner-operator. How one number, net after deadhead, decided the architecture, the design system, and which tab got cut.">
+<meta name="author" content="David Martinez">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="David Martinez">
+<meta property="og:title" content="Centline &middot; Case study">
+<meta property="og:description" content="A $1,500 load that reads as $260 of profit is a $50 loss once the empty miles are counted. Designing and building the app that refuses to show the first number.">
+<meta property="og:url" content="https://dmartinez10.github.io/work/centline.html">
+<meta property="og:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
+<meta name="theme-color" content="#050A12">
+
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://dmartinez10.github.io/work/centline.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../case.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="frame" aria-hidden="true">
+  <span class="frame__c frame__c--tl"></span>
+  <span class="frame__c frame__c--tr"></span>
+  <span class="frame__c frame__c--bl"></span>
+  <span class="frame__c frame__c--br"></span>
+  <span class="frame__rail frame__rail--l"></span>
+  <span class="frame__rail frame__rail--r"></span>
+</div>
+
+<nav class="cbar" aria-label="Back">
+  <a class="cbar__back" href="../index.html">David Martinez</a>
+  <span class="cbar__where">Case study <b>01</b> &middot; Centline</span>
+</nav>
+
+<main id="main" class="case">
+
+  <p class="case__kicker">Design and engineering &middot; 2026, in progress</p>
+  <h1 class="case__title">Centline</h1>
+  <p class="case__thesis">
+    The number a broker quotes is not the number that pays you. Centline exists to
+    show the second one before a driver says yes.
+  </p>
+
+  <!-- the five second block, before any figure -->
+  <dl class="brief">
+    <div>
+      <dt>Role</dt>
+      <dd>Sole designer and engineer. Research, design system, Flutter app, Supabase
+        backend, and the Cloudflare worker behind the share links.</dd>
+    </div>
+    <div>
+      <dt>Constraint</dt>
+      <dd>A one-truck owner-operator, often in his first year, reading it one handed
+        at a loading dock at 2am. Not a software person. He will delete anything
+        that wastes his time.</dd>
+    </div>
+    <div>
+      <dt>Outcome</dt>
+      <dd>Four tabs, 707 tests green, a design system whose contrast lint has caught
+        two failures that looked fine on screen. Nobody who drives for a living has
+        used it yet, which is the honest state of it.</dd>
+    </div>
+  </dl>
+
+  <!-- ═══ 01 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">01</span>
+      <h2 class="sec__title">The number that bankrupts people</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        Freight brokers quote a rate in dollars per <em>loaded</em> mile. The empty
+        miles a driver runs to reach the pickup, called deadhead, burn the same fuel
+        and the same maintenance, and they pay nothing.
+      </p>
+      <p>
+        That gap is not academic. It is the usual reason a new carrier goes under in
+        year one, and it is invisible in the only number anyone quotes. So the whole
+        product reduces to one question: <strong>what does this load actually net
+        after the empty miles?</strong>
+      </p>
+    </div>
+
+    <div class="flip">
+      <div class="flip__col">
+        <p class="flip__lab">What the broker's number says</p>
+        <p class="flip__row"><span>Rate offered</span><b>$1,500</b></p>
+        <p class="flip__row"><span>Loaded miles</span><b>1,000</b></p>
+        <p class="flip__row"><span>Cost per mile</span><b>$1.24</b></p>
+        <p class="flip__row"><span>Cost, loaded only</span><b>$1,240</b></p>
+        <p class="flip__out flip__out--good">+$260</p>
+        <p class="flip__note">Looks like a good load. Take it.</p>
+      </div>
+      <div class="flip__col flip__col--bad">
+        <p class="flip__lab">What the truck actually does</p>
+        <p class="flip__row"><span>Rate offered</span><b>$1,500</b></p>
+        <p class="flip__row"><span>Deadhead miles</span><b>250</b></p>
+        <p class="flip__row"><span>Total miles</span><b>1,250</b></p>
+        <p class="flip__row"><span>Cost, all miles</span><b>$1,550</b></p>
+        <p class="flip__out flip__out--bad">-$50</p>
+        <p class="flip__note">The same load. It loses money.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>
+        Same truck, same load, same day. A $260 profit and a $50 loss are the same
+        offer seen two ways, and only one of them is real. This case is pinned in
+        the test suite as <code>deadhead_flip_test.dart</code>, where the comment
+        next to the $260 reads: the number that bankrupts people.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 02 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">02</span>
+      <h2 class="sec__title">One rule, and everything downstream of it</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        Once you accept that the flip is the product, the rule writes itself: every
+        cost figure in the app uses total miles, loaded plus deadhead. Any cost math
+        that touches <code>loadedMiles</code> is treated as a bug until proven
+        otherwise.
+      </p>
+      <p>
+        That single sentence turned out to be an architectural constraint rather
+        than a style note. It is why arithmetic lives in a pure layer with no I/O
+        and no access to the clock, why money is integer cents and miles are
+        integers, and why a per-mile figure is rounded exactly once, at the moment
+        a real dollar amount is produced. Rounding a per-mile number before
+        multiplying it by a thousand miles is off by dollars, and dollars are
+        enough to flip a verdict.
+      </p>
+    </div>
+
+    <div class="call">
+      <span class="call__lab">The decision I keep coming back to</span>
+      <p>
+        A value the driver has not entered is null, never zero. Zero is an answer.
+        Blank is not. If a required input is missing, the screen says so and refuses
+        to compute, rather than defaulting to something plausible. An app that
+        quietly assumes a maintenance reserve of zero will tell a man a losing load
+        is fine.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 03 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">03</span>
+      <h2 class="sec__title">A design system with one reference</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        The visual system is a <code>DESIGN.md</code> at the repo root, in the
+        design.md format: tokens in the frontmatter, the reasoning in prose. The
+        whole thing falls out of a single reference, chosen deliberately:
+        <strong>a parcel tracking page for a freight load.</strong>
+      </p>
+      <p>
+        A tracking page has one subject and shows it in one state. It puts the
+        status rail at the top, because <em>where is it</em> is the question. It
+        states facts in rows and does not decorate them. It offers the one action
+        that matches the stage, not eleven. You do not enjoy a tracking page. You
+        read it and close it.
+      </p>
+      <p>
+        Picking that reference did more work than any style guide would have,
+        because of what it rules out for free: marketing language, hero imagery,
+        gradients, glassmorphism, celebratory states, streaks, badges, and any
+        score on a man's safety record. When a new screen is proposed, the question
+        is not whether it looks good. It is whether it follows from the reference.
+      </p>
+    </div>
+
+    <div class="tok" role="list" aria-label="Design system colour tokens">
+      <div class="tok__c" role="listitem">
+        <div class="tok__chip" style="background:#101828"></div>
+        <div class="tok__meta"><span class="tok__name">primary</span><span class="tok__hex">#101828</span></div>
+      </div>
+      <div class="tok__c" role="listitem">
+        <div class="tok__chip" style="background:#475467"></div>
+        <div class="tok__meta"><span class="tok__name">secondary</span><span class="tok__hex">#475467</span></div>
+      </div>
+      <div class="tok__c" role="listitem">
+        <div class="tok__chip" style="background:#CE4709"></div>
+        <div class="tok__meta"><span class="tok__name">accent</span><span class="tok__hex">#CE4709</span></div>
+      </div>
+      <div class="tok__c" role="listitem">
+        <div class="tok__chip" style="background:#067A48"></div>
+        <div class="tok__meta"><span class="tok__name">verdict-good</span><span class="tok__hex">#067A48</span></div>
+      </div>
+      <div class="tok__c" role="listitem">
+        <div class="tok__chip" style="background:#7A6000"></div>
+        <div class="tok__meta"><span class="tok__name">verdict-thin</span><span class="tok__hex">#7A6000</span></div>
+      </div>
+      <div class="tok__c" role="listitem">
+        <div class="tok__chip" style="background:#B42318"></div>
+        <div class="tok__meta"><span class="tok__name">verdict-loses</span><span class="tok__hex">#B42318</span></div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>
+        Every colour literal in the codebase lives in one theme file, so the
+        document and the code cannot drift apart. The document is checked with
+        <code>npx @google/design.md lint DESIGN.md</code>, which validates its
+        structure and its WCAG contrast ratios. It has already caught two failures
+        that looked perfectly fine to me on screen, which is the argument for
+        having a linter rather than an eye.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 04 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">04</span>
+      <h2 class="sec__title">Why the whole look changed</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        For most of its life the app looked industrial: steel plate, hard shadows,
+        stencilled capitals. It suited a tool used in a truck, and I liked it.
+      </p>
+      <p>
+        Then the product grew a second half. Alongside the private money math, it
+        gained a public face: the driver's carrier record, sent to brokers and read
+        by strangers who are deciding whether to trust him. On that half, the
+        industrial styling read as a machine's readout rather than as a person's
+        profile, which is exactly the wrong impression when the reader is a broker
+        vetting a new carrier on thin data.
+      </p>
+      <p>
+        So the system moved to a soft neutral ground, white cards with a hairline
+        edge, generous radii, and sentence-case headings, with one ink-dark panel
+        kept for the answer itself. The look changed because the audience changed,
+        not because I got bored of it.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 05 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">05</span>
+      <h2 class="sec__title">Cutting a tab</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        The navigation started as five tabs named after nouns: Check, Invoices,
+        Week, Record, Truck. It became four, named after the times of a working
+        life.
+      </p>
+    </div>
+
+    <div class="cut">
+      <div class="cut__box">
+        <p class="cut__lab">Before, five nouns</p>
+        <ul class="cut__list">
+          <li>Check</li>
+          <li>Invoices</li>
+          <li>Week</li>
+          <li>Record</li>
+          <li>Truck</li>
+        </ul>
+      </div>
+      <div class="cut__box cut__box--now">
+        <p class="cut__lab">After, four moments</p>
+        <ul class="cut__list">
+          <li class="is-new">Now</li>
+          <li class="is-new">Loads</li>
+          <li class="is-new">Network</li>
+          <li class="is-new">Business</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>
+        The reasoning: a load is one thread. It is checked, it rolls, it becomes an
+        invoice, it gets paid. Splitting Check and Invoices across two tabs meant
+        two homes for one object, so Money folded into Loads because an invoice is
+        just a load at a later age. The freed slot went to Network, which had been
+        a search box buried three taps deep even though connections are made inside
+        the app.
+      </p>
+      <p>
+        Losing a tab was the point, not a cost. The front door is now reserved for
+        the present tense: what is under him right now, and the one action it needs.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 06 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">06</span>
+      <h2 class="sec__title">A bug that broke the promise</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        The app is offline-first by design, because signal at a dock or in a yard is
+        not a given. The private half of it, costs and verdicts and broker history,
+        never leaves the phone at all.
+      </p>
+      <p>
+        Then the connected half arrived, and with it a subtle failure. The app asked
+        the auth server whether the driver was signed in. When that service returned
+        errors for about a minute, signed-in drivers were dropped back at the sign-in
+        door. Technically a server blip. In practice, a broken promise: the app said
+        it worked without a connection and then locked a man out because of one.
+      </p>
+      <p>
+        The fix was to stop asking. A single local flag records that this phone has
+        an account on it, so the question <em>should the app open at the door</em> is
+        answerable in airplane mode, with no network call in the path.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 07 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">07</span>
+      <h2 class="sec__title">Accessibility, asserted rather than assumed</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        The use case makes accessibility a functional requirement, not a compliance
+        checkbox. One hand, a phone at arm's length, a dark cab, and a person who is
+        tired. So the guarantees are asserted in tests rather than trusted to
+        review: Android and iOS tap-target guidelines, and a labelled-tappable check
+        so every control announces itself, both run on every change.
+      </p>
+      <p>
+        Contrast is handled at the system level instead of per screen. Because every
+        colour is a token in one document, linting that document checks the palette
+        once rather than auditing screens forever. The two failures it caught were
+        both combinations I had looked at directly and approved.
+      </p>
+    </div>
+
+    <ul class="cstats">
+      <li><b>707</b><span>tests green</span></li>
+      <li><b>4</b><span>tabs, down from 5</span></li>
+      <li><b>2</b><span>contrast failures caught</span></li>
+      <li><b>0</b><span>colours outside the theme</span></li>
+    </ul>
+  </section>
+
+  <!-- ═══ 08 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">08</span>
+      <h2 class="sec__title">What is not done</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        No working driver has used this. Every design decision here is reasoned from
+        domain research and from interviews I have not finished, which means the
+        riskiest assumptions are still assumptions. Five questions about the cost
+        model remain open, and two of them can still move the arithmetic: whether
+        maintenance should be reserved per mile or per month, and whether detention
+        should count before it has actually been earned.
+      </p>
+      <p>
+        Invoices go out as text to paste into an email rather than as a PDF, because
+        a rendering library is not what stops an owner-operator getting paid. The
+        app icon is a placeholder I drew. Those are known, deliberate, and written
+        down rather than discovered later.
+      </p>
+    </div>
+  </section>
+
+  <footer class="cfoot">
+    <a href="../index.html">Back to the rest of the work</a>
+    <a href="mailto:davmartinez10911@gmail.com">davmartinez10911@gmail.com</a>
+    <a href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a>
+  </footer>
+
+</main>
+</body>
+</html>
