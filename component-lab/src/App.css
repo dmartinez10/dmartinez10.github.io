@@ -1,0 +1,36 @@
+.lab{ min-height:100vh; }
+.lab__top{
+  position:sticky; top:0; z-index:40;
+  display:flex; align-items:center; justify-content:space-between; gap:var(--s-4);
+  padding:var(--s-3) clamp(1.25rem,5vw,2.5rem);
+  background:color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--rule);
+}
+.lab__back{ font-weight:600; font-size:.96rem; color:var(--ink); text-decoration:none; }
+.lab__back:hover{ color:var(--accent); }
+.lab__back::before{ content:"\2190  "; }
+
+.lab__main{ max-width:56rem; margin:0 auto; padding:clamp(2rem,6vw,3.5rem) clamp(1.25rem,5vw,2.5rem) 5rem; }
+.lab__kicker{
+  margin:0 0 .6rem; font-family:var(--mono); font-size:.74rem; font-weight:500;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--accent);
+}
+.lab__h1{ margin:0 0 var(--s-4); font-size:clamp(2rem,5vw,2.8rem); font-weight:700; letter-spacing:-.03em; }
+.lab__lede{ margin:0; max-width:44rem; font-size:1.05rem; line-height:1.6; color:var(--ink-2); }
+
+.lab__sec{ margin-top:clamp(2.5rem,6vw,3.5rem); padding-top:var(--s-5); border-top:1px solid var(--rule); }
+.lab__h2{ margin:0 0 var(--s-2); font-size:1.15rem; font-weight:650; letter-spacing:-.02em; }
+.lab__note{ margin:var(--s-3) 0 0; max-width:42rem; font-size:.9rem; line-height:1.55; color:var(--ink-3); }
+.lab__demo{ margin-top:var(--s-4); max-width:30rem; }
+.lab__demo--narrow{ max-width:24rem; }
+.lab__opt{ margin-top:var(--s-4); }
+.lab__row{ margin-top:var(--s-4); display:flex; flex-wrap:wrap; gap:var(--s-2); align-items:center; }
+
+.sw{ margin:var(--s-4) 0 0; padding:0; list-style:none;
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(min(10rem,100%),1fr)); gap:var(--s-2); }
+.sw__c{ display:flex; align-items:center; gap:var(--s-2);
+  border:1px solid var(--rule); border-radius:var(--r-md); padding:var(--s-2); }
+.sw__chip{ flex:none; width:2rem; height:2rem; border-radius:var(--r-sm); border:1px solid var(--rule); }
+.sw__meta{ display:flex; flex-direction:column; min-width:0; }
+.sw__meta b{ font-family:var(--mono); font-size:.72rem; font-weight:500; color:var(--ink); }
+.sw__meta span{ font-family:var(--mono); font-size:.68rem; color:var(--ink-3); }

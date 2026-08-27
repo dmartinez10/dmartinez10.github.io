@@ -77,14 +77,26 @@ a:hover{ text-decoration:underline; text-underline-offset:3px; }
 }
 .nav__in{
   max-width:var(--max); margin:0 auto; padding:0 var(--gut);
-  height:var(--nav); display:flex; align-items:center; gap:1.5rem;
+  min-height:var(--nav); display:flex; align-items:center;
+  flex-wrap:wrap; gap:.35rem 1.5rem;
+}
+@media (max-width:34rem){
+  .nav__in{ padding-block:.6rem; }
+  .nav__me{ flex:1 0 100%; }
 }
 .nav__me{
   font-weight:600; font-size:.98rem; letter-spacing:-.01em;
   color:var(--ink); text-decoration:none;
 }
 .nav__me:hover{ text-decoration:none; color:var(--accent); }
-.nav__links{ margin-left:auto; display:flex; gap:1.5rem; }
+/* min-width:0 lets this shrink below its content width, which is what allows
+   its own flex-wrap to ever fire. Without it six links push the bar wider
+   than a 320px phone. */
+.nav__links{
+  margin-left:auto; display:flex; flex-wrap:wrap;
+  gap:.3rem 1.15rem; min-width:0; flex:0 1 auto;
+}
+@media (max-width:34rem){ .nav__links{ margin-left:0; gap:.3rem .9rem; } }
 .nav__links a{
   font-size:.92rem; color:var(--ink-2); text-decoration:none;
 }
@@ -236,3 +248,10 @@ a:hover{ text-decoration:underline; text-underline-offset:3px; }
 }
 .foot a{ color:var(--ink-3); }
 .foot a:hover{ color:var(--accent); }
+
+/* a quiet pointer to work that is not a case study */
+.also{
+  margin:1.5rem 0 0; padding:1rem 1.15rem;
+  border:1px solid var(--rule); border-radius:10px; background:var(--bg-sub);
+  font-size:.95rem; line-height:1.6; color:var(--ink-2);
+}

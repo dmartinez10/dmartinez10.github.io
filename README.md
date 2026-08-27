@@ -10,14 +10,21 @@ A static site. No framework, no build step, and no JavaScript at all, so nothing
 on the page can fail to render.
 
 ```
-index.html      the landing page: work first, then about, experience, contact
-styles.css      design tokens, layout, shared components
-case.css        case study layout, loaded after styles.css
-work/           one case study per file, linked from its project card
-assets/og/      the 1200x630 share card
-tools/          source for the share card, not part of the page
-.nojekyll       tells GitHub Pages to serve the files as-is
+index.html       the landing page: work first, then about, experience, contact
+styles.css       design tokens, layout, shared components
+case.css         case study layout, loaded after styles.css
+work/            one case study per file, linked from its project card
+component-lab/   React + TypeScript source for the component lab
+components/      its built output, committed, served at /components/
+assets/og/       the 1200x630 share card
+assets/resume.pdf the public resume
+tools/           sources for the share card and the resume, not part of the page
+.nojekyll        tells GitHub Pages to serve the files as-is
 ```
+
+The landing page and the case studies are plain HTML and CSS with no JavaScript.
+The component lab is the one place React earns its keep, because the thing it
+demonstrates is interaction.
 
 ## Running it locally
 
@@ -51,6 +58,45 @@ job: the chrome was louder than the work.
 - **Grid floors use `minmax(min(Xrem, 100%), 1fr)`** where auto-fit is right. A
   bare `minmax(26rem, ...)` cannot shrink and overflows a 360px phone.
 - Verified with no horizontal overflow from **320px to 1920px** on every page.
+
+## The component lab
+
+`/components/` is a small accessible component set in React and TypeScript, with
+no UI library. Source is in `component-lab/`, built output is committed so
+GitHub Pages can serve it.
+
+The point of it is that **every colour, space and radius comes from one token
+file**, so flipping the theme restyles the whole set without a component knowing
+it happened. It exists because design-engineer roles screen for exactly this and
+a written case study cannot demonstrate it.
+
+```bash
+cd component-lab
+npm install
+npm run dev      # local
+npm run build    # type-checks, then writes ../components
+```
+
+What each piece is actually demonstrating:
+
+- **MultiSelect**: arrow keys, Home and End, Enter to toggle, Escape to close,
+  Backspace to remove the last chip, type-ahead filter, and
+  `aria-activedescendant` so a screen reader follows the highlight. The option
+  order is frozen while the list is open so a row never moves under the cursor
+  mid-click.
+- **Dialog**: focus moves in on open, Tab cycles inside it, Escape closes, and
+  focus returns to the control that opened it. Body scroll locks.
+- **Button**: `aria-disabled` rather than `disabled`, so a disabled control stays
+  reachable and can explain itself. The loading state keeps its width.
+- **Field**: description and error are both wired into `aria-describedby`, and
+  the error is a live region so it is announced when it appears.
+- **Switch**: a real checkbox with `role="switch"` under a styled track.
+
+Theme starts from `prefers-color-scheme`, follows the OS until the visitor
+touches the switch, and `?theme=dark` or `?theme=light` forces either one.
+
+Both themes are contrast-audited: 22 foreground and background pairs, all
+passing WCAG 2.2 AA, tightest 4.85.
 
 ## The share card
 
