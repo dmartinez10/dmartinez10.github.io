@@ -10,7 +10,9 @@ A single static page. No framework, no build step, no dependencies beyond three
 Google Fonts.
 
 ```
-index.html      the whole page
+index.html      the landing page
+work/           one case study per file, linked from its project card
+case.css        case study layout (loaded after styles.css)
 styles.css      design tokens + layout
 main.js         section indicator, scroll reveals, log filters
 assets/og/      the 1200x630 share card
@@ -79,6 +81,26 @@ Inspector, because the preview is cached per URL.
 `assets/shots/` holds the Sollo App Store panels, resized to 640px wide WebP
 (300KB for all six). To swap or add one, drop a file in and point a `.shot`
 button's `data-src` and its `<img src>` at it.
+
+## Case studies
+
+The landing page stays scannable; the depth lives one click away in `work/`.
+Each case study is a standalone file that loads `styles.css` for the tokens and
+the HUD chrome, then `case.css` for the prose and figure layout. No JavaScript,
+so the content cannot fail to render.
+
+The house style, taken from what design recruiters actually read:
+
+- **Role, constraint and outcome first**, in the `.brief` block, before any
+  figure. Someone decides in about five seconds whether to keep scrolling.
+- **Show a decision that changed or got cut.** The Centline study covers a tab
+  that was removed and a visual system that was replaced, and says why.
+- **Numbers come from source, never from a doc.** Every figure in the Centline
+  study is pinned by a test or read out of the code.
+- 800 to 1,500 words. Centline runs about 1,470.
+
+To add one, copy `work/centline.html`, replace the sections, and add a
+`Read the case study` link to that project's `.proj__links` in `index.html`.
 
 ## Editing
 
