@@ -34,3 +34,10 @@
 .sw__meta{ display:flex; flex-direction:column; min-width:0; }
 .sw__meta b{ font-family:var(--mono); font-size:.72rem; font-weight:500; color:var(--ink); }
 .sw__meta span{ font-family:var(--mono); font-size:.68rem; color:var(--ink-3); }
+
+.lab__skip{
+  position:absolute; left:-9999px; top:0; z-index:100;
+  background:var(--ink); color:var(--bg); padding:10px 16px;
+  font-size:.9rem; text-decoration:none; border-radius:0 0 var(--r-sm) 0;
+}
+.lab__skip:focus{ left:0; }
