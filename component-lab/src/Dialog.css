@@ -1,0 +1,11 @@
+.dlg{ position:fixed; inset:0; z-index:60; display:grid; place-items:center; padding:var(--s-4); }
+.dlg__scrim{ position:absolute; inset:0; background:#0B0E1499; backdrop-filter:blur(2px); }
+.dlg__panel{
+  position:relative; width:min(30rem,100%); padding:var(--s-5);
+  background:var(--bg); border:1px solid var(--rule);
+  border-radius:var(--r-lg); box-shadow:var(--shadow);
+}
+.dlg__title{ margin:0; font-size:1.15rem; font-weight:650; letter-spacing:-.015em; color:var(--ink); }
+.dlg__desc{ margin:var(--s-2) 0 0; font-size:.92rem; color:var(--ink-2); line-height:1.55; }
+.dlg__body{ margin-top:var(--s-4); }
+.dlg__foot{ margin-top:var(--s-5); display:flex; gap:var(--s-2); justify-content:flex-end; }

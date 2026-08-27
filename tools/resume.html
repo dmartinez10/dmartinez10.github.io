@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>David Martinez &middot; Resume</title>
+<!--
+  Source for assets/resume.pdf, the public downloadable resume.
+  Content is verbatim from his own resume with two deliberate removals:
+  the phone number and the home town, because this file is served publicly
+  and indexed. The full version stays for direct applications.
+
+  Render:
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+      --headless --disable-gpu --no-pdf-header-footer \
+      --print-to-pdf=assets/resume.pdf tools/resume.html
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@page{ size:letter; margin:0.42in 0.55in; }
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{
+  font-family:"Inter",system-ui,sans-serif; font-size:9.2pt; line-height:1.34;
+  color:#16181D; -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+a{ color:#1A47C2; text-decoration:none; }
+
+.name{ font-size:18.5pt; font-weight:700; letter-spacing:-.02em; text-align:center; }
+.contact{
+  text-align:center; font-size:9pt; color:#454C59; margin-top:4pt;
+}
+.contact span{ white-space:nowrap; }
+.sep{ color:#B8BFC9; margin:0 5pt; }
+
+h2{
+  font-size:8.6pt; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  color:#16181D; margin:10pt 0 4pt; padding-bottom:2pt;
+  border-bottom:0.9pt solid #16181D;
+}
+
+.row{ display:flex; justify-content:space-between; align-items:baseline; gap:10pt; }
+.org{ font-weight:600; font-size:9.7pt; }
+.org .thin{ font-weight:400; color:#454C59; }
+.when{ font-size:8.8pt; color:#454C59; white-space:nowrap; }
+.role{ font-style:italic; font-size:9pt; color:#454C59; margin:.4pt 0 2pt; }
+
+ul{ margin:0 0 0 12pt; }
+li{ margin:0 0 1.4pt; padding-left:1pt; }
+li::marker{ color:#8E96A3; }
+.block{ margin-bottom:6.5pt; }
+.block:last-child{ margin-bottom:0; }
+b.k{ font-weight:600; }
+</style>
+</head>
+<body>
+
+<p class="name">David G. Martinez</p>
+<p class="contact">
+  <span>Iowa City, IA</span><span class="sep">|</span><span><a href="mailto:davmartinez10911@gmail.com">davmartinez10911@gmail.com</a></span><br>
+  <span><a href="https://www.linkedin.com/in/davidmuiux">linkedin.com/in/davidmuiux</a></span><span class="sep">|</span><span><a href="https://github.com/dmartinez10">github.com/dmartinez10</a></span><span class="sep">|</span><span><a href="https://dmartinez10.github.io">dmartinez10.github.io</a></span>
+</p>
+
+<h2>Education</h2>
+<div class="block">
+  <div class="row">
+    <span class="org">The University of Iowa <span class="thin">| Iowa City, IA</span></span>
+    <span class="when">Anticipated May 2027</span>
+  </div>
+  <p class="role">Bachelor of Arts, Informatics (Human Computer Interaction)</p>
+  <ul>
+    <li>Minors: Spanish, Psychology</li>
+    <li><b class="k">Honors:</b> Dean's List, Spring 2026. CIEE Tokyo Global Internship, Summer 2026</li>
+    <li><b class="k">Relevant Coursework:</b> Human-Computer Interaction, Programming for Informatics, Analyzing
+      Data for Informatics, Audiences and Analytics, Research Methods and Data Analysis in Psychology,
+      Introduction to Cognitive Psychology, Elements of Graphic Design</li>
+  </ul>
+</div>
+
+<h2>Experience</h2>
+<div class="block">
+  <div class="row">
+    <span class="org">Sollo <span class="thin">| AI Government Information Assistant | Tokyo, Japan</span></span>
+    <span class="when">June 2026 - August 2026</span>
+  </div>
+  <p class="role">UI/UX Engineering Intern</p>
+  <ul>
+    <li>Shipped 70+ merged pull requests to the production Flutter app in eight weeks, working across design,
+      mobile frontend, and Python backend as a designer-engineer</li>
+    <li>Translated Figma handoffs into production Flutter: a two-screen onboarding flow, an app-wide navigation
+      overhaul, and an animated indicator of a reader's progress through a topic</li>
+    <li>Rebuilt the entire post-authentication app to a new design system, extracting color, spacing, and type
+      tokens and building the reusable widget and icon library the team now builds against</li>
+    <li>Designed and enforced a WCAG AA light and dark brand theme, measuring contrast ratios and rejecting
+      handoff colors that failed the standard</li>
+    <li>Authored every new interface string across nine locales with Flutter gen-l10n, verifying each change on
+      device in both themes</li>
+  </ul>
+</div>
+
+<div class="block">
+  <div class="row">
+    <span class="org">University of Iowa Health Care <span class="thin">| Department of Internal Medicine | Iowa City, IA</span></span>
+    <span class="when">May 2026 - Present</span>
+  </div>
+  <p class="role">Student Database Assistant</p>
+  <ul>
+    <li>Write and tune SQL queries against Microsoft SQL Server and Oracle research databases, turning ad-hoc
+      requests into analysis-ready datasets for clinical research staff</li>
+    <li>Maintain and update the department's recurring reports, keeping them accurate as the underlying data and
+      reporting requirements change</li>
+    <li>Manage records and data entry for a healthcare research environment, protecting the integrity that
+      downstream reporting and analysis depend on</li>
+    <li>Tune and maintain an internal web application, and consolidate data from Epic and departmental databases
+      for researcher analysis</li>
+  </ul>
+</div>
+
+<div class="block">
+  <div class="row">
+    <span class="org">Parking and Transportation, The University of Iowa <span class="thin">| Iowa City, IA</span></span>
+    <span class="when">February 2023 - Present</span>
+  </div>
+  <p class="role">Parking Field Service Officer</p>
+  <ul>
+    <li>Coordinate with a team of five across telecommunications platforms to enforce parking regulations and
+      maintain cohesive campus-wide coverage</li>
+  </ul>
+</div>
+
+<h2>Leadership</h2>
+<div class="block">
+  <div class="row">
+    <span class="org">League of United Latin American Citizens (LULAC) <span class="thin">| Public Relations Officer</span></span>
+    <span class="when">March 2025 - Present</span>
+  </div>
+  <ul>
+    <li>Helped drive the rechartering of LULAC Collegiate Council #373, revitalizing its presence on campus</li>
+    <li>Manage and grow the council's social media platforms to boost engagement and visibility</li>
+  </ul>
+</div>
+
+<h2>Technical and Language Skills</h2>
+<ul>
+  <li><b class="k">Programming:</b> Dart (Flutter), Python, SQL, HTML/CSS, JavaScript, Swift</li>
+  <li><b class="k">Databases and Data:</b> Microsoft SQL Server, Oracle, PostgreSQL (Supabase), Epic</li>
+  <li><b class="k">Frameworks and Platforms:</b> Flutter, FastAPI, Firebase, Google Cloud Run, Git and GitHub, Xcode, VS Code</li>
+  <li><b class="k">Design:</b> Figma, design systems and tokens, WCAG AA accessibility, Adobe Photoshop, Illustrator, InDesign, Premiere Pro</li>
+  <li><b class="k">Languages:</b> Fluent in Spanish and English</li>
+</ul>
+
+</body>
+</html>
