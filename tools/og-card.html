@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Share card source &middot; 1200x630</title>
 <!--
-  Source for assets/og/share-card.png, the LinkedIn / Twitter share card.
+  Source for assets/og/share-card.png, the LinkedIn / X share card.
   Renders at exactly 1200x630. To regenerate:
     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
       --headless --disable-gpu --hide-scrollbars \
@@ -12,226 +12,100 @@
       --virtual-time-budget=12000 \
       --screenshot=assets/og/share-card.png \
       tools/og-card.html
-  Colours are the site tokens from styles.css. Keep them in step.
+  Tokens match styles.css. Keep them in step.
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --void:#050A12; --deep:#08131F; --panel:#0C1B2A;
-  --line:#1B3E56; --cyan:#63E6FF; --cyan-2:#2FBEE0; --gold:#FFBE63;
-  --text:#DFEFF7; --dim:#9DBBCC; --faint:#6B8A9C;
-  --display:"Chakra Petch","Arial Narrow",sans-serif;
-  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --bg:#FFFFFF; --bg-sub:#F7F8FA;
+  --ink:#16181D; --ink-2:#454C59; --ink-3:#6B7280; --ink-4:#656E7C;
+  --rule:#E4E7EC; --accent:#1A47C2;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
 }
 *{ margin:0; padding:0; box-sizing:border-box; }
 html,body{ width:1200px; height:630px; overflow:hidden; }
-body{ background:var(--void); color:var(--text); font-family:var(--body); }
+body{ background:var(--bg); color:var(--ink); font-family:var(--sans); }
 
 .card{
   position:relative; width:1200px; height:630px; overflow:hidden;
-  background:
-    radial-gradient(760px 560px at 78% 50%, #0E4557AA 0%, #0E455700 62%),
-    radial-gradient(900px 620px at 6% 0%,  #12324880 0%, #12324800 60%),
-    linear-gradient(160deg, #08131F 0%, #050A12 55%, #04080E 100%);
+  background:var(--bg); padding:74px 86px;
+  display:flex; flex-direction:column;
 }
-/* coarse grid: survives LinkedIn recompression without shimmering */
+/* one quiet accent: a rule down the left edge */
 .card::before{
-  content:""; position:absolute; inset:0;
-  background-image:
-    linear-gradient(to right,  #63E6FF0A 1px, transparent 1px),
-    linear-gradient(to bottom, #63E6FF0A 1px, transparent 1px);
-  background-size:48px 48px;
-  mask-image:radial-gradient(950px 620px at 50% 45%, #000 25%, transparent 88%);
+  content:""; position:absolute; left:0; top:0; bottom:0; width:8px;
+  background:var(--accent);
 }
-
-/* ── HUD frame ── */
-.f{ position:absolute; border:0 solid var(--cyan); opacity:.85; }
-.tl{ top:34px; left:34px;  width:56px; height:56px; border-top-width:3px; border-left-width:3px; }
-.tr{ top:34px; right:34px; width:56px; height:56px; border-top-width:3px; border-right-width:3px; }
-.bl{ bottom:34px; left:34px;  width:56px; height:56px; border-bottom-width:3px; border-left-width:3px; }
-.br{ bottom:34px; right:34px; width:56px; height:56px; border-bottom-width:3px; border-right-width:3px; }
-.rail{
-  position:absolute; top:118px; bottom:118px; width:2px;
-  background:linear-gradient(to bottom, transparent, #1B3E56 18%, #1B3E56 82%, transparent);
+/* a faint tint block, bottom right, to stop the card reading as an empty page */
+.card::after{
+  content:""; position:absolute; right:-140px; bottom:-200px;
+  width:620px; height:620px; border-radius:50%;
+  background:var(--bg-sub);
 }
-.rail-l{ left:34px; } .rail-r{ right:34px; }
+.in{ position:relative; z-index:1; display:flex; flex-direction:column; height:100%; }
 
-/* ── content ── */
-.body{
-  position:absolute; inset:0; padding:76px 92px 132px;
-  display:grid; grid-template-columns:1fr 372px; align-items:center; gap:44px;
-}
-
-.tag{
-  display:flex; align-items:center; gap:12px;
+.eyebrow{
   font-family:var(--mono); font-size:19px; font-weight:500;
-  letter-spacing:.15em; text-transform:uppercase; color:var(--cyan);
-}
-.dot{
-  width:10px; height:10px; border-radius:50%;
-  background:var(--cyan); box-shadow:0 0 12px #63E6FF, 0 0 26px #63E6FF80;
+  letter-spacing:.13em; text-transform:uppercase; color:var(--accent);
 }
 
 h1{
-  margin:20px 0 0; font-family:var(--display); font-weight:700;
-  font-size:92px; line-height:.94; letter-spacing:-.015em;
-  color:var(--text); text-shadow:0 0 34px #63E6FF33;
+  margin:26px 0 0; font-size:96px; font-weight:700;
+  letter-spacing:-.038em; line-height:1; color:var(--ink);
 }
-h1 span{ display:block; }
 
 .thesis{
-  margin:22px 0 0; max-width:624px;
-  font-size:23px; line-height:1.44; color:var(--text);
+  margin:26px 0 0; max-width:760px;
+  font-size:27px; line-height:1.45; color:var(--ink-2);
 }
-.credit{
-  margin:13px 0 0; font-family:var(--mono); font-size:14px; font-weight:400;
-  letter-spacing:.09em; text-transform:uppercase; color:var(--dim);
-}
-.credit b{ color:var(--cyan); font-weight:600; }
+.thesis b{ color:var(--ink); font-weight:600; }
 
-.stats{ display:flex; gap:42px; margin:28px 0 0; list-style:none; }
-.stats li{ display:flex; flex-direction:column; gap:5px; }
-.stats b{
-  font-family:var(--display); font-weight:700; font-size:38px;
-  line-height:1; color:var(--gold); text-shadow:0 0 22px #FFBE6338;
+.nums{ display:flex; gap:0; margin:auto 0 0; border-top:1px solid var(--rule); }
+.nums div{ padding:26px 42px 0 0; margin-right:42px; border-right:1px solid var(--rule); }
+.nums div:last-child{ border-right:0; margin-right:0; padding-right:0; }
+.nums b{
+  display:block; font-size:42px; font-weight:700;
+  letter-spacing:-.035em; line-height:1; color:var(--ink);
 }
-.stats span{
-  font-family:var(--mono); font-size:13px; font-weight:400;
-  letter-spacing:.05em; text-transform:uppercase; color:var(--dim);
+.nums span{
+  display:block; margin-top:9px; font-size:16px;
+  color:var(--ink-3); line-height:1.35;
 }
 
 .foot{
-  position:absolute; left:92px; right:92px; bottom:56px;
-  display:flex; align-items:center; justify-content:space-between;
-  font-family:var(--mono); font-size:17px; letter-spacing:.06em;
+  display:flex; align-items:baseline; justify-content:space-between;
+  margin:34px 0 0; font-size:18px;
 }
-.url{ color:var(--cyan); font-weight:500; }
-.meta{ color:var(--faint); }
-
-/* ── reticle ── */
-.reticle{ width:372px; height:372px; justify-self:center; }
-.ring{ fill:none; stroke:var(--line); stroke-width:1.5; }
-.ring-f{ fill:none; stroke:#1B3E5699; stroke-width:1.2; }
-.arc{ fill:none; stroke:var(--cyan-2); stroke-width:2.5; opacity:.55; stroke-linecap:round; }
-.tick{ stroke:#1B3E56; stroke-width:1.5; }
-.tick-m{ stroke:var(--cyan-2); stroke-width:2; opacity:.8; }
-.sweep-l{ stroke:var(--cyan); stroke-width:2; opacity:.9; }
-.cross line{ stroke:var(--cyan); stroke-width:1.5; opacity:.75; }
-.node{ fill:var(--deep); stroke:var(--line); stroke-width:1.5; }
-.node-on{ fill:#0E4557; stroke:var(--cyan); stroke-width:2; }
-.nlab{
-  font-family:"IBM Plex Mono",monospace; font-size:13px; font-weight:500;
-  fill:var(--dim); text-anchor:middle; dominant-baseline:central;
-}
-.nlab-on{ fill:var(--cyan); font-weight:600; }
-.core-n{
-  font-family:"Chakra Petch",sans-serif; font-size:40px; font-weight:700;
-  fill:var(--text); text-anchor:middle; dominant-baseline:central;
-}
-.core-l{
-  font-family:"IBM Plex Mono",monospace; font-size:12px; font-weight:500;
-  letter-spacing:.18em; fill:var(--cyan); text-anchor:middle; dominant-baseline:central;
-}
+.url{ font-weight:600; color:var(--accent); }
+.meta{ font-family:var(--mono); font-size:15px; color:var(--ink-4); letter-spacing:.03em; }
 </style>
 </head>
 <body>
 <div class="card">
+  <div class="in">
+    <p class="eyebrow">Product designer &middot; UX engineer</p>
 
-  <span class="f tl"></span><span class="f tr"></span>
-  <span class="f bl"></span><span class="f br"></span>
-  <span class="rail rail-l"></span><span class="rail rail-r"></span>
+    <h1>David Martinez</h1>
 
-  <div class="body">
-    <div>
-      <p class="tag"><span class="dot"></span>Designer-engineer &middot; Iowa City, Iowa</p>
+    <p class="thesis">
+      I design and build software for people who are lost inside somebody
+      else&rsquo;s system. Most recently <b>UI/UX engineering at Sollo, Tokyo</b>.
+    </p>
 
-      <h1><span>DAVID</span><span>MARTINEZ</span></h1>
-
-      <p class="thesis">
-        I build software for people who are lost inside somebody else&rsquo;s system.
-      </p>
-
-      <p class="credit">
-        Recently <b>Sollo</b>, Tokyo &middot; AI for Japanese government paperwork
-      </p>
-
-      <ul class="stats">
-        <li><b>70+</b><span>PRs in 8 weeks</span></li>
-        <li><b>2,949</b><span>tests at handoff</span></li>
-        <li><b>9</b><span>languages shipped</span></li>
-      </ul>
+    <div class="nums">
+      <div><b>70+</b><span>pull requests merged<br>in eight weeks</span></div>
+      <div><b>2,949</b><span>tests green<br>at handoff</span></div>
+      <div><b>9</b><span>languages<br>shipped</span></div>
     </div>
 
-    <svg class="reticle" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="core" cx="50%" cy="50%" r="50%">
-          <stop offset="0%"   stop-color="#63E6FF" stop-opacity=".26"/>
-          <stop offset="70%"  stop-color="#63E6FF" stop-opacity=".04"/>
-          <stop offset="100%" stop-color="#63E6FF" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
-
-      <circle cx="200" cy="200" r="120" fill="url(#core)"/>
-      <circle cx="200" cy="200" r="190" class="ring"/>
-      <g id="ticks"></g>
-      <circle cx="200" cy="200" r="150" class="ring-f"/>
-      <circle cx="200" cy="200" r="110" class="ring-f"/>
-      <path d="M200 90 A110 110 0 0 1 295 145" class="arc"/>
-      <path d="M200 310 A110 110 0 0 1 105 255" class="arc"/>
-
-      <!-- sweep arm parked on node 00 -->
-      <line x1="200" y1="200" x2="200" y2="58" class="sweep-l"/>
-      <polygon points="200,44 194,59 206,59" fill="#63E6FF"/>
-
-      <g class="cross">
-        <line x1="200" y1="172" x2="200" y2="183"/>
-        <line x1="200" y1="217" x2="200" y2="228"/>
-        <line x1="172" y1="200" x2="183" y2="200"/>
-        <line x1="217" y1="200" x2="228" y2="200"/>
-      </g>
-
-      <g id="nodes"></g>
-
-      <text class="core-n" x="200" y="192">00</text>
-      <text class="core-l" x="200" y="222">INTRO</text>
-    </svg>
-  </div>
-
-  <div class="foot">
-    <span class="url">dmartinez10.github.io</span>
-    <span class="meta">University of Iowa &middot; Informatics (HCI) &middot; May 2027</span>
+    <div class="foot">
+      <span class="url">dmartinez10.github.io</span>
+      <span class="meta">University of Iowa &middot; Informatics (HCI) &middot; May 2027</span>
+    </div>
   </div>
 </div>
-
-<script>
-// tick ring
-var t = document.getElementById('ticks'), s = '';
-for (var i = 0; i < 72; i++) {
-  var major = i % 6 === 0, a = (i / 72) * Math.PI * 2 - Math.PI / 2;
-  var r1 = 190, r2 = major ? 176 : 183;
-  s += '<line class="' + (major ? 'tick-m' : 'tick') + '"'
-     + ' x1="' + (200 + Math.cos(a) * r1).toFixed(2) + '" y1="' + (200 + Math.sin(a) * r1).toFixed(2) + '"'
-     + ' x2="' + (200 + Math.cos(a) * r2).toFixed(2) + '" y2="' + (200 + Math.sin(a) * r2).toFixed(2) + '"/>';
-}
-t.innerHTML = s;
-
-// nodes, same seven positions as the live navigator in index.html
-var N = [
-  { x: 200,    y: 50,     n: '00', on: true  },
-  { x: 317.27, y: 106.48, n: '01', on: false },
-  { x: 346.24, y: 233.38, n: '02', on: false },
-  { x: 265.08, y: 335.15, n: '03', on: false },
-  { x: 134.92, y: 335.15, n: '04', on: false },
-  { x: 53.76,  y: 233.38, n: '05', on: false },
-  { x: 82.73,  y: 106.48, n: '06', on: false }
-];
-document.getElementById('nodes').innerHTML = N.map(function (d) {
-  return '<circle cx="' + d.x + '" cy="' + d.y + '" r="19" class="' + (d.on ? 'node-on' : 'node') + '"/>'
-       + '<text class="nlab' + (d.on ? ' nlab-on' : '') + '" x="' + d.x + '" y="' + d.y + '">' + d.n + '</text>';
-}).join('');
-</script>
 </body>
 </html>
