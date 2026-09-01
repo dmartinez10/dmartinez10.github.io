@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nine locales &middot; Sollo &middot; David Martinez</title>
+<meta name="description" content="Sollo ships in nine languages including Easy Japanese. Localization as a design constraint rather than a translation step, and the defect I shipped to four of those languages.">
+<meta name="author" content="David Martinez">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="David Martinez">
+<meta property="og:title" content="Nine locales &middot; Sollo">
+<meta property="og:description" content="Localization as a design constraint rather than a translation step, including the accent-stripping defect I shipped to four languages and the guard I deliberately scoped narrow.">
+<meta property="og:url" content="https://dmartinez10.github.io/work/sollo-nine-locales.html">
+<meta property="og:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
+<meta name="theme-color" content="#FFFFFF">
+
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://dmartinez10.github.io/work/sollo-nine-locales.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../case.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav__in">
+    <a class="nav__me" href="../index.html">David Martinez</a>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="../index.html#work">Work</a>
+      <a href="../components/">Components</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="case wrap">
+
+  <a class="back" href="../index.html">All work</a>
+
+  <p class="case__kicker">Sollo &middot; Tokyo &middot; Summer 2026</p>
+  <h1 class="case__title">Nine locales</h1>
+  <p class="case__thesis">
+    The readers are foreign residents of Japan. If the app only works well in English, it
+    has failed the people it was built for. Language is not a translation step at the end.
+    It is the constraint the interface is designed against.
+  </p>
+
+  <dl class="brief">
+    <div>
+      <dt>Role</dt>
+      <dd>UI/UX engineering intern. I authored every new interface string across all nine
+        locales, owned the typeface loading, and wrote the guards that keep a locale from
+        silently regressing.</dd>
+    </div>
+    <div>
+      <dt>Constraint</dt>
+      <dd>Nine languages including Easy Japanese, across Latin and CJK scripts, on a
+        first-run onboarding flow where a missing font is the reader's first impression.</dd>
+    </div>
+    <div>
+      <dt>Outcome</dt>
+      <dd>New strings shipped in all nine rather than English with a fallback. I also
+        shipped visibly broken copy to four of them, found it, and wrote a guard narrow
+        enough that people will still trust it.</dd>
+    </div>
+  </dl>
+
+  <!-- ═══ 01 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">01</span>
+      <h2 class="sec__title">Who the ninth language is for</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <ul class="nums">
+      <li><b>9</b><span>locales, Latin and CJK</span></li>
+      <li><b>2</b><span>of them are Japanese</span></li>
+      <li><b>0</b><span>strings shipped as English fallback</span></li>
+    </ul>
+
+    <div class="prose">
+      <p>
+        The list is English, Japanese, Easy Japanese, Korean, Simplified Chinese,
+        Vietnamese, Portuguese, French and Spanish. The one that explains the product is
+        the third.
+      </p>
+      <p>
+        <strong>Easy Japanese</strong> is a real register, used by Japanese municipalities
+        precisely because official Japanese is unreadable to most foreign residents. Its
+        presence says what the app is: not a translation layer over government text, but an
+        attempt to make government text comprehensible. A person who reads some Japanese but
+        not bureaucratic Japanese is not served by an English toggle. They are served by
+        Japanese written for them.
+      </p>
+      <p>
+        Once that is the premise, English-with-a-fallback stops being acceptable as a
+        shipping state. A fallback means a reader in Hanoi taps into a screen and finds a
+        sentence in a language they did not choose, in a product whose entire promise is
+        that it speaks theirs. So every new string I wrote went into all nine before the
+        change was proposed, not after.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 02 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">02</span>
+      <h2 class="sec__title">The defect I shipped</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        I authored a new string into all nine locales and reported it done. In four of the
+        Latin-script languages I had written it <strong>with the diacritics stripped</strong>.
+        Not missing, not English: present, and visibly wrong to anyone who reads those
+        languages. It shipped that way.
+      </p>
+      <p>
+        The failure underneath it is the part worth keeping. I had verified that the keys
+        existed in all nine files, and I reported that as "all nine locales authored." Those
+        are different claims. A key with wrong text in it satisfies every automated check
+        the project had, because the check was counting keys.
+      </p>
+    </div>
+
+    <div class="call">
+      <span class="call__lab">What I actually got wrong</span>
+      <p>
+        Not the typing. The reporting. I described a weaker verification than I had done in
+        stronger words, which is how a defect gets past a person who is paying attention,
+        and it went out to exactly the readers this product exists for.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 03 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">03</span>
+      <h2 class="sec__title">The guard, and why I made it narrower than I could have</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        The obvious fix is a check that fails when a Latin-script locale contains no accented
+        characters. It would have caught my bug in all four languages. I scoped it to
+        Vietnamese alone, and wrote down why.
+      </p>
+      <p>
+        French, Spanish and Portuguese have plenty of perfectly correct strings with no
+        accented character in them. <em>Continuer</em>. <em>Cancelar</em>. Run that rule
+        across those three and it flags roughly fifty correct strings. A check that is wrong
+        fifty times is not a check any more; it is a thing people learn to click past, and
+        the day it is right nobody looks.
+      </p>
+      <p>
+        Vietnamese is different in a way that makes the rule sound. Its orthography uses
+        diacritics densely enough that a string of any length without one is genuinely
+        suspicious. So the guard fires where it is nearly always right and stays quiet where
+        it would nearly always be wrong.
+      </p>
+    </div>
+
+    <div class="call">
+      <span class="call__lab">The principle I took from it</span>
+      <p>
+        A guard's value is not how many bugs it can catch. It is how much people trust it
+        when it fires. Narrow and believed beats broad and ignored, and the reasoning has to
+        live next to the rule or the next person will "improve" it into uselessness.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 04 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">04</span>
+      <h2 class="sec__title">The typeface, and a fallback with no error</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        Onboarding is the first thing a new reader sees, and it was fetching its typeface
+        from a CDN at runtime. On a slow connection the screens that form the first
+        impression render in something that is not the brand face. I bundled the three
+        weights the flow uses, about 469KB, so they are present before the app opens.
+      </p>
+      <p>
+        The follow-up asked me to do the same for the Japanese face. I could not, and the
+        reason is worth more than the task: <strong>both CJK weights exceed the repository's
+        one megabyte per file limit</strong>, so bundling them is impossible rather than
+        merely undone. I put that reasoning beside the asset entry itself, so the next person
+        to ask "why is Japanese not bundled?" finds the answer where they will look instead
+        of rediscovering it.
+      </p>
+      <p>
+        The real trap was quieter. The font library matches on family <em>and</em> weight, so
+        a call site asking for a weight that is not bundled silently falls back to a network
+        fetch. No analyzer warning. No runtime error. Nothing to see, and the exact failure I
+        had just spent the work removing, reintroduced by a single future edit.
+      </p>
+      <p>
+        So I wrote the guard the codebase was missing: a check that scans the onboarding
+        tokens for the weights they ask for and fails when a bundled file is absent. I
+        verified it genuinely guards by deleting one of the font files and watching the test
+        name the exact missing one.
+      </p>
+      <p>
+        A reviewer then found a real hole in it. One token takes its weight as a parameter,
+        so a scan looking only for literal weights cannot see through it. Rather than
+        document the gap I closed it with a second scan across the call sites, and proved
+        that one by injecting an unbundled weight at a live call site and watching it fail.
+        The test's own comment states what it still does not cover.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 05 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">05</span>
+      <h2 class="sec__title">Cheaper than translating</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        Two habits saved more work than any of the tooling. The first is reusing keys. When
+        a flow needed a cancel and a sign-out label, both already existed, so the change
+        added no translation work at all. Minting a second key for a word the product had
+        already said would have created nine new strings and a permanent risk that the two
+        drift apart.
+      </p>
+      <p>
+        The second is checking before writing. Asked to wire an undo into an archive action,
+        I looked for the strings first and found the entire feature already specified and
+        translated in all nine, referenced nowhere. <strong>Only the wiring was
+        missing.</strong> The work was an afternoon instead of a week, and it cost nothing
+        in translation because the most efficient localization is the string you do not
+        write.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 06 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">06</span>
+      <h2 class="sec__title">What I would do differently</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        <strong>I would render every locale rather than reading it.</strong> My mistake
+        survived because I checked files instead of screens. Nine screenshots in nine
+        languages, generated on every change, would have made accent-stripped Vietnamese
+        obvious in a glance, and would also catch the things a text check can never see:
+        a German-length word breaking a button, a CJK line wrapping mid-phrase.
+      </p>
+      <p>
+        <strong>I would say what I verified, not what I intended.</strong> "Keys present in
+        nine files" and "authored in nine languages" should never again come out of my mouth
+        as the same sentence.
+      </p>
+      <p>
+        <strong>I never watched anyone read it in a language I do not speak.</strong> Every
+        judgment here is mine, and I read two of these nine. The thing this work most needs
+        is not a better guard. It is a Vietnamese speaker with the app open.
+      </p>
+    </div>
+  </section>
+
+  <footer class="cfoot">
+    <a href="../index.html">Back to all work</a>
+    <a href="https://apps.apple.com/us/app/sollo-life-nav/id6781235016" rel="noopener">Sollo on the App Store</a>
+    <a href="mailto:davmartinez10911@gmail.com">davmartinez10911@gmail.com</a>
+  </footer>
+
+</main>
+</body>
+</html>

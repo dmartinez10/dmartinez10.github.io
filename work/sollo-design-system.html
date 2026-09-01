@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Measuring the spec &middot; Sollo &middot; David Martinez</title>
+<meta name="description" content="Sollo: a design handoff asked for a colour that could not pass its own accessibility gate. What a designer who also ships the build can do about that, including catching the test that would have locked the mistake in.">
+<meta name="author" content="David Martinez">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="David Martinez">
+<meta property="og:title" content="Measuring the spec &middot; Sollo">
+<meta property="og:description" content="A design handoff asked for a colour measuring 2.72:1 and demanded that same pair pass AA. Both could not hold. What I did about it, and about my own test that would have locked in a separate mistake.">
+<meta property="og:url" content="https://dmartinez10.github.io/work/sollo-design-system.html">
+<meta property="og:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
+<meta name="theme-color" content="#FFFFFF">
+
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://dmartinez10.github.io/work/sollo-design-system.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../case.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav__in">
+    <a class="nav__me" href="../index.html">David Martinez</a>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="../index.html#work">Work</a>
+      <a href="../components/">Components</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="case wrap">
+
+  <a class="back" href="../index.html">All work</a>
+
+  <p class="case__kicker">Sollo &middot; Tokyo &middot; Summer 2026</p>
+  <h1 class="case__title">Measuring the spec</h1>
+  <p class="case__thesis">
+    A design handoff asked for a colour that could not pass the accessibility gate the
+    same handoff demanded. Being the person who both designs and ships means you find
+    that out before a reader does.
+  </p>
+
+  <dl class="brief">
+    <div>
+      <dt>Role</dt>
+      <dd>UI/UX engineering intern. I took design handoffs into production Flutter, and
+        owned the design system work: colour, spacing and type tokens, the reusable widget
+        and icon library, and the light and dark theme.</dd>
+    </div>
+    <div>
+      <dt>Constraint</dt>
+      <dd>A shipped consumer app read by people navigating Japanese government paperwork,
+        in nine languages, on phones down to a 320pt canvas at 130% text.</dd>
+    </div>
+    <div>
+      <dt>Outcome</dt>
+      <dd>The contested pair went from 2.72:1 to 4.60:1 light and 7.75:1 dark. Two
+        accessibility misses were caught before shipping, one of them mine. Several of my
+        own tests turned out to pass on broken code, which I found by breaking it on
+        purpose.</dd>
+    </div>
+  </dl>
+
+  <!-- ═══ 01 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">01</span>
+      <h2 class="sec__title">What a handoff cannot tell you</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        A design handoff arrives as artwork, a couple of browser prototypes, and a written
+        spec. It is a description of an intention. What it cannot contain is what the thing
+        actually measures once it is on a phone, in the app's real theme, next to real
+        text at the size a real person set.
+      </p>
+      <p>
+        That gap is the job of a designer who also ships the build: not to second guess the
+        designer, but to be where the intention meets the arithmetic. Three times over one
+        summer the arithmetic disagreed, and each time the useful move was to bring a number
+        rather than an opinion.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 02 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">02</span>
+      <h2 class="sec__title">Two things in one spec that could not both be true</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        I was building a progress indicator for the app's topic drill-down: as a reader taps
+        deeper into a subject, a figure in the background artwork walks a little further
+        along a ridge toward a lighthouse, and the guide at the end of the path closes with
+        a stamp and the trail the reader actually walked.
+      </p>
+      <p>
+        The spec named a colour for the trail line. It also stated, twice, that this exact
+        pair must be gated and must pass AA. I measured the colour it named.
+      </p>
+    </div>
+
+    <div class="flip">
+      <div class="flip__col flip__col--bad">
+        <p class="flip__lab">The colour the spec named</p>
+        <p class="flip__row"><span>Contrast, light mode</span><b>2.72:1</b></p>
+        <p class="flip__row"><span>Passes AA normal text</span><b>No</b></p>
+        <p class="flip__row"><span>Passes the codebase&rsquo;s own lenient tier</span><b>No</b></p>
+        <p class="flip__out flip__out--bad">2.72:1</p>
+        <p class="flip__note">Below even the looser bar this codebase allows for small labels.</p>
+      </div>
+      <div class="flip__col">
+        <p class="flip__lab">What shipped</p>
+        <p class="flip__row"><span>Contrast, light mode</span><b>4.60:1</b></p>
+        <p class="flip__row"><span>Contrast, dark mode</span><b>7.75:1</b></p>
+        <p class="flip__row"><span>Distance moved</span><b>One step</b></p>
+        <p class="flip__out flip__out--good">4.60:1</p>
+        <p class="flip__note">One step up the same grey ladder the system already had.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>
+        Both halves of the spec could not hold, so the question was which one to keep. I
+        kept the gate, because the gate is the promise to the reader and the colour is a
+        preference. Moving one step up a ladder the design system already defined meant the
+        change stayed inside the designer's own palette rather than substituting my taste
+        for theirs, and I wrote the reasoning into the code, the commit and the pull request
+        so the next person finds it where they will look.
+      </p>
+      <p>
+        A second disagreement in the same handoff went the other way. The stamp's light-mode
+        colours as printed were not what the spec's own formula produced at any value, while
+        its dark-mode pair matched that formula exactly. I shipped the formula, since the
+        document instructs twice to derive from it, and <strong>flagged the mismatch back
+        rather than silently picking one</strong>. Choosing quietly would have been faster
+        and would have left the designer with a document that no longer describes the app.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 03 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">03</span>
+      <h2 class="sec__title">The arithmetic error, and my test that would have locked it in</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        Separately, a spec moved the app's "can't find it? ask" escape hatch out of the
+        bottom of the search results and into the header. The reasoning was good and worth
+        keeping: at the bottom of the list, the reader who was <em>not</em> finding what
+        they came for had to scroll past every result they had already rejected before
+        reaching the way out. The people who most need a fallback are exactly the people
+        the list is failing.
+      </p>
+      <p>
+        The handoff sized the tap target from an assumption that the visible link is 26
+        points tall. Measured, it is 18. So the target came out at 36 points, under every
+        minimum this codebase enforces and under the 48 the handoff's own checklist requires.
+      </p>
+    </div>
+
+    <div class="call">
+      <span class="call__lab">The part I am least proud of and most glad I caught</span>
+      <p>
+        I had already written a test asserting the height was <strong>under 44</strong>. It
+        would have passed on the broken value and failed on the correct one, which means my
+        own test would have locked the accessibility miss in place and defended it against
+        anyone who tried to fix it later. The target is now 48 with an 18-point visible
+        link, and the test asserts a floor instead of a ceiling.
+      </p>
+    </div>
+
+    <div class="prose">
+      <p>
+        A related fix elsewhere is the one I would show a designer. An automated review
+        caught new buttons at 23 points against a 48-point floor. The obvious fix is to make
+        the buttons bigger, and it is wrong: these are quiet captions, and growing them
+        turns a caption into a toolbar. <strong>The pills stayed exactly the size the
+        designer drew them and the invisible tap box underneath grew instead.</strong>
+        Accessible and unchanged to look at, which is usually the answer when those two
+        seem to be in tension.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 04 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">04</span>
+      <h2 class="sec__title">Testing the tests by breaking the code</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        After the tap-target episode I stopped trusting a green suite. The habit I picked
+        up is simple: put the bug back, and watch the test go red. If it stays green, the
+        test was never guarding anything.
+      </p>
+      <p>
+        It caught the contrast test immediately. I reverted the colour to the one the spec
+        asked for, the one measuring 2.72:1, and <strong>the contrast test stayed
+        green</strong>, because it is a colour-maths file and cannot see a widget. It was
+        checking that a number I had typed satisfied a formula, not that the screen drew in
+        that token. I added a widget-level assertion and confirmed it goes red on the same
+        reverted change.
+      </p>
+      <p>
+        I broke the code on purpose thirteen times across two pieces of work, and found
+        several of my own tests passing on code that was genuinely broken: one measuring its
+        own test harness rather than the app, one asserting a callout stayed put while a list
+        scrolled on a list too short to scroll, and one reading the frame before the one it
+        meant to check. All now fail on the code they exist to reject.
+      </p>
+    </div>
+
+    <div class="call">
+      <span class="call__lab">Why this belongs in a design portfolio</span>
+      <p>
+        A contrast token, a tap target and a type scale are design decisions that live or
+        die in code. If the test that guards one of them is wrong, the decision silently
+        stops being enforced and everybody keeps believing it. The test is part of the
+        design system, not part of the engineering around it.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 05 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">05</span>
+      <h2 class="sec__title">Nothing is ever cut off</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        The breadcrumb I built prints the route a reader walked across the top of every page
+        they tap into. On a narrow phone at large text, a long route does not fit, and the
+        two conventional answers are an ellipsis or a sideways scroll. Both were in the
+        prototype. <strong>Both hide the words that say where you are</strong>, which is the
+        only thing the component exists to do.
+      </p>
+      <p>
+        So a long route takes a second line, and a single label too long for one line wraps
+        inside its own pill. Verified on the narrowest phone the app supports with text
+        enlarged to 130%, because that is the reader this decision is for.
+      </p>
+      <p>
+        The same instinct produced a type scale for the app's home. It had a flat 13pt
+        category label sitting under a 20pt wordmark, which is not a hierarchy, it is two
+        sizes. It became a deliberate ladder, and narrow canvases got a second smaller
+        ladder of their own so that a 320pt phone under Display Zoom is not handed sizes it
+        cannot carry.
+      </p>
+    </div>
+
+    <div class="prose">
+      <p>
+        Sweeping that header across three widths at triple text size surfaced an overflow
+        running 87 points off the side of the smallest supported phone. It was not my
+        widget. I wrote it up as its own failing case rather than absorbing it, because
+        swallowing someone else's bug to keep my own sweep green would have hidden a real
+        defect and quietly weakened the sweep.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 06 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">06</span>
+      <h2 class="sec__title">What I would do differently</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        <strong>I should have measured the spec before I wrote the test, not after.</strong>
+        The tap-target sequence only happened in that order because I trusted a number in a
+        document enough to encode it. Measuring first would have cost ten minutes and
+        removed the entire episode.
+      </p>
+      <p>
+        <strong>I raised the contrast disagreement in a pull request, which is late.</strong>
+        By then I had built the thing. Bringing the measurement to the designer while the
+        handoff was still warm would have let them choose the replacement colour, which is
+        their call and not mine, rather than reviewing a decision I had already made and
+        documented.
+      </p>
+      <p>
+        <strong>A gate nobody can see is a gate that rots.</strong> These checks live in the
+        test suite, so they hold only for people who run it and read it. The version of this
+        I would build now surfaces the contrast ladder in the design tool itself, so the
+        disagreement never has to travel through a pull request at all.
+      </p>
+    </div>
+  </section>
+
+  <footer class="cfoot">
+    <a href="../index.html">Back to all work</a>
+    <a href="https://apps.apple.com/us/app/sollo-life-nav/id6781235016" rel="noopener">Sollo on the App Store</a>
+    <a href="mailto:davmartinez10911@gmail.com">davmartinez10911@gmail.com</a>
+  </footer>
+
+</main>
+</body>
+</html>
