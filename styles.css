@@ -77,12 +77,9 @@ a:hover{ text-decoration:underline; text-underline-offset:3px; }
 }
 .nav__in{
   max-width:var(--max); margin:0 auto; padding:0 var(--gut);
-  min-height:var(--nav); display:flex; align-items:center;
-  flex-wrap:wrap; gap:.35rem 1.5rem;
-}
-@media (max-width:34rem){
-  .nav__in{ padding-block:.6rem; }
-  .nav__me{ flex:1 0 100%; }
+  /* a centred stack: identity over navigation, the same on every width */
+  min-height:var(--nav); padding-block:.6rem;
+  display:flex; flex-direction:column; align-items:center; gap:.3rem;
 }
 .nav__me{
   display:inline-flex; align-items:center; gap:.5rem;
@@ -113,10 +110,10 @@ a:hover{ text-decoration:underline; text-underline-offset:3px; }
    its own flex-wrap to ever fire. Without it six links push the bar wider
    than a 320px phone. */
 .nav__links{
-  margin-left:auto; margin-right:1.15rem; display:flex; flex-wrap:wrap;
-  gap:.3rem 1.15rem; min-width:0; flex:0 1 auto;
+  display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
+  gap:.3rem 1.15rem; min-width:0;
 }
-@media (max-width:34rem){ .nav__links{ margin-left:0; } }
+
 .nav__links a{
   font-size:.92rem; color:var(--ink-2); text-decoration:none;
 }
@@ -309,14 +306,12 @@ a:hover{ text-decoration:underline; text-underline-offset:3px; }
 @media (max-width:34rem){
   html{ font-size:15px; }
 
-  /* Six links needed 357px in a 351px bar, so "Contact" orphaned onto its
-     own row. This lives at the end of the file on purpose: the earlier
-     attempt sat above `.nav__links a` and lost on source order. */
-  /* flex:0 1 auto let this shrink below its content and then wrap to fit the
-     shrunken box, so it wrapped inside a row that had room to spare. Taking
-     the whole row stops the shrink and the wrap together. */
-  .nav__links{ flex:1 1 100%; gap:.3rem .65rem; }
-  .nav__links a{ font-size:.84rem; }
+  /* tighter so the five items hold one centred row on a phone. This lives at
+     the end of the file on purpose: an earlier attempt sat above
+     `.nav__links a` and lost on source order. */
+  .nav__links{ gap:.3rem .6rem; }
+  .nav__links a{ font-size:.82rem; }
+  .nav__cv{ padding:.26rem .5rem; font-size:.79rem; }
 
   /* the separators stranded themselves at line ends when this wrapped,
      so on a phone each fact takes its own line and the dots go away */
@@ -331,12 +326,6 @@ a:hover{ text-decoration:underline; text-underline-offset:3px; }
   .chips{ gap:.35rem; }
 }
 
-/* On the narrowest phones six links cannot share a row and one orphans onto
-   its own, which reads as a bug. GitHub and Resume both appear again in
-   Contact and About, so they are the two that step aside here. */
-@media (max-width:23rem){
-  .nav__wide{ display:none; }
-}
 
 /* a card with more than one case study lists them, rather than crowding a row */
 .studies{ margin:0 0 1.1rem; display:grid; gap:.55rem; }
@@ -345,11 +334,3 @@ a:hover{ text-decoration:underline; text-underline-offset:3px; }
 .studies a::after{ content:" \2192"; }
 .studies span{ font-size:.86rem; color:var(--ink-3); line-height:1.45; }
 
-/* Phone: identity and the download share the first row, navigation gets the
-   second. Better than one flat list of six, where Contact and Components
-   looked equally important. */
-@media (max-width:34rem){
-  .nav__me{ order:0; flex:1 1 auto; }
-  .nav__cv{ order:1; }
-  .nav__links{ order:2; flex:1 1 100%; margin-left:0; margin-right:0; }
-}
