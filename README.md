@@ -136,8 +136,20 @@ The house style, taken from what design recruiters actually read:
   study is pinned by a test or read out of the code.
 - 800 to 1,500 words. Centline runs about 1,470.
 
+There are four:
+
+| File | Project | What it demonstrates |
+|---|---|---|
+| `work/centline.html` | Centline | Design-to-code. A design system with one reference, and the tab that got cut. |
+| `work/sollo-design-system.html` | Sollo | Refusing a spec on measurement, and catching my own test that would have locked in an accessibility miss. |
+| `work/sollo-nine-locales.html` | Sollo | Internationalization as a design constraint, including a defect I shipped and the guard I scoped narrow on purpose. |
+| `work/commu.html` | CommU | Research. Five interviews, three findings, and the one that changed the build. |
+
 To add one, copy `work/centline.html`, replace the sections, and add a
 `Read the case study` link to that project's `.card__foot` in `index.html`.
+If a card carries more than one link, give the extra ones `.card__cta--alt`,
+because the first `.card__cta` paints a hit area across the whole card and
+will otherwise swallow their clicks.
 
 ## Editing
 
