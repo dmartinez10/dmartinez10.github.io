@@ -96,16 +96,6 @@ a:hover{ text-decoration:underline; text-underline-offset:3px; }
   font-size:.86rem; font-weight:700; line-height:1; padding-bottom:.05rem;
 }
 
-/* Resume is the one thing a recruiter downloads, so it is the only affordance
-   in the bar that looks like a control rather than a link. */
-.nav__cv{
-  display:inline-flex; align-items:center; gap:.4rem; flex:none;
-  padding:.34rem .7rem; border:1px solid var(--rule-2); border-radius:6px;
-  font-size:.86rem; font-weight:550; color:var(--ink); text-decoration:none;
-  transition:background .14s ease, border-color .14s ease;
-}
-.nav__cv:hover{ background:var(--bg-sub); border-color:var(--ink-4); color:var(--ink); text-decoration:none; }
-.nav__cv svg{ opacity:.6; }
 /* min-width:0 lets this shrink below its content width, which is what allows
    its own flex-wrap to ever fire. Without it six links push the bar wider
    than a 320px phone. */
@@ -309,9 +299,8 @@ a:hover{ text-decoration:underline; text-underline-offset:3px; }
   /* tighter so the five items hold one centred row on a phone. This lives at
      the end of the file on purpose: an earlier attempt sat above
      `.nav__links a` and lost on source order. */
-  .nav__links{ gap:.3rem .6rem; }
-  .nav__links a{ font-size:.82rem; }
-  .nav__cv{ padding:.26rem .5rem; font-size:.79rem; }
+  .nav__links{ gap:.3rem .7rem; }
+  .nav__links a{ font-size:.84rem; }
 
   /* the separators stranded themselves at line ends when this wrapped,
      so on a phone each fact takes its own line and the dots go away */
