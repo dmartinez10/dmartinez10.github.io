@@ -271,3 +271,12 @@ a:hover{ text-decoration:underline; text-underline-offset:3px; }
   border:1px solid var(--rule); background:var(--bg-sub);
 }
 .shots__cap{ margin:0 0 1.15rem; font-size:.8rem; color:var(--ink-3); }
+
+/* A card can carry more than one link. The first .card__cta paints an overlay
+   across the whole card, so every other link in the footer has to be lifted
+   above it or the overlay swallows the click. */
+.card__cta--alt::before{ content:none; }
+.card__cta--alt,
+.card__note--link{ position:relative; z-index:1; }
+.card__note--link{ color:var(--ink-3); text-decoration:underline; text-underline-offset:2px; }
+.card__note--link:hover{ color:var(--accent); }
