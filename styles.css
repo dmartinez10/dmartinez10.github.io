@@ -317,3 +317,10 @@ a:hover{ text-decoration:underline; text-underline-offset:3px; }
 @media (max-width:23rem){
   .nav__wide{ display:none; }
 }
+
+/* a card with more than one case study lists them, rather than crowding a row */
+.studies{ margin:0 0 1.1rem; display:grid; gap:.55rem; }
+.studies li{ display:grid; gap:.1rem; }
+.studies a{ font-weight:600; font-size:.95rem; }
+.studies a::after{ content:" \2192"; }
+.studies span{ font-size:.86rem; color:var(--ink-3); line-height:1.45; }

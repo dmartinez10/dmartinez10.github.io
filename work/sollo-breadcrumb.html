@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A record, not a map &middot; Sollo &middot; David Martinez</title>
+<meta name="description" content="Sollo: rebuilding a dead trail at the bottom of a page into the way back. Why a breadcrumb tap must return to a screen rather than open a copy of it, and why showing nothing beats inventing a route.">
+<meta name="author" content="David Martinez">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="David Martinez">
+<meta property="og:title" content="A record, not a map &middot; Sollo">
+<meta property="og:description" content="A breadcrumb that opens a copy of a screen instead of returning to it makes every other indicator on the page start lying. And a route the reader did not walk should not be invented.">
+<meta property="og:url" content="https://dmartinez10.github.io/work/sollo-breadcrumb.html">
+<meta property="og:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
+<meta name="theme-color" content="#FFFFFF">
+
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://dmartinez10.github.io/work/sollo-breadcrumb.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../case.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav__in">
+    <a class="nav__me" href="../index.html">David Martinez</a>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="../index.html#work">Work</a>
+      <a href="../components/">Components</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="case wrap">
+
+  <a class="back" href="../index.html">All work</a>
+
+  <p class="case__kicker">Sollo &middot; Tokyo &middot; Summer 2026</p>
+  <h1 class="case__title">A record, not a map</h1>
+  <p class="case__thesis">
+    A breadcrumb looks like a small component. It is actually a claim about what the
+    reader did, and the moment it makes a claim that is not true, everything else on the
+    page that depends on position starts lying too.
+  </p>
+
+  <dl class="brief">
+    <div>
+      <dt>Role</dt>
+      <dd>Designer and engineer on the feature. I took the second half of a design handoff
+        into production Flutter and made the navigation decisions inside it.</dd>
+    </div>
+    <div>
+      <dt>Constraint</dt>
+      <dd>A content tree where the same topic can sit under more than one parent, and
+        readers who arrive from search or a saved link with no route behind them at all.</dd>
+    </div>
+    <div>
+      <dt>Outcome</dt>
+      <dd>The deepest screens are two taps from anywhere behind them instead of a run of
+        back presses. No new text in any language: the one word it needed was already
+        translated in all nine.</dd>
+    </div>
+  </dl>
+
+  <!-- ═══ 01 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">01</span>
+      <h2 class="sec__title">A trail that told you where you had been</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        Sollo's guides sit in a tree. A reader taps Daily Life, then a topic, then a
+        sub-topic, then the guide itself, and the further in they go the harder it is to
+        get back out. What existed was a line at the very bottom of the guide, under the
+        closing stamp, naming the levels they had passed through.
+      </p>
+      <p>
+        It was accurate and useless. It sat at the end of the thing you had already
+        finished reading, it named where you had been, and it <strong>gave you nothing to
+        do about it</strong>. The way back was still a run of back presses.
+      </p>
+      <p>
+        So the trail moved to the top of every page and became the way back: a home button,
+        each level behind you, then the page you are standing on.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 02 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">02</span>
+      <h2 class="sec__title">The decision the whole thing rests on</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        Tapping a level in that strip has two possible meanings, and they look identical
+        to the person tapping. It can <strong>go back</strong> to the screen already open
+        behind them, or it can <strong>open a fresh copy</strong> of that screen on top of
+        everything else. The second is easier to build and it is wrong.
+      </p>
+      <p>
+        The reason is a feature I had shipped the day before. The artwork behind these
+        pages carries a small figure who walks further along a ridge toward a lighthouse
+        on each level down, so the background itself says how deep you are.
+      </p>
+    </div>
+
+    <div class="call">
+      <span class="call__lab">Why the easy version breaks the page</span>
+      <p>
+        Open a copy and the reader is standing three levels back while the stack behind
+        them is still four deep. The walking figure would still be at the lighthouse. The
+        indicator I had just built would begin lying the instant anyone used the
+        breadcrumb, and it would lie in a way nobody could explain: the picture says you
+        are at the end, the words say you are near the start.
+      </p>
+    </div>
+
+    <div class="prose">
+      <p>
+        Every level named in that strip is, by definition, already open behind the reader.
+        So the app walks back to the real one rather than manufacturing a new one. A
+        navigation control that adds to the stack while appearing to subtract from it is
+        the kind of bug that produces a support message no one can reproduce.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 03 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">03</span>
+      <h2 class="sec__title">The same topic, twice, on one route</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        The obvious way to find the screen to return to is to match on its name. That
+        works until it does not: a topic in this tree can sit under more than one parent,
+        so the same name can appear twice on a single route. Match by name and a reader
+        aiming at the second one lands on the first, several levels further back than they
+        asked for, with no way to tell what happened.
+      </p>
+      <p>
+        Each screen is therefore stamped with two things: its name <em>and</em> how deep it
+        sits. The app looks for the pair. Identity here is not what a screen is called, it
+        is what it is called <em>and where it is</em>.
+      </p>
+      <p>
+        A second case needed the same treatment. A reader who arrives from search lands
+        partway down a tree they never walked, and they can keep walking from there. Without
+        marking that landing point, one tap downward would have thrown them past their own
+        search results and all the way to the home screen, losing the thing they came from.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 04 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">04</span>
+      <h2 class="sec__title">Refusing to invent a route</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        A reader can arrive at a guide from search, from Saved, or from a link somebody
+        sent them. In those cases there is no walked route, because they did not walk one.
+      </p>
+      <p>
+        The middle steps are technically reconstructable. Every guide has a parent, so the
+        app could work upward and print a plausible path. It would look complete, and it
+        would be fiction, because a guide with two parents has no single true route and the
+        app would be picking one and presenting it as history.
+      </p>
+    </div>
+
+    <div class="call">
+      <span class="call__lab">The rule I would keep</span>
+      <p>
+        A breadcrumb is a record of what the reader actually did. Inventing one is worse
+        than showing none, because a component that is right most of the time teaches people
+        to trust it, and then it is wrong at exactly the moment they are lost.
+      </p>
+    </div>
+
+    <div class="prose">
+      <p>
+        So arriving without a route shows the house, the page, and nothing in between. It is
+        visibly shorter, which is the honest signal: you did not come the long way, and this
+        strip is not pretending you did.
+      </p>
+      <p>
+        The same instinct runs through the rest of this feature and the
+        <a href="sollo-design-system.html">design system work</a> beside it, where a long
+        route takes a second line instead of an ellipsis, because a component whose job is
+        to say where you are should never hide the words that say it.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 05 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">05</span>
+      <h2 class="sec__title">What I would do differently</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        <strong>I designed this from the tree, not from the reader.</strong> Every decision
+        here is defensible from the data model, and none of it came from watching a person
+        get lost. The duplicate-parent case is real, but I found it by reading the content
+        structure rather than by seeing anyone land in the wrong place.
+      </p>
+      <p>
+        <strong>The empty route deserved a word, not just a gap.</strong> Showing the house
+        and the page with nothing between is honest, but a reader who arrives from a shared
+        link sees a strip that looks truncated rather than deliberately short. A quiet label
+        would have said "you arrived here directly" instead of leaving them to infer it.
+      </p>
+      <p>
+        <strong>I never tested it with a screen reader on the duplicate case.</strong> Two
+        levels with the same name in one strip are distinguishable by position on screen and
+        identical when read aloud. I know what the fix looks like and I did not build it.
+      </p>
+    </div>
+  </section>
+
+  <footer class="cfoot">
+    <a href="../index.html">Back to all work</a>
+    <a href="https://apps.apple.com/us/app/sollo-life-nav/id6781235016" rel="noopener">Sollo on the App Store</a>
+    <a href="mailto:davmartinez10911@gmail.com">davmartinez10911@gmail.com</a>
+  </footer>
+
+</main>
+</body>
+</html>
