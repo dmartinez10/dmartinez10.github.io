@@ -136,13 +136,14 @@ The house style, taken from what design recruiters actually read:
   study is pinned by a test or read out of the code.
 - 800 to 1,500 words. Centline runs about 1,470.
 
-There are four:
+There are five:
 
 | File | Project | What it demonstrates |
 |---|---|---|
 | `work/centline.html` | Centline | Design-to-code. A design system with one reference, and the tab that got cut. |
 | `work/sollo-design-system.html` | Sollo | Refusing a spec on measurement, and catching my own test that would have locked in an accessibility miss. |
 | `work/sollo-nine-locales.html` | Sollo | Internationalization as a design constraint, including a defect I shipped and the guard I scoped narrow on purpose. |
+| `work/sollo-breadcrumb.html` | Sollo | State and honesty. Why a breadcrumb must return to a screen rather than open a copy, and why an invented route is worse than none. |
 | `work/commu.html` | CommU | Research. Five interviews, three findings, and the one that changed the build. |
 
 To add one, copy `work/centline.html`, replace the sections, and add a
