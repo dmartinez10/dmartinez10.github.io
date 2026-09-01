@@ -144,6 +144,7 @@
 
 /* ── stat row (reuses .nums from styles.css) ── */
 .cstats{ margin:1.75rem 0; }
+.sec .nums{ margin:1.75rem 0; }
 
 /* ── foot ── */
 .cfoot{
@@ -154,4 +155,54 @@
 
 @media (max-width:34rem){
   .brief > div{ grid-template-columns:1fr; gap:.35rem; }
+}
+
+/* ── participant table: wide content scrolls in its own container ── */
+.tbl-wrap{ margin:1.75rem 0; overflow-x:auto; min-width:0; border:1px solid var(--rule); border-radius:10px; }
+.tbl{ border-collapse:collapse; width:100%; min-width:34rem; font-size:.92rem; }
+.tbl__cap{
+  caption-side:top; text-align:left; padding:.9rem 1.1rem .6rem;
+  font-size:.83rem; color:var(--ink-3);
+}
+.tbl th, .tbl td{ padding:.62rem 1.1rem; text-align:left; border-top:1px solid var(--rule); }
+.tbl thead th{
+  font-family:var(--mono); font-size:.7rem; font-weight:500; letter-spacing:.07em;
+  text-transform:uppercase; color:var(--ink-3); background:var(--bg-sub);
+}
+.tbl tbody th{ font-family:var(--mono); font-size:.82rem; color:var(--ink-2); font-weight:500; }
+.tbl td{ color:var(--ink-2); }
+.tbl td strong{ color:var(--ink); }
+
+/* ── a finding heading ── */
+.find__h{
+  margin:2rem 0 .65rem; font-size:1.02rem; font-weight:650;
+  letter-spacing:-.01em; color:var(--ink);
+}
+.sec .find__h:first-of-type{ margin-top:0; }
+
+/* ── participant quotes ── */
+.quote{
+  margin:1.1rem 0 1.75rem; padding:1.1rem 1.35rem;
+  border-left:3px solid var(--rule-2); background:var(--bg-sub);
+  border-radius:0 10px 10px 0; max-width:var(--meas);
+}
+.quote p{ margin:0; font-size:1rem; line-height:1.6; color:var(--ink); }
+.quote p::before{ content:"\201C"; }
+.quote p::after{ content:"\201D"; }
+.quote cite{
+  display:block; margin-top:.6rem; font-style:normal;
+  font-family:var(--mono); font-size:.74rem; letter-spacing:.03em; color:var(--ink-3);
+}
+.quote--key{ border-left-color:var(--accent); background:var(--accent-bg); }
+.quote--key cite{ color:var(--accent-d); }
+
+/* ── figures ── */
+.fig{ margin:1.75rem 0; }
+.fig img{
+  width:100%; height:auto; border:1px solid var(--rule);
+  border-radius:10px; background:var(--bg-sub);
+}
+.fig figcaption{
+  margin-top:.65rem; font-size:.85rem; line-height:1.55; color:var(--ink-3);
+  max-width:var(--meas);
 }
