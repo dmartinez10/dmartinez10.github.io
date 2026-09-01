@@ -6,9 +6,17 @@
   background:color-mix(in srgb, var(--bg) 92%, transparent);
   backdrop-filter:blur(10px); border-bottom:1px solid var(--rule);
 }
-.lab__back{ font-weight:600; font-size:.96rem; color:var(--ink); text-decoration:none; }
+.lab__back{
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-weight:600; font-size:.96rem; color:var(--ink); text-decoration:none;
+}
 .lab__back:hover{ color:var(--accent); }
-.lab__back::before{ content:"\2190  "; }
+.lab__mark{
+  display:grid; place-items:center; flex:none;
+  width:1.55rem; height:1.55rem; border-radius:.42rem;
+  background:var(--accent); color:var(--on-accent);
+  font-size:.86rem; font-weight:700; line-height:1;
+}
 
 .lab__main{ max-width:56rem; margin:0 auto; padding:clamp(2rem,6vw,3.5rem) clamp(1.25rem,5vw,2.5rem) 5rem; }
 .lab__kicker{
