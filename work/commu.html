@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CommU &middot; Case study &middot; David Martinez</title>
+<meta name="description" content="CommU: research and design for students who commute to campus and never find a way into campus life. Five interviews, three findings, and the one that changed what got built.">
+<meta name="author" content="David Martinez">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="David Martinez">
+<meta property="og:title" content="CommU &middot; Case study">
+<meta property="og:description" content="Off-campus students described their time on campus as purely functional: arrive, attend, leave. Five interviews, three findings, and the one that changed what got built.">
+<meta property="og:url" content="https://dmartinez10.github.io/work/commu.html">
+<meta property="og:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
+<meta name="theme-color" content="#FFFFFF">
+
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://dmartinez10.github.io/work/commu.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../case.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav__in">
+    <a class="nav__me" href="../index.html">David Martinez</a>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="../index.html#work">Work</a>
+      <a href="../components/">Components</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="case wrap">
+
+  <a class="back" href="../index.html">All work</a>
+
+  <p class="case__kicker">Research and design &middot; University of Iowa, 2026</p>
+  <h1 class="case__title">CommU</h1>
+  <p class="case__thesis">
+    Students who commute to campus arrive for class and leave again. The problem is not
+    that they do not want to belong. It is that belonging takes time they do not have.
+  </p>
+
+  <dl class="brief">
+    <div>
+      <dt>Role</dt>
+      <dd>Sole researcher, designer and developer. I recruited and ran the interviews,
+        analysed them, designed the product, and built it.</dd>
+    </div>
+    <div>
+      <dt>Constraint</dt>
+      <dd>A semester, five participants, and a course requirement that the result be a
+        working web application rather than a prototype in a design tool.</dd>
+    </div>
+    <div>
+      <dt>Outcome</dt>
+      <dd>Three findings from nineteen questions, and a working app built around them.
+        One finding changed what got built. The other two confirmed what I had already
+        proposed, which is worth saying rather than dressing up.</dd>
+    </div>
+  </dl>
+
+  <!-- ═══ 01 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">01</span>
+      <h2 class="sec__title">The gap nobody designs for</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        Campus engagement is built for people who live on campus. Events assume you are
+        already there, clubs meet at hours that assume you have nowhere to drive back to,
+        and the tools that announce any of it assume you are checking.
+      </p>
+      <p>
+        A student living five minutes away in an apartment can feel as far outside it as
+        someone driving an hour each way. That was the premise I started with, and the
+        research existed to find out whether it held and what shape it actually had.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 02 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">02</span>
+      <h2 class="sec__title">Who I talked to, and how</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        Five participants, recruited through personal networks and in person. Four commute
+        to campus. <strong>The fifth lives on campus and was included deliberately</strong>,
+        because he works with commuters and sees the same problem from the other side. A
+        study made only of people who agree with the premise cannot disconfirm it.
+      </p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <caption class="tbl__cap">Participants. All third or fourth year, ages 20 to 23.</caption>
+        <thead>
+          <tr><th scope="col">ID</th><th scope="col">Institution</th><th scope="col">Field</th><th scope="col">Housing</th><th scope="col">Commute</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">P1</th><td>Large state university</td><td>Criminal justice</td><td>Off campus</td><td>30 min drive</td></tr>
+          <tr><th scope="row">P2</th><td>Community college</td><td>Business management</td><td>Off campus</td><td>1 hour drive</td></tr>
+          <tr><th scope="row">P3</th><td>Mid-size state university</td><td>Physical sciences, engineering</td><td><strong>On campus</strong></td><td>Walks on campus</td></tr>
+          <tr><th scope="row">P4</th><td>Mid-size state university</td><td>Engineering</td><td>Off campus</td><td>10 to 15 min walk</td></tr>
+          <tr><th scope="row">P5</th><td>Community college</td><td>Allied health</td><td>Off campus</td><td>30 min drive</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ul class="nums">
+      <li><b>19</b><span>questions across five sections</span></li>
+      <li><b>5</b><span>participants, three institutions</span></li>
+      <li><b>15 to 30</b><span>minutes per interview</span></li>
+      <li><b>3</b><span>themes after analysis</span></li>
+    </ul>
+
+    <div class="prose">
+      <p>
+        Semi-structured, so the nineteen questions were a guide rather than a script. When
+        someone said something I had not expected I followed it and skipped what no longer
+        fit. Interviews ran in person and over video, whichever suited the participant.
+        Every session opened the same way: what the study was for, that responses would be
+        anonymous, consent to record, and that there were no right answers.
+      </p>
+      <p>
+        Interviews came in shorter than the twenty-five to forty minutes I had planned for.
+        Some people answer briefly and the conversation is genuinely over. Padding it would
+        have produced transcript, not data.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 03 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">03</span>
+      <h2 class="sec__title">What they said</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <h3 class="find__h">Theme 1. Arrive, attend, leave</h3>
+    <div class="prose">
+      <p>
+        Time on campus was purely functional. Participants showed up for an obligation and
+        left the moment it ended, shaped by a long drive, a shift starting soon, or simply
+        having no reason to stay. Several had never explored what their school offered.
+        Not from indifference. There was no room in the day for it.
+      </p>
+    </div>
+    <blockquote class="quote">
+      <p>I usually just show up a couple minutes before class and after school I have to go
+        to work, which is about 30 minutes away. So, I usually don&rsquo;t spend much time
+        on campus.</p>
+      <cite>P2, community college, one hour commute</cite>
+    </blockquote>
+
+    <h3 class="find__h">Theme 2. Campus information is hard to find</h3>
+    <div class="prose">
+      <p>
+        Nobody had a reliable picture of what was happening outside their own classes.
+        Finding out meant assembling it from emails they mostly ignored, friends who
+        happened to mention something, and posters on walls they happened to pass.
+      </p>
+    </div>
+    <blockquote class="quote">
+      <p>Sometimes I get sent an email about upcoming events, other times it&rsquo;s word of
+        mouth through friends, and posters that are around buildings.</p>
+      <cite>P4, engineering, walks in</cite>
+    </blockquote>
+
+    <h3 class="find__h">Theme 3. Willing to connect, with nowhere to do it</h3>
+    <div class="prose">
+      <p>
+        This is the one that mattered. Given how much isolation people described, I expected
+        some reluctance. There was almost none. Asked directly whether they would meet
+        others in the same situation if it were easier, nearly everyone said yes
+        immediately. The barrier was not motivation. It was that no place existed.
+      </p>
+    </div>
+    <blockquote class="quote">
+      <p>Yes, I would love to connect with people. I love meeting new people, but I just
+        don&rsquo;t put myself out there. If there&rsquo;s an easier way, then yeah.</p>
+      <cite>P5, allied health, 30 minute drive</cite>
+    </blockquote>
+  </section>
+
+  <!-- ═══ 04 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">04</span>
+      <h2 class="sec__title">The finding that changed the build</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        My proposal described CommU as a way to <em>discover</em> events. All three of its
+        stated contributions were about consumption: find events in one place, see what is
+        happening, close the visibility gap. Students would read a feed somebody else
+        filled.
+      </p>
+      <p>
+        Then P4, asked what one thing he would change about the off-campus experience,
+        answered with something I had not designed for at all.
+      </p>
+    </div>
+
+    <blockquote class="quote quote--key">
+      <p>It would be to host some sort of event to meet other people, because there have
+        been people that I&rsquo;ve met that live in my same complex and I had no idea.</p>
+      <cite>P4, on what he would change</cite>
+    </blockquote>
+
+    <div class="prose">
+      <p>
+        He did not want a better feed. He wanted to <strong>call the meeting himself</strong>.
+        And the reason was specific: the people he wanted to meet were already near him, and
+        the system had no way to tell either of them.
+      </p>
+      <p>
+        That reframed the product. If the finding is that these students are willing but
+        have no venue, then a read-only calendar reproduces the exact problem, because
+        somebody still has to be the institution and post to it. So posting became a
+        first-class action rather than an admin feature: any student can create an event,
+        it appears immediately, and it expires on its own once the date passes so the list
+        stays honest without anybody maintaining it.
+      </p>
+    </div>
+
+    <div class="call">
+      <span class="call__lab">Where I would push harder next time</span>
+      <p>
+        Themes 1 and 2 confirmed what I had already proposed. Only theme 3 moved the design,
+        and it moved it because of one answer from one participant to the last question of
+        the interview. Five people is enough to find a direction and not enough to be sure
+        of one. If I ran this again I would recruit for disagreement on purpose, the way I
+        did with P3, rather than once.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 05 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">05</span>
+      <h2 class="sec__title">What I built</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        Eight pages of vanilla HTML, CSS and JavaScript, with a separate Flask and MongoDB
+        backend. Each of the three surfaces below answers one of the three findings, and
+        nothing was built that no finding asked for.
+      </p>
+    </div>
+
+    <figure class="fig">
+      <img src="../assets/commu/commu-home.webp" width="1400" height="989" loading="lazy" decoding="async"
+           alt="CommU home page, headed 'Your campus, connected', with three cards: Event Discovery, Commuter Connect, and Post Your Own.">
+      <figcaption>The three cards are the three findings, in order.</figcaption>
+    </figure>
+
+    <figure class="fig">
+      <img src="../assets/commu/commu-events.webp" width="1400" height="930" loading="lazy" decoding="async"
+           alt="The campus events page, showing a search field, category filters, and six event cards including a carpool and a between-class study block.">
+      <figcaption>
+        Events, answering theme 2. Filters and search exist because the finding was that
+        information is scattered, so the fix is one place with a way through it. Shown with
+        seeded demo content.
+      </figcaption>
+    </figure>
+
+    <figure class="fig">
+      <img src="../assets/commu/commu-connect.webp" width="1400" height="667" loading="lazy" decoding="async"
+           alt="The Commuter Connect page, showing four commuter profiles with major, where they commute from, and which days they are on campus.">
+      <figcaption>
+        Connect, answering theme 3. A profile shows major, where you commute from, and
+        which days you are on campus, because those are the three things that decide
+        whether two people can actually meet.
+      </figcaption>
+    </figure>
+
+    <div class="prose">
+      <p>
+        The detail I am most pleased with is the smallest. A profile leads with which days
+        you are on campus, not with your year or your interests. Theme 1 said the binding
+        constraint is the schedule, so the schedule is what the card leads with.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 06 ═══ -->
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">06</span>
+      <h2 class="sec__title">What I would do differently</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="prose">
+      <p>
+        <strong>I never tested it with the people I interviewed.</strong> The project ran
+        research, then design, then build, and finished. The right shape would have been to
+        take the events page back to P2 and P5 and watch them use it, because the whole
+        premise is that these people have no time, and I never measured whether the thing I
+        built costs them any.
+      </p>
+      <p>
+        <strong>I would recruit for the disconfirming case more than once.</strong>
+        Including P3 was the best decision in the study and I only made it a single time.
+      </p>
+      <p>
+        <strong>The empty state is the real first run.</strong> Every screenshot above has
+        seeded content. On a genuinely new install this app shows an empty list to a student
+        who has ten minutes between classes, and nothing about the research told me how to
+        earn that person's second visit. That is the first thing I would work on.
+      </p>
+    </div>
+  </section>
+
+  <footer class="cfoot">
+    <a href="../index.html">Back to all work</a>
+    <a href="mailto:davmartinez10911@gmail.com">davmartinez10911@gmail.com</a>
+    <a href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a>
+  </footer>
+
+</main>
+</body>
+</html>
