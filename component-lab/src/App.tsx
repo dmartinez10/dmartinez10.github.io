@@ -71,7 +71,10 @@ export default function App() {
     <div className="lab">
       <a className="lab__skip" href="#main">Skip to content</a>
       <header className="lab__top">
-        <a className="lab__back" href="/">David Martinez</a>
+        <a className="lab__back" href="/">
+          <span className="lab__mark" aria-hidden="true">D</span>
+          <span>David Martinez</span>
+        </a>
         <Switch
           checked={theme === 'dark'}
           onChange={(on) => { setPinned(true); setTheme(on ? 'dark' : 'light') }}

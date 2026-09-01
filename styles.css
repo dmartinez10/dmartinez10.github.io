@@ -85,15 +85,35 @@ a:hover{ text-decoration:underline; text-underline-offset:3px; }
   .nav__me{ flex:1 0 100%; }
 }
 .nav__me{
+  display:inline-flex; align-items:center; gap:.5rem;
   font-weight:600; font-size:.98rem; letter-spacing:-.01em;
   color:var(--ink); text-decoration:none;
 }
 .nav__me:hover{ text-decoration:none; color:var(--accent); }
+
+/* the same monogram as the favicon, so the tab and the page agree */
+.nav__mark{
+  display:grid; place-items:center; flex:none;
+  width:1.55rem; height:1.55rem; border-radius:.42rem;
+  background:var(--accent); color:#fff;
+  font-size:.86rem; font-weight:700; line-height:1; padding-bottom:.05rem;
+}
+
+/* Resume is the one thing a recruiter downloads, so it is the only affordance
+   in the bar that looks like a control rather than a link. */
+.nav__cv{
+  display:inline-flex; align-items:center; gap:.4rem; flex:none;
+  padding:.34rem .7rem; border:1px solid var(--rule-2); border-radius:6px;
+  font-size:.86rem; font-weight:550; color:var(--ink); text-decoration:none;
+  transition:background .14s ease, border-color .14s ease;
+}
+.nav__cv:hover{ background:var(--bg-sub); border-color:var(--ink-4); color:var(--ink); text-decoration:none; }
+.nav__cv svg{ opacity:.6; }
 /* min-width:0 lets this shrink below its content width, which is what allows
    its own flex-wrap to ever fire. Without it six links push the bar wider
    than a 320px phone. */
 .nav__links{
-  margin-left:auto; display:flex; flex-wrap:wrap;
+  margin-left:auto; margin-right:1.15rem; display:flex; flex-wrap:wrap;
   gap:.3rem 1.15rem; min-width:0; flex:0 1 auto;
 }
 @media (max-width:34rem){ .nav__links{ margin-left:0; } }
@@ -324,3 +344,12 @@ a:hover{ text-decoration:underline; text-underline-offset:3px; }
 .studies a{ font-weight:600; font-size:.95rem; }
 .studies a::after{ content:" \2192"; }
 .studies span{ font-size:.86rem; color:var(--ink-3); line-height:1.45; }
+
+/* Phone: identity and the download share the first row, navigation gets the
+   second. Better than one flat list of six, where Contact and Components
+   looked equally important. */
+@media (max-width:34rem){
+  .nav__me{ order:0; flex:1 1 auto; }
+  .nav__cv{ order:1; }
+  .nav__links{ order:2; flex:1 1 100%; margin-left:0; margin-right:0; }
+}
