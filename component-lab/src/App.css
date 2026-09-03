@@ -49,3 +49,6 @@
   font-size:.9rem; text-decoration:none; border-radius:0 0 var(--r-sm) 0;
 }
 .lab__skip:focus{ left:0; }
+
+/* a note that introduces a section rather than footnoting it */
+.lab__note--lead{ margin-top:var(--s-2); margin-bottom:var(--s-1); }
