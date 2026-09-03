@@ -1,16 +1,42 @@
 .lab{ min-height:100vh; }
+/* Mirrors the header on the rest of the site: a centred stack, identity over
+   navigation. The only thing that used to differ here was the theme switch,
+   which is now in the page where it belongs. */
 .lab__top{
   position:sticky; top:0; z-index:40;
-  display:flex; align-items:center; justify-content:space-between; gap:var(--s-4);
-  padding:var(--s-3) clamp(1.25rem,5vw,2.5rem);
   background:color-mix(in srgb, var(--bg) 92%, transparent);
   backdrop-filter:blur(10px); border-bottom:1px solid var(--rule);
 }
-.lab__back{
-  display:inline-flex; align-items:center; gap:.5rem;
-  font-weight:600; font-size:.96rem; color:var(--ink); text-decoration:none;
+.lab__topin{
+  max-width:68rem; margin:0 auto;
+  padding:.6rem clamp(1.25rem,5vw,2.5rem);
+  min-height:4rem;
+  display:flex; flex-direction:column; align-items:center; gap:.3rem;
 }
-.lab__back:hover{ color:var(--accent); }
+.lab__me{
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-weight:600; font-size:.98rem; letter-spacing:-.01em;
+  color:var(--ink); text-decoration:none;
+}
+.lab__me:hover{ color:var(--accent); }
+.lab__links{
+  display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
+  gap:.3rem 1.15rem; min-width:0;
+}
+.lab__links a{ font-size:.92rem; color:var(--ink-2); text-decoration:none; }
+.lab__links a:hover{ color:var(--accent); }
+.lab__links a[aria-current="page"]{ color:var(--ink); font-weight:600; }
+
+.lab__theme{
+  margin-top:var(--s-5); padding:var(--s-4);
+  border:1px solid var(--rule); border-radius:var(--r-md); background:var(--bg-sub);
+  max-width:30rem;
+}
+
+@media (max-width:34rem){
+  .lab__links{ gap:.3rem .7rem; }
+  .lab__links a{ font-size:.84rem; }
+}
 .lab__mark{
   display:grid; place-items:center; flex:none;
   width:1.55rem; height:1.55rem; border-radius:.42rem;

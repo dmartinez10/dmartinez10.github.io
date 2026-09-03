@@ -71,15 +71,19 @@ export default function App() {
     <div className="lab">
       <a className="lab__skip" href="#main">Skip to content</a>
       <header className="lab__top">
-        <a className="lab__back" href="/">
-          <span className="lab__mark" aria-hidden="true">D</span>
-          <span>David Martinez</span>
-        </a>
-        <Switch
-          checked={theme === 'dark'}
-          onChange={(on) => { setPinned(true); setTheme(on ? 'dark' : 'light') }}
-          label="Dark theme"
-        />
+        <div className="lab__topin">
+          <a className="lab__me" href="/">
+            <span className="lab__mark" aria-hidden="true">D</span>
+            <span>David Martinez</span>
+          </a>
+          <nav className="lab__links" aria-label="Sections">
+            <a href="/#work">Work</a>
+            <a href="/components/" aria-current="page">Components</a>
+            <a href="/#about">About</a>
+            <a href="/#contact">Contact</a>
+            <a href="/assets/resume.pdf">Resume</a>
+          </nav>
+        </div>
       </header>
 
       <main className="lab__main" id="main">
@@ -87,10 +91,19 @@ export default function App() {
         <h1 className="lab__h1">Component lab</h1>
         <p className="lab__lede">
           A small set of accessible components. Every colour, space and radius comes from
-          one token file, so flipping the theme above restyles all of it without a single
+          one token file, so flipping the switch below restyles all of it without a single
           component knowing that happened. Try it with the keyboard: everything here is
           reachable by tab, and the list below is fully operable by arrow keys.
         </p>
+
+        <div className="lab__theme">
+          <Switch
+            checked={theme === 'dark'}
+            onChange={(on) => { setPinned(true); setTheme(on ? 'dark' : 'light') }}
+            label="Dark theme"
+            description="Starts from your system setting and follows it until you touch this."
+          />
+        </div>
 
         <section className="lab__sec">
           <h2 className="lab__h2">Tokens</h2>
