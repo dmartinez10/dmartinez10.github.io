@@ -137,10 +137,15 @@ a:hover{ text-decoration:underline; text-underline-offset:3px; }
 .sect__n{ font-family:var(--mono); font-size:.76rem; color:var(--ink-4); }
 
 /* ══ work cards ══ */
-/* align-items:start so a card with screenshots does not stretch its neighbour
-   into a column of dead space. */
-.work{ display:grid; grid-template-columns:1fr; gap:1.25rem; align-items:start; }
-@media (min-width:46rem){ .work{ grid-template-columns:repeat(2,1fr); } }
+/* A grid sizes every row to its tallest card, so the Sollo card left a column
+   of dead space under Centline until the next row began. Columns let the cards
+   pack instead of aligning, which is what masonry would do if it shipped. */
+.work{ column-count:1; column-gap:1.25rem; }
+.work > .card{
+  break-inside:avoid; -webkit-column-break-inside:avoid; page-break-inside:avoid;
+  margin:0 0 1.25rem;
+}
+@media (min-width:46rem){ .work{ column-count:2; } }
 .card{
   position:relative; display:flex; flex-direction:column;
   border:1px solid var(--rule); border-radius:10px;
