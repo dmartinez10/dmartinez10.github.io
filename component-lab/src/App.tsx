@@ -107,7 +107,7 @@ export default function App() {
 
         <section className="lab__sec">
           <h2 className="lab__h2">Multi-select</h2>
-          <p className="lab__note">
+          <p className="lab__note lab__note--lead">
             Arrow keys move, Enter toggles, Escape closes, Backspace on an empty box removes
             the last chip. The option order is frozen while the list is open, so a row never
             moves under your cursor mid-click.
@@ -134,6 +134,10 @@ export default function App() {
 
         <section className="lab__sec">
           <h2 className="lab__h2">Buttons</h2>
+          <p className="lab__note lab__note--lead">
+            The first four are swatches: they show the variants and do nothing when
+            clicked. <b>Save changes</b> and <b>Open dialog</b> below are the live ones.
+          </p>
           <div className="lab__row">
             <Button variant="primary">Primary</Button>
             <Button variant="secondary">Secondary</Button>
@@ -149,13 +153,17 @@ export default function App() {
             </Button>
           </div>
           <p className="lab__note">
-            The loading button keeps its width so the row does not jump, and stays focusable
-            while busy rather than disappearing from the tab order.
+            <b>Save changes</b> is live: it holds a spinner for about a second and a half.
+            It keeps its width so the row does not jump, and stays focusable while busy
+            rather than disappearing from the tab order. <b>Disabled</b> is deliberately
+            unclickable, but it still takes keyboard focus, because a control that vanishes
+            from the tab order cannot tell anyone why it is unavailable.
           </p>
         </section>
 
         <section className="lab__sec">
           <h2 className="lab__h2">Field</h2>
+          <p className="lab__note lab__note--lead">Live. Type something without an @ in it.</p>
           <div className="lab__demo lab__demo--narrow">
             <Field
               label="Email"
@@ -176,6 +184,7 @@ export default function App() {
 
         <section className="lab__sec">
           <h2 className="lab__h2">Dialog</h2>
+          <p className="lab__note lab__note--lead">Live. Open it and try Tab and Escape.</p>
           <Button variant="secondary" onClick={() => setDialog(true)}>Open dialog</Button>
           <p className="lab__note">
             Focus moves in on open, cycles inside on Tab, and returns to the button that
