@@ -213,7 +213,9 @@
 
 .case__hero{ margin:0 0 2.75rem; }
 .case__hero figcaption, .fig figcaption{ max-width:var(--meas); }
-.demo-note{ margin:.7rem 0 0; font-size:.86rem; line-height:1.5; color:var(--ink-3); max-width:var(--meas); }
+/* ink-2 rather than ink-3: measured at 4.11:1 over the board on the Claude page,
+   which is under AA for body text. This colour clears it everywhere. */
+.demo-note{ margin:.7rem 0 0; font-size:.86rem; line-height:1.5; color:var(--ink-2); max-width:var(--meas); }
 
 /* ── a choice made with a radio button that looks like a chip ── */
 .pick-opt{ position:relative; }
