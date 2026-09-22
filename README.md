@@ -84,7 +84,12 @@ decoration:
   May 2027, then it moves.
 - **Contact is the exit sign**, the same navy as the directory, so the page
   begins and ends on the same object.
-- **Nothing is a dead end.** A page reached from Work carries an "All work" link
+- **Every way out is a button, never a text link** (his call, 2026-09-22: "i hate
+  text link, its not clear at all"). The back control is the navy filled button
+  with a left arrow, `a.back`; where it sits beside a louder outward link, as in a
+  story footer, it is the outlined `a.btn.btn--back` and the outward link keeps the
+  navy. The component lab has the same rule in its own tokens.
+- **Nothing is a dead end.** A page reached from Work carries an "All work" button
   above its title: the project stories, Skills, and the component lab, whose copy
   of it lives in `component-lab/src/App.tsx`. The `.back` rule sits in
   `styles.css` rather than `case.css` so any page can use it.

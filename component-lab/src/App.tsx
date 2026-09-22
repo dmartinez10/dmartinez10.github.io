@@ -85,7 +85,10 @@ export default function App() {
       </header>
 
       <main className="lab__main" id="main">
-        <a className="lab__back" href="/work/">All work</a>
+        <a className="lab__back" href="/work/">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          All work
+        </a>
         <p className="lab__kicker">React and TypeScript, no UI library</p>
         <h1 className="lab__h1">Component lab</h1>
         <p className="lab__lede">
