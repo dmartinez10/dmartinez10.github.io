@@ -34,27 +34,49 @@ python3 -m http.server 8000
 
 ## Design
 
-Editorial and light, and deliberately quiet. The work is meant to be the loudest
-thing on the page. A recruiter decides in about five seconds whether to keep
-reading, so the landing page opens on what I do and then goes straight to
-selected work. Everything else is below that.
+**Wayfinding.** Almost everything I build is for someone lost inside a system
+somebody else designed: Japanese paperwork, a campus that commuters never get
+into, a broker's rate that hides the empty miles. So the site borrows the
+language of signs, and the metaphor carries real information rather than
+decoration:
 
-- **Type:** Inter throughout, with IBM Plex Mono for small labels and metadata
-- **Colour:** white ground, near-black ink, one blue accent used sparingly
-- **Rhythm:** a single `.wrap` container and a shared section scaffold, so every
-  section aligns to the same measure
+- **The hero is a directory sign.** Navy panel, a yellow "you are here", and one
+  row per project that jumps to it. It is navigation, not a picture of navigation.
+- **Each project is a line with its own colour and letter** (C Centline, S Sollo,
+  U CommU, L lab, W sollo.my), and **each case study is a stop on it** (S1, S2, S3).
+  A case study page carries the same marker and colour, so you can tell which
+  project you are in from any page.
+- **Experience is a strip map.** Travelled track is solid, the rest is dashed, and
+  a marker sits just past the internship. That marker is dated: it is right until
+  May 2027, then it moves.
+- **Contact is the exit sign**, the same navy as the directory, so the page
+  begins and ends on the same object.
 
-Earlier versions of this site were a heads-up display, cyan on black with a
-radial navigator. It was fun to build and it was the wrong instrument for the
-job: the chrome was louder than the work.
+Type: **Overpass**, from the lettering on US highway signs, for headings and
+labels, and **Atkinson Hyperlegible**, drawn for readers with low vision, for text.
+Atkinson draws zero with a slash on purpose, so large numbers are set in Overpass.
+Colour: concrete ground (#F2F3EF), white panels, sign navy (#14224A), one safety
+yellow (#FFC72C), and five line colours that each pass AA with white type.
+
+The one moment of motion is the directory rows flipping in on load like a
+departure board, then the marker pinging. Nothing else moves by itself, and
+reduced motion turns both off.
+
+Earlier versions were a heads-up display, cyan on black with a radial navigator,
+and then a plain editorial page. The first had chrome louder than the work; the
+second had nothing of me in it. This one tries to put the personality in the type,
+colour and structure while keeping every element doing a job.
 
 ### Rules that hold
 
 - **Every text colour passes WCAG 2.2 AA** on the surface it sits on. The
   palette is audited as a whole rather than screen by screen, so a token that
   fails is fixed once.
-- **No `auto-fit` where the item count is fixed.** The four work cards and the
-  four measurements use explicit columns, so they never leave an orphan.
+- **No `auto-fit` where the item count is fixed.** The four measurements and the
+  six route stops use explicit columns, so they never leave an orphan.
+- **Every grid column that can hold a scroller is `minmax(0, ...)`.** The Sollo
+  screenshot strip otherwise sizes the column to its full scroll width and the
+  page overflows on a phone.
 - **Grid floors use `minmax(min(Xrem, 100%), 1fr)`** where auto-fit is right. A
   bare `minmax(26rem, ...)` cannot shrink and overflows a 360px phone.
 - Verified with no horizontal overflow from **320px to 1920px** on every page.
@@ -146,17 +168,16 @@ There are five:
 | `work/sollo-breadcrumb.html` | Sollo | State and honesty. Why a breadcrumb must return to a screen rather than open a copy, and why an invented route is worse than none. |
 | `work/commu.html` | CommU | Research. Five interviews, three findings, and the one that changed the build. |
 
-To add one, copy `work/centline.html`, replace the sections, and add a
-`Read the case study` link to that project's `.card__foot` in `index.html`.
-If a card carries more than one link, give the extra ones `.card__cta--alt`,
-because the first `.card__cta` paints a hit area across the whole card and
-will otherwise swallow their clicks.
+To add one, copy `work/centline.html`, replace the sections, set the project's
+line class on `<main>` and its stop code in the kicker, and add a stop to that
+project's `.stops` list in `index.html`.
 
 ## Editing
 
-Content lives directly in `index.html`. The work cards are `.card` articles in
-`#work`; a card with a case study gets `class="card card--live"` so the whole
-card becomes the click target.
+Content lives directly in `index.html`. Each project is an `article.proj` in
+`#work` with its line class (`proj--c`, `proj--s` and so on), a `.line` badge, and
+its case studies as `.stops`. A new project needs a letter, a colour token in
+`styles.css` that passes AA with white type, and a row on the directory sign.
 
 ## License
 

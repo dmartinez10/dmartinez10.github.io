@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="David Martinez">
   <!-- Letterform is drawn as a path rather than <text> so it does not depend on
-       a font being available to the browser's favicon renderer. -->
-  <rect width="64" height="64" rx="14" fill="#1A47C2"/>
+       a font being available to the browser's favicon renderer. Sign navy, the
+       same as the directory sign and the header mark. -->
+  <rect width="64" height="64" rx="14" fill="#14224A"/>
   <path fill="#FFFFFF" fill-rule="evenodd"
         d="M17 14h14a18 18 0 0 1 0 36H17Zm9 9v18h5a9 9 0 0 0 0-18Z"/>
 </svg>

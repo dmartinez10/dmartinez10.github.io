@@ -14,8 +14,8 @@
   display:flex; flex-direction:column; align-items:center; gap:.3rem;
 }
 .lab__me{
-  display:inline-flex; align-items:center; gap:.5rem;
-  font-weight:600; font-size:.98rem; letter-spacing:-.01em;
+  display:inline-flex; align-items:center; gap:.55rem;
+  font-family:var(--display); font-weight:800; font-size:1.05rem;
   color:var(--ink); text-decoration:none;
 }
 .lab__me:hover{ color:var(--accent); }
@@ -23,9 +23,9 @@
   display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
   gap:.3rem 1.15rem; min-width:0;
 }
-.lab__links a{ font-size:.92rem; color:var(--ink-2); text-decoration:none; }
+.lab__links a{ font-size:.93rem; font-weight:500; color:var(--ink-2); text-decoration:none; }
 .lab__links a:hover{ color:var(--accent); }
-.lab__links a[aria-current="page"]{ color:var(--ink); font-weight:600; }
+.lab__links a[aria-current="page"]{ color:var(--ink); font-weight:700; }
 
 .lab__theme{
   margin-top:var(--s-5); padding:var(--s-4);
@@ -39,21 +39,22 @@
 }
 .lab__mark{
   display:grid; place-items:center; flex:none;
-  width:1.55rem; height:1.55rem; border-radius:.42rem;
-  background:var(--accent); color:var(--on-accent);
-  font-size:.86rem; font-weight:700; line-height:1;
+  width:1.7rem; height:1.7rem; border-radius:.4rem;
+  background:var(--mark); color:var(--on-mark);
+  font-family:var(--display); font-size:.98rem; font-weight:900; line-height:1;
+  padding-top:.14rem;   /* Overpass sits high in its box */
 }
 
 .lab__main{ max-width:56rem; margin:0 auto; padding:clamp(2rem,6vw,3.5rem) clamp(1.25rem,5vw,2.5rem) 5rem; }
 .lab__kicker{
-  margin:0 0 .6rem; font-family:var(--mono); font-size:.74rem; font-weight:500;
-  letter-spacing:.1em; text-transform:uppercase; color:var(--accent);
+  margin:0 0 .75rem; font-family:var(--display); font-size:.95rem; font-weight:700;
+  color:var(--accent);
 }
-.lab__h1{ margin:0 0 var(--s-4); font-size:clamp(2rem,5vw,2.8rem); font-weight:700; letter-spacing:-.03em; }
+.lab__h1{ margin:0 0 var(--s-4); font-family:var(--display); font-size:clamp(2.2rem,5vw,3.2rem); font-weight:800; line-height:1.05; letter-spacing:-.025em; }
 .lab__lede{ margin:0; max-width:44rem; font-size:1.05rem; line-height:1.6; color:var(--ink-2); }
 
 .lab__sec{ margin-top:clamp(2.5rem,6vw,3.5rem); padding-top:var(--s-5); border-top:1px solid var(--rule); }
-.lab__h2{ margin:0 0 var(--s-2); font-size:1.15rem; font-weight:650; letter-spacing:-.02em; }
+.lab__h2{ margin:0 0 var(--s-2); font-family:var(--display); font-size:1.35rem; font-weight:800; letter-spacing:-.015em; }
 .lab__note{ margin:var(--s-3) 0 0; max-width:42rem; font-size:.9rem; line-height:1.55; color:var(--ink-3); }
 .lab__demo{ margin-top:var(--s-4); max-width:30rem; }
 .lab__demo--narrow{ max-width:24rem; }

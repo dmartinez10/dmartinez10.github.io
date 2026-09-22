@@ -28,14 +28,14 @@
 <meta name="twitter:description" content="I design and build software for people who are lost inside somebody else's system. Informatics (HCI) at Iowa. Most recently UI/UX engineering at Sollo in Tokyo.">
 <meta name="twitter:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
 <meta name="twitter:image:alt" content="David Martinez, product designer and UX engineer. 70+ pull requests merged in 8 weeks, 2,949 tests green at handoff, 9 languages shipped.">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#F2F3EF">
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://dmartinez10.github.io/">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;1,400&family=Overpass:wght@600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -60,70 +60,140 @@
 
 <main id="main">
 
-<!-- ══════════════ intro ══════════════ -->
-<section class="intro wrap" id="top">
-  <p class="eyebrow">UX engineer &middot; Product designer</p>
-  <h1 class="intro__h">Product designer who ships the build.</h1>
-  <p class="intro__p">
-    I design and build software for people who are lost inside somebody else&rsquo;s system.
-    Informatics and human-computer interaction at the University of Iowa. Most recently
-    <strong>UI/UX engineering at Sollo in Tokyo</strong>, where I merged 70+ pull requests
-    in eight weeks across design, mobile frontend and Python backend.
-  </p>
-  <p class="intro__meta">
-    <span>Iowa City, Iowa</span>
-    <span class="dot" aria-hidden="true">&middot;</span>
-    <span>Open to product design and UX engineer roles</span>
-    <span class="dot" aria-hidden="true">&middot;</span>
-    <span>Graduating May 2027</span>
-  </p>
+<!-- ══════════════ hero: who, then a directory to the work ══════════════ -->
+<section class="hero wrap" id="top">
+  <div>
+    <p class="hero__hi">Hi, I&rsquo;m David.</p>
+    <h1 class="hero__h">I design for people lost inside somebody else&rsquo;s system. Then I build it.</h1>
+    <p class="hero__p">
+      Product designer and UX engineer, studying informatics and human-computer interaction
+      at the University of Iowa. Most recently <strong>UI/UX engineering at Sollo in
+      Tokyo</strong>, where I merged 70+ pull requests in eight weeks across design, mobile
+      frontend and Python backend.
+    </p>
+    <ul class="facts">
+      <li>Iowa City, Iowa</li>
+      <li>Open to product design and UX engineer roles</li>
+      <li>Graduating May 2027</li>
+    </ul>
+  </div>
+
+  <nav class="board" aria-label="Projects on this page">
+    <p class="board__here"><span class="here" aria-hidden="true"></span>You are here. Where to?</p>
+    <ul class="board__list">
+      <li><a href="#centline">
+        <span class="line line--c" aria-hidden="true">C</span>
+        <span><span class="board__name">Centline</span><span class="board__to">Pricing loads for one-truck owners</span></span>
+        <svg class="board__arrow" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 2h6v11h5.5L12 23 3.5 13H9z"/></svg>
+      </a></li>
+      <li><a href="#sollo">
+        <span class="line line--s" aria-hidden="true">S</span>
+        <span><span class="board__name">Sollo</span><span class="board__to">Japanese paperwork, made navigable. Three case studies</span></span>
+        <svg class="board__arrow" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 2h6v11h5.5L12 23 3.5 13H9z"/></svg>
+      </a></li>
+      <li><a href="#commu">
+        <span class="line line--u" aria-hidden="true">U</span>
+        <span><span class="board__name">CommU</span><span class="board__to">Research with students who commute</span></span>
+        <svg class="board__arrow" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 2h6v11h5.5L12 23 3.5 13H9z"/></svg>
+      </a></li>
+      <li><a href="#lab">
+        <span class="line line--l" aria-hidden="true">L</span>
+        <span><span class="board__name">Component lab</span><span class="board__to">React and TypeScript, run it by keyboard</span></span>
+        <svg class="board__arrow" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 2h6v11h5.5L12 23 3.5 13H9z"/></svg>
+      </a></li>
+      <li><a href="#sollo-my">
+        <span class="line line--w" aria-hidden="true">W</span>
+        <span><span class="board__name">sollo.my</span><span class="board__to">A landing site in eleven languages</span></span>
+        <svg class="board__arrow" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 2h6v11h5.5L12 23 3.5 13H9z"/></svg>
+      </a></li>
+    </ul>
+  </nav>
 </section>
 
 <!-- ══════════════ work ══════════════ -->
 <section class="sect wrap" id="work">
   <div class="sect__h">
     <h2 class="sect__t">Selected work</h2>
-    <span class="sect__n">5 projects &middot; 5 case studies</span>
+    <span class="sect__n">Five projects, five case studies</span>
   </div>
 
-  <div class="work">
-
-    <article class="card card--live">
-      <div class="card__top">
-        <h3 class="card__name">Centline</h3>
-        <span class="card__tag card__tag--wip">In progress</span>
+  <article class="proj proj--c" id="centline">
+    <div class="proj__text">
+      <span class="line line--c" aria-hidden="true">C</span>
+      <div class="proj__top">
+        <h3 class="proj__name">Centline</h3>
+        <span class="tag tag--wip">In progress</span>
       </div>
-      <p class="card__for">For a one-truck owner-operator deciding, at a loading dock at
+      <p class="proj__for">For a one-truck owner-operator deciding, at a loading dock at
         night, whether a load is worth taking.</p>
-      <p class="card__body">
+      <p class="proj__body">
         Brokers quote dollars per loaded mile. The empty miles cost the same and pay
-        nothing, which is why new carriers go under. A $1,500 load that reads as $260 of
-        profit is a $50 loss once they are counted. I designed and built it: a
-        documented design system, the mobile app, and 968 tests.
+        nothing, which is why new carriers go under. I designed and built it: a documented
+        design system, the mobile app, and 968 tests.
       </p>
       <p class="chips"><span>Design system</span><span>Mobile app</span><span>WCAG 2.2</span><span>968 tests</span></p>
-      <p class="card__foot">
-        <a class="card__cta" href="work/centline.html">Read the case study</a>
-      </p>
-    </article>
+      <ol class="stops">
+        <li>
+          <span class="stop stop--c" aria-hidden="true">C1</span>
+          <a href="work/centline.html">Read the case study</a>
+          <span>How one number decided the architecture, the design system, and which tab got cut</span>
+        </li>
+      </ol>
+    </div>
 
-    <article class="card">
-      <div class="card__top">
-        <h3 class="card__name">Sollo</h3>
-        <span class="card__tag">Internship</span>
+    <figure class="proj__fig">
+      <div class="readout">
+        <p class="readout__row"><span>The broker offers</span><b>$1,500</b></p>
+        <p class="readout__row readout__row--seems"><span>Profit, counting loaded miles</span><b>+$260</b></p>
+        <p class="readout__row readout__row--true"><span>Once the 250 empty miles count</span><b>&minus;$50</b></p>
       </div>
-      <p class="card__for">For a foreign resident of Japan facing a system written in a
+      <figcaption>The same load seen two ways. Centline refuses to show the first number.</figcaption>
+    </figure>
+  </article>
+
+  <article class="proj proj--s" id="sollo">
+    <div class="proj__text">
+      <span class="line line--s" aria-hidden="true">S</span>
+      <div class="proj__top">
+        <h3 class="proj__name">Sollo</h3>
+        <span class="tag">Internship, shipped</span>
+      </div>
+      <p class="proj__for">For a foreign resident of Japan facing a system written in a
         language and a format they were never the audience for.</p>
-      <p class="card__body">
-        An AI assistant that makes Japanese government paperwork navigable, now shipped on
-        the App Store. I rebuilt the post-authentication app onto a new design system,
-        extracting colour, spacing and type tokens and building the reusable widget and icon
-        library the team works against, then designed and enforced its WCAG AA light and dark
-        theme, and rebuilt how a reader gets back out of a deep topic tree.
+      <p class="proj__body">
+        An AI assistant that makes Japanese government paperwork navigable, now on the App
+        Store. I rebuilt the post-authentication app onto a new design system, extracting
+        colour, spacing and type tokens and building the widget and icon library the team
+        works against, then designed and enforced its WCAG AA light and dark theme, and
+        rebuilt how a reader gets back out of a deep topic tree.
       </p>
       <p class="chips"><span>Design tokens</span><span>Component library</span><span>Figma</span><span>Flutter</span><span>WCAG AA</span><span>9 locales</span></p>
+      <ol class="stops">
+        <li>
+          <span class="stop stop--s" aria-hidden="true">S1</span>
+          <a href="work/sollo-design-system.html">Measuring the spec</a>
+          <span>Refusing a handoff colour that could not pass its own gate</span>
+        </li>
+        <li>
+          <span class="stop stop--s" aria-hidden="true">S2</span>
+          <a href="work/sollo-nine-locales.html">Nine locales</a>
+          <span>Localization as a constraint, and a defect I shipped</span>
+        </li>
+        <li>
+          <span class="stop stop--s" aria-hidden="true">S3</span>
+          <a href="work/sollo-breadcrumb.html">A record, not a map</a>
+          <span>Why a breadcrumb must not invent a route</span>
+        </li>
+        <li>
+          <span class="stop stop--s" aria-hidden="true">S4</span>
+          <a href="https://apps.apple.com/us/app/sollo-life-nav/id6781235016" rel="noopener">See it on the App Store</a>
+          <span>Sollo, Life Nav. Shipped August 2026</span>
+        </li>
+      </ol>
+    </div>
 
-      <div class="shots" role="group" aria-label="Sollo App Store panels">
+    <figure class="proj__fig">
+      <div class="phones" role="group" aria-label="Sollo App Store panels">
         <img src="assets/shots/sollo-01-home.webp" width="640" height="1385" loading="lazy" decoding="async"
              alt="Sollo home screen: a search field, six category tiles from Visa and Residency to Support, and a Your Journeys row.">
         <img src="assets/shots/sollo-02-answers.webp" width="640" height="1385" loading="lazy" decoding="async"
@@ -137,91 +207,112 @@
         <img src="assets/shots/sollo-06-close.webp" width="640" height="1385" loading="lazy" decoding="async"
              alt="The closing App Store panel for Sollo.">
       </div>
-      <p class="shots__cap">Sollo&rsquo;s own App Store panels. Shipped to the store in August 2026.</p>
+      <figcaption>Sollo&rsquo;s own App Store panels.</figcaption>
+    </figure>
+  </article>
 
-      <ul class="studies">
-        <li><a href="work/sollo-design-system.html">Measuring the spec</a>
-          <span>Refusing a handoff colour that could not pass its own gate</span></li>
-        <li><a href="work/sollo-nine-locales.html">Nine locales</a>
-          <span>Localization as a constraint, and a defect I shipped</span></li>
-        <li><a href="work/sollo-breadcrumb.html">A record, not a map</a>
-          <span>Why a breadcrumb must not invent a route</span></li>
-      </ul>
-      <p class="card__foot">
-        <a class="card__note card__note--link" href="https://apps.apple.com/us/app/sollo-life-nav/id6781235016" rel="noopener">See it on the App Store</a>
-      </p>
-    </article>
-
-    <article class="card card--live">
-      <div class="card__top">
-        <h3 class="card__name">CommU</h3>
-        <span class="card__tag">Research</span>
+  <article class="proj proj--u" id="commu">
+    <div class="proj__text">
+      <span class="line line--u" aria-hidden="true">U</span>
+      <div class="proj__top">
+        <h3 class="proj__name">CommU</h3>
+        <span class="tag">Research</span>
       </div>
-      <p class="card__for">For a student who commutes to campus, arrives for class, and
+      <p class="proj__for">For a student who commutes to campus, arrives for class, and
         leaves again without ever finding a way into campus life.</p>
-      <p class="card__body">
+      <p class="proj__body">
         Off-campus students described their time on campus as purely functional: arrive,
-        attend, leave. What was happening on campus reached them through ignored emails,
-        posters and word of mouth, and every one of them said they would meet people in
-        the same situation if there were any way to do it. I ran the study, then built the
-        web app around what it found: events in one place, posted by anyone, and a way to
-        find the other people who drive in.
+        attend, leave. Every one of them said they would meet people in the same situation
+        if there were any way to do it. I ran the study, then built the web app around what
+        it found: events in one place, posted by anyone, and a way to find the other people
+        who drive in.
       </p>
       <p class="chips"><span>Semi-structured interviews</span><span>Thematic analysis</span><span>Prototyping</span><span>JavaScript</span><span>Flask</span><span>MongoDB</span></p>
-      <p class="card__foot">
-        <a class="card__cta" href="work/commu.html">Read the case study</a>
-      </p>
-    </article>
+      <ol class="stops">
+        <li>
+          <span class="stop stop--u" aria-hidden="true">U1</span>
+          <a href="work/commu.html">Read the case study</a>
+          <span>Five interviews, three findings, and the one that changed the build</span>
+        </li>
+      </ol>
+    </div>
 
-    <article class="card card--live">
-      <div class="card__top">
-        <h3 class="card__name">Component lab</h3>
-        <span class="card__tag">Built</span>
+    <figure class="proj__fig">
+      <img class="shot" src="assets/commu/commu-home.webp" width="1400" height="989" loading="lazy" decoding="async"
+           alt="CommU home page, headed 'Your campus, connected', with three cards: Event Discovery, Commuter Connect, and Post Your Own.">
+      <figcaption>The three cards on the home page are the three findings, in order.</figcaption>
+    </figure>
+  </article>
+
+  <article class="proj proj--l" id="lab">
+    <div class="proj__text">
+      <span class="line line--l" aria-hidden="true">L</span>
+      <div class="proj__top">
+        <h3 class="proj__name">Component lab</h3>
+        <span class="tag">Built</span>
       </div>
-      <p class="card__for">For a hiring manager who wants to see the interaction craft
+      <p class="proj__for">For a hiring manager who wants to see the interaction craft
         rather than read a claim about it.</p>
-      <p class="card__body">
-        A small accessible component set in React and TypeScript, with no UI library.
-        Every colour, space and radius comes from one token file, so a single switch
-        rethemes all of it without a component knowing it happened. The multi-select
-        takes arrow keys, Home and End, type-ahead and Backspace, and the dialog traps
-        focus and hands it back. Built to be operated entirely by keyboard.
+      <p class="proj__body">
+        A small accessible component set in React and TypeScript, with no UI library. Every
+        colour, space and radius comes from one token file, so a single switch rethemes all
+        of it without a component knowing it happened. The multi-select takes arrow keys,
+        Home and End, type-ahead and Backspace, and the dialog traps focus and hands it back.
       </p>
       <p class="chips"><span>React</span><span>TypeScript</span><span>Design tokens</span><span>Light and dark</span><span>WCAG 2.2</span></p>
-      <p class="card__foot">
-        <a class="card__cta" href="components/">Open the lab</a>
-      </p>
-    </article>
+      <ol class="stops">
+        <li>
+          <span class="stop stop--l" aria-hidden="true">L1</span>
+          <a href="components/">Open the lab</a>
+          <span>Put the mouse down and use the keyboard</span>
+        </li>
+      </ol>
+    </div>
 
-    <article class="card">
-      <div class="card__top">
-        <h3 class="card__name">sollo.my</h3>
-        <span class="card__tag">Shipped</span>
+    <figure class="proj__fig">
+      <div class="twin">
+        <img src="assets/lab/lab-light.webp" width="1120" height="620" loading="lazy" decoding="async"
+             alt="The lab's multi-select and button set in the light theme, with the same components in the dark theme on the right.">
+        <img src="assets/lab/lab-dark.webp" width="1120" height="620" loading="lazy" decoding="async" alt="">
       </div>
-      <p class="card__for">For someone who has heard the app exists and needs to
-        understand it in their own language before they trust it.</p>
-      <p class="card__body">
+      <figcaption>The same components, one token switch apart.</figcaption>
+    </figure>
+  </article>
+
+  <article class="proj proj--w proj--solo" id="sollo-my">
+    <div class="proj__text">
+      <span class="line line--w" aria-hidden="true">W</span>
+      <div class="proj__top">
+        <h3 class="proj__name">sollo.my</h3>
+        <span class="tag">Shipped</span>
+      </div>
+      <p class="proj__for">For someone who has heard the app exists and needs to understand
+        it in their own language before they trust it.</p>
+      <p class="proj__body">
         The Sollo landing site: static, no build step, eleven languages including
-        right-to-left Arabic. Built to load fast on a phone on mobile data, because that
-        is what the audience is on.
+        right-to-left Arabic. Built to load fast on a phone on mobile data, because that is
+        what the audience is on.
       </p>
       <p class="chips"><span>HTML/CSS/JS</span><span>11 languages</span><span>RTL</span><span>Vercel</span></p>
-      <p class="card__foot">
-        <a class="card__cta" href="https://sollo.my" rel="noopener">Visit the site</a>
-      </p>
-    </article>
-
-  </div>
+      <ol class="stops">
+        <li>
+          <span class="stop stop--w" aria-hidden="true">W1</span>
+          <a href="https://sollo.my" rel="noopener">Visit the site</a>
+          <span>Opens sollo.my</span>
+        </li>
+      </ol>
+    </div>
+  </article>
 </section>
 
 <!-- ══════════════ measurements ══════════════ -->
 <section class="sect wrap">
   <div class="sect__h">
     <h2 class="sect__t">Measured, not estimated</h2>
-    <span class="sect__n">From shipped work</span>
+    <span class="sect__n">From shipped work at Sollo</span>
   </div>
   <ul class="nums">
-    <li><b>70+</b><span>pull requests merged in eight weeks at Sollo</span></li>
+    <li><b>70+</b><span>pull requests merged in eight weeks</span></li>
     <li><b>2,949</b><span>tests green at handoff</span></li>
     <li><b>9</b><span>languages shipped, including Easy Japanese</span></li>
     <li><b>8&times;</b><span>faster core browse flow, 1,033ms to 125ms</span></li>
@@ -285,65 +376,66 @@
   </div>
 </section>
 
-<!-- ══════════════ experience ══════════════ -->
-<section class="sect wrap">
+<!-- ══════════════ experience, drawn as a route ══════════════ -->
+<section class="sect wrap" id="route">
   <div class="sect__h">
-    <h2 class="sect__t">Experience</h2>
-    <span class="sect__n">4 roles</span>
+    <h2 class="sect__t">The route so far</h2>
+    <span class="sect__n">Four roles, one degree</span>
   </div>
-  <ul class="roles">
+  <ol class="route">
     <li>
-      <div>
-        <h3>Sollo</h3>
-        <p>UI/UX engineering intern, Tokyo, Japan</p>
-      </div>
-      <time>Jun 2026 to Aug 2026</time>
-    </li>
-    <li>
-      <div>
-        <h3>University of Iowa Health Care</h3>
-        <p>Student database assistant, Department of Internal Medicine</p>
-      </div>
-      <time>May 2026 to present</time>
-    </li>
-    <li>
-      <div>
-        <h3>University of Iowa Parking &amp; Transportation</h3>
-        <p>Parking field service officer</p>
-      </div>
       <time>Feb 2023 to present</time>
+      <h3>University of Iowa Parking &amp; Transportation</h3>
+      <p>Parking field service officer</p>
     </li>
     <li>
-      <div>
-        <h3>League of United Latin American Citizens</h3>
-        <p>Public relations officer, Collegiate Council #373</p>
-      </div>
       <time>Mar 2025 to present</time>
+      <h3>League of United Latin American Citizens</h3>
+      <p>Public relations officer, Collegiate Council #373</p>
     </li>
-  </ul>
+    <li>
+      <time>May 2026 to present</time>
+      <h3>University of Iowa Health Care</h3>
+      <p>Student database assistant, Department of Internal Medicine</p>
+    </li>
+    <li class="route__s">
+      <time>Jun 2026 to Aug 2026</time>
+      <h3>Sollo, Tokyo</h3>
+      <p>UI/UX engineering intern</p>
+      <span class="route__now"><span>You are here</span></span>
+    </li>
+    <li class="route__ahead">
+      <time>May 2027</time>
+      <h3>University of Iowa</h3>
+      <p>BA Informatics (HCI), minors in Spanish and psychology</p>
+    </li>
+    <li class="route__end">
+      <time>Next stop</time>
+      <h3>Your team?</h3>
+      <p><a href="#contact">Product design and UX engineer roles</a></p>
+    </li>
+  </ol>
 </section>
 
 <!-- ══════════════ contact ══════════════ -->
-<section class="sect wrap" id="contact">
-  <div class="sect__h">
-    <h2 class="sect__t">Contact</h2>
-    <span class="sect__n">Open to work</span>
-  </div>
-  <div class="prose">
-    <p>Tell me what you are building and who it is for.</p>
-  </div>
-  <div class="contact">
-    <a class="btn btn--pri" href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a>
-    <a class="btn" href="assets/resume.pdf">Resume (PDF)</a>
-    <a class="btn" href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a>
-    <a class="btn" href="https://github.com/dmartinez10" rel="noopener">GitHub</a>
+<section class="exit wrap" id="contact">
+  <div class="exit__panel">
+    <p class="exit__label"><span class="here" aria-hidden="true"></span>Contact</p>
+    <h2 class="exit__h">Tell me what you are building and who it is for.</h2>
+    <a class="exit__mail" href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a>
+    <div class="exit__links">
+      <a class="btn" href="assets/resume.pdf">Resume (PDF)</a>
+      <a class="btn" href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/dmartinez10" rel="noopener">GitHub</a>
+    </div>
   </div>
 </section>
 
 <footer class="foot wrap">
-  <span>Iowa City during term, West Liberty, Iowa</span>
-  <span class="dot" aria-hidden="true">&middot;</span>
-  <span>Built from scratch, no framework and no build step</span>
+  <span>Iowa City during term, West Liberty, Iowa.</span>
+  <span>Set in Overpass, drawn from the lettering on American highway signs, and Atkinson
+    Hyperlegible, drawn for readers with low vision. Built from scratch, with no framework
+    and no build step.</span>
 </footer>
 
 </main>

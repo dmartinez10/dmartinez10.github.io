@@ -27,9 +27,14 @@
   --s-1: 4px;   --s-2: 8px;   --s-3: 12px;
   --s-4: 16px;  --s-5: 24px;  --s-6: 32px;
 
+  /* the site's mark: sign navy on light, a pale navy on dark */
+  --mark:          #14224A;
+  --on-mark:       #FFFFFF;
+
   --shadow: 0 1px 2px #16181D0D, 0 8px 24px #16181D14;
-  --sans: "Inter", system-ui, -apple-system, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --display: "Overpass", "Helvetica Neue", Arial, sans-serif;
+  --sans: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, -apple-system, sans-serif;
+  --mono: "Atkinson Hyperlegible Mono", ui-monospace, Menlo, monospace;
 }
 
 [data-theme="dark"]{
@@ -48,6 +53,8 @@
   --danger:        #FF9B93;
   --danger-sub:    #2A1512;
   --focus:         #8CADFF;
+  --mark:          #AEB9D6;
+  --on-mark:       #101215;
 
   --shadow: 0 1px 2px #0006, 0 10px 30px #0009;
 }
