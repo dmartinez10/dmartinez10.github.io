@@ -179,6 +179,23 @@ a:hover{ text-decoration-thickness:2px; }
 .ns--resume:hover{ filter:none; background:var(--bg-raise); }
 .ns[aria-current="page"]{ outline:3px solid var(--hi); outline-offset:2px; }
 
+/* a way back, above the title, on any page that is one level in */
+/* every way out of a page is a button, never a text link (his call, 2026-09-22) */
+.back{
+  display:inline-flex; align-items:center; gap:.5rem; margin:0 0 2.25rem;
+  min-height:2.9rem; padding:.7rem 1.1rem .6rem; border-radius:8px;
+  background:var(--sign); color:#fff; text-decoration:none;
+  font-family:var(--display); font-weight:800; font-size:1rem;
+  transition:background-color .15s ease;
+}
+.back svg{ width:1.05rem; height:1.05rem; flex:none; transition:transform .15s ease; }
+.back:hover{ background:var(--sign-3); color:#fff; text-decoration:none; }
+.back:hover svg{ transform:translateX(-3px); }
+@media (prefers-reduced-motion:reduce){ .back, .back svg{ transition:none; } }
+/* the same button, outlined, where it sits beside a louder one */
+.btn--back svg{ width:1.05rem; height:1.05rem; flex:none; transition:transform .15s ease; }
+.btn--back:hover svg{ transform:translateX(-3px); }
+
 /* ══ line badges and stop markers, used everywhere ══ */
 /* A line is a filled square, the way a transit system labels a route. */
 .line{

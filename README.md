@@ -84,6 +84,15 @@ decoration:
   May 2027, then it moves.
 - **Contact is the exit sign**, the same navy as the directory, so the page
   begins and ends on the same object.
+- **Every way out is a button, never a text link** (his call, 2026-09-22: "i hate
+  text link, its not clear at all"). The back control is the navy filled button
+  with a left arrow, `a.back`; where it sits beside a louder outward link, as in a
+  story footer, it is the outlined `a.btn.btn--back` and the outward link keeps the
+  navy. The component lab has the same rule in its own tokens.
+- **Nothing is a dead end.** A page reached from Work carries an "All work" button
+  above its title: the project stories, Skills, and the component lab, whose copy
+  of it lives in `component-lab/src/App.tsx`. The `.back` rule sits in
+  `styles.css` rather than `case.css` so any page can use it.
 - **Every nav item is the kind of sign it would be on a road** (2026-09-22, his
   call): guide green for Work, an interchange for Claude, service blue for
   Components, park brown for About, an exit for Contact, and a white regulation
@@ -233,6 +242,13 @@ would want to see, our biggest flex."
   `.nums`, **What I did** as a short `.did` list, one thing to try, and **the call
   I would make again** with a few pictures in `.shots`.
 - **Why I was there comes from me, never inferred.** If it is not on record, ask.
+- **Three cells in the `.story` panel:** what it is, why I was there, and **what
+  was mine**, so a reader can tell my work from the founder's or the designer's.
+- **Every project ends on "What changed"**, a `.moves` grid of before and after
+  pairs with the number in both states: 1,033ms to 125ms, 2.72:1 to 4.60:1, five
+  tabs to one surface, five jobs to two. Added 2026-09-22 after reading
+  LinkedIn's own guidance on portfolios, which says the outcome is the part
+  hiring managers look for and the part most portfolios leave out.
 - **Numbers come from source, never from a doc.** Centline's are the ones verified
   on 21 September 2026; Sollo's are checked against the work log.
 - **Every image opens larger**, and every Centline caption says its names and
