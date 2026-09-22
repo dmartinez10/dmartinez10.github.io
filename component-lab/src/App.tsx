@@ -76,18 +76,19 @@ export default function App() {
             <span className="lab__mark" aria-hidden="true">D</span>
             <span>David Martinez</span>
           </a>
-          <nav className="lab__links" aria-label="Sections">
-            <a href="/#work">Work</a>
+          <nav className="lab__links" aria-label="Pages">
+            <a href="/work/">Work</a>
+            <a href="/work/claude.html">Claude</a>
             <a href="/components/" aria-current="page">Components</a>
-            <a href="/#about">About</a>
-            <a href="/#contact">Contact</a>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
             <a href="/assets/resume.pdf">Resume</a>
           </nav>
         </div>
       </header>
 
       <main className="lab__main" id="main">
-        <p className="lab__kicker">React &middot; TypeScript &middot; No UI library</p>
+        <p className="lab__kicker">React and TypeScript, no UI library</p>
         <h1 className="lab__h1">Component lab</h1>
         <p className="lab__lede">
           A small set of accessible components. Every colour, space and radius comes from

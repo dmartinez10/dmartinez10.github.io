@@ -17,14 +17,14 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#F2F3EF">
 
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://dmartinez10.github.io/work/sollo-nine-locales.html">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;1,400&family=Overpass:wght@600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="../case.css">
 </head>
@@ -34,25 +34,26 @@
 
 <header class="nav">
   <div class="nav__in">
-    <a class="nav__me" href="../index.html">
+    <a class="nav__me" href="../">
       <span class="nav__mark" aria-hidden="true">D</span>
       <span>David Martinez</span>
     </a>
-    <nav class="nav__links" aria-label="Sections">
-      <a href="../index.html#work">Work</a>
+    <nav class="nav__links" aria-label="Pages">
+      <a href="../work/" aria-current="page">Work</a>
+      <a href="../work/claude.html">Claude</a>
       <a href="../components/">Components</a>
-      <a href="../index.html#about">About</a>
-      <a href="../index.html#contact">Contact</a>
+      <a href="../about/">About</a>
+      <a href="../contact/">Contact</a>
       <a href="../assets/resume.pdf">Resume</a>
     </nav>
   </div>
 </header>
 
-<main id="main" class="case wrap">
+<main id="main" class="case wrap proj--s">
 
-  <a class="back" href="../index.html">All work</a>
+  <a class="back" href="./">All work</a>
 
-  <p class="case__kicker">Sollo &middot; Tokyo &middot; Summer 2026</p>
+  <p class="case__kicker"><span class="stop stop--s" aria-hidden="true">S3</span>Sollo, Tokyo, summer 2026</p>
   <h1 class="case__title">Nine locales</h1>
   <p class="case__thesis">
     The readers are foreign residents of Japan. If the app only works well in English, it
@@ -108,6 +109,17 @@
         not bureaucratic Japanese is not served by an English toggle. They are served by
         Japanese written for them.
       </p>
+    </div>
+
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-s2-figma">
+    <img src="../assets/sollo/onboarding-figma.webp" width="1600" height="845" loading="lazy" decoding="async" alt="Four onboarding frames from Figma, one per language: English, Japanese, Easy Japanese and Vietnamese. The Japanese frame labels the name field with kanji, and the Easy Japanese frame writes the same labels in hiragana.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>The onboarding design in Figma that I built from, one frame per language. I built the screens once from the English frames and let localization drive the rest. Compare the second and third: the same field is labelled 名 in Japanese and なまえ in Easy Japanese.</figcaption>
+</figure>
+
+    <div class="prose">
       <p>
         Once that is the premise, English-with-a-fallback stops being acceptable as a
         shipping state. A fallback means a reader in Hanoi taps into a screen and finds a
@@ -292,10 +304,15 @@
   </section>
 
   <footer class="cfoot">
-    <a href="../index.html">Back to all work</a>
+    <a href="./">Back to all work</a>
     <a href="https://apps.apple.com/us/app/sollo-life-nav/id6781235016" rel="noopener">Sollo on the App Store</a>
     <a href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a>
   </footer>
+
+<div class="lightbox" id="lb-s2-figma" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-s2-figma" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/sollo/onboarding-figma.webp" width="1600" height="845" loading="lazy" decoding="async" alt="Four onboarding frames from Figma, one per language: English, Japanese, Easy Japanese and Vietnamese. The Japanese frame labels the name field with kanji, and the Easy Japanese frame writes the same labels in hiragana."><figcaption>The onboarding design in Figma that I built from, one frame per language. I built the screens once from the English frames and let localization drive the rest. Compare the second and third: the same field is labelled 名 in Japanese and なまえ in Easy Japanese.</figcaption></figure>
+</div>
 
 </main>
 </body>

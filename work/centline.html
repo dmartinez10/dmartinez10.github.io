@@ -4,27 +4,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Centline &middot; Case study &middot; David Martinez</title>
-<meta name="description" content="Centline: a load-pricing app for a one-truck owner-operator. How one number, net after deadhead, decided the architecture, the design system, and which tab got cut.">
+<meta name="description" content="Centline: a phone app for the working life of a freight load, from saved to paid. How every change is drawn as options, picked, written down, and only then built, checked and walked on a phone.">
 <meta name="author" content="David Martinez">
 
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="David Martinez">
 <meta property="og:title" content="Centline &middot; Case study">
-<meta property="og:description" content="A $1,500 load that reads as $260 of profit is a $50 loss once the empty miles are counted. Designing and building the app that refuses to show the first number.">
+<meta property="og:description" content="One record for every load, from saved to paid. My own app, designed under rules I wrote, with Claude Code in the loop. In testing.">
 <meta property="og:url" content="https://dmartinez10.github.io/work/centline.html">
 <meta property="og:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#F2F3EF">
 
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://dmartinez10.github.io/work/centline.html">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;1,400&family=Overpass:wght@600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="../case.css">
 </head>
@@ -34,400 +34,384 @@
 
 <header class="nav">
   <div class="nav__in">
-    <a class="nav__me" href="../index.html">
+    <a class="nav__me" href="../">
       <span class="nav__mark" aria-hidden="true">D</span>
       <span>David Martinez</span>
     </a>
-    <nav class="nav__links" aria-label="Sections">
-      <a href="../index.html#work">Work</a>
+    <nav class="nav__links" aria-label="Pages">
+      <a href="../work/" aria-current="page">Work</a>
+      <a href="../work/claude.html">Claude</a>
       <a href="../components/">Components</a>
-      <a href="../index.html#about">About</a>
-      <a href="../index.html#contact">Contact</a>
+      <a href="../about/">About</a>
+      <a href="../contact/">Contact</a>
       <a href="../assets/resume.pdf">Resume</a>
     </nav>
   </div>
 </header>
+<main id="main" class="case wrap proj--c">
 
-<main id="main" class="case wrap">
+  <a class="back" href="./">All work</a>
 
-  <a class="back" href="../index.html">All work</a>
-
-  <p class="case__kicker">Design and engineering &middot; 2026, in progress</p>
+  <p class="case__kicker"><span class="stop stop--c" aria-hidden="true">C1</span>Design and engineering, 2026, in testing</p>
   <h1 class="case__title">Centline</h1>
   <p class="case__thesis">
-    The number a broker quotes is not the number that pays you. Centline exists to
-    show the second one before a driver says yes.
+    One record for every load, from saved to paid, for a man reading it one-handed at a
+    loading dock at night.
   </p>
-
-  <!-- the five second block, before any figure -->
+<figure class="fig case__hero">
+  <button class="zoom" type="button" popovertarget="lb-c-cover">
+    <img src="../assets/centline/cover.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="A design preview of Centline on a green background: a rate confirmation being signed on one phone, and the invoice packet on another, with the signed bill of lading and the rate confirmation ticked.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>A design preview of the invoice packet. Names and numbers are made up.</figcaption>
+</figure>
   <dl class="brief">
     <div>
       <dt>Role</dt>
-      <dd>Sole designer and engineer. Research, design system, the mobile app, and
-        the service behind its share links.</dd>
+      <dd>Sole designer and product engineer. I make the product decisions, own the design
+        system and write the rules. Claude Code is in the loop: it draws the options I choose
+        between and checks the work against those rules.</dd>
     </div>
     <div>
       <dt>Constraint</dt>
-      <dd>A one-truck owner-operator, often in his first year, reading it one handed
-        at a loading dock at 2am. Not a software person. He will delete anything
-        that wastes his time.</dd>
+      <dd>A one-truck owner-operator, often in his first year, reading it one-handed at a
+        loading dock at night. Not a software person, and short on time.</dd>
     </div>
     <div>
       <dt>Outcome</dt>
-      <dd>Five tabs, 968 tests green, a design system whose contrast lint has caught
-        two failures that looked fine on screen. Nobody who drives for a living has
-        used it yet, which is the honest state of it.</dd>
+      <dd>Four tabs, 5,888 tests passing and 144 merged pull requests since 29 July 2026. In
+        testing and not yet in the App Store, so no one uses it for real yet.</dd>
     </div>
   </dl>
 
-  <!-- ═══ 01 ═══ -->
   <section class="sec">
     <div class="sec__head">
       <span class="sec__n">01</span>
-      <h2 class="sec__title">The number that bankrupts people</h2>
+      <h2 class="sec__title">Cut to two jobs</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-
     <div class="prose">
       <p>
-        Freight brokers quote a rate in dollars per <em>loaded</em> mile. The empty
-        miles a driver runs to reach the pickup, called deadhead, burn the same fuel
-        and the same maintenance, and they pay nothing.
+        Centline began as a tool for pricing loads. About six weeks in I removed the entire
+        cost side, because the real pain is getting from delivered to paid. Nine days later
+        the Network tab went: brokers would never offer loads through the app, so it had no
+        job.
       </p>
       <p>
-        That gap is not academic. It is the usual reason a new carrier goes under in
-        year one, and it is invisible in the only number anyone quotes. So the whole
-        product reduces to one question: <strong>what does this load actually net
-        after the empty miles?</strong>
+        What is left does two things, in four tabs: moves a load from saved to delivered, and
+        gets it invoiced and paid. Now opens on the load he is on, drawn as a green highway
+        sign with the stage, the day, the lane, the rate and the load number, and one button
+        that matches the moment:
       </p>
     </div>
 
-    <div class="flip">
-      <div class="flip__col">
-        <p class="flip__lab">What the broker's number says</p>
-        <p class="flip__row"><span>Rate offered</span><b>$1,500</b></p>
-        <p class="flip__row"><span>Loaded miles</span><b>1,000</b></p>
-        <p class="flip__row"><span>Cost per mile</span><b>$1.24</b></p>
-        <p class="flip__row"><span>Cost, loaded only</span><b>$1,240</b></p>
-        <p class="flip__out flip__out--good">+$260</p>
-        <p class="flip__note">Looks like a good load. Take it.</p>
-      </div>
-      <div class="flip__col flip__col--bad">
-        <p class="flip__lab">What the truck actually does</p>
-        <p class="flip__row"><span>Rate offered</span><b>$1,500</b></p>
-        <p class="flip__row"><span>Deadhead miles</span><b>250</b></p>
-        <p class="flip__row"><span>Total miles</span><b>1,250</b></p>
-        <p class="flip__row"><span>Cost, all miles</span><b>$1,550</b></p>
-        <p class="flip__out flip__out--bad">-$50</p>
-        <p class="flip__note">The same load. It loses money.</p>
+    <div class="now">
+      <fieldset class="pick-row">
+        <legend>Where is the load?</legend>
+        <label class="pick-opt"><input type="radio" name="stage" value="booked" checked><span>Booked</span></label>
+        <label class="pick-opt"><input type="radio" name="stage" value="rolling"><span>Rolling</span></label>
+        <label class="pick-opt"><input type="radio" name="stage" value="delivered"><span>Delivered</span></label>
+      </fieldset>
+      <div aria-live="polite">
+        <div class="now__sign">
+          <p class="now__stage"><span data-s="booked">Booked</span><span data-s="rolling">Rolling</span><span data-s="delivered">Delivered</span>, Tuesday</p>
+          <p class="now__lane">Laredo, TX to Memphis, TN</p>
+          <span class="now__dash" aria-hidden="true"></span>
+          <p class="now__meta">$2,850, load 48213</p>
+        </div>
+        <p class="now__btn">The one button: <span data-s="booked">Picked up</span><span data-s="rolling">Delivered</span><span data-s="delivered">Write the invoice</span></p>
       </div>
     </div>
-
-    <div class="prose">
-      <p>
-        Same truck, same load, same day. A $260 profit and a $50 loss are the same
-        offer seen two ways, and only one of them is real. This case is pinned in
-        the test suite, where the comment next to the $260 reads: the number that
-        bankrupts people.
-      </p>
-    </div>
+    <p class="demo-note">Drawn in HTML and CSS, in Centline&rsquo;s colours. The load is made up.</p>
   </section>
-
-  <!-- ═══ 02 ═══ -->
   <section class="sec">
     <div class="sec__head">
       <span class="sec__n">02</span>
-      <h2 class="sec__title">One rule, and everything downstream of it</h2>
+      <h2 class="sec__title">How I work</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-
     <div class="prose">
       <p>
-        Once you accept that the flip is the product, the rule writes itself: every
-        cost figure in the app uses total miles, loaded plus deadhead. Any cost math
-        that touches <code>loadedMiles</code> is treated as a bug until proven
-        otherwise.
-      </p>
-      <p>
-        That single sentence turned out to be an architectural constraint rather
-        than a style note. It is why arithmetic lives in a pure layer with no I/O
-        and no access to the clock, why money is integer cents and miles are
-        integers, and why a per-mile figure is rounded exactly once, at the moment
-        a real dollar amount is produced. Rounding a per-mile number before
-        multiplying it by a thousand miles is off by dollars, and dollars are
-        enough to flip a verdict.
+        Every change goes the same way: drawn as options, picked, written down, and only then
+        built, checked and walked on a phone.
       </p>
     </div>
 
-    <div class="call">
-      <span class="call__lab">The decision I keep coming back to</span>
-      <p>
-        A value the driver has not entered is null, never zero. Zero is an answer.
-        Blank is not. If a required input is missing, the screen says so and refuses
-        to compute, rather than defaulting to something plausible. An app that
-        quietly assumes a maintenance reserve of zero will tell a man a losing load
-        is fine.
-      </p>
-    </div>
+    <ol class="steps">
+      <li><span class="stop stop--c" aria-hidden="true">1</span><b>Notes on the real thing</b>
+        <p>I write notes on screenshots of the app on my phone. The Profile redraw started as seven.</p></li>
+      <li><span class="stop stop--c" aria-hidden="true">2</span><b>Options, side by side</b>
+        <p>Claude Code draws the change on a canvas two to four ways, with a recommendation marked. I answer with a letter.</p></li>
+      <li><span class="stop stop--c" aria-hidden="true">3</span><b>The pick, written down</b>
+        <p>Into the project&rsquo;s own rules, with its date and my reason, so a later change has to argue with it.</p></li>
+      <li><span class="stop stop--c" aria-hidden="true">4</span><b>A spec, then a plan</b>
+        <p>Numbered tasks before any code. 28 specs and 25 plans in eight weeks.</p></li>
+      <li><span class="stop stop--c" aria-hidden="true">5</span><b>Built to the plan</b>
+        <p>Each task is built to its spec, then checked against the written rules.</p></li>
+      <li><span class="stop stop--c" aria-hidden="true">6</span><b>An agent that breaks it</b>
+        <p>Its only job is to make the finished change fail.</p></li>
+      <li><span class="stop stop--c" aria-hidden="true">7</span><b>I look at every screen</b>
+        <p>The app draws each screen at phone size, so I see it rather than trust it.</p></li>
+      <li><span class="stop stop--c" aria-hidden="true">8</span><b>I walk it</b>
+        <p>On a simulator, then on my own phone.</p></li>
+      <li><span class="stop stop--c" aria-hidden="true">9</span><b>A pull request, or nothing</b>
+        <p>Nothing reaches main without passing the required checks.</p></li>
+    </ol>
+
+    <h3 class="find__h">Your turn: the top of Getting paid</h3>
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-c-paid">
+    <img src="../assets/centline/getting-paid-options.webp" width="1600" height="670" loading="lazy" decoding="async" alt="Four phone screens titled Getting paid, labelled A to D. A shows three small cells: Not sent, Not due yet and Late. B is one card with a row per pile. C puts the late money first in a dark card. D turns the piles into filter chips.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>The top of Getting paid, drawn four ways, with A marked as the pick. Names and numbers are made up.</figcaption>
+</figure>
+    <fieldset class="vote pick-row">
+      <legend>Which would you pick?</legend>
+      <label class="pick-opt"><input type="radio" name="paid" value="a"><span>A <small>Three small cells</small></span></label>
+      <label class="pick-opt"><input type="radio" name="paid" value="b"><span>B <small>One card, a row per pile</small></span></label>
+      <label class="pick-opt"><input type="radio" name="paid" value="c"><span>C <small>The late money first</small></span></label>
+      <label class="pick-opt"><input type="radio" name="paid" value="d"><span>D <small>The piles are the filter</small></span></label>
+      <p class="vote__wait">Pick one to see what I did.</p>
+      <p class="vote__out" data-v="a"><b>You picked A,</b> where I ended up.</p>
+      <p class="vote__out" data-v="b"><b>You picked B,</b> my first pick too.</p>
+      <p class="vote__out" data-v="c"><b>You picked C,</b> the late money first.</p>
+      <p class="vote__out" data-v="d"><b>You picked D,</b> the piles as the filter.</p>
+      <p class="vote__then">I picked B first. Once it was drawn I went back to A, three small cells drawn
+        smaller. Seeing it changed my mind, which is why the canvas comes first.</p>
+    </fieldset>
+
+    <h3 class="find__h">Your turn: the first screen a new account sees</h3>
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-c-which">
+    <img src="../assets/centline/which-are-you-options.webp" width="1600" height="1029" loading="lazy" decoding="async" alt="Four phone screens. A, as built: Joining a company?, with a code box open and a blue Join button. B: the same screen with the buttons swapped. C: Which are you?, with two cards, I run my own authority and I drive for a company, and a Next button, then the join code screen behind the second card. Under each, a note arguing for or against it.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>The first screen after confirming an account, drawn three ways, each with its note for or against. The code is made up.</figcaption>
+</figure>
+    <fieldset class="vote pick-row">
+      <legend>Which would you pick?</legend>
+      <label class="pick-opt"><input type="radio" name="door" value="a"><span>A <small>As built</small></span></label>
+      <label class="pick-opt"><input type="radio" name="door" value="b"><span>B <small>Turned round</small></span></label>
+      <label class="pick-opt"><input type="radio" name="door" value="c"><span>C <small>Which are you?</small></span></label>
+      <p class="vote__wait">Pick one to see what I did.</p>
+      <p class="vote__out" data-v="a"><b>You picked A.</b> Its note: Join is the loud one, though nearly every account is a carrier.</p>
+      <p class="vote__out" data-v="b"><b>You picked B.</b> Its note: a carrier still gets an empty code box for no reason.</p>
+      <p class="vote__out" data-v="c"><b>You picked C, the pick.</b> Only the man who has a code ever sees a code box.</p>
+      <p class="vote__then">The rare answer should not be the loud one. So C: two cards and a Next
+        button, and the code on a screen of its own.</p>
+    </fieldset>
   </section>
-
-  <!-- ═══ 03 ═══ -->
   <section class="sec">
     <div class="sec__head">
       <span class="sec__n">03</span>
-      <h2 class="sec__title">A design system with one reference</h2>
+      <h2 class="sec__title">One reference</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-
     <div class="prose">
       <p>
-        The visual system is a <code>DESIGN.md</code> at the repo root, in the
-        design.md format: tokens in the frontmatter, the reasoning in prose. The
-        whole thing falls out of a single reference, chosen deliberately:
-        <strong>a parcel tracking page for a freight load.</strong>
+        One reference decides the look: <strong>a parcel tracking page for a freight
+        load.</strong> One subject in one state, the status at the top, facts in rows, the
+        one action that matches the stage. It rules out, for free, hero imagery, streaks,
+        badges, celebrations and any score on a safety record.
       </p>
       <p>
-        A tracking page has one subject and shows it in one state. It puts the
-        status rail at the top, because <em>where is it</em> is the question. It
-        states facts in rows and does not decorate them. It offers the one action
-        that matches the stage, not eleven. You do not enjoy a tracking page. You
-        read it and close it.
-      </p>
-      <p>
-        Picking that reference did more work than any style guide would have,
-        because of what it rules out for free: marketing language, hero imagery,
-        gradients, glassmorphism, celebratory states, streaks, badges, and any
-        score on a man's safety record. When a new screen is proposed, the question
-        is not whether it looks good. It is whether it follows from the reference.
+        The tokens live in one design document, in an open design-token format, and one
+        theme file in the code; nothing hard-codes a colour anywhere else. The document is
+        linted for WCAG contrast, and the lint caught two failures I had looked at and
+        approved. There is a night palette, because the core scene is a dock at 2am. Even a
+        field&rsquo;s outline is its own token: WCAG asks 3:1 for an input&rsquo;s edge, and
+        the old hairline measured 1.4:1.
       </p>
     </div>
 
-    <div class="tok" role="list" aria-label="Design system colour tokens">
+    <div class="tok" role="list" aria-label="Centline design tokens">
       <div class="tok__c" role="listitem">
         <div class="tok__chip" style="background:#1A1A18"></div>
         <div class="tok__meta"><span class="tok__name">primary</span><span class="tok__hex">#1A1A18</span></div>
       </div>
       <div class="tok__c" role="listitem">
-        <div class="tok__chip" style="background:#6E6C64"></div>
-        <div class="tok__meta"><span class="tok__name">secondary</span><span class="tok__hex">#6E6C64</span></div>
+        <div class="tok__chip" style="background:#FAFAF9"></div>
+        <div class="tok__meta"><span class="tok__name">ground</span><span class="tok__hex">#FAFAF9</span></div>
       </div>
       <div class="tok__c" role="listitem">
         <div class="tok__chip" style="background:#1F4E8C"></div>
-        <div class="tok__meta"><span class="tok__name">accent</span><span class="tok__hex">#1F4E8C</span></div>
+        <div class="tok__meta"><span class="tok__name">accent</span><span class="tok__hex">#1F4E8C</span><small>Blue means tap me, never judgement</small></div>
       </div>
       <div class="tok__c" role="listitem">
-        <div class="tok__chip" style="background:#067A48"></div>
-        <div class="tok__meta"><span class="tok__name">verdict-good</span><span class="tok__hex">#067A48</span></div>
+        <div class="tok__chip" style="background:#01513A"></div>
+        <div class="tok__meta"><span class="tok__name">sign</span><span class="tok__hex">#01513A</span></div>
       </div>
       <div class="tok__c" role="listitem">
-        <div class="tok__chip" style="background:#7A6000"></div>
-        <div class="tok__meta"><span class="tok__name">verdict-thin</span><span class="tok__hex">#7A6000</span></div>
+        <div class="tok__chip" style="background:#FBB214"></div>
+        <div class="tok__meta"><span class="tok__name">sign-dash</span><span class="tok__hex">#FBB214</span></div>
       </div>
       <div class="tok__c" role="listitem">
-        <div class="tok__chip" style="background:#B42318"></div>
-        <div class="tok__meta"><span class="tok__name">verdict-loses</span><span class="tok__hex">#B42318</span></div>
+        <div class="tok__chip" style="background:#8D8B80"></div>
+        <div class="tok__meta"><span class="tok__name">field-edge</span><span class="tok__hex">#8D8B80</span><small>An input&rsquo;s edge, at 3:1</small></div>
       </div>
-    </div>
-
-    <div class="prose">
-      <p>
-        Every colour literal in the codebase lives in one theme file, so the
-        document and the code cannot drift apart. The document is checked with
-        <code>npx @google/design.md lint DESIGN.md</code>, which validates its
-        structure and its WCAG contrast ratios. It has already caught two failures
-        that looked perfectly fine to me on screen, which is the argument for
-        having a linter rather than an eye.
-      </p>
+      <div class="tok__c" role="listitem">
+        <div class="tok__chip" style="background:#B03A2E"></div>
+        <div class="tok__meta"><span class="tok__name">red-pencil</span><span class="tok__hex">#B03A2E</span></div>
+      </div>
+      <div class="tok__c" role="listitem">
+        <div class="tok__chip" style="background:#15161A"></div>
+        <div class="tok__meta"><span class="tok__name">night-ground</span><span class="tok__hex">#15161A</span><small>The dock at 2am</small></div>
+      </div>
     </div>
   </section>
-
-  <!-- ═══ 04 ═══ -->
   <section class="sec">
     <div class="sec__head">
       <span class="sec__n">04</span>
-      <h2 class="sec__title">Why the whole look changed</h2>
+      <h2 class="sec__title">Drawn before it was built</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
+    <div class="prose">
+      <p>
+        The paperwork is where a load turns into money, so it was drawn in full first.
+      </p>
+    </div>
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-c-inbox">
+    <img src="../assets/centline/inbox-to-invoice.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="Four phones in sequence: an email from Example Logistics with a rate confirmation shared to Centline, picking the invoice it belongs to, signing the rate confirmation on the phone, and invoice 1042 with the signed bill of lading and the rate confirmation ticked in the packet.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>From your inbox to the invoice, in four steps. A design preview: names and numbers are made up.</figcaption>
+</figure>
+    <div class="prose">
+      <p>
+        The invoice packet is one PDF: the invoice, then its paperwork in a fixed order,
+        handed to the phone&rsquo;s share sheet. It cannot go without the signed bill of
+        lading and the rate confirmation, and the button says why before the tap. Try it:
+      </p>
+    </div>
+
+    <div class="packet">
+      <p class="packet__h">Invoice 1042 <span>Example Logistics, load 48213</span></p>
+      <ul class="packet__docs">
+        <li><input type="checkbox" id="pk-bol"><label for="pk-bol"><span class="packet__tick" aria-hidden="true"></span><span class="packet__doc">Signed bill of lading <small>Required</small></span><span class="packet__act" aria-hidden="true"></span></label></li>
+        <li><input type="checkbox" id="pk-rc"><label for="pk-rc"><span class="packet__tick" aria-hidden="true"></span><span class="packet__doc">Rate confirmation, signed <small>Required</small></span><span class="packet__act" aria-hidden="true"></span></label></li>
+        <li><input type="checkbox" id="pk-lr"><label for="pk-lr"><span class="packet__tick" aria-hidden="true"></span><span class="packet__doc">Lumper receipt <small>If there is one</small></span><span class="packet__act" aria-hidden="true"></span></label></li>
+      </ul>
+      <div class="packet__send" aria-live="polite">
+        <p class="packet__s packet__s--none">Not ready to send <span>Needs the signed bill of lading and the rate confirmation.</span></p>
+        <p class="packet__s packet__s--bol">Not ready to send <span>Needs the signed bill of lading.</span></p>
+        <p class="packet__s packet__s--rc">Not ready to send <span>Needs the rate confirmation.</span></p>
+        <p class="packet__s packet__s--ok">Send the packet</p>
+      </div>
+    </div>
+    <p class="demo-note">Drawn in HTML and CSS. The names are made up.</p>
 
     <div class="prose">
       <p>
-        For most of its life the app looked industrial: steel plate, hard shadows,
-        stencilled capitals. It suited a tool used in a truck, and I liked it.
+        A tick means the document is in the packet, and in the app the box cannot be tapped:
+        a checklist he could tick by hand let an invoice claim paperwork it did not carry.
+        When the share sheet closes, the app asks whether he sent it, because only he knows.
+        Yes starts the payment clock.
       </p>
+    </div>
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-c-sign">
+    <img src="../assets/centline/signing-up-close.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="Three phones signing a carrier agreement: a signature drawn once and placed on its line, Jane Doe typed into a text box, and a date picked from a calendar with a choice of how it is written.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>Signing, up close: a signature drawn once, a text box, and a date that cannot be mistyped. Names are made up.</figcaption>
+</figure>
+    <div class="prose">
       <p>
-        Then the product grew a second half. Alongside the private money math, it
-        gained a public face: the driver's carrier record, sent to brokers and read
-        by strangers who are deciding whether to trust him. On that half, the
-        industrial styling read as a machine's readout rather than as a person's
-        profile, which is exactly the wrong impression when the reader is a broker
-        vetting a new carrier on thin data.
-      </p>
-      <p>
-        So the system moved to a soft neutral ground, white cards with a hairline
-        edge, generous radii, and sentence-case headings, with one ink-dark panel
-        kept for the answer itself. The look changed because the audience changed,
-        not because I got bored of it.
+        The app never claims a file needs a signature, because it cannot know. And every
+        field is asked where he learns it: the pickup number is quoted at the gate and the
+        BOL number is on the paper at the dock, so they wait for a section that appears once
+        the load is accepted.
       </p>
     </div>
   </section>
-
-  <!-- ═══ 05 ═══ -->
   <section class="sec">
     <div class="sec__head">
       <span class="sec__n">05</span>
-      <h2 class="sec__title">Cutting a tab, then putting it back</h2>
+      <h2 class="sec__title">Rules it will not break</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-
     <div class="prose">
-      <p>
-        The navigation started as five tabs named after nouns: Check, Invoices,
-        Week, Record, Truck. It became four, named after the times of a working
-        life. Then one of them came back, and the reversal is the part worth
-        writing down.
-      </p>
+      <p>Some rules are held by tests rather than by review, so they cannot quietly drift.</p>
     </div>
-
-    <div class="cut">
-      <div class="cut__box">
-        <p class="cut__lab">Before, five nouns</p>
-        <ul class="cut__list">
-          <li>Check</li>
-          <li>Invoices</li>
-          <li>Week</li>
-          <li>Record</li>
-          <li>Truck</li>
-        </ul>
-      </div>
-      <div class="cut__box cut__box--now">
-        <p class="cut__lab">Now, five moments</p>
-        <ul class="cut__list">
-          <li class="is-new">Now</li>
-          <li class="is-new">Loads</li>
-          <li class="is-new">Invoices</li>
-          <li class="is-new">Network</li>
-          <li class="is-new">Profile</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="prose">
-      <p>
-        The reasoning: a load is one thread. It is checked, it rolls, it becomes an
-        invoice, it gets paid. Splitting Check and Invoices across two tabs meant
-        two homes for one object, so Money folded into Loads because an invoice is
-        just a load at a later age. The freed slot went to Network, which had been
-        a search box buried three taps deep even though connections are made inside
-        the app.
-      </p>
-      <p>
-        Losing a tab was the point, not a cost. The front door stayed reserved for
-        the present tense: what is under him right now, and the one action it needs.
-      </p>
-      <p>
-        <strong>Then I put Invoices back.</strong> The merge was right on paper and wrong
-        in the hand. Reading a load and billing a load turn out to be different errands
-        in different moods, and folding them together meant invoice controls kept
-        surfacing while somebody was trying to price a load. The reasoning behind the
-        merge has still not been shown wrong, and it is kept beside the code for whoever
-        reads it next, but the argument was settled by using the thing on a phone rather
-        than by being right about it.
-      </p>
-    </div>
+    <ul class="rules">
+      <li><b>Every phone.</b> Every screen fits every phone from 280 to 440 points wide, measured at 8 phone sizes and 5 tablet windows with the real fonts. No ellipsis, a word shrinks rather than splitting, and an instruction sits under a field&rsquo;s label, never inside it.</li>
+      <li><b>No long dashes</b> in anything the app draws.</li>
+      <li><b>No grey hint text</b> inside a field, unless I approved that one.</li>
+      <li><b>No money</b> anywhere on the profile.</li>
+      <li><b>Nothing graded.</b> His carrier record for brokers and the roadside inspection view never count, score, grade or colour his history red. Missing data must never read as a failing grade.</li>
+      <li><b>No run-on copy.</b> No two lines that run together into one word.</li>
+    </ul>
   </section>
-
-  <!-- ═══ 06 ═══ -->
   <section class="sec">
     <div class="sec__head">
       <span class="sec__n">06</span>
-      <h2 class="sec__title">A bug that broke the promise</h2>
+      <h2 class="sec__title">Where tests were not enough</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-
+    <ul class="big3">
+      <li><b>11</b><span>real defects in one night on the Profile redraw, from the agent whose only job is breaking things. Three were in the first pass&rsquo;s own fixes.</span></li>
+      <li><b>1</b><span>date range reading &ldquo;1 Jan to 31 Dec&rdquo;, no year. 5,280 passing tests said nothing. Looking at the screen did.</span></li>
+      <li><b>4</b><span>defects from the first walk through a driver joining a company, which 5,759 tests could not find.</span></li>
+    </ul>
     <div class="prose">
       <p>
-        The app is offline-first by design, because signal at a dock or in a yard is
-        not a given. The private half of it, costs and verdicts and broker history,
-        never leaves the phone at all.
-      </p>
-      <p>
-        Then the connected half arrived, and with it a subtle failure. For about a
-        minute the online side went down, and drivers who were already signed in
-        were dropped back at the sign-in screen. Technically a blip. In practice, a
-        broken promise: the app said it worked without a connection and then locked
-        a man out because of one.
-      </p>
-      <p>
-        The fix was to stop depending on the network for that decision. Whether the
-        app opens at the sign-in screen is now settled on the phone, so it behaves
-        the same in airplane mode.
+        Walking it changes decisions, not only code. I walked onboarding myself, got through
+        with a blank, and it became the one form allowed to block. The tab bar moved between
+        four and five tabs several times, each time after using it.
       </p>
     </div>
   </section>
-
-  <!-- ═══ 07 ═══ -->
   <section class="sec">
     <div class="sec__head">
       <span class="sec__n">07</span>
-      <h2 class="sec__title">Accessibility, asserted rather than assumed</h2>
+      <h2 class="sec__title">What is not done</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-
     <div class="prose">
       <p>
-        The use case makes accessibility a functional requirement, not a compliance
-        checkbox. One hand, a phone at arm's length, a dark cab, and a person who is
-        tired. So the guarantees are asserted in tests rather than trusted to
-        review: Android and iOS tap-target guidelines, and a labelled-tappable check
-        so every control announces itself, both run on every change.
-      </p>
-      <p>
-        Contrast is handled at the system level instead of per screen. Because every
-        colour is a token in one document, linting that document checks the palette
-        once rather than auditing screens forever. The two failures it caught were
-        both combinations I had looked at directly and approved.
+        It is not in the App Store yet, and no one uses it for real. A long packet&rsquo;s
+        file size has never been measured on a real phone. The tablet layout has never been
+        seen on a real tablet. The public page is at
+        <a href="https://centline.co" rel="noopener">centline.co</a>.
       </p>
     </div>
 
     <ul class="nums cstats">
-      <li><b>968</b><span>tests green</span></li>
-      <li><b>5</b><span>tabs, after a reversal</span></li>
-      <li><b>2</b><span>contrast failures caught</span></li>
+      <li><b>5,888</b><span>tests passing</span></li>
+      <li><b>144</b><span>merged pull requests</span></li>
+      <li><b>8</b><span>phone sizes, measured</span></li>
       <li><b>0</b><span>colours outside the theme</span></li>
     </ul>
   </section>
 
-  <!-- ═══ 08 ═══ -->
-  <section class="sec">
-    <div class="sec__head">
-      <span class="sec__n">08</span>
-      <h2 class="sec__title">What is not done</h2>
-      <span class="sec__rule" aria-hidden="true"></span>
-    </div>
-
-    <div class="prose">
-      <p>
-        No working driver has used this. Every design decision here is reasoned from
-        domain research and from interviews I have not finished, which means the
-        riskiest assumptions are still assumptions. Five questions about the cost
-        model remain open, and two of them can still move the arithmetic: whether
-        maintenance should be reserved per mile or per month, and whether detention
-        should count before it has actually been earned.
-      </p>
-      <p>
-        Invoices go out as text to paste into an email rather than as a PDF, because
-        a rendering library is not what stops an owner-operator getting paid. The
-        app icon is a placeholder I drew. Those are known, deliberate, and written
-        down rather than discovered later.
-      </p>
-    </div>
-  </section>
-
   <footer class="cfoot">
-    <a href="../index.html">Back to all work</a>
+    <a href="./">Back to all work</a>
+    <a href="claude.html">How I work with Claude</a>
     <a href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a>
-    <a href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a>
   </footer>
+
+<div class="lightbox" id="lb-c-cover" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-c-cover" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/centline/cover.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="A design preview of Centline on a green background: a rate confirmation being signed on one phone, and the invoice packet on another, with the signed bill of lading and the rate confirmation ticked."><figcaption>A design preview of the invoice packet. Names and numbers are made up.</figcaption></figure>
+</div>
+<div class="lightbox" id="lb-c-paid" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-c-paid" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/centline/getting-paid-options.webp" width="1600" height="670" loading="lazy" decoding="async" alt="Four phone screens titled Getting paid, labelled A to D. A shows three small cells: Not sent, Not due yet and Late. B is one card with a row per pile. C puts the late money first in a dark card. D turns the piles into filter chips."><figcaption>The top of Getting paid, drawn four ways, with A marked as the pick. Names and numbers are made up.</figcaption></figure>
+</div>
+<div class="lightbox" id="lb-c-which" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-c-which" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/centline/which-are-you-options.webp" width="1600" height="1029" loading="lazy" decoding="async" alt="Four phone screens. A, as built: Joining a company?, with a code box open and a blue Join button. B: the same screen with the buttons swapped. C: Which are you?, with two cards, I run my own authority and I drive for a company, and a Next button, then the join code screen behind the second card. Under each, a note arguing for or against it."><figcaption>The first screen after confirming an account, drawn three ways, each with its note for or against. The code is made up.</figcaption></figure>
+</div>
+<div class="lightbox" id="lb-c-inbox" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-c-inbox" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/centline/inbox-to-invoice.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="Four phones in sequence: an email from Example Logistics with a rate confirmation shared to Centline, picking the invoice it belongs to, signing the rate confirmation on the phone, and invoice 1042 with the signed bill of lading and the rate confirmation ticked in the packet."><figcaption>From your inbox to the invoice, in four steps. A design preview: names and numbers are made up.</figcaption></figure>
+</div>
+<div class="lightbox" id="lb-c-sign" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-c-sign" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/centline/signing-up-close.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="Three phones signing a carrier agreement: a signature drawn once and placed on its line, Jane Doe typed into a text box, and a date picked from a calendar with a choice of how it is written."><figcaption>Signing, up close: a signature drawn once, a text box, and a date that cannot be mistyped. Names are made up.</figcaption></figure>
+</div>
 
 </main>
 </body>

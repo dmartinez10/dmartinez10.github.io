@@ -27,15 +27,14 @@
 <meta name="twitter:title" content="David Martinez &middot; Product designer and UX engineer">
 <meta name="twitter:description" content="I design and build software for people who are lost inside somebody else's system. Informatics (HCI) at Iowa. Most recently UI/UX engineering at Sollo in Tokyo.">
 <meta name="twitter:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
-<meta name="twitter:image:alt" content="David Martinez, product designer and UX engineer. 70+ pull requests merged in 8 weeks, 2,949 tests green at handoff, 9 languages shipped.">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#F2F3EF">
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://dmartinez10.github.io/">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;1,400&family=Overpass:wght@600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -44,307 +43,249 @@
 
 <header class="nav">
   <div class="nav__in">
-    <a class="nav__me" href="#top">
+    <a class="nav__me" href="./">
       <span class="nav__mark" aria-hidden="true">D</span>
       <span>David Martinez</span>
     </a>
-    <nav class="nav__links" aria-label="Sections">
-      <a href="#work">Work</a>
+    <nav class="nav__links" aria-label="Pages">
+      <a href="work/">Work</a>
+      <a href="work/claude.html">Claude</a>
       <a href="components/">Components</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="about/">About</a>
+      <a href="contact/">Contact</a>
       <a href="assets/resume.pdf">Resume</a>
     </nav>
   </div>
 </header>
-
 <main id="main">
 
-<!-- ══════════════ intro ══════════════ -->
-<section class="intro wrap" id="top">
-  <p class="eyebrow">UX engineer &middot; Product designer</p>
-  <h1 class="intro__h">Product designer who ships the build.</h1>
-  <p class="intro__p">
-    I design and build software for people who are lost inside somebody else&rsquo;s system.
-    Informatics and human-computer interaction at the University of Iowa. Most recently
-    <strong>UI/UX engineering at Sollo in Tokyo</strong>, where I merged 70+ pull requests
-    in eight weeks across design, mobile frontend and Python backend.
-  </p>
-  <p class="intro__meta">
-    <span>Iowa City, Iowa</span>
-    <span class="dot" aria-hidden="true">&middot;</span>
-    <span>Open to product design and UX engineer roles</span>
-    <span class="dot" aria-hidden="true">&middot;</span>
-    <span>Graduating May 2027</span>
-  </p>
+<section class="hero wrap" id="top">
+  <div>
+    <div class="hero__hi">
+      <figure class="me">
+  <button class="zoom" type="button" popovertarget="lb-me">
+    <img src="assets/me/portrait.webp" width="440" height="440" loading="eager" decoding="async" alt="David Martinez, smiling, in glasses and a black blazer.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  
+</figure>
+      <p>Hi, I&rsquo;m David.</p>
+    </div>
+    <h1 class="hero__h">I design for people lost inside somebody else&rsquo;s system. Then I build it.</h1>
+    <p class="hero__p">
+      Product designer and UX engineer, studying informatics and human-computer interaction
+      at the University of Iowa. Most recently <strong>UI/UX engineering at Sollo in
+      Tokyo</strong>, where I merged 70+ pull requests in eight weeks across design, mobile
+      frontend and Python backend.
+    </p>
+    <ul class="facts">
+      <li>Iowa City, Iowa</li>
+      <li>Open to product design and UX engineer roles</li>
+      <li>Graduating May 2027</li>
+    </ul>
+  </div>
+
+  <nav class="board" aria-label="Projects">
+    <p class="board__here"><span class="here" aria-hidden="true"></span>You are here. Where to?</p>
+    <ul class="board__list">
+      <li><a href="work/centline.html">
+        <img class="logo" src="assets/logos/centline.svg" width="48" height="48" alt="">
+        <span><span class="board__name">Centline</span><span class="board__to">From booked to paid, for one-truck owners</span></span>
+        <svg class="board__arrow" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 9.5h11V4l9 8-9 8v-5.5H2z"/></svg>
+      </a></li>
+      <li><a href="work/sollo-redesign.html">
+        <img class="logo" src="assets/logos/sollo.webp" width="48" height="48" alt="">
+        <span><span class="board__name">Sollo</span><span class="board__to">Japanese paperwork, made navigable. Four stories</span></span>
+        <svg class="board__arrow" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 9.5h11V4l9 8-9 8v-5.5H2z"/></svg>
+      </a></li>
+      <li><a href="work/commu.html">
+        <img class="logo" src="assets/logos/commu.svg" width="48" height="48" alt="">
+        <span><span class="board__name">CommU</span><span class="board__to">Research with students who commute</span></span>
+        <svg class="board__arrow" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 9.5h11V4l9 8-9 8v-5.5H2z"/></svg>
+      </a></li>
+      <li><a href="components/">
+        <img class="logo" src="assets/logos/react.svg" width="48" height="48" alt="">
+        <span><span class="board__name">Component lab</span><span class="board__to">React and TypeScript, run it by keyboard</span></span>
+        <svg class="board__arrow" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 9.5h11V4l9 8-9 8v-5.5H2z"/></svg>
+      </a></li>
+      <li><a href="work/claude.html">
+        <img class="logo" src="assets/logos/claude.svg" width="48" height="48" alt="">
+        <span><span class="board__name">How I work with Claude</span><span class="board__to">The interchange every project runs through</span></span>
+        <svg class="board__arrow" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 9.5h11V4l9 8-9 8v-5.5H2z"/></svg>
+      </a></li>
+    </ul>
+  </nav>
 </section>
 
-<!-- ══════════════ work ══════════════ -->
-<section class="sect wrap" id="work">
+<section class="sect wrap" id="projects">
   <div class="sect__h">
-    <h2 class="sect__t">Selected work</h2>
-    <span class="sect__n">5 projects &middot; 5 case studies</span>
+    <h2 class="sect__t">Projects</h2>
+    <span class="sect__n">Each one opens its own story</span>
   </div>
 
-  <div class="work">
-
-    <article class="card card--live">
-      <div class="card__top">
-        <h3 class="card__name">Centline</h3>
-        <span class="card__tag card__tag--wip">In progress</span>
-      </div>
-      <p class="card__for">For a one-truck owner-operator deciding, at a loading dock at
-        night, whether a load is worth taking.</p>
-      <p class="card__body">
-        Brokers quote dollars per loaded mile. The empty miles cost the same and pay
-        nothing, which is why new carriers go under. A $1,500 load that reads as $260 of
-        profit is a $50 loss once they are counted. I designed and built it: a
-        documented design system, the mobile app, and 968 tests.
-      </p>
-      <p class="chips"><span>Design system</span><span>Mobile app</span><span>WCAG 2.2</span><span>968 tests</span></p>
-      <p class="card__foot">
-        <a class="card__cta" href="work/centline.html">Read the case study</a>
-      </p>
+  <div class="cards">
+    <article class="pcard proj--c">
+      <div class="pcard__top"><img class="logo" src="assets/logos/centline.svg" width="48" height="48" alt=""><div><h3 class="pcard__name">Centline</h3><p class="pcard__tag">My own app, in testing</p></div></div>
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-home-centline">
+    <img src="assets/centline/cover.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="A design preview of Centline: a rate confirmation being signed on one phone and the invoice packet on another.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>A design preview. Names and numbers are made up.</figcaption>
+</figure>
+      <p class="pcard__for">For a one-truck owner-operator, reading it one-handed at a loading dock at night.</p>
+      <p class="pcard__body">Every load as one record, from saved to paid. Try picking between the options I drew, and step a load through its stages.</p>
+      <p class="pcard__go"><a class="btn btn--open" href="work/centline.html">Open Centline<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
     </article>
 
-    <article class="card">
-      <div class="card__top">
-        <h3 class="card__name">Sollo</h3>
-        <span class="card__tag">Internship</span>
-      </div>
-      <p class="card__for">For a foreign resident of Japan facing a system written in a
-        language and a format they were never the audience for.</p>
-      <p class="card__body">
-        An AI assistant that makes Japanese government paperwork navigable, now shipped on
-        the App Store. I rebuilt the post-authentication app onto a new design system,
-        extracting colour, spacing and type tokens and building the reusable widget and icon
-        library the team works against, then designed and enforced its WCAG AA light and dark
-        theme, and rebuilt how a reader gets back out of a deep topic tree.
-      </p>
-      <p class="chips"><span>Design tokens</span><span>Component library</span><span>Figma</span><span>Flutter</span><span>WCAG AA</span><span>9 locales</span></p>
-
-      <div class="shots" role="group" aria-label="Sollo App Store panels">
-        <img src="assets/shots/sollo-01-home.webp" width="640" height="1385" loading="lazy" decoding="async"
-             alt="Sollo home screen: a search field, six category tiles from Visa and Residency to Support, and a Your Journeys row.">
-        <img src="assets/shots/sollo-02-answers.webp" width="640" height="1385" loading="lazy" decoding="async"
-             alt="An answer screen, written in plain language with its official source shown.">
-        <img src="assets/shots/sollo-03-sources.webp" width="640" height="1385" loading="lazy" decoding="async"
-             alt="The sources behind an answer, linked to the government pages they came from.">
-        <img src="assets/shots/sollo-04-plan.webp" width="640" height="1385" loading="lazy" decoding="async"
-             alt="A step by step plan for a piece of paperwork, with each step openable in place.">
-        <img src="assets/shots/sollo-05-journeys.webp" width="640" height="1385" loading="lazy" decoding="async"
-             alt="The journeys list, tracking progress through several pieces of paperwork at once.">
-        <img src="assets/shots/sollo-06-close.webp" width="640" height="1385" loading="lazy" decoding="async"
-             alt="The closing App Store panel for Sollo.">
-      </div>
-      <p class="shots__cap">Sollo&rsquo;s own App Store panels. Shipped to the store in August 2026.</p>
-
-      <ul class="studies">
-        <li><a href="work/sollo-design-system.html">Measuring the spec</a>
-          <span>Refusing a handoff colour that could not pass its own gate</span></li>
-        <li><a href="work/sollo-nine-locales.html">Nine locales</a>
-          <span>Localization as a constraint, and a defect I shipped</span></li>
-        <li><a href="work/sollo-breadcrumb.html">A record, not a map</a>
-          <span>Why a breadcrumb must not invent a route</span></li>
-      </ul>
-      <p class="card__foot">
-        <a class="card__note card__note--link" href="https://apps.apple.com/us/app/sollo-life-nav/id6781235016" rel="noopener">See it on the App Store</a>
-      </p>
+    <article class="pcard proj--s">
+      <div class="pcard__top"><img class="logo" src="assets/logos/sollo.webp" width="48" height="48" alt=""><div><h3 class="pcard__name">Sollo</h3><p class="pcard__tag">Internship, shipped to the App Store</p></div></div>
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-home-sollo">
+    <img src="assets/sollo/nav-turn-3.webp" width="1600" height="870" loading="lazy" decoding="async" alt="A design canvas of five navigation options for Sollo, with 3a marked recommended.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>Turn three of the navigation, on the design canvas.</figcaption>
+</figure>
+      <p class="pcard__for">For a foreign resident of Japan facing a system written in a language they were never the audience for.</p>
+      <p class="pcard__body">An AI assistant that makes government paperwork navigable, in nine languages. Four stories, starting with the navigation drawn in three turns.</p>
+      <p class="pcard__go"><a class="btn btn--open" href="work/sollo-redesign.html">Open Sollo<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn btn--quiet" href="https://apps.apple.com/us/app/sollo-life-nav/id6781235016" rel="noopener">App Store</a></p>
     </article>
 
-    <article class="card card--live">
-      <div class="card__top">
-        <h3 class="card__name">CommU</h3>
-        <span class="card__tag">Research</span>
-      </div>
-      <p class="card__for">For a student who commutes to campus, arrives for class, and
-        leaves again without ever finding a way into campus life.</p>
-      <p class="card__body">
-        Off-campus students described their time on campus as purely functional: arrive,
-        attend, leave. What was happening on campus reached them through ignored emails,
-        posters and word of mouth, and every one of them said they would meet people in
-        the same situation if there were any way to do it. I ran the study, then built the
-        web app around what it found: events in one place, posted by anyone, and a way to
-        find the other people who drive in.
-      </p>
-      <p class="chips"><span>Semi-structured interviews</span><span>Thematic analysis</span><span>Prototyping</span><span>JavaScript</span><span>Flask</span><span>MongoDB</span></p>
-      <p class="card__foot">
-        <a class="card__cta" href="work/commu.html">Read the case study</a>
-      </p>
+    <article class="pcard proj--u">
+      <div class="pcard__top"><img class="logo" src="assets/logos/commu.svg" width="48" height="48" alt=""><div><h3 class="pcard__name">CommU</h3><p class="pcard__tag">Research, then a working app</p></div></div>
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-home-commu">
+    <img src="assets/commu/commu-home.webp" width="1400" height="989" loading="lazy" decoding="async" alt="CommU home page, headed &#x27;Your campus, connected&#x27;, with three cards: Event Discovery, Commuter Connect, and Post Your Own.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>The three cards on the home page are the three findings, in order.</figcaption>
+</figure>
+      <p class="pcard__for">For a student who commutes in, attends, and leaves without ever finding a way into campus life.</p>
+      <p class="pcard__body">Five interviews, three findings, and the one that changed what got built.</p>
+      <p class="pcard__go"><a class="btn btn--open" href="work/commu.html">Open CommU<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
     </article>
 
-    <article class="card card--live">
-      <div class="card__top">
-        <h3 class="card__name">Component lab</h3>
-        <span class="card__tag">Built</span>
-      </div>
-      <p class="card__for">For a hiring manager who wants to see the interaction craft
-        rather than read a claim about it.</p>
-      <p class="card__body">
-        A small accessible component set in React and TypeScript, with no UI library.
-        Every colour, space and radius comes from one token file, so a single switch
-        rethemes all of it without a component knowing it happened. The multi-select
-        takes arrow keys, Home and End, type-ahead and Backspace, and the dialog traps
-        focus and hands it back. Built to be operated entirely by keyboard.
-      </p>
-      <p class="chips"><span>React</span><span>TypeScript</span><span>Design tokens</span><span>Light and dark</span><span>WCAG 2.2</span></p>
-      <p class="card__foot">
-        <a class="card__cta" href="components/">Open the lab</a>
-      </p>
+    <article class="pcard proj--l">
+      <div class="pcard__top"><img class="logo" src="assets/logos/react.svg" width="48" height="48" alt=""><div><h3 class="pcard__name">Component lab</h3><p class="pcard__tag">React and TypeScript, no UI library</p></div></div>
+      <figure class="fig">
+        <button class="zoom" type="button" popovertarget="lb-home-lab">
+          <div class="twin">
+            <img src="assets/lab/lab-light.webp" width="1120" height="620" loading="lazy" decoding="async" alt="The lab's multi-select and buttons in the light theme, with the same components in the dark theme on the right.">
+            <img src="assets/lab/lab-dark.webp" width="1120" height="620" loading="lazy" decoding="async" alt="">
+          </div>
+          <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+        </button>
+        <figcaption>The same components, one token switch apart.</figcaption>
+      </figure>
+      <p class="pcard__for">For a hiring manager who wants to see the interaction craft rather than read a claim about it.</p>
+      <p class="pcard__body">Every colour, space and radius from one token file. Put the mouse down and use the keyboard.</p>
+      <p class="pcard__go"><a class="btn btn--open" href="components/">Open the lab<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
     </article>
 
-    <article class="card">
-      <div class="card__top">
-        <h3 class="card__name">sollo.my</h3>
-        <span class="card__tag">Shipped</span>
+    <article class="pcard pcard--wide proj--h">
+      <div class="pcard__top"><img class="logo" src="assets/logos/claude.svg" width="48" height="48" alt=""><div><h3 class="pcard__name">How I work with Claude</h3><p class="pcard__tag">The interchange every project runs through</p></div></div>
+      <p class="pcard__for">Options before answers, one agent per job, every decision written down, and the real screen before the test result.</p>
+      <p class="pcard__body">The setup, the agents I keep narrow, the style guide I wrote for how it talks to me, and what a summer of it taught me.</p>
+      <p class="pcard__go"><a class="btn btn--open" href="work/claude.html">Open how I work<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+      <div class="pcard__side">
+        <div class="term" role="img" aria-label="A terminal: my ask in a box, results on labelled lines, and a question answerable with one letter.">
+          <div class="term__bar"><i></i><i></i><i></i><span>claude</span></div>
+          <div class="term__body">
+            <div class="tbox"><b>YOU:</b> draw the Profile three ways</div>
+            <div class="tline"><b>DONE</b><span>Three options on the canvas. B marked.</span></div>
+            <div class="tbox tbox--q"><b>QUESTION 1 of 1</b><br>Which one? Reply a, b or c.</div>
+            <div class="term__next">NEXT: waiting on your letter.</div>
+          </div>
+        </div>
       </div>
-      <p class="card__for">For someone who has heard the app exists and needs to
-        understand it in their own language before they trust it.</p>
-      <p class="card__body">
-        The Sollo landing site: static, no build step, eleven languages including
-        right-to-left Arabic. Built to load fast on a phone on mobile data, because that
-        is what the audience is on.
-      </p>
-      <p class="chips"><span>HTML/CSS/JS</span><span>11 languages</span><span>RTL</span><span>Vercel</span></p>
-      <p class="card__foot">
-        <a class="card__cta" href="https://sollo.my" rel="noopener">Visit the site</a>
-      </p>
     </article>
-
   </div>
 </section>
 
-<!-- ══════════════ measurements ══════════════ -->
 <section class="sect wrap">
   <div class="sect__h">
     <h2 class="sect__t">Measured, not estimated</h2>
-    <span class="sect__n">From shipped work</span>
+    <span class="sect__n">From shipped work at Sollo</span>
   </div>
   <ul class="nums">
-    <li><b>70+</b><span>pull requests merged in eight weeks at Sollo</span></li>
+    <li><b>70+</b><span>pull requests merged in eight weeks</span></li>
     <li><b>2,949</b><span>tests green at handoff</span></li>
     <li><b>9</b><span>languages shipped, including Easy Japanese</span></li>
     <li><b>8&times;</b><span>faster core browse flow, 1,033ms to 125ms</span></li>
   </ul>
 </section>
 
-<!-- ══════════════ about ══════════════ -->
-<section class="sect wrap" id="about">
+<section class="sect wrap">
   <div class="sect__h">
     <h2 class="sect__t">About</h2>
     <span class="sect__n">Iowa City</span>
   </div>
-
   <div class="split">
+<figure class="fig photo">
+  <button class="zoom" type="button" popovertarget="lb-home-work">
+    <img src="assets/me/at-work.webp" width="1600" height="1200" loading="lazy" decoding="async" alt="David leaning over a laptop at a work table, with a phone simulator open beside the code.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>Walking a change on the simulator, the step before my own phone.</figcaption>
+</figure>
     <div class="prose">
       <p>
-        I study informatics at the University of Iowa, human-computer interaction, with
-        minors in Spanish and psychology. That combination is not incidental. Almost
-        everything I build is for someone operating inside a language or a system that was
-        not designed with them in mind.
+        I study informatics at the University of Iowa, human-computer interaction, with minors
+        in Spanish and psychology. Almost everything I build is for someone operating inside a
+        language or a system that was not designed with them in mind.
       </p>
-      <p>
-        The design half of my training makes me ask who is on the other side of the screen.
-        The engineering half means I can build the answer rather than hand it off, which is
-        why I keep ending up on the seam between the two. I care most about the decisions
-        that get made under constraint: what got cut, what got measured, and what turned out
-        to be wrong.
-      </p>
-      <p>
-        <strong>I am looking for product design and UX engineer roles</strong> starting after
-        I graduate in May 2027, and a summer 2027 internship in parallel.
-      </p>
+      <p>The design half of my training asks who is on the other side of the screen. The engineering half means I can build the answer rather than hand it off.</p>
+      <p class="pcard__go" style="margin-top:1.25rem"><a class="btn btn--open" href="about/">More about me<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
     </div>
-
-    <dl class="deflist">
-      <div>
-        <dt>Design</dt>
-        <dd>Figma: variables, auto layout, components and variants, Dev Mode. Design systems
-          and design tokens. Prototyping. Photoshop, Illustrator, InDesign.</dd>
-      </div>
-      <div>
-        <dt>Research</dt>
-        <dd>User interviews, usability testing, A/B testing, KPI definition, click-rate
-          baselines.</dd>
-      </div>
-      <div>
-        <dt>Accessibility</dt>
-        <dd>WCAG 2.2 AA: contrast auditing, tap targets, labelled controls. Adaptive light
-          and dark theming.</dd>
-      </div>
-      <div>
-        <dt>Engineering</dt>
-        <dd>Dart and Flutter, Python and FastAPI, JavaScript, HTML and CSS, SQL, Swift.
-          Supabase, Firebase, Google Cloud Run, Cloudflare Workers, Git and GitHub.</dd>
-      </div>
-      <div>
-        <dt>Languages</dt>
-        <dd>Fluent in <b>Spanish</b> and <b>English</b>.</dd>
-      </div>
-    </dl>
   </div>
 </section>
 
-<!-- ══════════════ experience ══════════════ -->
-<section class="sect wrap">
-  <div class="sect__h">
-    <h2 class="sect__t">Experience</h2>
-    <span class="sect__n">4 roles</span>
-  </div>
-  <ul class="roles">
-    <li>
-      <div>
-        <h3>Sollo</h3>
-        <p>UI/UX engineering intern, Tokyo, Japan</p>
-      </div>
-      <time>Jun 2026 to Aug 2026</time>
-    </li>
-    <li>
-      <div>
-        <h3>University of Iowa Health Care</h3>
-        <p>Student database assistant, Department of Internal Medicine</p>
-      </div>
-      <time>May 2026 to present</time>
-    </li>
-    <li>
-      <div>
-        <h3>University of Iowa Parking &amp; Transportation</h3>
-        <p>Parking field service officer</p>
-      </div>
-      <time>Feb 2023 to present</time>
-    </li>
-    <li>
-      <div>
-        <h3>League of United Latin American Citizens</h3>
-        <p>Public relations officer, Collegiate Council #373</p>
-      </div>
-      <time>Mar 2025 to present</time>
-    </li>
-  </ul>
-</section>
-
-<!-- ══════════════ contact ══════════════ -->
-<section class="sect wrap" id="contact">
-  <div class="sect__h">
-    <h2 class="sect__t">Contact</h2>
-    <span class="sect__n">Open to work</span>
-  </div>
-  <div class="prose">
-    <p>Tell me what you are building and who it is for.</p>
-  </div>
-  <div class="contact">
-    <a class="btn btn--pri" href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a>
-    <a class="btn" href="assets/resume.pdf">Resume (PDF)</a>
-    <a class="btn" href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a>
-    <a class="btn" href="https://github.com/dmartinez10" rel="noopener">GitHub</a>
+<section class="exit wrap" id="contact">
+  <div class="exit__panel">
+    <p class="exit__label"><span class="here" aria-hidden="true"></span>Contact</p>
+    <h2 class="exit__h">Tell me what you are building and who it is for.</h2>
+    <a class="exit__mail" href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a>
+    <div class="exit__links">
+      <a class="btn" href="assets/resume.pdf">Resume (PDF)</a>
+      <a class="btn" href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/dmartinez10" rel="noopener">GitHub</a>
+    </div>
   </div>
 </section>
 
 <footer class="foot wrap">
-  <span>Iowa City during term, West Liberty, Iowa</span>
-  <span class="dot" aria-hidden="true">&middot;</span>
-  <span>Built from scratch, no framework and no build step</span>
+  <span>Iowa City during term, West Liberty, Iowa.</span>
+  <span>Set in Overpass, drawn from the lettering on American highway signs, and Atkinson
+    Hyperlegible, drawn for readers with low vision. Built from scratch, with no framework
+    and no JavaScript on the page.</span>
 </footer>
+
+<div class="lightbox lightbox--fit" id="lb-me" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-me" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="assets/me/portrait.webp" width="440" height="440" loading="lazy" decoding="async" alt="David Martinez, smiling, in glasses and a black blazer."><figcaption>That is me.</figcaption></figure>
+</div>
+<div class="lightbox" id="lb-home-centline" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-home-centline" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="assets/centline/cover.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="A design preview of Centline: a rate confirmation being signed on one phone and the invoice packet on another."><figcaption>A design preview. Names and numbers are made up.</figcaption></figure>
+</div>
+<div class="lightbox" id="lb-home-sollo" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-home-sollo" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="assets/sollo/nav-turn-3.webp" width="1600" height="870" loading="lazy" decoding="async" alt="A design canvas of five navigation options for Sollo, with 3a marked recommended."><figcaption>Turn three of the navigation, on the design canvas.</figcaption></figure>
+</div>
+<div class="lightbox" id="lb-home-commu" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-home-commu" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="assets/commu/commu-home.webp" width="1400" height="989" loading="lazy" decoding="async" alt="CommU home page, headed &#x27;Your campus, connected&#x27;, with three cards: Event Discovery, Commuter Connect, and Post Your Own."><figcaption>The three cards on the home page are the three findings, in order.</figcaption></figure>
+</div>
+<div class="lightbox lightbox--fit" id="lb-home-work" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-home-work" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="assets/me/at-work.webp" width="1600" height="1200" loading="lazy" decoding="async" alt="David leaning over a laptop at a work table, with a phone simulator open beside the code."><figcaption>Walking a change on the simulator, the step before my own phone.</figcaption></figure>
+</div>
+
+<div class="lightbox" id="lb-home-lab" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-home-lab" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="assets/lab/lab-dark.webp" width="1120" height="620" loading="lazy" decoding="async" alt="The lab's multi-select and buttons in the dark theme."><figcaption>The component lab in its dark theme.</figcaption></figure>
+</div>
 
 </main>
 </body>

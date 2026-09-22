@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2400" width="1600" height="2400">
+  <!-- Route lines in light tints of each project's colour. Every line enters
+       and leaves the tile at the same x, heading straight down, so the tile
+       repeats with no seam. Tints stay light enough that body text passes AA
+       wherever a line runs behind it. -->
+  <g fill="none" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="#DEE2EA" d="M70 -10 V300 C70 480 380 520 380 760 C380 1000 70 1040 70 1260 V2410"/>
+    <path stroke="#EFDCCF" d="M150 -10 V1500 C150 1640 240 1700 240 1840 C240 1980 150 2040 150 2180 V2410"/>
+    <path stroke="#F3DCDF" d="M1450 -10 V1180 C1450 1380 1150 1420 1150 1640 C1150 1860 1450 1900 1450 2100 V2410"/>
+    <path stroke="#D2E7E1" d="M1530 -10 V620 C1530 760 1360 800 1360 940 C1360 1080 1530 1120 1530 1260 V2410"/>
+    <path stroke="#F3DBE7" d="M-10 1260 H70 C300 1260 420 1180 700 1180 H900 C1180 1180 1300 1260 1450 1260 H1610"/>
+  </g>
+  <g fill="#FFFFFF" stroke-width="6">
+    <circle cx="70" cy="1260" r="11" stroke="#C4CBDA"/>
+    <circle cx="1450" cy="1260" r="11" stroke="#E7BFC6"/>
+    <circle cx="380" cy="760" r="9" stroke="#C4CBDA"/>
+    <circle cx="1150" cy="1640" r="9" stroke="#E7BFC6"/>
+    <circle cx="1360" cy="940" r="9" stroke="#BCDBD2"/>
+    <circle cx="240" cy="1840" r="9" stroke="#E6C8B5"/>
+    <circle cx="800" cy="1180" r="9" stroke="#E7BCD2"/>
+  </g>
+</svg>

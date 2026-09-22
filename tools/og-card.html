@@ -12,99 +12,81 @@
       --virtual-time-budget=12000 \
       --screenshot=assets/og/share-card.png \
       tools/og-card.html
-  Tokens match styles.css. Keep them in step.
+  Tokens match styles.css. Keep them in step. The sign on the right is the
+  landing page's directory, so the preview and the page agree.
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&family=Overpass:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#FFFFFF; --bg-sub:#F7F8FA;
-  --ink:#16181D; --ink-2:#454C59; --ink-3:#6B7280; --ink-4:#656E7C;
-  --rule:#E4E7EC; --accent:#1A47C2;
-  --sans:"Inter",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --bg:#F2F3EF; --ink:#14171F; --ink-2:#414856; --ink-3:#5B6270; --rule:#D8DBD3;
+  --sign:#14224A; --sign-2:#AEB9D6; --hi:#FFC72C;
+  --c:#B4460A; --s:#C3102F; --u:#00735E; --l:#5A3DB0;
+  --display:"Overpass","Helvetica Neue",Arial,sans-serif;
+  --sans:"Atkinson Hyperlegible Next",-apple-system,system-ui,sans-serif;
 }
 *{ margin:0; padding:0; box-sizing:border-box; }
 html,body{ width:1200px; height:630px; overflow:hidden; }
 body{ background:var(--bg); color:var(--ink); font-family:var(--sans); }
 
 .card{
-  position:relative; width:1200px; height:630px; overflow:hidden;
-  background:var(--bg); padding:74px 86px;
-  display:flex; flex-direction:column;
+  width:1200px; height:630px; padding:60px 64px;
+  display:grid; grid-template-columns:1fr 420px; gap:52px;
 }
-/* one quiet accent: a rule down the left edge */
-.card::before{
-  content:""; position:absolute; left:0; top:0; bottom:0; width:8px;
-  background:var(--accent);
-}
-/* a faint tint block, bottom right, to stop the card reading as an empty page */
-.card::after{
-  content:""; position:absolute; right:-140px; bottom:-200px;
-  width:620px; height:620px; border-radius:50%;
-  background:var(--bg-sub);
-}
-.in{ position:relative; z-index:1; display:flex; flex-direction:column; height:100%; }
+.left{ display:flex; flex-direction:column; }
 
-.eyebrow{
-  font-family:var(--mono); font-size:19px; font-weight:500;
-  letter-spacing:.13em; text-transform:uppercase; color:var(--accent);
-}
-
+.role{ font-family:var(--display); font-weight:700; font-size:26px; color:var(--ink-2); }
 h1{
-  margin:26px 0 0; font-size:96px; font-weight:700;
-  letter-spacing:-.038em; line-height:1; color:var(--ink);
+  margin:14px 0 0; font-family:var(--display); font-weight:800;
+  font-size:98px; line-height:.95; letter-spacing:-.03em;
 }
+.thesis{ margin:26px 0 0; font-size:25px; line-height:1.42; color:var(--ink-2); max-width:580px; }
 
-.thesis{
-  margin:26px 0 0; max-width:760px;
-  font-size:27px; line-height:1.45; color:var(--ink-2);
-}
-.thesis b{ color:var(--ink); font-weight:600; }
+.nums{ display:flex; gap:34px; margin:auto 0 0; }
+.nums div{ border-top:5px solid var(--sign); padding-top:14px; }
+.nums b{ display:block; font-family:var(--display); font-weight:800; font-size:42px; line-height:1; color:var(--sign); }
+.nums span{ display:block; margin-top:8px; font-size:16px; line-height:1.3; color:var(--ink-3); }
 
-.nums{ display:flex; gap:0; margin:auto 0 0; border-top:1px solid var(--rule); }
-.nums div{ padding:26px 42px 0 0; margin-right:42px; border-right:1px solid var(--rule); }
-.nums div:last-child{ border-right:0; margin-right:0; padding-right:0; }
-.nums b{
-  display:block; font-size:42px; font-weight:700;
-  letter-spacing:-.035em; line-height:1; color:var(--ink);
+.sign{
+  background:var(--sign); color:#fff; border-radius:16px;
+  padding:26px 24px 12px; align-self:center;
 }
-.nums span{
-  display:block; margin-top:9px; font-size:16px;
-  color:var(--ink-3); line-height:1.35;
+.here{
+  display:flex; align-items:center; gap:12px;
+  font-family:var(--display); font-weight:700; font-size:20px; color:var(--sign-2);
+  padding:0 6px 18px; border-bottom:2px solid #FFFFFF26;
 }
-
-.foot{
-  display:flex; align-items:baseline; justify-content:space-between;
-  margin:34px 0 0; font-size:18px;
+.here i{ width:18px; height:18px; border-radius:50%; background:var(--hi); }
+.row{ display:flex; align-items:center; gap:18px; padding:16px 6px; }
+.row + .row{ border-top:1px solid #FFFFFF1F; }
+.line{
+  display:grid; place-items:center; width:46px; height:46px; border-radius:10px;
+  font-family:var(--display); font-weight:900; font-size:24px; padding-top:4px;
+  box-shadow:0 0 0 3px #fff;
 }
-.url{ font-weight:600; color:var(--accent); }
-.meta{ font-family:var(--mono); font-size:15px; color:var(--ink-4); letter-spacing:.03em; }
+.row b{ font-family:var(--display); font-weight:800; font-size:30px; line-height:1; padding-top:4px; }
 </style>
 </head>
 <body>
 <div class="card">
-  <div class="in">
-    <p class="eyebrow">Product designer &middot; UX engineer</p>
-
-    <h1>David Martinez</h1>
-
-    <p class="thesis">
-      I design and build software for people who are lost inside somebody
-      else&rsquo;s system. Most recently <b>UI/UX engineering at Sollo, Tokyo</b>.
-    </p>
-
+  <div class="left">
+    <p class="role">Product designer and UX engineer</p>
+    <h1>David<br>Martinez</h1>
+    <p class="thesis">I design for people lost inside somebody else&rsquo;s system. Then I build it.</p>
     <div class="nums">
       <div><b>70+</b><span>pull requests merged<br>in eight weeks</span></div>
       <div><b>2,949</b><span>tests green<br>at handoff</span></div>
       <div><b>9</b><span>languages<br>shipped</span></div>
     </div>
+  </div>
 
-    <div class="foot">
-      <span class="url">dmartinez10.github.io</span>
-      <span class="meta">University of Iowa &middot; Informatics (HCI) &middot; May 2027</span>
-    </div>
+  <div class="sign">
+    <p class="here"><i></i>You are here. Where to?</p>
+    <div class="row"><span class="line" style="background:var(--c)">C</span><b>Centline</b></div>
+    <div class="row"><span class="line" style="background:var(--s)">S</span><b>Sollo</b></div>
+    <div class="row"><span class="line" style="background:var(--u)">U</span><b>CommU</b></div>
+    <div class="row"><span class="line" style="background:var(--l)">L</span><b>Component lab</b></div>
   </div>
 </div>
 </body>
