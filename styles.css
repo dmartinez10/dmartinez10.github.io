@@ -179,6 +179,15 @@ a:hover{ text-decoration-thickness:2px; }
 .ns--resume:hover{ filter:none; background:var(--bg-raise); }
 .ns[aria-current="page"]{ outline:3px solid var(--hi); outline-offset:2px; }
 
+/* a way back, above the title, on any page that is one level in */
+.back{
+  display:inline-flex; align-items:center; gap:.45rem;
+  font-family:var(--label); font-size:.92rem; font-weight:700;
+  color:var(--ink-2); text-decoration:none; margin:0 0 2.25rem;
+}
+.back::before{ content:"\2190"; }
+.back:hover{ color:var(--ink); text-decoration:underline; }
+
 /* ══ line badges and stop markers, used everywhere ══ */
 /* A line is a filled square, the way a transit system labels a route. */
 .line{

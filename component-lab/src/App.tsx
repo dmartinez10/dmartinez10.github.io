@@ -85,6 +85,7 @@ export default function App() {
       </header>
 
       <main className="lab__main" id="main">
+        <a className="lab__back" href="/work/">All work</a>
         <p className="lab__kicker">React and TypeScript, no UI library</p>
         <h1 className="lab__h1">Component lab</h1>
         <p className="lab__lede">

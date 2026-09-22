@@ -84,6 +84,10 @@ decoration:
   May 2027, then it moves.
 - **Contact is the exit sign**, the same navy as the directory, so the page
   begins and ends on the same object.
+- **Nothing is a dead end.** A page reached from Work carries an "All work" link
+  above its title: the project stories, Skills, and the component lab, whose copy
+  of it lives in `component-lab/src/App.tsx`. The `.back` rule sits in
+  `styles.css` rather than `case.css` so any page can use it.
 - **Every nav item is the kind of sign it would be on a road** (2026-09-22, his
   call): guide green for Work, an interchange for Claude, service blue for
   Components, park brown for About, an exit for Contact, and a white regulation
