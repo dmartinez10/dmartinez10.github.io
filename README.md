@@ -75,6 +75,16 @@ decoration:
   May 2027, then it moves.
 - **Contact is the exit sign**, the same navy as the directory, so the page
   begins and ends on the same object.
+- **Every nav item is the kind of sign it would be on a road** (2026-09-22, his
+  call): guide green for Work, an interchange for Claude, service blue for
+  Components, park brown for About, an exit for Contact, and a white regulation
+  plate for the Resume. The page you are on wears the safety yellow ring, and the
+  signs shrink rather than scroll on a phone. Markup is `a.ns.ns--work` and so on
+  inside `nav.nav__links`.
+- **The footer is the end of the line**: a navy panel with the road's dashes
+  running out, the yellow marker, the four ways to reach me as sign chips, and
+  three short columns (where I am, what it is set in, how it is built). It sits
+  after `</main>` on every page that carries the site nav.
 
 Type: **Overpass**, from the lettering on US highway signs, for headings and
 labels, and **Atkinson Hyperlegible**, drawn for readers with low vision, for text.
