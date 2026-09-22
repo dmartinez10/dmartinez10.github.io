@@ -60,7 +60,7 @@ decoration:
   colour run behind every page. Where the margins are empty, on screens 1440 wide
   and up, signs from my own life sit in them like stickers: I-80, a parking P, an
   Iowa City guide sign, a Tokyo station board, a truck crossing, ¡Hola! and
-  ようこそ, mixed in with what I love off the clock: video games, pickleball, a
+  ようこそ, mixed in with what I love: a chip for tech, video games, pickleball, a
   trail, mountains, a road trip, the Chicago Bears and Real Madrid (their colours
   and chants, never a club's logo). The tints are light enough that grey text
   passes AA over any of them. The same signs show on every screen size in the

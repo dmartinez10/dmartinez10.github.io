@@ -32,7 +32,7 @@
     </g>
 
     <!-- parking, where I have worked since 2023 -->
-    <g transform="translate(1400 1050) rotate(4)">
+    <g transform="translate(1400 975) rotate(4)">
       <rect width="90" height="90" rx="12" fill="#1F4E9E" stroke="#fff" stroke-width="4"/>
       <text x="45" y="70" text-anchor="middle" font-size="64" fill="#fff">P</text>
     </g>
@@ -46,7 +46,7 @@
     </g>
 
     <!-- Real Madrid, as a match scarf -->
-    <g transform="translate(1388 1650) rotate(-6)">
+    <g transform="translate(1388 1500) rotate(-6)">
       <path d="M0 8h8M0 15h8M0 22h8M0 29h8M0 36h8M0 43h8M116 8h8M116 15h8M116 22h8M116 29h8M116 36h8M116 43h8" stroke="#FEBE10" stroke-width="2.5" stroke-linecap="round"/>
       <rect x="7" y="2" width="110" height="48" rx="3" fill="#fff" stroke="#1C2C5B" stroke-width="2.5"/>
       <rect x="9" y="3.5" width="10" height="45" fill="#FEBE10"/>
@@ -72,7 +72,7 @@
     </g>
 
     <!-- a Tokyo station board, from the summer at Sollo -->
-    <g transform="translate(1392 2250) rotate(-4)">
+    <g transform="translate(1392 2025) rotate(-4)">
       <rect width="120" height="72" rx="6" fill="#fff" stroke="#C9CED8" stroke-width="2"/>
       <rect y="56" width="120" height="16" rx="0" fill="#C3102F"/>
       <text x="60" y="34" text-anchor="middle" font-size="26" fill="#14171F" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, Noto Sans JP, sans-serif">東京</text>
@@ -87,7 +87,7 @@
     </g>
 
     <!-- pickleball, on a brown recreation sign -->
-    <g transform="translate(1398 2850) rotate(4)">
+    <g transform="translate(1398 2550) rotate(4)">
       <rect width="112" height="104" rx="10" fill="#6B3D1F" stroke="#fff" stroke-width="4"/>
       <rect x="6" y="6" width="100" height="92" rx="6" fill="none" stroke="#fff" stroke-width="2"/>
       <g transform="rotate(30 44 44)" fill="#fff">
@@ -110,8 +110,19 @@
       <text x="60" y="80" text-anchor="middle" font-size="16" fill="#fff">Mountains</text>
     </g>
 
+    <!-- tech, the passion that started all of it -->
+    <g transform="translate(1398 3075) rotate(3)">
+      <rect width="112" height="108" rx="10" fill="#1F4E9E" stroke="#fff" stroke-width="4"/>
+      <g stroke="#fff" stroke-width="5" stroke-linecap="round">
+        <path d="M40 24 V13 M56 24 V13 M72 24 V13 M40 70 V81 M56 70 V81 M72 70 V81 M32 32 H21 M32 47 H21 M32 62 H21 M80 32 H91 M80 47 H91 M80 62 H91"/>
+      </g>
+      <rect x="32" y="24" width="48" height="46" rx="6" fill="#fff"/>
+      <rect x="45" y="37" width="22" height="20" rx="3" fill="#1F4E9E"/>
+      <text x="56" y="99" text-anchor="middle" font-size="13" fill="#fff" letter-spacing="2">TECH</text>
+    </g>
+
     <!-- hola, the other language I think in -->
-    <g transform="translate(1398 3450) rotate(5)">
+    <g transform="translate(1398 3600) rotate(5)">
       <path d="M8 0 H104 Q112 0 112 8 V50 Q112 58 104 58 H36 L20 74 V58 H8 Q0 58 0 50 V8 Q0 0 8 0Z" fill="#fff" stroke="#14224A" stroke-width="3"/>
       <text x="56" y="38" text-anchor="middle" font-size="24" fill="#14224A">¡Hola!</text>
     </g>
@@ -123,7 +134,7 @@
     </g>
 
     <!-- road trips -->
-    <g transform="translate(1396 4050) rotate(-5)">
+    <g transform="translate(1396 4125) rotate(-5)">
       <rect width="118" height="92" rx="10" fill="#1F4E9E" stroke="#fff" stroke-width="4"/>
       <path d="M22 50 L28 36 Q30 32 35 32 H72 Q77 32 80 36 L88 46 H94 Q98 46 98 50 V58 H22Z" fill="#fff"/>
       <path d="M34 36 H52 V46 H30Z M56 36 H72 L79 46 H56Z" fill="#1F4E9E"/>
