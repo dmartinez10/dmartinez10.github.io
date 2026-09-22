@@ -72,10 +72,9 @@ export default function App() {
       <a className="lab__skip" href="#main">Skip to content</a>
       <header className="lab__top">
         <div className="lab__topin">
-          <a className="lab__me" href="/">
-            <span className="lab__mark" aria-hidden="true">D</span>
+          <p className="lab__me">
             <span>David Martinez</span>
-          </a>
+          </p>
           <nav className="lab__links" aria-label="Pages">
             <a href="/">Home</a>
             <a href="/work/">Work</a>

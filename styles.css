@@ -141,12 +141,12 @@ a:hover{ text-decoration-thickness:2px; }
   /* a centred stack: identity over navigation, the same on every width */
   display:flex; flex-direction:column; align-items:center; gap:.3rem;
 }
+/* the name is a label, not a link: only the Home sign goes home (his call, 2026-09-22) */
 .nav__me{
-  display:inline-flex; align-items:center; gap:.55rem;
+  display:inline-flex; align-items:center; gap:.55rem; margin:0;
   font-family:var(--display); font-weight:800; font-size:1.05rem;
-  color:var(--ink); text-decoration:none;
+  color:var(--ink);
 }
-.nav__me:hover{ text-decoration:none; }
 
 
 /* min-width:0 lets this shrink below its content width, which is what allows
