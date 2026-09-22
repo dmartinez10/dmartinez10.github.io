@@ -12,8 +12,8 @@ page of its own.
 
 ```
 index.html          home: who I am, the directory sign, one card per project
-work/index.html     Work: every project in full, each with Open buttons
-work/*.html         one story per project; claude.html is how I work with Claude
+work/index.html     Work: a short story per project, each with a Tap to learn more button
+work/*.html         one page per project; claude.html is how I work with Claude
 about/index.html    About: photos, story, skills, the route so far
 contact/index.html  Contact: the exit sign
 styles.css          design tokens, layout, shared components, the lightbox
@@ -54,13 +54,17 @@ decoration:
   row per project that opens its page. It is navigation, not a picture of navigation.
 - **Each project is a line with its own colour and its own logo** (Centline, Sollo,
   CommU, the lab, and Claude as the interchange), and **each story is a stop on it**
-  (C1, S1 to S4, U1, L1, H1). A story page carries the same marker and colour, so
+  (C1, S1, U1, L1, H1). A story page carries the same marker and colour, so
   you can tell which project you are in from any page.
 - **The background is a map of my head.** Faint route lines in each project's
   colour run behind every page. Where the margins are empty, on screens 1440 wide
   and up, signs from my own life sit in them like stickers: I-80, a parking P, an
   Iowa City guide sign, a Tokyo station board, a truck crossing, ¡Hola! and
-  ようこそ. The tints are light enough that grey text passes AA over any of them.
+  ようこそ, mixed in with what I love off the clock: video games, pickleball, a
+  trail, mountains, a road trip, the Chicago Bears and Real Madrid (their colours
+  and chants, never a club's logo). The tints are light enough that grey text
+  passes AA over any of them. The same signs show on every screen size in the
+  Off the clock strip on About.
 - **The yellow ring around my photo** is the map's "you are here".
 - **Experience is a strip map.** Travelled track is solid, the rest is dashed, and
   a marker sits just past the internship. That marker is dated: it is right until
@@ -171,41 +175,47 @@ preview is cached per URL.
 The home page stays scannable; the depth lives one click away in `work/`. Each
 story loads `styles.css` for the tokens and chrome, then `case.css`.
 
-The house style, taken from what design recruiters actually read:
+The house style, since 2026-09-22, when I asked for less: "a small story then
+there's a button that says tap to learn more ... I feel like we over did it on
+information. Let's just keep understandable information on it, that recruiters
+would want to see, our biggest flex."
 
-- **Role, constraint and outcome first**, in the `.brief` block, before any
-  figure.
-- **Show a decision that changed or got cut.** Centline cut its whole cost side;
-  the Sollo navigation was recommended, built, and parked sixteen days later.
+- **Home and Work show a short story and one button per project.** Two sentences
+  (what it is, and why I was there), the biggest numbers, and a **Tap to learn
+  more** button. No other links in a project entry.
+- **One page per project.** Each opens on the same order: a one-line thesis, a
+  `.story` panel (**what it is** and **why I was there**), the biggest numbers in
+  `.nums`, **What I did** as a short `.did` list, one thing to try, and **the call
+  I would make again** with a few pictures in `.shots`.
+- **Why I was there comes from me, never inferred.** If it is not on record, ask.
 - **Numbers come from source, never from a doc.** Centline's are the ones verified
   on 21 September 2026; Sollo's are checked against the work log.
-- **Something to try on every story.** A choice between the options I drew, a
-  sketch of the real control, or a value you can set, then what I actually did.
 - **Every image opens larger**, and every Centline caption says its names and
   numbers are made up.
-- 800 to 1,500 words of body.
+- About 400 words of body. The long versions are in git history before this date.
 
-| File | Project | What it demonstrates |
+| File | Project | What it shows |
 |---|---|---|
-| `work/centline.html` | Centline | How I work: every change drawn as options, picked, written down, then built, checked and walked on a phone. The cost side that got cut, the packet that will not pretend it is ready, and the rules held by tests. |
-| `work/sollo-redesign.html` | Sollo | Exploring the navigation on a design canvas in three turns under fixed accessibility rules, building it, and cutting it to one surface sixteen days later. Closes on one number drawn four ways. |
-| `work/sollo-design-system.html` | Sollo | Refusing a spec on measurement, and catching my own test that would have locked in an accessibility miss. |
-| `work/sollo-nine-locales.html` | Sollo | Internationalization as a design constraint, including a defect I shipped and the guard I scoped narrow on purpose. |
-| `work/sollo-breadcrumb.html` | Sollo | State and honesty. Why a breadcrumb must return to a screen rather than open a copy, and why an invented route is worse than none. |
-| `work/commu.html` | CommU | Research. Five interviews, three findings, and the one that changed the build. |
-| `work/claude.html` | How I work with Claude | Options before answers, one agent per job, decisions written down, and looking at the real screen. |
+| `work/centline.html` | Centline | My own app, designed and built alone: 5,888 tests, 144 merged pull requests, the cost side I cut, and one button for the moment. |
+| `work/sollo.html` | Sollo | The internship: 70+ merged pull requests in eight weeks, nine languages, the navigation drawn in three turns and then cut for the beta. |
+| `work/commu.html` | CommU | Five interviews, three findings, and the one answer that changed the build. |
+| `work/claude.html` | How I work with Claude | Options before answers, one agent per job, the kit, and what it taught me. |
 
-To add one, copy a story, replace the sections, set the project's line class on
-`<main>` and its stop code in the kicker, then add it to `work/index.html` and a
-card to `index.html`, each with an Open button.
+The four old Sollo pages (`sollo-redesign`, `sollo-design-system`,
+`sollo-nine-locales`, `sollo-breadcrumb`) are now one-line forwards to
+`sollo.html`, so links already shared keep working.
+
+To add a project, copy a project page, replace the sections, set the project's
+line class on `<main>` and its stop code in the kicker, then add it to
+`work/index.html` and a card to `index.html`, each with a Tap to learn more button.
 
 ## Editing
 
 Home cards are `article.pcard` in `index.html`; the full list is `article.proj` in
 `work/index.html`, each with its line class (`proj--c`, `proj--s` and so on) and a
 `.logo` tile from `assets/logos/`. A new project needs its logo, a colour token in
-`styles.css` that passes AA with white type, a row on the directory sign, and an
-Open button everywhere it appears.
+`styles.css` that passes AA with white type, a row on the directory sign, and a
+Tap to learn more button everywhere it appears.
 
 A picture that opens larger is a `.zoom` button with `popovertarget`, pointing at a
 `.lightbox` popover written at the end of `<main>`.
