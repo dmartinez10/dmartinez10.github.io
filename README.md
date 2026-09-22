@@ -65,6 +65,10 @@ decoration:
   and chants, never a club's logo). The tints are light enough that grey text
   passes AA over any of them. The same signs show on every screen size in the
   Off the clock strip on About.
+- **Places I have been are badges on About**, each drawn in its own place's
+  language: a station name board for the four Japanese cities, the flag's two
+  blue stripes for San Salvador, and a green guide sign for each US city. Add a
+  place by copying a badge of the same kind.
 - **The yellow ring around my photo** is the map's "you are here".
 - **Experience is a strip map.** Travelled track is solid, the rest is dashed, and
   a marker sits just past the internship. That marker is dated: it is right until
