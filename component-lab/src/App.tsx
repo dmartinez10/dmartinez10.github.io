@@ -77,6 +77,7 @@ export default function App() {
             <span>David Martinez</span>
           </a>
           <nav className="lab__links" aria-label="Pages">
+            <a href="/">Home</a>
             <a href="/work/">Work</a>
             <a href="/about/">About</a>
             <a href="/assets/resume.pdf">Resume</a>

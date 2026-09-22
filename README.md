@@ -87,10 +87,11 @@ decoration:
 - **Every nav item is the kind of sign it would be on a road** (2026-09-22, his
   call): guide green for Work, an interchange for Claude, service blue for
   Components, park brown for About, an exit for Contact, and a white regulation
-  plate for the Resume. Since 2026-09-22 the bar carries only **Work, About and
-  Resume**, his call: Skills, the Claude page and the component lab sit under
-  "Also here" at the top of Work, and contact moved into the footer. One row at
-  every width from 320 to 1512, 88 to 94px tall. The page you are on wears the
+  plate for the Resume, and a navy house for Home. Since 2026-09-22 the bar
+  carries only **Home, Work, About and Resume**, his call: Skills, the Claude
+  page and the component lab sit under "Also here" at the top of Work, and
+  contact moved into the footer. The D badge beside the name is gone, also his
+  call. One row at every width from 320 to 1512, 88 to 94px tall. The page you are on wears the
   safety yellow ring, and the signs shrink rather than scroll on a phone. Markup is `a.ns.ns--work` and so on inside
   `nav.nav__links`. The component lab's own bar is React, in `component-lab/src/App.tsx`,
   so a new nav item means `npm run build` there too.
