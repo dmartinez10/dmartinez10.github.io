@@ -50,6 +50,14 @@
   --label:   var(--display);
   --mono:    "Atkinson Hyperlegible Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
+  /* the quiet column: transparent in the margins, ground colour behind the text */
+  /* full strength across the whole content box (72rem) and a little past it, so
+     no caption is ever read over a trace; the board runs free outside that */
+  --quiet: linear-gradient(90deg,
+    #EFE9DE00 0, #EFE9DE00 calc(50% - 44rem),
+    #EFE9DEF2 calc(50% - 38rem), #EFE9DEF2 calc(50% + 38rem),
+    #EFE9DE00 calc(50% + 44rem)) center top / 100% 100% no-repeat;
+
   --gut:  clamp(1rem, 5vw, 2.5rem);
   --max:  72rem;    /* page */
   --meas: 40rem;    /* prose */
@@ -64,9 +72,16 @@ body{
   /* a short page still ends on the footer, not on a band of empty ground */
   min-height:100svh; display:flex; flex-direction:column;
   margin:0; color:var(--ink);
-  /* the map of my head: faint route lines in each project's colour, always;
-     the signs from my own life join them only where the margins are empty */
-  background:url("assets/bg/lines.svg") center top / 1600px auto repeat-y, var(--bg);
+  /* The map of my head, in layers: a board of traces, vias and chips at the
+     bottom, route lines in each project's colour over it, and the signs from my
+     own life only where the margins are empty. The wash on top is the quiet
+     column: the board runs full strength out at the edges and fades back behind
+     the reading column, so no line of text is ever read over a trace. */
+  background:
+    var(--quiet),
+    url("assets/bg/board.svg") center top / 1600px auto repeat-y,
+    url("assets/bg/lines.svg") center top / 1600px auto repeat-y,
+    var(--bg);
   font-family:var(--sans); font-size:1.0625rem; line-height:1.6;
   -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
 }
@@ -96,6 +111,8 @@ a:hover{ text-decoration-thickness:2px; }
   body{
     background:
       url("assets/bg/signs.svg") center top / 1600px auto repeat-y,
+      var(--quiet),
+      url("assets/bg/board.svg") center top / 1600px auto repeat-y,
       url("assets/bg/lines.svg") center top / 1600px auto repeat-y,
       var(--bg);
   }
@@ -527,7 +544,11 @@ a:hover{ text-decoration-thickness:2px; }
 
 /* ══ footer ══ */
 /* ══ the footer: the route ends, so the page says so ══ */
-.foot{ background:var(--sign); color:#fff; margin-top:clamp(3rem,7vw,5rem); padding:clamp(2rem,4vw,2.75rem) 0 clamp(2.25rem,4vw,3rem); }
+.foot{
+  background:
+    linear-gradient(90deg, #0E2A1F00 0, #0E2A1FE0 16%, #0E2A1FE0 84%, #0E2A1F00 100%),
+    #0E2A1F url("assets/bg/board-dark.svg") center top / 1300px auto repeat;
+  color:#fff; margin-top:clamp(3rem,7vw,5rem); padding:clamp(2rem,4vw,2.75rem) 0 clamp(2.25rem,4vw,3rem); }
 .foot__in{ max-width:var(--max); margin:0 auto; padding-inline:var(--gut); display:grid; gap:1.5rem; }
 /* the dashes of a road, ending */
 .foot__rule{ height:4px; border-radius:2px; background:repeating-linear-gradient(90deg,var(--hi) 0 26px,transparent 26px 46px); }
@@ -542,8 +563,24 @@ a:hover{ text-decoration-thickness:2px; }
 }
 .foot__links a:hover{ border-color:var(--hi); color:var(--hi); }
 .foot__grid{ display:grid; gap:1.25rem 2.5rem; grid-template-columns:repeat(auto-fit,minmax(min(15rem,100%),1fr)); }
-.foot__grid h2{ font-family:var(--display); font-weight:700; font-size:.78rem; letter-spacing:.14em; color:#AEB9D6; margin:0 0 .35rem; }
-.foot__grid p{ font-size:.9rem; line-height:1.55; color:#E6E9F2; }
+.foot__grid h2{ font-family:var(--display); font-weight:700; font-size:.78rem; letter-spacing:.14em; color:#A9D3BC; margin:0 0 .35rem; }
+.foot__grid p{ font-size:.9rem; line-height:1.55; color:#E3EFE7; }
+
+/* ══ a section of numbers is mounted on the board ══ */
+.sect:has(.nums){
+  background:
+    linear-gradient(90deg, #0E2A1F00 0, #0E2A1FDB 14%, #0E2A1FDB 86%, #0E2A1F00 100%),
+    #0E2A1F url("assets/bg/board-dark.svg") center top / 1300px auto repeat;
+  color:#E7F1EA; border-radius:16px; box-shadow:inset 0 0 0 2px #24523F;
+  padding:2rem clamp(1.25rem,3vw,2.5rem) 2.5rem; margin-block:1.5rem;
+}
+.sect:has(.nums) .sect__t{ color:#fff; }
+.sect:has(.nums) .sect__h{ border-bottom-color:#3F7A60; }
+.sect:has(.nums) .sect__n{ color:#A9D3BC; }
+.sect:has(.nums) .nums li{ border-top-color:#C9A227; }
+.sect:has(.nums) .nums b{ color:#fff; }
+.sect:has(.nums) .nums span{ color:#D6E7DC; }
+.sect:has(.nums) :focus-visible{ outline-color:var(--hi); }
 
 /* ══ visually hidden, still read aloud ══ */
 .sr{
