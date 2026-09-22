@@ -56,6 +56,13 @@ decoration:
   CommU, the lab, and Claude as the interchange), and **each story is a stop on it**
   (C1, S1, U1, L1, H1). A story page carries the same marker and colour, so
   you can tell which project you are in from any page.
+- **The ground is a board.** Under the route lines runs a circuit: traces that
+  turn at 45 degrees the way a board is routed, vias where they change layer,
+  chips and connector pads (`assets/bg/board.svg`). It runs at full strength out
+  in the margins and fades back behind the reading column, through the `--quiet`
+  wash, so no line of text is ever read over a trace. A section of numbers and
+  the footer sit on the dark green board (`assets/bg/board-dark.svg`) with the
+  same wash trick.
 - **The background is a map of my head.** Faint route lines in each project's
   colour run behind every page. Where the margins are empty, on screens 1440 wide
   and up, signs from my own life sit in them like stickers: I-80, a parking P, an
@@ -124,6 +131,11 @@ colour and structure while keeping every element doing a job.
 - Verified with no horizontal overflow from **320px to 1920px** on every page.
 - **A focus ring is never navy on navy.** Inside the footer, the directory sign,
   the exit panel, the terminal and a lightbox, the ring turns safety yellow.
+- **Contrast is measured against the pixels, not the tokens.** The page is
+  rendered twice, once normally and once with every glyph made transparent; the
+  difference is the glyph mask, and each text run is checked against the real
+  background under its own letters. 519 runs across five pages, none below AA,
+  board included.
 - **Checked with axe-core** (WCAG 2.0, 2.1 and 2.2, A and AA, plus best practice)
   on every page at 1280 and 375: no violations. Text spacing (1.4.12) holds with
   line height 1.5, letter spacing .12em and word spacing .16em forced on.
