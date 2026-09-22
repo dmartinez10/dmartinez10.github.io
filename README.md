@@ -233,6 +233,13 @@ would want to see, our biggest flex."
   `.nums`, **What I did** as a short `.did` list, one thing to try, and **the call
   I would make again** with a few pictures in `.shots`.
 - **Why I was there comes from me, never inferred.** If it is not on record, ask.
+- **Three cells in the `.story` panel:** what it is, why I was there, and **what
+  was mine**, so a reader can tell my work from the founder's or the designer's.
+- **Every project ends on "What changed"**, a `.moves` grid of before and after
+  pairs with the number in both states: 1,033ms to 125ms, 2.72:1 to 4.60:1, five
+  tabs to one surface, five jobs to two. Added 2026-09-22 after reading
+  LinkedIn's own guidance on portfolios, which says the outcome is the part
+  hiring managers look for and the part most portfolios leave out.
 - **Numbers come from source, never from a doc.** Centline's are the ones verified
   on 21 September 2026; Sollo's are checked against the work log.
 - **Every image opens larger**, and every Centline caption says its names and
