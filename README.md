@@ -14,6 +14,7 @@ page of its own.
 index.html          home: who I am, the directory sign, one card per project
 work/index.html     Work: a short story per project, each with a Tap to learn more button
 work/*.html         one page per project; claude.html is how I work with Claude
+skills/index.html   Skills: what I can do, and where each one was used
 about/index.html    About: photos, story, skills, the route so far
 contact/index.html  Contact: the exit sign
 styles.css          design tokens, layout, shared components, the lightbox
@@ -51,7 +52,8 @@ language of signs, and the metaphor carries real information rather than
 decoration:
 
 - **The hero is a directory sign.** Navy panel, a yellow "you are here", and one
-  row per project that opens its page. It is navigation, not a picture of navigation.
+  row per destination, including Skills. It is navigation, not a picture of it,
+  and it is why the top bar can stay short: everything is one tap from home.
 - **Each project is a line with its own colour and its own logo** (Centline, Sollo,
   CommU, the lab, and Claude as the interchange), and **each story is a stop on it**
   (C1, S1, U1, L1, H1). A story page carries the same marker and colour, so
@@ -85,9 +87,18 @@ decoration:
 - **Every nav item is the kind of sign it would be on a road** (2026-09-22, his
   call): guide green for Work, an interchange for Claude, service blue for
   Components, park brown for About, an exit for Contact, and a white regulation
-  plate for the Resume. The page you are on wears the safety yellow ring, and the
-  signs shrink rather than scroll on a phone. Markup is `a.ns.ns--work` and so on
-  inside `nav.nav__links`.
+  plate for the Resume, and a navy house for Home. Since 2026-09-22 the bar
+  carries only **Home, Work, About and Resume**, his call: Skills, the Claude
+  page and the component lab sit under "Also here" at the top of Work, and
+  contact moved into the footer. The D badge beside the name is gone, also his
+  call. One row at every width from 320 to 1512, 88 to 94px tall. The page you are on wears the
+  safety yellow ring, and the signs shrink rather than scroll on a phone. Markup is `a.ns.ns--work` and so on inside
+  `nav.nav__links`. The component lab's own bar is React, in `component-lab/src/App.tsx`,
+  so a new nav item means `npm run build` there too.
+- **Contact is the footer.** Every page ends on "Tell me what you are building
+  and who it is for", the email at display size with a yellow underline, and the
+  links beside it. The contact page keeps its own panel and hides the footer's
+  copy through `.page--contact`.
 - **The footer is the end of the line**: a navy panel with the road's dashes
   running out, the yellow marker, the four ways to reach me as sign chips, and
   three short columns (where I am, what it is set in, how it is built). It sits
