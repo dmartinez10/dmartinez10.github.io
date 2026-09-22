@@ -325,10 +325,11 @@ a:hover{ text-decoration-thickness:2px; }
 
 /* the biggest numbers, then one way in (2026-09-22: a short story and one button,
    the detail lives on the project's own page) */
-.wins{ display:flex; flex-wrap:wrap; gap:.9rem 2rem; margin:1.35rem 0 0; }
-.wins li{ font-size:.88rem; line-height:1.35; color:var(--ink-2); max-width:9.5rem; }
+/* always three across, so a narrow phone never leaves one number on a row of its own */
+.wins{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.9rem 1.25rem; margin:1.35rem 0 0; max-width:32rem; }
+.wins li{ font-size:.88rem; line-height:1.35; color:var(--ink-2); }
 .wins b{
-  display:block; font-family:var(--display); font-weight:800; font-size:1.7rem;
+  display:block; font-family:var(--display); font-weight:800; font-size:clamp(1.3rem,5.5vw,1.7rem);
   line-height:1.05; color:var(--ink); margin-bottom:.15rem; font-variant-numeric:tabular-nums;
 }
 .proj__go{ margin:1.6rem 0 0; }
