@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sollo &middot; David Martinez</title>
+<meta name="description" content="A summer in Tokyo as Sollo&rsquo;s UI/UX engineering intern: 70+ merged pull requests in eight weeks on an app that helps foreign residents of Japan through government paperwork, in nine languages, now on the App Store.">
+<meta name="author" content="David Martinez">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="David Martinez">
+<meta property="og:title" content="Sollo &middot; David Martinez">
+<meta property="og:description" content="70+ merged pull requests in eight weeks, nine languages, and a navigation I drew eleven ways, built, and then cut for the public beta.">
+<meta property="og:url" content="https://dmartinez10.github.io/work/sollo.html">
+<meta property="og:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
+<meta name="theme-color" content="#F2F3EF">
+
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://dmartinez10.github.io/work/sollo.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;1,400&family=Overpass:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../case.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav__in">
+    <a class="nav__me" href="../">
+      <span class="nav__mark" aria-hidden="true">D</span>
+      <span>David Martinez</span>
+    </a>
+    <nav class="nav__links" aria-label="Pages">
+      <a href="../work/" aria-current="page">Work</a>
+      <a href="../work/claude.html">Claude</a>
+      <a href="../components/">Components</a>
+      <a href="../about/">About</a>
+      <a href="../contact/">Contact</a>
+      <a href="../assets/resume.pdf">Resume</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="case wrap proj--s">
+
+  <a class="back" href="./">All work</a>
+
+  <p class="case__kicker"><span class="stop stop--s" aria-hidden="true">S1</span>Internship, Tokyo, June to August 2026</p>
+  <h1 class="case__title">Sollo</h1>
+  <p class="case__thesis">
+    Eight weeks in Tokyo as Sollo&rsquo;s UI/UX engineering intern, designing and building an
+    app that helps foreign residents of Japan get through government paperwork. It is on the
+    App Store now.
+  </p>
+
+  <div class="story">
+    <div>
+      <h2>What Sollo is</h2>
+      <p>Sollo is a company in Tokyo. Its app helps foreign residents of Japan find official
+        help: visas and residency, benefits, healthcare, housing and local services. Its
+        assistant, Ask Sollo, answers from real government documents, in plain language and in
+        nine languages.</p>
+      <p>The app, Sollo Life Nav, has been on the App Store since 18 August 2026.</p>
+    </div>
+    <div>
+      <h2>Why I was there</h2>
+      <p>I wanted to intern abroad. Technology is not made or used in isolation, and I
+        wanted to see it built for people outside the United States. I went through the CIEE
+        Tokyo Global Internship and spent it at Sollo, on a product for people living in a
+        country whose paperwork was not written for them.</p>
+      <p>For those eight weeks I was a foreigner in Tokyo too, so the reader was never hard
+        to picture.</p>
+    </div>
+  </div>
+
+  <ul class="nums">
+    <li><b>70+</b><span>pull requests merged in eight weeks</span></li>
+    <li><b>9</b><span>languages shipped, including Easy Japanese</span></li>
+    <li><b>8&times;</b><span>faster core browse flow, 1,033ms to 125ms</span></li>
+    <li><b>2,949</b><span>tests green at handoff</span></li>
+  </ul>
+
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">01</span>
+      <h2 class="sec__title">What I did</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+    <ul class="did">
+      <li><b>Redesigned the navigation.</b> I drew it eleven ways in three turns, rebuilt the
+        signed-in app to the pick, and wired it to the live services.</li>
+      <li><b>Built the design system.</b> Colour, spacing and type tokens, a shared widget and
+        icon library, and a light and dark theme, all under an automated WCAG AA contrast
+        check.</li>
+      <li><b>Shipped every string in nine languages.</b> Nothing went out as English with a
+        fallback, Easy Japanese included.</li>
+      <li><b>Caught accessibility misses before readers did.</b> A colour in a design handoff
+        measured 2.72:1, so it shipped at 4.60:1, one step up the designer&rsquo;s own palette.
+        A tap target the spec sized at 36 points shipped at 48.</li>
+      <li><b>Worked across the whole stack:</b> design, the mobile app and the Python
+        backend.</li>
+    </ul>
+  </section>
+
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">02</span>
+      <h2 class="sec__title">Try it: the navigation, in three turns</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+    <div class="prose">
+      <p>Before I rebuilt the app, I drew its navigation on a design canvas, a board of phones
+        side by side, three times over. Pick a turn:</p>
+    </div>
+
+    <div class="turns">
+      <fieldset class="pick-row">
+        <legend class="sr">Show a turn</legend>
+        <label class="pick-opt"><input type="radio" name="turn" value="1" checked><span>Turn 1 <small>A switcher</small></span></label>
+        <label class="pick-opt"><input type="radio" name="turn" value="2"><span>Turn 2 <small>Wild cards</small></span></label>
+        <label class="pick-opt"><input type="radio" name="turn" value="3"><span>Turn 3 <small>The rules</small></span></label>
+      </fieldset>
+      <div class="turns__panel" data-t="1">
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-s-turn1">
+    <img src="../assets/sollo/nav-turn-1.webp" width="1200" height="1098" loading="lazy" decoding="async" alt="Turn 1, titled A switcher that looks like Sollo, not a stock tab bar: three phones showing a ticket-stub dock at the bottom, stamped pass tabs at the top, and a floating navigator orb fanned open.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>Turn 1: three switchers that look like Sollo, not a stock tab bar.</figcaption>
+</figure>
+      </div>
+      <div class="turns__panel" data-t="2">
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-s-turn2">
+    <img src="../assets/sollo/nav-turn-2.webp" width="1200" height="1046" loading="lazy" decoding="async" alt="Turn 2, titled Three from imagination, no brief attached: a phone with a slim vertical rail on the left, a dark home with glowing round portals along the bottom, and a pull-up sheet listing the four surfaces.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>Turn 2: three wild cards, with no brief attached.</figcaption>
+</figure>
+      </div>
+      <div class="turns__panel" data-t="3">
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-s-turn3">
+    <img src="../assets/sollo/nav-turn-3.webp" width="1600" height="870" loading="lazy" decoding="async" alt="Turn 3, titled Best of, mixed, accessible and foolproof: five phones, 3a a big labelled dock marked recommended, 3b a portal dock, 3c tabs at the top marked runner-up, 3e an always-there bar, and 3f a segmented pill.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>Turn 3: five options, each held to the same four rules: labels always visible, targets of 60px or more, a high-contrast active state, and nothing hidden.</figcaption>
+</figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">03</span>
+      <h2 class="sec__title">The call I would make again</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+    <div class="prose">
+      <p>
+        Sixteen days after I built the five-tab navigation, I cut it to a single screen for the
+        public beta. Three of the five tabs were still &ldquo;coming soon&rdquo;, and a row of
+        doors that open onto nothing is not navigation. The dock was parked, not deleted, for
+        when those parts ship.
+      </p>
+    </div>
+    <div class="shots">
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-s-surface">
+    <img src="../assets/sollo/one-surface.webp" width="1200" height="1611" loading="lazy" decoding="async" alt="Two rows of three phones titled One surface, night and day: open with search as the app, a straight answer with its official source, and an answer built from the official documents when no guide matched, first in a dark palette and then in a light one.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>The single screen, in the night palette and the day palette.</figcaption>
+</figure>
+      <div>
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-s-figma">
+    <img src="../assets/sollo/onboarding-figma.webp" width="1600" height="845" loading="lazy" decoding="async" alt="Four onboarding frames from Figma, one per language: English, Japanese, Easy Japanese and Vietnamese. The Japanese frame labels the name field with kanji, and the Easy Japanese frame writes the same labels in hiragana.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>Onboarding in four of the nine languages. Easy Japanese writes the same labels in hiragana, for readers who know some Japanese but not the official kind.</figcaption>
+</figure>
+<figure class="fig" style="margin-top:1.5rem">
+  <button class="zoom" type="button" popovertarget="lb-s-journeys">
+    <img src="../assets/sollo/journeys-bar.webp" width="1600" height="384" loading="lazy" decoding="async" alt="Twelve small designs of the Your Journeys bar, labelled A to L: stacked rings, a warm feature card, a minimal link with dots, a dark accent bar, a two-stat split, inline chips, and six compact slim lines.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>One component, the bar back into a checklist in progress, drawn twelve ways before one was built.</figcaption>
+</figure>
+      </div>
+    </div>
+  </section>
+
+  <footer class="cfoot">
+    <a class="btn btn--open" href="https://apps.apple.com/us/app/sollo-life-nav/id6781235016" rel="noopener">Sollo on the App Store<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a href="./">Back to all work</a>
+  </footer>
+
+<div class="lightbox" id="lb-s-turn1" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-s-turn1" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/sollo/nav-turn-1.webp" width="1200" height="1098" loading="lazy" decoding="async" alt="Turn 1, titled A switcher that looks like Sollo, not a stock tab bar: three phones showing a ticket-stub dock at the bottom, stamped pass tabs at the top, and a floating navigator orb fanned open."><figcaption>Turn 1: three switchers that look like Sollo, not a stock tab bar.</figcaption></figure>
+</div>
+<div class="lightbox" id="lb-s-turn2" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-s-turn2" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/sollo/nav-turn-2.webp" width="1200" height="1046" loading="lazy" decoding="async" alt="Turn 2, titled Three from imagination, no brief attached: a phone with a slim vertical rail on the left, a dark home with glowing round portals along the bottom, and a pull-up sheet listing the four surfaces."><figcaption>Turn 2: three wild cards, with no brief attached.</figcaption></figure>
+</div>
+<div class="lightbox" id="lb-s-turn3" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-s-turn3" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/sollo/nav-turn-3.webp" width="1600" height="870" loading="lazy" decoding="async" alt="Turn 3, titled Best of, mixed, accessible and foolproof: five phones, 3a a big labelled dock marked recommended, 3b a portal dock, 3c tabs at the top marked runner-up, 3e an always-there bar, and 3f a segmented pill."><figcaption>Turn 3: five options, each held to the same four rules.</figcaption></figure>
+</div>
+<div class="lightbox" id="lb-s-surface" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-s-surface" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/sollo/one-surface.webp" width="1200" height="1611" loading="lazy" decoding="async" alt="Two rows of three phones titled One surface, night and day: open with search as the app, a straight answer with its official source, and an answer built from the official documents when no guide matched, first in a dark palette and then in a light one."><figcaption>The single screen, in the night palette and the day palette.</figcaption></figure>
+</div>
+<div class="lightbox" id="lb-s-figma" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-s-figma" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/sollo/onboarding-figma.webp" width="1600" height="845" loading="lazy" decoding="async" alt="Four onboarding frames from Figma, one per language: English, Japanese, Easy Japanese and Vietnamese. The Japanese frame labels the name field with kanji, and the Easy Japanese frame writes the same labels in hiragana."><figcaption>Onboarding in four of the nine languages.</figcaption></figure>
+</div>
+<div class="lightbox" id="lb-s-journeys" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-s-journeys" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/sollo/journeys-bar.webp" width="1600" height="384" loading="lazy" decoding="async" alt="Twelve small designs of the Your Journeys bar, labelled A to L: stacked rings, a warm feature card, a minimal link with dots, a dark accent bar, a two-stat split, inline chips, and six compact slim lines."><figcaption>One component drawn twelve ways before one was built.</figcaption></figure>
+</div>
+
+</main>
+</body>
+</html>

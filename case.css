@@ -445,3 +445,37 @@
 /* a legend kept for screen readers only must not take the chip row's full-width rule,
    or it overflows the page as an invisible 100%-wide box */
 .pick-row legend.sr{ float:none; width:1px; margin:-1px; }
+
+/* ══ the short story every project page opens on (2026-09-22): what the work
+   is and why I was there, then the numbers, then what I did. Detail below
+   that is optional reading, so it stays short. ══ */
+.story{
+  display:grid; grid-template-columns:minmax(0,1fr); gap:1px; margin:0 0 2.75rem;
+  background:var(--rule); border:1px solid var(--rule); border-radius:var(--r);
+  border-top:6px solid var(--line,var(--sign)); overflow:hidden;
+}
+@media (min-width:48rem){ .story{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+.story > div{ background:var(--panel); padding:1.35rem 1.45rem 1.5rem; }
+.story h2{ font-size:1.15rem; margin:0 0 .6rem; }
+.story p{ color:var(--ink-2); line-height:1.65; }
+.story p + p{ margin-top:.75rem; }
+
+.case > .nums{ margin:0 0 3.25rem; }
+
+.did{ display:grid; gap:.9rem; max-width:var(--meas); }
+.did li{
+  position:relative; padding-left:1.4rem;
+  color:var(--ink-2); line-height:1.6;
+}
+.did li::before{
+  content:""; position:absolute; left:0; top:.55em;
+  width:.6rem; height:.6rem; border-radius:50%; background:var(--line,var(--sign));
+}
+.did b{ color:var(--ink); }
+
+/* a few pictures, two across once there is room */
+.shots{ display:grid; grid-template-columns:minmax(0,1fr); gap:1.5rem; margin:1.5rem 0 0; }
+@media (min-width:48rem){ .shots{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+.shots .fig{ margin:0; }
+
+.cfoot .btn{ font-family:var(--label); }
