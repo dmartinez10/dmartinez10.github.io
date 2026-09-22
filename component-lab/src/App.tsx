@@ -76,11 +76,12 @@ export default function App() {
             <span className="lab__mark" aria-hidden="true">D</span>
             <span>David Martinez</span>
           </a>
-          <nav className="lab__links" aria-label="Sections">
-            <a href="/#work">Work</a>
+          <nav className="lab__links" aria-label="Pages">
+            <a href="/work/">Work</a>
+            <a href="/work/claude.html">Claude</a>
             <a href="/components/" aria-current="page">Components</a>
-            <a href="/#about">About</a>
-            <a href="/#contact">Contact</a>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
             <a href="/assets/resume.pdf">Resume</a>
           </nav>
         </div>

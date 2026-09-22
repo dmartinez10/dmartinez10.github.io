@@ -42,6 +42,7 @@
   --u: #00735E;   /* CommU */
   --l: #5A3DB0;   /* Component lab */
   --w: #0A6699;   /* sollo.my */
+  --h: #9E1F63;   /* how I work with Claude, the interchange */
 
   --display: "Overpass", "Helvetica Neue", Arial, sans-serif;
   --sans:    "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
@@ -59,7 +60,10 @@ html{ -webkit-text-size-adjust:100%; }
 @media (prefers-reduced-motion:no-preference){ html{ scroll-behavior:smooth; } }
 
 body{
-  margin:0; background:var(--bg); color:var(--ink);
+  margin:0; color:var(--ink);
+  /* the map of my head: faint route lines in each project's colour, always;
+     the signs from my own life join them only where the margins are empty */
+  background:url("assets/bg/lines.svg") center top / 1600px auto repeat-y, var(--bg);
   font-family:var(--sans); font-size:1.0625rem; line-height:1.6;
   -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
 }
@@ -77,6 +81,15 @@ a{
 }
 a:hover{ text-decoration-thickness:2px; }
 :focus-visible{ outline:3px solid var(--sign); outline-offset:3px; border-radius:4px; }
+
+@media (min-width:90rem){
+  body{
+    background:
+      url("assets/bg/signs.svg") center top / 1600px auto repeat-y,
+      url("assets/bg/lines.svg") center top / 1600px auto repeat-y,
+      var(--bg);
+  }
+}
 
 /* the sticky header covers the top of any section a link jumps to */
 [id]{ scroll-margin-top:6rem; }
@@ -154,6 +167,7 @@ a:hover{ text-decoration-thickness:2px; }
 .line--u, .stop--u, .proj--u{ --line:var(--u); }
 .line--l, .stop--l, .proj--l{ --line:var(--l); }
 .line--w, .stop--w, .proj--w{ --line:var(--w); }
+.line--h, .stop--h, .proj--h{ --line:var(--h); }
 
 /* ══ hero ══ */
 .hero{
@@ -215,7 +229,7 @@ a:hover{ text-decoration-thickness:2px; }
 }
 .board__to{ display:block; font-size:.9rem; line-height:1.4; color:var(--sign-2); margin-top:.1rem; }
 .board__arrow{ width:1.5rem; height:1.5rem; color:#fff; transition:transform .15s ease; }
-.board__list a:hover .board__arrow{ transform:translateY(3px); }
+.board__list a:hover .board__arrow{ transform:translateX(3px); }
 .board :focus-visible{ outline-color:var(--hi); outline-offset:0; }
 
 /* The one orchestrated moment: the destinations flip in like a departure
@@ -298,7 +312,9 @@ a:hover{ text-decoration-thickness:2px; }
 
 .stops{ display:grid; gap:.85rem; margin:1.6rem 0 0; }
 .stops li{ position:relative; min-height:2.35rem; padding-top:.2rem; }
-.stops .stop{ position:absolute; left:calc(-3.4rem + 1.05rem - 1.175rem); top:0; }
+.stops .stop{ position:absolute; left:calc(-3.4rem + 1.05rem - 1.175rem); top:.3rem; }
+.stops .btn{ margin:0 0 .35rem; }
+.stops .btn + span{ margin-top:.1rem; }
 /* the line ends at its last stop: cover whatever runs on below that ring */
 .stops li:last-child::after{
   content:""; position:absolute; top:2.2rem; bottom:-1px;
@@ -481,6 +497,155 @@ a:hover{ text-decoration-thickness:2px; }
   display:grid; gap:.45rem; font-size:.88rem; color:var(--ink-3);
 }
 .foot a{ color:var(--ink-2); }
+
+/* ══ visually hidden, still read aloud ══ */
+.sr{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+
+/* ══ every picture opens larger ══
+   A button with popovertarget opens a popover holding the full image. That is
+   HTML, not script: Escape closes it, a click outside closes it, and focus
+   goes back to the picture it came from. The popover sits outside any panel
+   that can be hidden, because a popover inside display:none never renders. */
+.zoom{
+  display:block; position:relative; width:100%; padding:0; margin:0;
+  border:0; background:none; font:inherit; color:inherit; text-align:inherit;
+  cursor:zoom-in; border-radius:var(--r);
+}
+.zoom img{ width:100%; border-radius:var(--r); border:1px solid var(--rule); background:var(--panel); }
+.zoom__hint{
+  position:absolute; right:.6rem; bottom:.6rem;
+  display:inline-flex; align-items:center; gap:.4rem;
+  padding:.4rem .6rem .3rem; border-radius:6px;
+  background:var(--sign); color:#fff;
+  font-family:var(--display); font-weight:700; font-size:.78rem; line-height:1;
+  opacity:0; transform:translateY(3px); transition:opacity .15s ease, transform .15s ease;
+}
+.zoom__hint svg{ width:.85rem; height:.85rem; margin-top:-.1rem; }
+.zoom:hover .zoom__hint, .zoom:focus-visible .zoom__hint{ opacity:1; transform:none; }
+@media (hover:none){ .zoom__hint{ opacity:1; transform:none; } }
+
+.lightbox{
+  /* the browser centres a popover with margin:auto; size it to the picture so
+     the backdrop around it stays a place to click away */
+  border:0; padding:0; background:transparent; color:#fff;
+  max-width:min(96vw,1600px); max-height:94dvh; overflow:auto; overscroll-behavior:contain;
+}
+.lightbox::backdrop{ background:#0B1533EB; }
+.lightbox figure{ margin:0; }
+.lightbox img{
+  width:auto; max-width:100%; max-height:84dvh; margin:0 auto;
+  border-radius:10px; background:#fff;
+}
+.lightbox figcaption{
+  max-width:46rem; margin:.85rem auto 0; padding:0 .5rem;
+  font-size:.92rem; line-height:1.5; color:#E6E9F2; text-align:center;
+}
+.lightbox__close{
+  position:fixed; top:max(1rem,env(safe-area-inset-top)); right:1rem; z-index:2;
+  display:inline-flex; align-items:center; gap:.45rem;
+  padding:.6rem .9rem .5rem; border-radius:8px; border:2px solid #fff;
+  background:var(--sign); color:#fff; cursor:pointer;
+  font-family:var(--display); font-weight:800; font-size:.95rem; line-height:1;
+}
+.lightbox__close:hover{ background:var(--sign-3); }
+.lightbox :focus-visible{ outline:3px solid var(--hi); outline-offset:3px; }
+/* On a phone a dense board is unreadable at screen width, so it opens at
+   reading size and pans. A photo still fits the screen. */
+@media (max-width:48rem){
+  .lightbox{ max-width:100vw; max-height:100dvh; }
+  .lightbox img{ max-width:none; max-height:none; width:min(1600px,230vw); }
+  .lightbox--fit img{ width:auto; max-width:100%; max-height:80dvh; }
+}
+@media (prefers-reduced-motion:reduce){ .zoom__hint{ transition:none; } }
+
+/* ══ the portrait: the yellow ring is the map's "you are here" ══ */
+.hero__hi{ display:flex; align-items:center; gap:.9rem; }
+.me{ width:4.25rem; flex:none; margin:0; border-radius:50%; }
+.me img{
+  width:4.25rem; height:4.25rem; border-radius:50%; object-fit:cover;
+  border:0; box-shadow:0 0 0 3px var(--bg), 0 0 0 7px var(--hi);
+}
+.me .zoom__hint{ display:none; }
+
+/* ══ a terminal, drawn in CSS: how I asked Claude to talk to me ══ */
+.term{
+  background:#0F1830; color:#E6E9F2; border-radius:var(--r);
+  font-family:var(--mono); font-size:.8rem; line-height:1.5;
+  overflow:hidden; box-shadow:0 22px 44px -28px #0B153399;
+}
+.term__bar{
+  display:flex; align-items:center; gap:.4rem; padding:.6rem .85rem;
+  background:#16213F; color:#9AA6C4; font-size:.74rem;
+}
+.term__bar i{ width:.6rem; height:.6rem; border-radius:50%; background:#2E3B63; }
+.term__bar span{ margin-left:.4rem; }
+.term__body{ padding:1rem; display:grid; gap:.75rem; }
+.tbox{ border:3px double #9AA6C4; padding:.45rem .7rem; }
+.tbox--q{ border-color:var(--hi); }
+.tbox b{ color:var(--hi); font-weight:500; }
+.tline{ display:grid; grid-template-columns:5.2rem 1fr; gap:.6rem; }
+.tline b{ color:#9AA6C4; font-weight:500; }
+.term__next{ color:#9AA6C4; }
+
+/* ══ a figure anywhere on the site ══ */
+.fig{ margin:0; }
+.fig figcaption{ margin-top:.65rem; font-size:.86rem; line-height:1.5; color:var(--ink-3); }
+
+/* ══ logos, in place of letters: each project's own mark on a tile ══ */
+.logo{ display:block; flex:none; width:2.1rem; height:2.1rem; border-radius:.45rem; object-fit:cover; box-shadow:0 0 0 1px #14224A26; }
+.proj__text > .logo{ position:absolute; left:0; top:0; }
+.board .logo{ width:2.3rem; height:2.3rem; box-shadow:0 0 0 2px #fff; }
+
+/* ══ a button that opens a project: filled, big, impossible to miss ══ */
+.btn--open{
+  background:var(--sign); border-color:var(--sign); color:#fff;
+  min-height:2.9rem; padding:.7rem 1.1rem .6rem; font-family:var(--display); font-weight:800; font-size:1rem;
+}
+.btn svg{ width:1.05rem; height:1.05rem; flex:none; margin-top:-.1rem; transition:transform .15s ease; }
+.btn:hover svg{ transform:translateX(3px); }
+.btn--open:hover{ background:var(--sign-3); border-color:var(--sign-3); color:#fff; }
+.btn--quiet{ background:var(--panel); font-family:var(--display); font-weight:700; }
+@media (prefers-reduced-motion:reduce){ .btn svg{ transition:none; } }
+
+/* ══ home: one card per project ══ */
+.cards{ display:grid; gap:1.25rem; }
+@media (min-width:52rem){ .cards{ grid-template-columns:repeat(2,minmax(0,1fr)); } .pcard--wide{ grid-column:1 / -1; } }
+.pcard{
+  display:flex; flex-direction:column; gap:1rem; min-width:0;
+  padding:1.25rem; background:var(--panel); border:1px solid var(--rule);
+  border-top:6px solid var(--line,var(--sign)); border-radius:var(--r);
+}
+.pcard__top{ display:flex; align-items:center; gap:.8rem; }
+.pcard__top .logo{ width:2.6rem; height:2.6rem; }
+.pcard__name{ font-size:1.5rem; line-height:1.1; padding-top:.15rem; }
+.pcard__tag{ margin:.1rem 0 0; font-size:.86rem; color:var(--ink-3); }
+.pcard__for{ font-family:var(--display); font-weight:600; font-size:1.08rem; line-height:1.45; color:var(--ink); margin:0; }
+.pcard__body{ color:var(--ink-2); line-height:1.6; margin:0; }
+.pcard__go{ margin-top:auto; display:flex; flex-wrap:wrap; gap:.6rem; padding-top:.25rem; }
+.pcard figure{ margin:0; }
+@media (min-width:52rem){
+  .pcard--wide{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:1rem 2rem; align-items:start; }
+  .pcard--wide > .pcard__side{ grid-column:2; grid-row:1 / span 5; }
+}
+
+/* ══ a page of its own: Work, About, Contact ══ */
+.page-h{ padding-block:clamp(2.5rem,6vw,4.5rem) clamp(1.5rem,3vw,2.25rem); }
+.page-h h1{ font-size:clamp(2.4rem,5.5vw,3.8rem); line-height:1.04; letter-spacing:-.025em; margin:.2rem 0 1rem; }
+.page-h p{ max-width:40rem; font-size:1.12rem; line-height:1.6; color:var(--ink-2); }
+.kick{ display:flex; align-items:center; gap:.7rem; font-family:var(--display); font-weight:700; font-size:.95rem; color:var(--ink-3); margin:0; }
+
+/* ══ about ══ */
+.aboutme{ display:grid; gap:2rem 3rem; align-items:center; }
+@media (min-width:52rem){ .aboutme{ grid-template-columns:auto minmax(0,1fr); } }
+.me--big, .me--big img{ width:11rem; height:11rem; }
+.me--big img{ box-shadow:0 0 0 5px var(--bg), 0 0 0 11px var(--hi); }
+.aboutme h1{ font-size:clamp(2.4rem,5.5vw,3.8rem); line-height:1.04; letter-spacing:-.025em; margin:.2rem 0 1rem; }
+.aboutme p{ max-width:40rem; font-size:1.12rem; line-height:1.6; color:var(--ink-2); }
+.photo figcaption{ margin-top:.7rem; font-size:.88rem; color:var(--ink-3); line-height:1.5; }
+.deflist dd em{ display:block; margin-top:.35rem; font-style:normal; color:var(--ink-3); font-size:.88rem; }
 
 /* ══════════════════════════════════════════════════════════════════
    Phone. Everything is rem-based, so moving the root moves the whole

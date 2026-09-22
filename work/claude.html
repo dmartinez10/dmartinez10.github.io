@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How I work with Claude &middot; David Martinez</title>
+<meta name="description" content="How David Martinez designs with Claude: options drawn on a canvas before anything is built, narrow agents that check and break the work, decisions written down, and seeing the real screen rather than trusting a test.">
+<meta name="author" content="David Martinez">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="David Martinez">
+<meta property="og:title" content="How I work with Claude">
+<meta property="og:description" content="Options before answers, one agent per job, decisions written down, and looking at the real thing. The setup, and what it taught me.">
+<meta property="og:url" content="https://dmartinez10.github.io/work/claude.html">
+<meta property="og:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
+<meta name="theme-color" content="#F2F3EF">
+
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://dmartinez10.github.io/work/claude.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;1,400&family=Overpass:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../case.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav__in">
+    <a class="nav__me" href="../">
+      <span class="nav__mark" aria-hidden="true">D</span>
+      <span>David Martinez</span>
+    </a>
+    <nav class="nav__links" aria-label="Pages">
+      <a href="../work/">Work</a>
+      <a href="../work/claude.html" aria-current="page">Claude</a>
+      <a href="../components/">Components</a>
+      <a href="../about/">About</a>
+      <a href="../contact/">Contact</a>
+      <a href="../assets/resume.pdf">Resume</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="case wrap proj--h">
+
+  <a class="back" href="./">All work</a>
+
+  <p class="case__kicker"><span class="stop stop--h" aria-hidden="true">H1</span>The interchange: every project runs through it</p>
+  <h1 class="case__title">How I work with Claude</h1>
+  <p class="case__thesis">
+    Claude is part of how I design, the way a sketchbook and a second pair of eyes are. It
+    draws the options, checks the work against rules I wrote, and tries to break what I think
+    is finished. The decisions stay mine.
+  </p>
+
+  <div class="case__hero">
+    <div class="term" role="group" aria-label="A terminal showing how I asked Claude to talk to me">
+      <div class="term__bar" aria-hidden="true"><i></i><i></i><i></i><span>claude</span></div>
+      <div class="term__body">
+        <div class="tbox"><b>YOU:</b> merge the fix and check it on the phone</div>
+        <div class="tline"><b>DONE</b><span>Merged. Walked it on the simulator.</span></div>
+        <div class="tline"><b>FOUND</b><span>The date range had no year. Fixed.</span></div>
+        <div class="tbox tbox--q">
+          <b>QUESTION 1 of 1</b><br>Tracking links: one line, or a row per link?
+          <fieldset class="pick-row" style="margin-top:.6rem">
+            <legend class="sr">Answer the question</legend>
+            <label class="pick-opt"><input type="radio" name="tq" value="a"><span>a) One line &larr; my pick</span></label>
+            <label class="pick-opt"><input type="radio" name="tq" value="b"><span>b) A row per link</span></label>
+          </fieldset>
+        </div>
+        <div class="tbox term__reply" data-v="a"><b>YOU:</b> a</div>
+        <div class="tbox term__reply" data-v="b"><b>YOU:</b> b</div>
+        <div class="term__next">NEXT: nothing running.</div>
+      </div>
+    </div>
+    <p class="demo-note">I even wrote it a style guide for talking to me in the terminal: my ask in a box, results on labelled lines, every question answerable with one letter. Try answering.</p>
+  </div>
+
+  <dl class="brief">
+    <div>
+      <dt>The setup</dt>
+      <dd>Claude Code in the terminal, custom subagents, skills and plugins, claude.ai
+        Artifacts as a design canvas, Claude in Chrome, MCP connectors to Figma and Notion,
+        and memory that carries rules from one session to the next.</dd>
+    </div>
+    <div>
+      <dt>What stays mine</dt>
+      <dd>The product decisions, the design systems, and the rules everything is checked
+        against. Nothing merges without my word.</dd>
+    </div>
+    <div>
+      <dt>Where it shows</dt>
+      <dd>My own app in testing, a summer at Sollo with 70+ merged pull requests in eight
+        weeks, and this site.</dd>
+    </div>
+  </dl>
+
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">01</span>
+      <h2 class="sec__title">Options before answers</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+    <div class="prose">
+      <p>
+        I never ask for the answer. I ask for two to four options, drawn side by side on a
+        canvas with a recommendation marked, and I answer with a letter. The canvas is a
+        claude.ai Artifact: a live page, so an option can be clicked, resized and read in both
+        themes before a line of the product changes. The pick is written down with its date
+        and reason, and only then does building start.
+      </p>
+    </div>
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-h-canvas">
+    <img src="../assets/sollo/nav-turn-3.webp" width="1600" height="870" loading="lazy" decoding="async" alt="A design canvas of five phones labelled 3a to 3f, with 3a marked recommended and 3c marked runner-up.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>A canvas from the Sollo navigation: five options, one recommendation, one runner-up. Both project stories open with boards like this.</figcaption>
+</figure>
+    <p class="pcard__go" style="margin:1rem 0 0">
+      <a class="btn btn--open" href="sollo-redesign.html">Open the Sollo story<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="btn btn--open" href="centline.html">Open the Centline story<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </p>
+  </section>
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">02</span>
+      <h2 class="sec__title">One agent, one job</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+    <div class="prose">
+      <p>
+        I keep agents narrow, and give each one the model its job needs: the checks that run
+        on every change get the smallest, and the ones that need judgement get the strongest.
+        These are the checkers I run on my own app. Open any of them:
+      </p>
+    </div>
+    <div class="roster">
+      <details>
+        <summary><b>Rule guard</b><i>Haiku</i><span>Checks a change against the project&rsquo;s written rules.</span></summary>
+        <p>Reports every violation and fixes none of them, so the report cannot hide a quiet rewrite.</p>
+      </details>
+      <details>
+        <summary><b>Verifier</b><i>Haiku</i><span>Runs the checks and returns only what failed.</span></summary>
+        <p>The cheapest agent in the roster and the one that runs most, so it gets the smallest model.</p>
+      </details>
+      <details>
+        <summary><b>Breaker</b><i>Opus</i><span>Tries to make a finished change fail.</span></summary>
+        <p>Mutation testing included. It reports only what it actually broke, with the failing case written out.</p>
+      </details>
+      <details>
+        <summary><b>Walker</b><i>Opus</i><span>Drives the running app on a simulator.</span></summary>
+        <p>It keeps the screenshots to itself and comes back with sentences, so my context stays clean.</p>
+      </details>
+      <details>
+        <summary><b>Scribe</b><i>Sonnet</i><span>Writes each decision into the project&rsquo;s rules after a merge.</span></summary>
+        <p>With its date and my own words, so the reason survives the session that made it.</p>
+      </details>
+    </div>
+    <div class="prose">
+      <p>
+        <strong>None of them commits, stages, pushes, branches or merges.</strong> An agent
+        that hits a question it cannot answer stops and says so instead of guessing.
+      </p>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">03</span>
+      <h2 class="sec__title">Written down, or it did not happen</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+    <div class="prose">
+      <p>
+        Every decision goes into the project&rsquo;s rules with its date, its reason and my
+        own words, so the next session has to argue with it instead of quietly undoing it. A
+        reversed decision keeps its old reasoning. Memory carries the rest between sessions:
+        standing rules like no long dashes anywhere, hazards that have cost me once, and
+        runbooks for the jobs I repeat.
+      </p>
+      <p>
+        When I say <em>night</em>, it keeps working unattended, decides by its own
+        recommendation, writes down each call and what it costs if wrong, and leaves me a
+        morning box with the commands to run. The hard stops still need my word.
+      </p>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">04</span>
+      <h2 class="sec__title">Seeing, not trusting</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+    <div class="prose">
+      <p>
+        Claude in Chrome drives the real page and measures it the way a person would. Every
+        page of this site was checked for sideways scrolling at six widths, 320 to 1920, that
+        way. Boards and share cards are rendered by headless Chrome, so what I review is what
+        ships, and on the phone the walker drives the simulator.
+      </p>
+      <p>
+        Looking catches what tests cannot. On my own app, 5,280 passing tests had nothing to
+        say about a date range with no year. One look did.
+      </p>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">05</span>
+      <h2 class="sec__title">The kit</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+    <dl class="kit">
+      <div><dt>Claude Code</dt><dd><span>Custom subagents</span><span>Custom skills</span><span>Plan, then build</span><span>Git worktrees for parallel sessions</span><span>Hooks</span><span>Memory</span><span>Project rules</span></dd></div>
+      <div><dt>Skills and plugins</dt><dd><span>Brainstorming</span><span>Writing plans</span><span>Subagent-driven development</span><span>Code review</span><span>Skill creator</span><span>Frontend design</span><span>design-md, my own skill for the open design.md format</span></dd></div>
+      <div><dt>On claude.ai</dt><dd><span>Artifacts as a design canvas</span><span>Interactive design decks</span></dd></div>
+      <div><dt>Connected</dt><dd><span>Claude in Chrome</span><span>Figma, through MCP</span><span>Notion, through MCP</span></dd></div>
+    </dl>
+    <div class="prose">
+      <p style="margin-top:1.1rem">
+        At Sollo I added a hook that sends every push through the team&rsquo;s review agents,
+        and used parallel reviewers before each pull request.
+      </p>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">06</span>
+      <h2 class="sec__title">What it taught me</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+    <ul class="lessons">
+      <li><b>Ask for options, not answers.</b><span>A recommendation you can overrule beats an answer you have to argue with.</span></li>
+      <li><b>Write the decision down.</b><span>Or the next session will undo it, confidently.</span></li>
+      <li><b>One agent, one job.</b><span>A builder that also checks its own work passes itself.</span></li>
+      <li><b>Green is not proof.</b><span>Put the bug back and watch the test go red. If it stays green, it was never guarding anything.</span></li>
+      <li><b>Look, then walk.</b><span>A screen at phone size and a walk on a real phone find what thousands of tests cannot.</span></li>
+      <li><b>It never merges. I do.</b><span>Every change passes the required checks, and the button is mine.</span></li>
+    </ul>
+  </section>
+
+  <footer class="cfoot">
+    <a href="./">Back to all work</a>
+    <a href="centline.html">The Centline story</a>
+    <a href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a>
+  </footer>
+
+<div class="lightbox" id="lb-h-canvas" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-h-canvas" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/sollo/nav-turn-3.webp" width="1600" height="870" loading="lazy" decoding="async" alt="A design canvas of five phones labelled 3a to 3f, with 3a marked recommended and 3c marked runner-up."><figcaption>A canvas from the Sollo navigation: five options, one recommendation, one runner-up. Both project stories open with boards like this.</figcaption></figure>
+</div>
+
+</main>
+</body>
+</html>

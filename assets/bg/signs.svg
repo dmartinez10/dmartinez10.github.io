@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2400" width="1600" height="2400">
+  <!-- Signs from my own map, tilted like stickers in the margins. Drawn only on
+       screens wide enough that the margins are empty. -->
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="700" opacity=".8">
+
+    <!-- I-80, the interstate past Iowa City and West Liberty -->
+    <g transform="translate(108 230) rotate(-5)">
+      <path d="M8 6 Q50 -6 92 6 Q100 60 50 104 Q0 60 8 6Z" fill="#1F4E9E" stroke="#fff" stroke-width="4"/>
+      <path d="M10 8 Q50 -3 90 8 L89 30 H11Z" fill="#C8102E"/>
+      <text x="50" y="25" text-anchor="middle" font-size="11" fill="#fff">INTERSTATE</text>
+      <text x="50" y="74" text-anchor="middle" font-size="40" fill="#fff">80</text>
+    </g>
+
+    <!-- parking, where I have worked since 2023 -->
+    <g transform="translate(1400 520) rotate(4)">
+      <rect width="90" height="90" rx="12" fill="#1F4E9E" stroke="#fff" stroke-width="4"/>
+      <text x="45" y="70" text-anchor="middle" font-size="64" fill="#fff">P</text>
+    </g>
+
+    <!-- a green guide sign home -->
+    <g transform="translate(98 930) rotate(3)">
+      <rect width="118" height="78" rx="10" fill="#01513A"/>
+      <rect x="4" y="4" width="110" height="70" rx="7" fill="none" stroke="#fff" stroke-width="2.5"/>
+      <text x="59" y="33" text-anchor="middle" font-size="19" fill="#fff">Iowa City</text>
+      <path d="M59 42 l-11 12 h7 v10 h8 v-10 h7Z" fill="#fff"/>
+    </g>
+
+    <!-- a Tokyo station board, from the summer at Sollo -->
+    <g transform="translate(1392 1130) rotate(-4)">
+      <rect width="120" height="72" rx="6" fill="#fff" stroke="#C9CED8" stroke-width="2"/>
+      <rect y="56" width="120" height="16" rx="0" fill="#C3102F"/>
+      <text x="60" y="34" text-anchor="middle" font-size="26" fill="#14171F" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, Noto Sans JP, sans-serif">東京</text>
+      <text x="60" y="50" text-anchor="middle" font-size="11" fill="#5B6270">Tōkyō</text>
+    </g>
+
+    <!-- trucks crossing: the one-truck owner-operator -->
+    <g transform="translate(108 1480) rotate(-3)">
+      <rect x="15" y="15" width="72" height="72" rx="8" transform="rotate(45 51 51)" fill="#FBB214" stroke="#14171F" stroke-width="4"/>
+      <path d="M26 46 h30 v18 h-30Z M58 52 h10 l6 6 v6 h-16Z" fill="#14171F"/>
+      <circle cx="34" cy="68" r="5" fill="#14171F"/><circle cx="50" cy="68" r="5" fill="#14171F"/><circle cx="68" cy="68" r="5" fill="#14171F"/>
+    </g>
+
+    <!-- hola, the other language I think in -->
+    <g transform="translate(1398 1790) rotate(5)">
+      <path d="M8 0 H104 Q112 0 112 8 V50 Q112 58 104 58 H36 L20 74 V58 H8 Q0 58 0 50 V8 Q0 0 8 0Z" fill="#fff" stroke="#14224A" stroke-width="3"/>
+      <text x="56" y="38" text-anchor="middle" font-size="24" fill="#14224A">¡Hola!</text>
+    </g>
+
+    <!-- welcome, in the Easy Japanese the app spoke -->
+    <g transform="translate(100 2080) rotate(-4)">
+      <path d="M8 0 H108 Q116 0 116 8 V50 Q116 58 108 58 H96 V74 L80 58 H8 Q0 58 0 50 V8 Q0 0 8 0Z" fill="#FFC72C" stroke="#14171F" stroke-width="3"/>
+      <text x="58" y="38" text-anchor="middle" font-size="21" fill="#14171F" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, Noto Sans JP, sans-serif">ようこそ</text>
+    </g>
+  </g>
+</svg>

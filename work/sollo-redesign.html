@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drawn in turns &middot; Sollo &middot; David Martinez</title>
+<meta name="description" content="Sollo: how the app&rsquo;s navigation was explored on a design canvas in three turns under fixed accessibility rules, built, and then cut to a single surface sixteen days later for the public beta.">
+<meta name="author" content="David Martinez">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="David Martinez">
+<meta property="og:title" content="Drawn in turns &middot; Sollo">
+<meta property="og:description" content="Eleven navigation options in three turns, one rebuild, and the dock that came out sixteen days later. Then the same habit at the size of one number.">
+<meta property="og:url" content="https://dmartinez10.github.io/work/sollo-redesign.html">
+<meta property="og:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dmartinez10.github.io/assets/og/share-card.png">
+<meta name="theme-color" content="#F2F3EF">
+
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://dmartinez10.github.io/work/sollo-redesign.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;1,400&family=Overpass:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../case.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav__in">
+    <a class="nav__me" href="../">
+      <span class="nav__mark" aria-hidden="true">D</span>
+      <span>David Martinez</span>
+    </a>
+    <nav class="nav__links" aria-label="Pages">
+      <a href="../work/" aria-current="page">Work</a>
+      <a href="../work/claude.html">Claude</a>
+      <a href="../components/">Components</a>
+      <a href="../about/">About</a>
+      <a href="../contact/">Contact</a>
+      <a href="../assets/resume.pdf">Resume</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="case wrap proj--s">
+
+  <a class="back" href="./">All work</a>
+
+  <p class="case__kicker"><span class="stop stop--s" aria-hidden="true">S1</span>Sollo, Tokyo, summer 2026</p>
+  <h1 class="case__title">Drawn in turns</h1>
+  <p class="case__thesis">
+    Before I rebuilt the app, its navigation was drawn eleven ways in three turns, under
+    rules every option had to meet. Sixteen days after the rebuild, most of it came out
+    again, and that is the part worth telling.
+  </p>
+
+  <dl class="brief">
+    <div>
+      <dt>Role</dt>
+      <dd>UI/UX engineering intern. I explored the navigation on the canvas, rebuilt the whole
+        signed-in app to the chosen design, and took it to production.</dd>
+    </div>
+    <div>
+      <dt>Constraint</dt>
+      <dd>Four surfaces of equal weight and no home base, for foreign residents of Japan
+        working through government paperwork, in nine languages.</dd>
+    </div>
+    <div>
+      <dt>Outcome</dt>
+      <dd>Rebuilt on 8 July as a five-tab shell, wired to live services in nine languages
+        with dark mode, under an automated WCAG AA gate. Sixteen days later it became a
+        single surface for the public beta.</dd>
+    </div>
+  </dl>
+
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">01</span>
+      <h2 class="sec__title">Four surfaces, no home base</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+    <div class="prose">
+      <p>
+        The signed-in app had four peer surfaces: Life Navigator, Solo Discovery, Parallel
+        Presence and Solo Canvas. None of them was home. A stock tab bar would have switched
+        between them and looked like every other app on the phone.
+      </p>
+      <p>
+        The app already carried a boarding-pass and navigator motif, so the brief was short:
+        flip between four equal surfaces, and do it in a way that reads as owned, not generic.
+      </p>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">02</span>
+      <h2 class="sec__title">Three turns on one canvas</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+    <div class="prose">
+      <p>I explored it on a design canvas in three turns, each a board of phones drawn side by side. Pick a turn:</p>
+    </div>
+
+    <div class="turns">
+      <fieldset class="pick-row">
+        <legend class="sr">Show a turn</legend>
+        <label class="pick-opt"><input type="radio" name="turn" value="1" checked><span>Turn 1 <small>A switcher</small></span></label>
+        <label class="pick-opt"><input type="radio" name="turn" value="2"><span>Turn 2 <small>Wild cards</small></span></label>
+        <label class="pick-opt"><input type="radio" name="turn" value="3"><span>Turn 3 <small>Mixed, under rules</small></span></label>
+      </fieldset>
+      <div class="turns__panel" data-t="1">
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-s-turn1">
+    <img src="../assets/sollo/nav-turn-1.webp" width="1200" height="1098" loading="lazy" decoding="async" alt="Turn 1, titled A switcher that looks like Sollo, not a stock tab bar: three phones showing a ticket-stub dock at the bottom, stamped pass tabs at the top, and a floating navigator orb fanned open.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>Turn 1: a switcher that looks like Sollo, not a stock tab bar.</figcaption>
+</figure>
+        <p><strong>Three switchers that carry the motif.</strong> A ticket-stub dock with a
+          perforated edge and flight-style codes, pass tabs stamped at the top, and a floating
+          navigator orb that fans out the other three. Same job in all three.</p>
+      </div>
+      <div class="turns__panel" data-t="2">
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-s-turn2">
+    <img src="../assets/sollo/nav-turn-2.webp" width="1200" height="1046" loading="lazy" decoding="async" alt="Turn 2, titled Three from imagination, no brief attached: a phone with a slim vertical rail on the left, a dark home with glowing round portals along the bottom, and a pull-up sheet listing the four surfaces.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>Turn 2: three wild cards, with no brief attached.</figcaption>
+</figure>
+        <p><strong>Three wild cards, no brief attached.</strong> A slim rail down the left edge,
+          a dark home where the four surfaces glow like portals, and a pull-up sheet with no
+          chrome at rest. Different paradigms, different moods, and a dark one.</p>
+      </div>
+      <div class="turns__panel" data-t="3">
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-s-turn3">
+    <img src="../assets/sollo/nav-turn-3.webp" width="1600" height="870" loading="lazy" decoding="async" alt="Turn 3, titled Best of, mixed, accessible and foolproof: five phones, 3a a big labelled dock marked recommended, 3b a portal dock, 3c tabs at the top marked runner-up, 3e an always-there bar, and 3f a segmented pill.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>Turn 3: five options, every one held to the same rules. 3a is marked as the recommendation, 3c as runner-up.</figcaption>
+</figure>
+        <p><strong>Five options mixing the best of both.</strong> The canvas recommended 3a, a
+          big labelled dock with the active tab filled solid orange, and marked 3c, plain-speech
+          tabs at the top that name where you are, as runner-up.</p>
+      </div>
+    </div>
+
+    <div class="prose"><p>Every option in turn three had to meet the same four rules:</p></div>
+    <ul class="rules">
+      <li><b>Labels always visible.</b> Never an icon on its own.</li>
+      <li><b>Large targets,</b> 60px or more.</li>
+      <li><b>A high-contrast active state,</b> so the current surface is never a guess.</li>
+      <li><b>Nothing hidden.</b> You can always see where you are and where you can go.</li>
+    </ul>
+  </section>
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">03</span>
+      <h2 class="sec__title">One surface, twelve bars</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+    <div class="prose">
+      <p>
+        The same canvas drew other questions at the same resolution. One was a single
+        surface, where search is the app and the navigation lives in a ticket card at the
+        bottom, drawn in the night palette and the day palette. Another was one component,
+        the Your Journeys bar that leads back into a checklist in progress, drawn twelve ways.
+      </p>
+    </div>
+<figure class="fig fig--tall">
+  <button class="zoom" type="button" popovertarget="lb-s-surface">
+    <img src="../assets/sollo/one-surface.webp" width="1200" height="1611" loading="lazy" decoding="async" alt="Two rows of three phones titled One surface, night and day: open with search as the app, a straight answer with its official source, and an answer built from the official documents when no guide matched, first in a dark palette and then in a light one.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>One surface, in the night palette and the day palette.</figcaption>
+</figure>
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-s-journeys">
+    <img src="../assets/sollo/journeys-bar.webp" width="1600" height="384" loading="lazy" decoding="async" alt="Twelve small designs of the Your Journeys bar, labelled A to L: stacked rings, a warm feature card, a minimal link with dots, a dark accent bar, a two-stat split, inline chips, and six compact slim lines.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>Twelve directions for the Your Journeys bar, from a progress ring to a ghost outline.</figcaption>
+</figure>
+  </section>
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">04</span>
+      <h2 class="sec__title">Built on 8 July</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+    <div class="prose">
+      <p>
+        On 8 July I rebuilt the whole signed-in app to the chosen design: a five-tab shell with
+        a back stack for each tab, and the assistant&rsquo;s chat wired to the live answer
+        server so it streams sourced answers. The next day it moved onto the real services,
+        the government guides, the reader&rsquo;s journeys and the account, with every new
+        string in nine languages and design tokens that follow the phone into dark mode.
+      </p>
+      <p>
+        On 10 July I put its palette under an automated WCAG AA contrast gate. It moved seven
+        token values to pass, and flagged one exception that belonged to the brand instead of
+        quietly retuning it.
+      </p>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">05</span>
+      <h2 class="sec__title">Sixteen days later</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+    <div class="prose">
+      <p>
+        For the public beta on 24 July, the five tabs became one surface. Three of the five
+        were coming-soon placeholders, and a dock of doors that open onto nothing is not
+        navigation. The header became the product name with a beta badge, the account became
+        an avatar in the corner, and feedback moved one tap from home.
+      </p>
+      <p>
+        The visual calls went the same way as the navigation. Before writing a line, I showed
+        the founder interactive design decks rendered on the real screen: BETA-mark variants,
+        ten feedback entry points, twelve profile-control treatments and seven halo studies.
+        The dock turn three recommended was parked, not deleted, for when those surfaces ship.
+      </p>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="sec__head">
+      <span class="sec__n">06</span>
+      <h2 class="sec__title">The smallest version of the habit</h2>
+      <span class="sec__rule" aria-hidden="true"></span>
+    </div>
+    <div class="prose">
+      <p>
+        The same loop works at the size of one number. Asked for more air under a page title,
+        I did not pick a value. I drew the one number four ways, 6pt as it shipped, 14pt, 20pt
+        as the design file specified, and 28pt, plus a slider, with a note: pick one and I
+        will set it. Try it:
+      </p>
+    </div>
+
+    <div class="air">
+      <div>
+        <fieldset class="pick-row">
+          <legend>Air under the title</legend>
+          <label class="pick-opt"><input type="radio" name="air" value="6" checked><span>6pt <small>Shipped</small></span></label>
+          <label class="pick-opt"><input type="radio" name="air" value="14"><span>14pt <small>Snug</small></span></label>
+          <label class="pick-opt"><input type="radio" name="air" value="20"><span>20pt <small>Design file</small></span></label>
+          <label class="pick-opt"><input type="radio" name="air" value="28"><span>28pt <small>Airy</small></span></label>
+        </fieldset>
+        <p class="air__now" aria-hidden="true"></p>
+      </div>
+      <div class="air__phone" aria-hidden="true">
+        <p class="air__title"><i>&lsaquo;</i>Visa &amp; Residency</p>
+        <ul class="air__list">
+          <li>Working outside your status</li>
+          <li>Re-entry permit</li>
+          <li>Residence Card</li>
+          <li>Permanent residency</li>
+        </ul>
+      </div>
+    </div>
+    <p class="demo-note">Drawn in HTML and CSS for this page. The real board is below.</p>
+<figure class="fig">
+  <button class="zoom" type="button" popovertarget="lb-s-air">
+    <img src="../assets/sollo/air-under-title.webp" width="1200" height="1261" loading="lazy" decoding="async" alt="A board titled How much air under the title?: four phones showing the Visa and Residency list with 6pt, 14pt, 20pt and 28pt of space under the header, and below them a slider set to 20pt with a live phone.">
+    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+  </button>
+  <figcaption>The real board: one number drawn four ways, plus a slider to dial it in.</figcaption>
+</figure>
+    <div class="prose">
+      <p>
+        The founder picked, and I set it once, in the shared surface every page scrolls on.
+        Auditing the result found four screens adding their own inset on top, a 20 to 32pt
+        spread across the app, and zeroing them made every page space its content the same
+        way. Eleven navigation options or four values for one gap: it is the same loop.
+      </p>
+    </div>
+
+    <h3 class="find__h">More from the same summer</h3>
+    <div class="more">
+      <a href="sollo-design-system.html"><b>Measuring the spec</b><span>Refusing a handoff colour that could not pass its own gate.</span></a>
+      <a href="sollo-nine-locales.html"><b>Nine locales</b><span>Localization as a constraint, and a defect I shipped.</span></a>
+      <a href="sollo-breadcrumb.html"><b>A record, not a map</b><span>Why a breadcrumb must not invent a route.</span></a>
+    </div>
+  </section>
+
+  <footer class="cfoot">
+    <a href="./">Back to all work</a>
+    <a href="https://apps.apple.com/us/app/sollo-life-nav/id6781235016" rel="noopener">Sollo on the App Store</a>
+    <a href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a>
+  </footer>
+
+<div class="lightbox" id="lb-s-turn1" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-s-turn1" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/sollo/nav-turn-1.webp" width="1200" height="1098" loading="lazy" decoding="async" alt="Turn 1, titled A switcher that looks like Sollo, not a stock tab bar: three phones showing a ticket-stub dock at the bottom, stamped pass tabs at the top, and a floating navigator orb fanned open."><figcaption>Turn 1: a switcher that looks like Sollo, not a stock tab bar.</figcaption></figure>
+</div>
+<div class="lightbox" id="lb-s-turn2" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-s-turn2" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/sollo/nav-turn-2.webp" width="1200" height="1046" loading="lazy" decoding="async" alt="Turn 2, titled Three from imagination, no brief attached: a phone with a slim vertical rail on the left, a dark home with glowing round portals along the bottom, and a pull-up sheet listing the four surfaces."><figcaption>Turn 2: three wild cards, with no brief attached.</figcaption></figure>
+</div>
+<div class="lightbox" id="lb-s-turn3" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-s-turn3" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/sollo/nav-turn-3.webp" width="1600" height="870" loading="lazy" decoding="async" alt="Turn 3, titled Best of, mixed, accessible and foolproof: five phones, 3a a big labelled dock marked recommended, 3b a portal dock, 3c tabs at the top marked runner-up, 3e an always-there bar, and 3f a segmented pill."><figcaption>Turn 3: five options, every one held to the same rules. 3a is marked as the recommendation, 3c as runner-up.</figcaption></figure>
+</div>
+<div class="lightbox" id="lb-s-surface" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-s-surface" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/sollo/one-surface.webp" width="1200" height="1611" loading="lazy" decoding="async" alt="Two rows of three phones titled One surface, night and day: open with search as the app, a straight answer with its official source, and an answer built from the official documents when no guide matched, first in a dark palette and then in a light one."><figcaption>One surface, in the night palette and the day palette.</figcaption></figure>
+</div>
+<div class="lightbox" id="lb-s-journeys" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-s-journeys" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/sollo/journeys-bar.webp" width="1600" height="384" loading="lazy" decoding="async" alt="Twelve small designs of the Your Journeys bar, labelled A to L: stacked rings, a warm feature card, a minimal link with dots, a dark accent bar, a two-stat split, inline chips, and six compact slim lines."><figcaption>Twelve directions for the Your Journeys bar, from a progress ring to a ghost outline.</figcaption></figure>
+</div>
+<div class="lightbox" id="lb-s-air" popover>
+  <button class="lightbox__close" type="button" popovertarget="lb-s-air" popovertargetaction="hide" autofocus>Close</button>
+  <figure><img src="../assets/sollo/air-under-title.webp" width="1200" height="1261" loading="lazy" decoding="async" alt="A board titled How much air under the title?: four phones showing the Visa and Residency list with 6pt, 14pt, 20pt and 28pt of space under the header, and below them a slider set to 20pt with a live phone."><figcaption>The real board: one number drawn four ways, plus a slider to dial it in.</figcaption></figure>
+</div>
+
+</main>
+</body>
+</html>
