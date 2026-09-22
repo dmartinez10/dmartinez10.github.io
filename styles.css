@@ -9,11 +9,12 @@
    ══════════════════════════════════════════════════════════════════ */
 
 :root{
-  /* ground: concrete, with white sign panels mounted on it */
-  --bg:        #F2F3EF;
-  --bg-sub:    #FFFFFF;
-  --bg-raise:  #E6E8E2;
-  --panel:     #FFFFFF;
+  /* ground: warm paper, with pale sign panels mounted on it. It was concrete
+     (#F2F3EF) until 2026-09-22, when he said the white read cold. */
+  --bg:        #EFE9DE;
+  --bg-sub:    #FBF8F2;
+  --bg-raise:  #E4DCCB;
+  --panel:     #FBF8F2;
 
   /* ink */
   --ink:       #14171F;
@@ -22,8 +23,8 @@
   --ink-4:     #5B6270;
 
   /* line */
-  --rule:      #D8DBD3;
-  --rule-2:    #B6BBB2;
+  --rule:      #DCD3C2;
+  --rule-2:    #BCB09C;
 
   /* the sign: a navy panel, white letters, one safety yellow */
   --sign:      #14224A;
@@ -60,6 +61,8 @@ html{ -webkit-text-size-adjust:100%; }
 @media (prefers-reduced-motion:no-preference){ html{ scroll-behavior:smooth; } }
 
 body{
+  /* a short page still ends on the footer, not on a band of empty ground */
+  min-height:100svh; display:flex; flex-direction:column;
   margin:0; color:var(--ink);
   /* the map of my head: faint route lines in each project's colour, always;
      the signs from my own life join them only where the margins are empty */
@@ -67,6 +70,7 @@ body{
   font-family:var(--sans); font-size:1.0625rem; line-height:1.6;
   -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
 }
+main{ flex:1 0 auto; }
 img{ max-width:100%; height:auto; display:block; }
 h1,h2,h3,h4{
   margin:0; font-family:var(--display); font-weight:800;
@@ -81,6 +85,12 @@ a{
 }
 a:hover{ text-decoration-thickness:2px; }
 :focus-visible{ outline:3px solid var(--sign); outline-offset:3px; border-radius:4px; }
+/* on the navy panels a navy ring is invisible, so the focus ring turns yellow */
+.foot :focus-visible,
+.board :focus-visible,
+.exit__panel :focus-visible,
+.term :focus-visible,
+.lightbox :focus-visible{ outline-color:var(--hi); }
 
 @media (min-width:90rem){
   body{
@@ -105,7 +115,7 @@ a:hover{ text-decoration-thickness:2px; }
 
 /* ══ header ══ */
 .nav{
-  position:sticky; top:0; z-index:50; background:#F2F3EFF0;
+  position:sticky; top:0; z-index:50; background:#EFE9DEF0;
   backdrop-filter:saturate(160%) blur(10px);
   border-bottom:1px solid var(--rule);
 }

@@ -89,7 +89,8 @@ decoration:
 Type: **Overpass**, from the lettering on US highway signs, for headings and
 labels, and **Atkinson Hyperlegible**, drawn for readers with low vision, for text.
 Atkinson draws zero with a slash on purpose, so large numbers are set in Overpass.
-Colour: concrete ground (#F2F3EF), white panels, sign navy (#14224A), one safety
+Colour: warm paper ground (#EFE9DE, concrete #F2F3EF until 2026-09-22, when he
+said the white read cold), pale panels (#FBF8F2), sign navy (#14224A), one safety
 yellow (#FFC72C), and five line colours that each pass AA with white type.
 
 The one moment of motion is the directory rows flipping in on load like a
@@ -121,6 +122,13 @@ colour and structure while keeping every element doing a job.
 - **Grid floors use `minmax(min(Xrem, 100%), 1fr)`** where auto-fit is right. A
   bare `minmax(26rem, ...)` cannot shrink and overflows a 360px phone.
 - Verified with no horizontal overflow from **320px to 1920px** on every page.
+- **A focus ring is never navy on navy.** Inside the footer, the directory sign,
+  the exit panel, the terminal and a lightbox, the ring turns safety yellow.
+- **Checked with axe-core** (WCAG 2.0, 2.1 and 2.2, A and AA, plus best practice)
+  on every page at 1280 and 375: no violations. Text spacing (1.4.12) holds with
+  line height 1.5, letter spacing .12em and word spacing .16em forced on.
+  Every image carries alt text, and the decorative logos carry `alt=""`.
+  Repeated **Tap to learn more** links each name their project to a screen reader.
 
 ## The component lab
 
