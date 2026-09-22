@@ -553,18 +553,26 @@ a:hover{ text-decoration-thickness:2px; }
 .foot__in{ max-width:var(--max); margin:0 auto; padding-inline:var(--gut); display:grid; gap:1.5rem; }
 /* the dashes of a road, ending */
 .foot__rule{ height:4px; border-radius:2px; background:repeating-linear-gradient(90deg,var(--hi) 0 26px,transparent 26px 46px); }
-.foot__top{ display:flex; flex-wrap:wrap; align-items:center; gap:1rem; }
-.foot__end{ display:flex; align-items:center; gap:.7rem; font-family:var(--display); font-weight:800; font-size:1.35rem; }
-.foot__dot{ width:1.1rem; height:1.1rem; flex:none; border-radius:50%; background:var(--hi); box-shadow:0 0 0 4px #ffffff22; }
-.foot__links{ display:flex; flex-wrap:wrap; gap:.5rem; margin-left:auto; }
+.foot__end{ display:flex; align-items:center; gap:.7rem; font-family:var(--display); font-weight:800; font-size:1.35rem; margin:0; }
+
+/* contact lives here now, and it is the loudest thing in the footer */
+.foot__say{ display:grid; gap:1rem; justify-items:start; }
+.foot__h{ color:#fff; font-size:clamp(1.5rem,3.4vw,2.35rem); line-height:1.12; max-width:24ch; margin:0; }
+.foot__mail{
+  color:#fff; font-family:var(--display); font-weight:800; overflow-wrap:anywhere;
+  font-size:clamp(1.25rem,4vw,2.3rem); line-height:1.15;
+  text-decoration-color:var(--hi); text-decoration-thickness:3px; text-underline-offset:.2em;
+}
+.foot__mail:hover{ text-decoration-thickness:5px; color:#fff; }
+.foot__links{ display:flex; flex-wrap:wrap; gap:.5rem; }
 .foot__links a{
   display:inline-flex; align-items:center; min-height:2.5rem; padding:.45rem .8rem .38rem;
   font-family:var(--display); font-weight:700; font-size:.9rem;
   color:#fff; text-decoration:none; border:2px solid #FFFFFF66; border-radius:5px;
 }
 .foot__links a:hover{ border-color:var(--hi); color:var(--hi); }
-.foot__grid{ display:grid; gap:1.25rem 2.5rem; grid-template-columns:repeat(auto-fit,minmax(min(15rem,100%),1fr)); }
-.foot__grid h2{ font-family:var(--display); font-weight:700; font-size:.78rem; letter-spacing:.14em; color:#A9D3BC; margin:0 0 .35rem; }
+.foot__grid{ display:grid; gap:1.25rem 2.5rem; margin-top:.5rem; grid-template-columns:repeat(auto-fit,minmax(min(15rem,100%),1fr)); }
+.foot__grid h3{ font-family:var(--display); font-weight:700; font-size:.78rem; letter-spacing:.14em; color:#A9D3BC; margin:0 0 .35rem; }
 .foot__grid p{ font-size:.9rem; line-height:1.55; color:#E3EFE7; }
 
 /* ══ a section of numbers is mounted on the board ══ */
@@ -714,6 +722,16 @@ a:hover{ text-decoration-thickness:2px; }
 @media (min-width:52rem){
   .pcard--wide{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:1rem 2rem; align-items:start; }
   .pcard--wide > .pcard__side{ grid-column:2; grid-row:1 / span 5; }
+}
+
+/* the contact page already says it at full size, so the footer does not repeat it */
+.page--contact .foot__say{ display:none; }
+
+/* the side trips off the Work page: same signs, smaller, under the intro */
+.side{ display:flex; flex-wrap:wrap; align-items:center; gap:.5rem; margin:1.5rem 0 0; }
+.side__lab{
+  font-family:var(--mono); font-size:.76rem; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--ink-3); margin-right:.3rem;
 }
 
 /* ══ skills: one card each, and where it was used ══ */

@@ -37,7 +37,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;1,400&family=Overpass:wght@600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
 </head>
-<body>
+<body class="page--contact">
 
 <a class="skip" href="#main">Skip to content</a>
 
@@ -49,11 +49,7 @@
     </a>
     <nav class="nav__links" aria-label="Pages">
       <a class="ns ns--work" href="../work/"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V5M10 4l-5 5M10 4l5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Work</a>
-      <a class="ns ns--claude" href="../work/claude.html"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 18V9m0 0L4 4m6 5l6-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Claude</a>
-      <a class="ns ns--comp" href="../components/"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3" width="6" height="6" rx="1.4" fill="currentColor"/><rect x="11" y="3" width="6" height="6" rx="1.4" fill="currentColor"/><rect x="3" y="11" width="6" height="6" rx="1.4" fill="currentColor"/><rect x="11" y="11" width="6" height="6" rx="1.4" fill="currentColor"/></svg>Components</a>
-      <a class="ns ns--skills" href="../skills/"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M13.6 2.6a4.4 4.4 0 0 0-5.3 5.6l-5.3 5.3a1.9 1.9 0 0 0 2.7 2.7l5.3-5.3a4.4 4.4 0 0 0 5.6-5.3l-2.6 2.6-2.3-.7-.7-2.3z" fill="currentColor"/></svg>Skills</a>
       <a class="ns ns--about" href="../about/"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="11" cy="4" r="2.1" fill="currentColor"/><path d="M11 7l-1 6-3 5m4-11l4 3m-4 3l3 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>About</a>
-      <a class="ns ns--contact" href="../contact/" aria-current="page"><span><i aria-hidden="true">EXIT</i>Contact</span></a>
       <a class="ns ns--resume" href="../assets/resume.pdf"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2.5h6l4 4v11H5z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 11h5M7.5 14h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Resume</a>
     </nav>
   </div>
@@ -87,19 +83,21 @@
 <footer class="foot">
   <div class="foot__in">
     <div class="foot__rule" aria-hidden="true"></div>
-    <div class="foot__top">
-      <p class="foot__end"><span class="foot__dot" aria-hidden="true"></span>End of the line</p>
+    <p class="foot__end"><span class="foot__dot" aria-hidden="true"></span>End of the line</p>
+    <div class="foot__say">
+      <h2 class="foot__h">Tell me what you are building and who it is for.</h2>
+      <a class="foot__mail" href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a>
       <div class="foot__links">
-        <a href="mailto:dailydavidm@gmail.com">Email</a>
         <a href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a>
         <a href="https://github.com/dmartinez10" rel="noopener">GitHub</a>
         <a href="/assets/resume.pdf">Resume (PDF)</a>
+        <a href="/contact/">More ways to reach me</a>
       </div>
     </div>
     <div class="foot__grid">
-      <div><h2>WHERE I AM</h2><p>Iowa City during term. West Liberty, Iowa.</p></div>
-      <div><h2>WHAT IT IS SET IN</h2><p>Overpass, from the lettering on American highway signs, and Atkinson Hyperlegible, drawn for readers with low vision.</p></div>
-      <div><h2>HOW IT IS BUILT</h2><p>From scratch. No framework, no build step, and no JavaScript on the page.</p></div>
+      <div><h3>WHERE I AM</h3><p>Iowa City during term. West Liberty, Iowa.</p></div>
+      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, and Atkinson Hyperlegible, drawn for readers with low vision.</p></div>
+      <div><h3>HOW IT IS BUILT</h3><p>From scratch. No framework, no build step, and no JavaScript on the page.</p></div>
     </div>
   </div>
 </footer>
