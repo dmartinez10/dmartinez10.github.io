@@ -180,6 +180,7 @@ a:hover{ text-decoration-thickness:2px; }
 .ns--about{   background:#6B3D1F; box-shadow:inset 0 0 0 2px #6B3D1F, inset 0 0 0 3.5px #fff; }
 .ns--contact{ background:#01513A; box-shadow:inset 0 0 0 2px #01513A, inset 0 0 0 3.5px #fff; }
 .ns--contact i{ display:block; font-style:normal; font-size:.62rem; letter-spacing:.1em; }
+.ns--skills{  background:var(--hi); color:var(--ink); box-shadow:inset 0 0 0 2px var(--hi), inset 0 0 0 3.5px var(--ink); }
 .ns--resume{  background:#fff; color:var(--ink); box-shadow:inset 0 0 0 3px var(--ink); }
 .ns:hover{ filter:brightness(1.14); text-decoration:none; }
 .ns--resume:hover{ filter:none; background:var(--bg-raise); }
@@ -713,6 +714,20 @@ a:hover{ text-decoration-thickness:2px; }
 @media (min-width:52rem){
   .pcard--wide{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:1rem 2rem; align-items:start; }
   .pcard--wide > .pcard__side{ grid-column:2; grid-row:1 / span 5; }
+}
+
+/* ══ skills: one card each, and where it was used ══ */
+.skills{ display:grid; gap:1rem; grid-template-columns:repeat(auto-fill,minmax(min(17rem,100%),1fr)); }
+.skills li{
+  background:var(--panel); border:1px solid var(--rule); border-left:5px solid var(--sign);
+  border-radius:var(--r); padding:1rem 1.1rem;
+}
+.skills b{ display:block; font-family:var(--display); font-weight:800; font-size:1.05rem; color:var(--ink); }
+.skills span{ display:block; margin-top:.3rem; font-size:.92rem; line-height:1.5; color:var(--ink-2); }
+/* where it was used, set in the mono face so it reads as a reading, not a claim */
+.skills em{
+  display:block; margin-top:.6rem; font-style:normal; font-family:var(--mono);
+  font-size:.76rem; line-height:1.45; color:var(--ink-3);
 }
 
 /* ══ a page of its own: Work, About, Contact ══ */

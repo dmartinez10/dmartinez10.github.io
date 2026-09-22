@@ -14,6 +14,7 @@ page of its own.
 index.html          home: who I am, the directory sign, one card per project
 work/index.html     Work: a short story per project, each with a Tap to learn more button
 work/*.html         one page per project; claude.html is how I work with Claude
+skills/index.html   Skills: what I can do, and where each one was used
 about/index.html    About: photos, story, skills, the route so far
 contact/index.html  Contact: the exit sign
 styles.css          design tokens, layout, shared components, the lightbox
@@ -85,9 +86,11 @@ decoration:
 - **Every nav item is the kind of sign it would be on a road** (2026-09-22, his
   call): guide green for Work, an interchange for Claude, service blue for
   Components, park brown for About, an exit for Contact, and a white regulation
-  plate for the Resume. The page you are on wears the safety yellow ring, and the
-  signs shrink rather than scroll on a phone. Markup is `a.ns.ns--work` and so on
-  inside `nav.nav__links`.
+  plate for the Resume, and a safety yellow work-zone plate with a wrench for
+  Skills. The page you are on wears the safety yellow ring, and the signs shrink
+  rather than scroll on a phone. Markup is `a.ns.ns--work` and so on inside
+  `nav.nav__links`. The component lab's own bar is React, in `component-lab/src/App.tsx`,
+  so a new nav item means `npm run build` there too.
 - **The footer is the end of the line**: a navy panel with the road's dashes
   running out, the yellow marker, the four ways to reach me as sign chips, and
   three short columns (where I am, what it is set in, how it is built). It sits

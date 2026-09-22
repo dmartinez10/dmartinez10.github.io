@@ -80,6 +80,7 @@ export default function App() {
             <a href="/work/">Work</a>
             <a href="/work/claude.html">Claude</a>
             <a href="/components/" aria-current="page">Components</a>
+            <a href="/skills/">Skills</a>
             <a href="/about/">About</a>
             <a href="/contact/">Contact</a>
             <a href="/assets/resume.pdf">Resume</a>
