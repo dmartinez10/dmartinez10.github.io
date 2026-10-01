@@ -5,8 +5,8 @@
 <title>David Martinez &middot; Resume</title>
 <!--
   Source for assets/resume.pdf, the public downloadable resume.
-  Content is verbatim from his own resume with two deliberate removals:
-  the phone number and the home town, because this file is served publicly
+  Content is verbatim from his own resume with one deliberate removal:
+  the phone number, because this file is served publicly
   and indexed. The full version stays for direct applications.
 
   Render:
@@ -18,10 +18,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-@page{ size:letter; margin:0.42in 0.55in; }
+@page{ size:letter; margin:0.4in 0.5in; }
 *{ margin:0; padding:0; box-sizing:border-box; }
 body{
-  font-family:"Inter",system-ui,sans-serif; font-size:9.2pt; line-height:1.34;
+  font-family:"Inter",system-ui,sans-serif; font-size:8.7pt; line-height:1.3;
   color:#16181D; -webkit-print-color-adjust:exact; print-color-adjust:exact;
 }
 a{ color:#1A47C2; text-decoration:none; }
@@ -35,7 +35,7 @@ a{ color:#1A47C2; text-decoration:none; }
 
 h2{
   font-size:8.6pt; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
-  color:#16181D; margin:10pt 0 4pt; padding-bottom:2pt;
+  color:#16181D; margin:8pt 0 3.5pt; padding-bottom:2pt;
   border-bottom:0.9pt solid #16181D;
 }
 
@@ -44,110 +44,134 @@ h2{
 .org .thin{ font-weight:400; color:#454C59; }
 .when{ font-size:8.8pt; color:#454C59; white-space:nowrap; }
 .role{ font-style:italic; font-size:9pt; color:#454C59; margin:.4pt 0 2pt; }
+.row .role{ margin:.4pt 0 2pt; }
+.row .where{ font-style:italic; font-size:8.8pt; color:#454C59; white-space:nowrap; }
 
 ul{ margin:0 0 0 12pt; }
-li{ margin:0 0 1.4pt; padding-left:1pt; }
+li{ margin:0 0 1pt; padding-left:1pt; }
 li::marker{ color:#8E96A3; }
-.block{ margin-bottom:6.5pt; }
+.block{ margin-bottom:5pt; }
 .block:last-child{ margin-bottom:0; }
 b.k{ font-weight:600; }
 </style>
 </head>
 <body>
 
-<p class="name">David G. Martinez</p>
+<p class="name">David Martinez</p>
 <p class="contact">
   <span>Iowa City, IA</span><span class="sep">|</span><span><a href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a></span><br>
-  <span><a href="https://www.linkedin.com/in/davidmuiux">linkedin.com/in/davidmuiux</a></span><span class="sep">|</span><span><a href="https://github.com/dmartinez10">github.com/dmartinez10</a></span><span class="sep">|</span><span><a href="https://portfolio.centline.co">portfolio.centline.co</a></span>
+  <span><a href="https://portfolio.centline.co">portfolio.centline.co</a></span><span class="sep">|</span><span><a href="https://www.linkedin.com/in/davidmuiux">linkedin.com/in/davidmuiux</a></span><span class="sep">|</span><span><a href="https://github.com/dmartinez10">github.com/dmartinez10</a></span>
 </p>
 
 <h2>Education</h2>
 <div class="block">
   <div class="row">
     <span class="org">The University of Iowa <span class="thin">| Iowa City, IA</span></span>
-    <span class="when">Anticipated May 2027</span>
+    <span class="when">Expected May 2027</span>
   </div>
-  <p class="role">Bachelor of Arts, Informatics (Human Computer Interaction)</p>
+  <p class="role">B.A., Informatics (Human-Computer Interaction), Minors in Psychology and Spanish</p>
   <ul>
-    <li>Minors: Spanish, Psychology</li>
-    <li><b class="k">Honors:</b> Dean's List, Spring 2026. CIEE Tokyo Global Internship, Summer 2026</li>
-    <li><b class="k">Relevant Coursework:</b> Human-Computer Interaction, Programming for Informatics, Analyzing
-      Data for Informatics, Audiences and Analytics, Research Methods and Data Analysis in Psychology,
-      Introduction to Cognitive Psychology, Elements of Graphic Design</li>
+    <li><b class="k">Scholarships:</b> Freeman Foundation Asian Internships Scholarship, Morse-Gilman Scholarship, LULAC Scholarship</li>
+    <li><b class="k">Coursework:</b> Research Methods in HCI, Human-Computer Interaction, Server-Side Development for Informatics</li>
   </ul>
 </div>
 
-<h2>Experience</h2>
+<h2>Technical Skills</h2>
+<ul>
+  <li><b class="k">Design:</b> Figma, design thinking, information architecture, user flows, wireframing, interactive prototyping,
+    conversational UI, design systems and tokens, accessibility</li>
+  <li><b class="k">AI Tools:</b> Claude, Claude Code, MCP integrations (Figma, Notion, Linear, Google Drive), AI-driven design to code workflow</li>
+  <li><b class="k">Research:</b> User research, UX audits, usability testing, user studies</li>
+  <li><b class="k">Development (AI-assisted):</b> Flutter (Dart), React, TypeScript, Python, HTML, CSS, Razor (CSHTML)</li>
+  <li><b class="k">Tools:</b> Git, GitHub, VS Code, Visual Studio, Xcode, Trello, Notion</li>
+  <li><b class="k">Spoken Languages:</b> English and Spanish (fluent)</li>
+</ul>
+
+<h2>Work Experience</h2>
 <div class="block">
   <div class="row">
-    <span class="org">Sollo <span class="thin">| AI Government Information Assistant | Tokyo, Japan</span></span>
-    <span class="when">June 2026 to August 2026</span>
+    <span class="org">Sollo</span>
+    <span class="when">Jun 2026 to Aug 2026</span>
   </div>
-  <p class="role">UI/UX Engineering Intern</p>
+  <div class="row">
+    <span class="role">UI/UX Engineering Intern</span>
+    <span class="where">Tokyo, Japan</span>
+  </div>
   <ul>
-    <li>Shipped 70+ merged pull requests to the production Flutter app in eight weeks, working across design,
-      mobile frontend, and Python backend as a designer-engineer</li>
-    <li>Translated Figma handoffs into production Flutter: a two-screen onboarding flow, an app-wide navigation
-      overhaul, and an animated indicator of a reader's progress through a topic</li>
-    <li>Rebuilt the entire post-authentication app to a new design system, extracting color, spacing, and type
-      tokens and building the reusable widget and icon library the team now builds against</li>
-    <li>Designed and enforced a WCAG AA light and dark brand theme, measuring contrast ratios and rejecting
-      handoff colors that failed the standard</li>
-    <li>Authored every new interface string across nine locales with Flutter gen-l10n, verifying each change on
-      device in both themes</li>
+    <li>Merged 70+ pull requests in 8 weeks across design, mobile front end, and Python backend, and shipped to the App Store</li>
+    <li>Wrote specs in Notion, had Claude draw options in Figma, presented them to the team, then built the chosen one with Claude Code</li>
+    <li>Ran a UX audit and redesigned the app's navigation, presenting HCI-based proposals to the full team</li>
+    <li>Made the core browse flow 8x faster (1,033 ms to 125 ms) in a home screen redesign, with 2,949 tests green at handoff</li>
+    <li>Built a 24-screen interactive Figma prototype of the full user flow and restructured the topics information architecture</li>
+    <li>Designed a conversational AI fallback so empty searches open into a chat with the AI instead of a dead end</li>
+    <li>Reviewed the article library for clarity, accuracy, and tone, flagging possibly hallucinated AI claims</li>
+    <li>Shipped onboarding in 9 languages on a shared token system, with component and accessibility docs for handoff</li>
   </ul>
 </div>
 
 <div class="block">
   <div class="row">
-    <span class="org">University of Iowa Health Care <span class="thin">| Department of Internal Medicine | Iowa City, IA</span></span>
+    <span class="org">University of Iowa Health Care, Internal Medicine</span>
     <span class="when">May 2026 to Present</span>
   </div>
-  <p class="role">Student Database Assistant</p>
+  <div class="row">
+    <span class="role">Student Database Assistant</span>
+    <span class="where">Iowa City, IA</span>
+  </div>
   <ul>
-    <li>Write and tune SQL queries against Microsoft SQL Server and Oracle research databases, turning ad-hoc
-      requests into analysis-ready datasets for clinical research staff</li>
-    <li>Maintain and update the department's recurring reports, keeping them accurate as the underlying data and
-      reporting requirements change</li>
-    <li>Manage records and data entry for a healthcare research environment, protecting the integrity that
-      downstream reporting and analysis depend on</li>
-    <li>Tune and maintain an internal web application, and consolidate data from Epic and departmental databases
-      for researcher analysis</li>
+    <li>Review internal web pages and use AI tools to find and fix issues in the HTML, CSS, and Razor (CSHTML)</li>
+    <li>Check AI-suggested fixes against the live pages before submitting, inside a large health system's web platform</li>
+    <li>Set up my own .NET developer environment, including IIS, NuGet feeds, Git Extensions, and KDiff3</li>
+  </ul>
+</div>
+
+<h2>Project Experience</h2>
+<div class="block">
+  <div class="row">
+    <span class="org">Centline <span class="thin">| Founder, Trucking App for New Owner-Operators</span></span>
+    <span class="when">Jul 2026 to Present</span>
+  </div>
+  <ul>
+    <li>Own the product direction, roadmap, branding, and business model of my own startup, now in testing</li>
+    <li>Designing it end to end so every load is one record from saved to paid, and drivers see what a load actually nets</li>
+    <li>Building it in Flutter with Claude Code: 144 merged pull requests and 5,888 tests so far</li>
   </ul>
 </div>
 
 <div class="block">
   <div class="row">
-    <span class="org">Parking and Transportation, The University of Iowa <span class="thin">| Iowa City, IA</span></span>
-    <span class="when">February 2023 to May 2026</span>
+    <span class="org">CommU <span class="thin">| Web App for Commuter Students</span></span>
   </div>
-  <p class="role">Parking Field Service Officer</p>
   <ul>
-    <li>Coordinate with a team of five across telecommunications platforms to enforce parking regulations and
-      maintain cohesive campus-wide coverage</li>
+    <li>Interviewed five commuter students, then designed the app around their answers and built it with AI-assisted development</li>
+    <li>Took it through four design phases, ending with a full user study to test and refine the design</li>
+  </ul>
+</div>
+
+<div class="block">
+  <div class="row">
+    <span class="org">Component Lab <span class="thin">| Accessible UI Components</span></span>
+  </div>
+  <ul>
+    <li>Built keyboard-accessible React and TypeScript components with no UI library, themed light and dark from one token file</li>
   </ul>
 </div>
 
 <h2>Leadership</h2>
 <div class="block">
   <div class="row">
-    <span class="org">League of United Latin American Citizens (LULAC) <span class="thin">| Fundraising Chairperson</span></span>
-    <span class="when">March 2025 to Present</span>
+    <span class="org">LULAC Collegiate Council #373, University of Iowa</span>
+    <span class="when">Mar 2025 to Present</span>
+  </div>
+  <div class="row">
+    <span class="role">Fundraising Chair (previously Public Relations Officer)</span>
+    <span class="where">Iowa City, IA</span>
   </div>
   <ul>
-    <li>Lead fundraising for Collegiate Council #373 since August 2026: goals, events and local sponsorships</li>
-    <li>Public relations officer, March 2025 to August 2026: helped recharter the council and grew its social media</li>
+    <li>Lead fundraising for the council, and helped recharter it and design its social media and branding as PR Officer</li>
+    <li>Organized a campus tour for high schoolers with Open Heartland and translated its flyer and form into Spanish</li>
   </ul>
 </div>
-
-<h2>Technical and Language Skills</h2>
-<ul>
-  <li><b class="k">Programming:</b> Dart (Flutter), Python, SQL, HTML/CSS, JavaScript, Swift</li>
-  <li><b class="k">Databases and Data:</b> Microsoft SQL Server, Oracle, PostgreSQL (Supabase), Epic</li>
-  <li><b class="k">Frameworks and Platforms:</b> Flutter, FastAPI, Firebase, Google Cloud Run, Git and GitHub, Xcode, VS Code</li>
-  <li><b class="k">Design:</b> Figma, design systems and tokens, WCAG AA accessibility, Photoshop, Illustrator, InDesign, Premiere Pro</li>
-  <li><b class="k">Languages:</b> Fluent in Spanish and English</li>
-</ul>
 
 </body>
 </html>
