@@ -56,7 +56,10 @@ https://www.figma.com/design/fq28Zlevw1VMspRphIcj2O
 - **C, Signs rushing in:** the projects as glowing signs along the shoulder,
   nearest first; the hero is the menu.
 
-Open: David's pick; the proposed sublines (below).
+**Picked (2026-10-10): C, as floating signs with no poles**, each casting a soft
+glow on the road. **The Claude kit section is in** (q2.a).
+
+Open: the proposed sublines (below).
 
 Proposed rewrites waiting for his yes:
 - A and C subline: "Product designer and UX engineer. 70+ pull requests merged
