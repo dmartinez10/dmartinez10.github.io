@@ -218,9 +218,9 @@
   .road__copy{ max-width:none; }
   .nav--night .nav__links{ justify-content:flex-start; max-width:100%; }
   .road__top{ min-height:auto; }
-  .signs.has-wheel{ position:relative; inset:auto; height:17rem; margin-top:4.5rem; perspective:1100px; perspective-origin:50% 45%; --w:min(78vw,22rem); }
+  .signs.has-wheel{ position:relative; inset:auto; height:19rem; margin-top:4.5rem; perspective:1100px; perspective-origin:50% 45%; --w:min(78vw,22rem); }
   .has-wheel .signs__h{ left:50%; top:0; }
-  .has-wheel .signs__list{ left:50%; top:45%; }
+  .has-wheel .signs__list{ left:50%; top:56%; }
   .has-wheel .sign a{ min-height:calc(var(--w) * .55); }
   .sign__name{ font-size:1.6rem; }
 }
@@ -478,3 +478,85 @@
 }
 .road__p--also{ margin-top:.5rem; }
 .boot[data-motion="on"] .road__p--also{ animation-delay:.55s; }
+
+/* ══ every page: the road's motion and the HUD's frame ══ */
+
+/* the headline waits for its decode, and shows itself if the script never runs */
+.dc-page[data-motion="on"] main h1:not(.road__h){ opacity:0; animation:show 0s 1.2s forwards; }
+.dc-page[data-motion="on"] main h1.is-decoding{ opacity:1; animation:none; }
+
+/* under the header, the centre line races in as the page arrives, then rests */
+.night .nav:not(.nav--night){ position:sticky; }
+.night .nav:not(.nav--night)::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:repeating-linear-gradient(90deg, var(--cl) 0 28px, transparent 28px 52px);
+  opacity:.55;
+}
+@media (prefers-reduced-motion:no-preference){
+  [data-motion="on"] .night .nav:not(.nav--night)::after,
+  [data-motion="on"].night .nav:not(.nav--night)::after{ animation:lane-in 1.4s var(--ease-out) both; }
+}
+@keyframes lane-in{
+  from{ background-position:-520px 0; opacity:0; }
+  30%{ opacity:.9; }
+  to{ background-position:0 0; opacity:.55; }
+}
+
+/* each page title sits in HUD corner brackets */
+.night .page-h, .night .aboutme > div:last-child, .night .case > .case__title{ position:relative; }
+.night .page-h::before, .night .page-h::after{
+  content:""; position:absolute; width:1.4rem; height:1.4rem; pointer-events:none;
+  border:2px solid var(--cl); opacity:.8;
+}
+.night .page-h::before{ left:calc(var(--gut) - .9rem); top:clamp(1.6rem,5vw,3.6rem); border-right:0; border-bottom:0; }
+.night .page-h::after{ right:calc(var(--gut) - .9rem); bottom:clamp(.6rem,2vw,1.25rem); border-left:0; border-top:0; }
+@media (prefers-reduced-motion:no-preference){
+  [data-motion="on"].night .page-h::before{ animation:corner-in .7s var(--ease-out) .15s both; }
+  [data-motion="on"].night .page-h::after{ animation:corner-in .7s var(--ease-out) .3s both; }
+}
+@keyframes corner-in{ from{ opacity:0; scale:.4; } }
+
+/* the case study's kicker and title read as a HUD readout */
+.night .case__kicker{ font-family:var(--mono); font-weight:500; letter-spacing:.04em; color:var(--ink-3); }
+
+/* cards across the site: a glowing edge and one scan sweep under the pointer */
+.night .skills li, .night .moves > li, .night .roster details, .night .exit__panel{ position:relative; overflow:hidden; }
+.night .skills li::after, .night .moves > li::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(transparent 0 46%, rgb(255 199 44 / .12) 50%, transparent 54% 100%);
+  translate:0 -100%; opacity:0;
+}
+@media (hover:hover) and (pointer:fine){
+  .night .skills li, .night .moves > li, .night .roster details{ transition:border-color .25s ease, box-shadow .25s ease; }
+  .night .skills li:hover, .night .moves > li:hover, .night .roster details:hover{
+    border-color:rgb(255 199 44 / .5); box-shadow:0 1.5rem 3rem -2rem rgb(0 0 0 / .95);
+  }
+  [data-motion="on"].night .skills li:hover::after, [data-motion="on"].night .moves > li:hover::after{ animation:scan-y .8s var(--ease-out) 1; }
+  /* pictures lean in a touch, inside their frame */
+  .night .zoom{ overflow:hidden; }
+  .night .zoom img{ transition:scale .5s var(--ease-out); }
+  [data-motion="on"].night .zoom:hover img{ scale:1.015; }
+}
+
+/* the roster's details slide open instead of snapping */
+.roster details{ interpolate-size:allow-keywords; }
+.roster details::details-content{
+  block-size:0; overflow:hidden;
+  transition:block-size .28s var(--ease-out), content-visibility .28s allow-discrete;
+}
+.roster details[open]::details-content{ block-size:auto; }
+@media (prefers-reduced-motion:reduce){ .roster details::details-content{ transition:none; } }
+
+/* the story pages' try-it pieces cross-fade when a choice changes them */
+.vote__out, .vote__then, .turns__panel, .term__reply, .now [data-s], .packet__s{
+  transition:opacity .22s var(--ease-out), translate .22s var(--ease-out);
+}
+@starting-style{
+  .vote__out, .vote__then, .turns__panel, .term__reply, .now [data-s], .packet__s{ opacity:0; translate:0 4px; }
+}
+@media (prefers-reduced-motion:reduce){
+  .vote__out, .vote__then, .turns__panel, .term__reply, .now [data-s], .packet__s{ translate:none; }
+}
+/* dragging the wheel never selects its words or drags its links */
+.has-wheel .signs__list{ -webkit-user-select:none; user-select:none; -webkit-touch-callout:none; }
+.has-wheel .sign a{ -webkit-user-drag:none; }

@@ -20,7 +20,8 @@
   (function(){var d=document.documentElement,m;try{m=localStorage.getItem('motion');}catch(e){}
   if(m!=='on'&&m!=='off')m=matchMedia('(prefers-reduced-motion: reduce)').matches?'off':'on';
   d.dataset.motion=m;var b;try{b=sessionStorage.getItem('booted');}catch(e){}
-  if(m==='on'&&!b)d.classList.add('boot');})();
+  if(m==='on'&&!b)d.classList.add('boot');var p;try{p=sessionStorage.getItem('dc:'+location.pathname);}catch(e){}
+  if(m==='on'&&!p)d.classList.add('dc-page');})();
 </script>
 <script type="module" src="/js/site.js"></script>
 <style>
