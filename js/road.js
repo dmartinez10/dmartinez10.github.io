@@ -115,7 +115,7 @@ export function start(canvas) {
   const flat = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), -Math.PI / 2);
   function place(dt) {
     for (let i = 0; i < dashCount; i++) {
-      dz[i] += speed * dt;
+      dz[i] += cur * dt;
       if (dz[i] > 4) dz[i] -= dashCount * (DASH + GAP);
       m4.compose(p.set(0, 0.02, dz[i]), flat, s.set(1, 1, 1));
       dashes.setMatrixAt(i, m4);
@@ -123,7 +123,7 @@ export function start(canvas) {
     dashes.instanceMatrix.needsUpdate = true;
     for (let i = 0; i < trailCount; i++) {
       const t = tr[i];
-      t.z += (t.speed + speed * 0.4) * dt;
+      t.z += (t.speed + cur * 0.4) * dt;
       if (t.z > 20) t.z -= SPAN + 40;
       if (t.z < -SPAN - 20) t.z += SPAN + 40;
       m4.compose(p.set(t.x, t.y, t.z), q, s.set(1, 1, t.len));
@@ -140,7 +140,9 @@ export function start(canvas) {
     py = (e.clientY / innerHeight - 0.5);
   }, { passive: true });
 
-  const speed = 26;
+  // the road speeds up while you scroll, as if the camera were driving
+  const BASE = 26;
+  let cur = BASE, lastY = scrollY;
   let w = 0, h = 0;
   function resize() {
     const r = stage.getBoundingClientRect();
@@ -161,6 +163,12 @@ export function start(canvas) {
   }
 
   function frame(dt) {
+    if (dt > 0) {
+      const sv = Math.abs(scrollY - lastY) / dt;
+      lastY = scrollY;
+      const want = BASE + Math.min(sv * 0.12, 90);
+      cur += (want - cur) * (1 - Math.exp(-dt * (want > cur ? 6 : 1.5)));
+    }
     place(dt);
     const tx = px * 1.6, ty = -py * 0.35;
     vxs += (K * (tx - cx) - C * vxs) * dt; cx += vxs * dt;

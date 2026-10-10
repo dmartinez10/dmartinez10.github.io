@@ -250,3 +250,231 @@
   clip-path:polygon(var(--vx) var(--vy), calc(var(--vx) + .08%) var(--vy), calc(var(--vx) - 5.4%) 100%, calc(var(--vx) - 6.4%) 100%);
 }
 .mo[hidden]{ display:none; }
+
+/* ══════════════════════════════════════════════════════════════════
+   Night, for the whole site. styles.css draws everything from tokens,
+   so night is mostly the tokens turned: dark ground, light ink, the
+   centre-line yellow where navy used to be the thing to press.
+   ══════════════════════════════════════════════════════════════════ */
+.night{
+  --bg:        #07090D;
+  --bg-sub:    #0B0F16;
+  --bg-raise:  #161C27;
+  --panel:     #0C1119;
+  --ink:       #EEF1F5;
+  --ink-2:     #C3CAD5;
+  --ink-3:     #9AA3B2;   /* 7.4:1 on --panel */
+  --ink-4:     #9AA3B2;
+  --rule:      #1E2531;
+  --rule-2:    #3A4454;
+  --sign:      #1A2440;   /* a panel, not a button, at night */
+  --sign-2:    #AEB9D6;
+  --sign-3:    #24305A;
+  --accent:    #FFC72C;
+  --accent-d:  #FFD866;
+  --accent-bg: #2A2410;
+  --quiet:     linear-gradient(transparent, transparent);
+  color-scheme:dark;
+}
+.night body{ background:var(--bg); color:var(--ink); }
+.night :focus-visible{ outline-color:var(--cl); }
+.night a{ color:var(--accent); }
+.night h1, .night h2, .night h3, .night h4{ color:var(--ink); }
+
+/* the header on inner pages: the same night glass as on the road */
+.night .nav:not(.nav--night){
+  background:rgb(7 9 13 / .82); border-bottom:1px solid var(--rule);
+  backdrop-filter:saturate(140%) blur(12px);
+}
+.night .nav__me{ color:var(--ink); }
+.night .ns{
+  background:transparent; box-shadow:none; color:var(--ink-3);
+  font-family:var(--mono); font-weight:500; border-radius:999px;
+  transition:color .15s ease, background-color .15s ease, transform .16s var(--ease-out);
+}
+.night .ns:hover{ filter:none; background:rgb(238 241 245 / .07); color:var(--ink); }
+.night .ns[aria-current="page"]{ outline:0; color:var(--ink); box-shadow:inset 0 0 0 1px var(--edge); }
+
+/* buttons: the thing to press is the centre line */
+.night .btn{ border-color:var(--rule-2); color:var(--ink); }
+.night .btn:hover{ background:var(--bg-raise); border-color:var(--ink-3); }
+.night .btn--open, .night .back{
+  background:var(--cl); border-color:var(--cl); color:var(--night);
+}
+.night .btn--open:hover, .night .back:hover{ background:#FFD45A; border-color:#FFD45A; color:var(--night); }
+.night .btn--quiet{ background:var(--panel); }
+/* press feedback, every button on the site */
+.btn, .back, .ns, .foot__links a, .lightbox__close{ transition-property:background-color, border-color, color, transform; transition-duration:.15s, .15s, .15s, .16s; }
+.btn:active, .back:active, .ns:active, .foot__links a:active, .lightbox__close:active{ transform:scale(.97); }
+@media (prefers-reduced-motion:reduce){ .btn:active, .back:active, .ns:active, .foot__links a:active, .lightbox__close:active{ transform:none; } }
+
+/* panels and cards */
+.night .pcard, .night .readout, .night .skills li{ background:var(--panel); border-color:var(--rule); }
+.night .tag{ background:var(--bg-raise); color:var(--ink-2); }
+.night .tag--wip{ background:var(--cl); color:var(--night); }
+.night .chips span{ background:var(--bg-sub); }
+.night .stops li:last-child::after{ background:var(--bg); }
+.night .route li::after{ background:var(--bg); }
+.night .route__now::before{ border-color:var(--bg); }
+.night .zoom img, .night .shot, .night .proj__fig > img, .night .phones img, .night .twin{ border-color:var(--rule); }
+.night .me img{ box-shadow:0 0 0 3px var(--bg), 0 0 0 7px var(--cl); }
+.night .me--big img{ box-shadow:0 0 0 5px var(--bg), 0 0 0 11px var(--cl); }
+.night .logo{ box-shadow:0 0 0 1px rgb(238 241 245 / .14); }
+.night .readout__row--true b{ color:#FF8A7A; }
+.night .zoom__hint{ background:var(--cl); color:var(--night); }
+
+/* the numbers are no longer mounted on a green board */
+.night .sect:has(.nums){ background:none; box-shadow:none; border-radius:0; padding-inline:0; color:var(--ink); }
+.night .sect:has(.nums) .sect__h{ border-bottom-color:var(--ink); }
+.night .sect:has(.nums) .sect__n{ color:var(--ink-3); }
+.night .sect:has(.nums) .nums li{ border-top-color:var(--cl); }
+.night .sect:has(.nums) .nums b{ color:var(--ink); }
+.night .sect:has(.nums) .nums span{ color:var(--ink-2); }
+.night .nums b{ color:var(--ink); font-variant-numeric:tabular-nums; }
+.night .nums li{ border-top-color:var(--cl); }
+.night .sect__h{ border-bottom-color:var(--ink); }
+
+/* lightboxes open like a material arriving, not a cut */
+.night .lightbox::backdrop{ background:rgb(4 6 10 / .92); }
+.night .lightbox__close{ background:var(--panel); border-color:var(--ink); }
+.lightbox{
+  opacity:0; transform:scale(.96);
+  transition:opacity .22s var(--ease-out), transform .26s var(--ease-out), overlay .26s allow-discrete, display .26s allow-discrete;
+}
+.lightbox:popover-open{ opacity:1; transform:none; }
+@starting-style{ .lightbox:popover-open{ opacity:0; transform:scale(.96); } }
+.lightbox::backdrop{ transition:opacity .22s ease, overlay .26s allow-discrete, display .26s allow-discrete; opacity:0; }
+.lightbox:popover-open::backdrop{ opacity:1; }
+@starting-style{ .lightbox:popover-open::backdrop{ opacity:0; } }
+@media (prefers-reduced-motion:reduce){ .lightbox{ transform:none; } }
+
+/* the terminal and the exit sign keep their own dark panels */
+.night .term{ background:#0F1830; }
+.night .exit__panel{ background:var(--panel); box-shadow:inset 0 0 0 1px var(--rule); }
+
+/* ══ the footer: the road runs into the distance and ends ══ */
+.night .foot{ background:var(--night); border-top:1px solid var(--rule); }
+.night .foot__grid h3{ color:var(--ink-3); }
+.night .foot__grid p{ color:var(--ink-2); }
+.night .foot__links a{ border-color:var(--rule-2); }
+.night .foot__links a:hover{ border-color:var(--cl); color:var(--cl); }
+.foot__road{
+  position:relative; height:clamp(7rem,14vw,11rem); margin-bottom:.5rem;
+  /* the road fades out before it reaches the end */
+  -webkit-mask:linear-gradient(to top, #000 30%, transparent 96%);
+          mask:linear-gradient(to top, #000 30%, transparent 96%);
+}
+.foot__road::before{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(#0D1118, #161B26);
+  clip-path:polygon(49.6% 0, 50.4% 0, 100% 100%, 0 100%);
+}
+.foot__road::after{
+  /* the centre line, in dashes that get shorter as they go */
+  content:""; position:absolute; left:50%; bottom:0; width:6px; height:100%; translate:-50% 0;
+  background:repeating-linear-gradient(to top, var(--cl) 0 18%, transparent 18% 30%);
+  clip-path:polygon(45% 0, 55% 0, 100% 100%, 0 100%);
+  filter:drop-shadow(0 0 6px var(--cl-glow));
+}
+.night .foot__rule{ display:none; }
+.night .foot__end{ justify-content:center; color:var(--ink); }
+.night .foot__dot{ background:var(--cl); box-shadow:0 0 .6rem var(--cl-glow); }
+
+/* ══ page to page: a short warp forward ══ */
+@media (prefers-reduced-motion:no-preference){
+  @view-transition{ navigation:auto; }
+  ::view-transition-old(root){ animation:warp-out .32s cubic-bezier(0.77, 0, 0.175, 1) both; }
+  ::view-transition-new(root){ animation:warp-in .36s cubic-bezier(0.23, 1, 0.32, 1) .06s both; }
+}
+@keyframes warp-out{ to{ opacity:0; transform:scale(1.08); filter:blur(6px) brightness(1.4); } }
+@keyframes warp-in{ from{ opacity:0; transform:scale(.97); } }
+
+/* ══ scroll arrivals: panels come up the road toward you, once ══ */
+.js-arrive [data-arrive]{
+  opacity:0; transform:perspective(900px) translate3d(0, 2rem, -180px) rotateX(6deg);
+  transition:opacity .7s var(--ease-out), transform .9s var(--ease-out);
+  transition-delay:calc(var(--k, 0) * 70ms);
+}
+.js-arrive [data-arrive].is-in{ opacity:1; transform:none; }
+
+/* arrivals move with translate and scale, so a tilt can own transform */
+.js-arrive [data-arrive]{
+  transform:none; translate:0 2.25rem; scale:.96;
+  transition:opacity .7s var(--ease-out), translate .9s var(--ease-out), scale .9s var(--ease-out);
+  transition-delay:calc(var(--k, 0) * 70ms);
+}
+.js-arrive [data-arrive].is-in{ translate:0 0; scale:1; }
+
+/* ══ project panels: HUD glass with a glowing edge ══ */
+.night .pcard{
+  position:relative; overflow:hidden;
+  background:linear-gradient(rgb(255 255 255 / .025), transparent 40%), var(--panel);
+  border:1px solid var(--rule); border-top:3px solid var(--line, var(--cl));
+  box-shadow:0 1.5rem 3rem -2rem rgb(0 0 0 / .9);
+}
+.night .pcard::after{
+  content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit;
+  background:linear-gradient(transparent 0 46%, rgb(255 199 44 / .12) 50%, transparent 54% 100%);
+  translate:0 -100%; opacity:0;
+}
+@media (hover:hover) and (pointer:fine){
+  .night .pcard{ transition:box-shadow .25s ease, border-color .25s ease; }
+  .night .pcard:hover{ border-color:rgb(255 199 44 / .55); box-shadow:0 0 0 1px rgb(255 199 44 / .35), 0 0 2.2rem rgb(255 199 44 / .18), 0 1.5rem 3rem -2rem rgb(0 0 0 / .9); }
+  [data-motion="on"].night .pcard:hover::after{ animation:scan-y .8s var(--ease-out) 1; }
+}
+@keyframes scan-y{ from{ translate:0 -100%; opacity:1; } to{ translate:0 100%; opacity:1; } }
+
+/* ══ the numbers: a speedometer readout ══ */
+.night .nums b{ font-size:clamp(2.4rem,5vw,3.4rem); text-shadow:0 0 1.4rem rgb(255 199 44 / .25); }
+.night .nums b [aria-hidden]{ display:inline-block; min-width:1ch; }
+
+/* ══ the Claude kit: a command palette you can actually search ══ */
+.kit__panel{
+  border-radius:16px; overflow:hidden; background:var(--panel);
+  border:1px solid var(--rule); box-shadow:0 2rem 4rem -2.5rem rgb(0 0 0 / .95), inset 0 1px 0 rgb(255 255 255 / .05);
+}
+.kit__bar{
+  display:flex; align-items:center; gap:.75rem; padding:.9rem 1.1rem;
+  border-bottom:1px solid var(--rule); background:rgb(255 255 255 / .02);
+}
+.kit__bar[hidden]{ display:none; }
+.kit__icon{ width:1.15rem; height:1.15rem; color:var(--ink-3); flex:none; }
+.kit__label{ font:500 .9rem/1 var(--mono); color:var(--ink-3); flex:none; }
+.kit__q{
+  flex:1; min-width:0; min-height:2.4rem; padding:.4rem .7rem; border-radius:8px;
+  font:500 1rem/1.2 var(--sans); color:var(--ink);
+  background:var(--bg-sub); border:1px solid var(--rule-2); caret-color:var(--cl);
+}
+.kit__q:focus-visible{ outline:2px solid var(--cl); outline-offset:1px; }
+.kit__count{ font:500 .8rem/1 var(--mono); color:var(--ink-3); flex:none; font-variant-numeric:tabular-nums; }
+.kit__list{ padding:1.25rem 1.1rem .1rem; column-gap:2.5rem; }
+@media (min-width:52rem){ .kit__list{ columns:2; } }
+.kit__group{ break-inside:avoid; margin-bottom:1.5rem; }
+.kit__group[hidden], .kit__item[hidden]{ display:none; }
+.kit__gh{
+  font:500 .8rem/1 var(--mono); letter-spacing:.06em; color:var(--cl);
+  margin:0 0 .55rem; padding:0 .55rem;
+}
+.kit__item{
+  display:grid; grid-template-columns:minmax(0,1fr) auto; gap:.15rem .75rem; align-items:baseline;
+  padding:.5rem .55rem; border-radius:8px;
+}
+.kit__item + .kit__item{ border-top:1px solid rgb(255 255 255 / .04); }
+.kit__name{ font-family:var(--display); font-weight:700; font-size:1.02rem; color:var(--ink); }
+.kit__tag{
+  font:500 .72rem/1 var(--mono); color:var(--ink-2); padding:.3rem .45rem; border-radius:999px;
+  border:1px solid var(--rule-2);
+}
+.kit__what{ grid-column:1 / -1; font-size:.9rem; line-height:1.45; color:var(--ink-3); }
+.kit__empty{ padding:0 1.65rem 1.4rem; color:var(--ink-3); }
+.kit__go{ margin-top:1.25rem; }
+
+/* ══ the signs fly past as the road scrolls away ══ */
+@supports (animation-timeline: scroll()){
+  @media (min-width:52.01rem){
+    [data-motion="on"] .signs__list{
+      animation:fly-past linear both; animation-timeline:scroll(root); animation-range:0 85svh;
+    }
+  }
+}
+@keyframes fly-past{ to{ transform:translate3d(0, 0, 1300px); } }

@@ -1,23 +1,11 @@
-// The hero: the motion switch, the headline's decode, the signs leaning
+// The hero: the headline's decode, the signs leaning
 // toward the pointer, and the road, loaded once the words are on screen.
 // Everything here is an enhancement: the page reads the same without it.
 
 const root = document.documentElement;
 const motionOn = () => root.dataset.motion === 'on';
 
-// ── the motion switch ──
-const sw = document.querySelector('.mo');
-if (sw) {
-  sw.hidden = false;
-  const sync = () => sw.setAttribute('aria-pressed', String(motionOn()));
-  sync();
-  sw.addEventListener('click', () => {
-    root.dataset.motion = motionOn() ? 'off' : 'on';
-    try { localStorage.setItem('motion', root.dataset.motion); } catch {}
-    sync();
-    window.dispatchEvent(new CustomEvent('motionchange'));
-  });
-}
+// The motion switch lives in site.js, on every page.
 
 // ── the decode: the headline boots like a HUD, once per visit ──
 const GLYPHS = 'ABCDEFGHJKLMNPRSTUVWXYZ0123456789/<>_';
