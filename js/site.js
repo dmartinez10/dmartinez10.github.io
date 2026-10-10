@@ -15,7 +15,10 @@ if (sw) {
     root.dataset.motion = motionOn() ? 'off' : 'on';
     try { localStorage.setItem('motion', root.dataset.motion); } catch {}
     sync();
-    if (!motionOn()) document.querySelectorAll('[data-arrive]').forEach((el) => el.classList.add('is-in'));
+    if (!motionOn()) {
+      root.classList.remove('js-arrive');
+      document.querySelectorAll('[data-arrive]').forEach((el) => el.classList.add('is-in'));
+    }
     window.dispatchEvent(new CustomEvent('motionchange'));
   });
 }
@@ -91,13 +94,6 @@ if (kit) {
   };
   input.addEventListener('input', apply);
   input.addEventListener('keydown', (e) => { if (e.key === 'Escape' && input.value) { input.value = ''; apply(); } });
-  // the slash key jumps to the search, the way the palettes it borrows from do
-  addEventListener('keydown', (e) => {
-    if (e.key === '/' && !e.metaKey && !e.ctrlKey && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) {
-      const r = kit.getBoundingClientRect();
-      if (r.top < innerHeight && r.bottom > 0) { e.preventDefault(); input.focus(); }
-    }
-  });
   apply();
 }
 

@@ -124,7 +124,7 @@
   display:block; transform-style:preserve-3d; cursor:grab; touch-action:pan-y; pointer-events:auto;
 }
 .has-wheel .signs__list.is-dragging{ cursor:grabbing; }
-.has-wheel .sign{ position:absolute; left:0; top:0; transform-style:preserve-3d; }
+.has-wheel .sign{ position:absolute; left:0; top:0; transform-style:preserve-3d; backface-visibility:hidden; }
 .has-wheel .sign a{ width:var(--w); min-height:calc(var(--w) * .46); translate:-50% -50%; backface-visibility:hidden; }
 .wheel__dots{
   position:absolute; left:68%; top:calc(40% + 9.5rem); translate:-50% 0;
@@ -149,7 +149,7 @@
   background:var(--glass);
   border:2px solid var(--cl);
   box-shadow:0 0 1.6rem rgb(255 199 44 / .35), 0 2.5rem 4rem -1.5rem rgb(0 0 0 / .8);
-  transition:box-shadow .2s ease, transform .5s var(--ease-out);
+  transition:box-shadow .2s ease;
 }
 .sign__code{
   grid-column:1 / -1; align-self:start;
@@ -229,12 +229,11 @@
   .road__copy{ max-width:none; }
   .nav--night .nav__links{ justify-content:flex-start; max-width:100%; }
   .road__top{ min-height:auto; }
-  .signs.has-wheel{ position:relative; inset:auto; height:23rem; margin-top:1.5rem; perspective:1100px; perspective-origin:50% 45%; --w:min(78vw,22rem); }
+  .signs.has-wheel{ position:relative; inset:auto; height:19.5rem; margin-top:1.5rem; perspective:1100px; perspective-origin:50% 45%; --w:min(78vw,22rem); }
   .has-wheel .signs__h{ left:50%; top:0; }
   .has-wheel .signs__list{ left:50%; top:45%; }
   .has-wheel .sign a{ min-height:calc(var(--w) * .55); }
   .wheel__dots{ left:50%; top:auto; bottom:0; }
-  .sign a{ box-shadow:0 0 1.2rem rgb(255 199 44 / .3); }
   .sign__name{ font-size:1.6rem; }
 }
 
@@ -329,7 +328,7 @@
 .night .zoom__hint{ background:var(--cl); color:var(--night); }
 
 /* the numbers are no longer mounted on a green board */
-.night .sect:has(.nums){ background:none; box-shadow:none; border-radius:0; padding-inline:0; color:var(--ink); }
+.night .sect:has(.nums){ background:none; box-shadow:none; border-radius:0; color:var(--ink); }
 .night .sect:has(.nums) .sect__h{ border-bottom-color:var(--ink); }
 .night .sect:has(.nums) .sect__n{ color:var(--ink-3); }
 .night .sect:has(.nums) .nums li{ border-top-color:var(--cl); }
@@ -388,35 +387,30 @@
 /* ══ page to page: a short warp forward ══ */
 @media (prefers-reduced-motion:no-preference){
   @view-transition{ navigation:auto; }
-  ::view-transition-old(root){ animation:warp-out .32s cubic-bezier(0.77, 0, 0.175, 1) both; }
-  ::view-transition-new(root){ animation:warp-in .36s cubic-bezier(0.23, 1, 0.32, 1) .06s both; }
+  ::view-transition-old(root){ animation:warp-out .2s var(--ease-in-out) both; }
+  ::view-transition-new(root){ animation:warp-in .26s var(--ease-out) both; }
 }
-@keyframes warp-out{ to{ opacity:0; transform:scale(1.08); filter:blur(6px) brightness(1.4); } }
+@keyframes warp-out{ to{ opacity:0; transform:scale(1.06); filter:blur(4px); } }
 @keyframes warp-in{ from{ opacity:0; transform:scale(.97); } }
 
-/* ══ scroll arrivals: panels come up the road toward you, once ══ */
-.js-arrive [data-arrive]{
-  opacity:0; transform:perspective(900px) translate3d(0, 2rem, -180px) rotateX(6deg);
-  transition:opacity .7s var(--ease-out), transform .9s var(--ease-out);
-  transition-delay:calc(var(--k, 0) * 70ms);
-}
-.js-arrive [data-arrive].is-in{ opacity:1; transform:none; }
 
-/* arrivals move with translate and scale, so a tilt can own transform */
+/* ══ scroll arrivals: panels come up the road toward you, once. They move
+   with translate and scale, so a tilt can own transform ══ */
 .js-arrive [data-arrive]{
-  transform:none; translate:0 2.25rem; scale:.96;
+  opacity:0; translate:0 2.25rem; scale:.96;
   transition:opacity .7s var(--ease-out), translate .9s var(--ease-out), scale .9s var(--ease-out);
   transition-delay:calc(var(--k, 0) * 70ms);
 }
-.js-arrive [data-arrive].is-in{ translate:0 0; scale:1; }
+.js-arrive [data-arrive].is-in{ opacity:1; translate:0 0; scale:1; }
 
 /* ══ project panels: HUD glass with a glowing edge ══ */
 .night .pcard{
   position:relative; overflow:hidden;
   background:linear-gradient(rgb(255 255 255 / .025), transparent 40%), var(--panel);
-  border:1px solid var(--rule); border-top:3px solid var(--line, var(--cl));
+  border:1px solid var(--rule);
   box-shadow:0 1.5rem 3rem -2rem rgb(0 0 0 / .9);
 }
+.night .pcard::before{ content:""; position:absolute; inset:0 0 auto; height:3px; background:var(--line, var(--cl)); }
 .night .pcard::after{
   content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit;
   background:linear-gradient(transparent 0 46%, rgb(255 199 44 / .12) 50%, transparent 54% 100%);
@@ -424,13 +418,13 @@
 }
 @media (hover:hover) and (pointer:fine){
   .night .pcard{ transition:box-shadow .25s ease, border-color .25s ease; }
-  .night .pcard:hover{ border-color:rgb(255 199 44 / .55); box-shadow:0 0 0 1px rgb(255 199 44 / .35), 0 0 2.2rem rgb(255 199 44 / .18), 0 1.5rem 3rem -2rem rgb(0 0 0 / .9); }
+  .night .pcard:hover{ border-color:rgb(255 199 44 / .55); box-shadow:0 1.75rem 3.5rem -2rem rgb(0 0 0 / .95); }
   [data-motion="on"].night .pcard:hover::after{ animation:scan-y .8s var(--ease-out) 1; }
 }
 @keyframes scan-y{ from{ translate:0 -100%; opacity:1; } to{ translate:0 100%; opacity:1; } }
 
 /* ══ the numbers: a speedometer readout ══ */
-.night .nums b{ font-size:clamp(2.4rem,5vw,3.4rem); text-shadow:0 0 1.4rem rgb(255 199 44 / .25); }
+.night .nums b{ font-size:clamp(2.4rem,5vw,3.4rem); }
 .night .nums b [aria-hidden]{ display:inline-block; min-width:1ch; }
 
 /* ══ the Claude kit: a command palette you can actually search ══ */
@@ -476,3 +470,22 @@
 
 .night .sign a{ color:var(--text); }
 .signs:not(.has-wheel) .sign a{ width:auto; min-height:0; }
+
+/* ══ review fixes ══ */
+.night .ns[aria-current="page"]:focus-visible{ outline:3px solid var(--cl); outline-offset:3px; }
+.night .pick-opt input:focus-visible + span{ outline-color:var(--cl); }
+.night .pick-opt input:checked + span{ background:var(--cl); border-color:var(--cl); color:var(--night); }
+.night .pick-opt input:checked + span small{ color:#3A3320; }
+/* white panels stay white objects, with dark ink on them */
+.night .stop, .night .place--jp, .night .place--sv{ --ink:#14171F; --ink-2:#414856; --sign:#14224A; color:#14171F; }
+.night .now{ background:var(--bg-sub); }
+.night .air__list li{ background:var(--panel); }
+/* project colours as text need a lighter night version to pass AA */
+.night .sec__n, .night .moves .arrow{ color:color-mix(in oklab, var(--line, var(--cl)) 55%, white); }
+/* a picture never shows as a dead black frame while it loads */
+.night .zoom img, .night .phones img, .night .twin{ background:var(--bg-raise); }
+/* the wheel's dots: a 44px target on touch */
+@media (pointer:coarse){ .wheel__dots{ gap:0; } .wheel__dots button{ width:2.75rem; height:2.75rem; } }
+@media (max-width:52rem){
+  .nav--night .mo{ position:absolute; top:.9rem; right:clamp(1rem,4vw,3.5rem); margin:0; }
+}

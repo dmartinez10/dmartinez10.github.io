@@ -80,7 +80,7 @@ for (const a of document.querySelectorAll('.sign a')) {
   };
   const go = () => { if (!raf) { prev = performance.now(); raf = requestAnimationFrame(step); } };
   a.addEventListener('pointermove', (e) => {
-    if (!fine.matches || !wide.matches || !motionOn()) return;
+    if (!fine.matches || !wide.matches || !motionOn() || a.closest('.is-dragging')) return;
     const r = a.getBoundingClientRect();
     tx = ((e.clientX - r.left) / r.width - 0.5) * 10;
     ty = -((e.clientY - r.top) / r.height - 0.5) * 8;
@@ -102,9 +102,14 @@ function loadRoad() {
   if (!canvas || saveData || !canWebGL()) return;
   import('./road.js').then((m) => m.start(canvas)).catch(() => {});
 }
+// With motion off the still road drawn in CSS is the road, so Three.js never
+// downloads; switching motion on later loads it then.
+let roadLoaded = false;
+function maybeRoad() { if (!roadLoaded && motionOn()) { roadLoaded = true; loadRoad(); } }
 const later = window.requestIdleCallback || ((fn) => setTimeout(fn, 200));
-if (document.readyState === 'complete') later(loadRoad, { timeout: 1500 });
-else addEventListener('load', () => later(loadRoad, { timeout: 1500 }), { once: true });
+if (document.readyState === 'complete') later(maybeRoad, { timeout: 1500 });
+else addEventListener('load', () => later(maybeRoad, { timeout: 1500 }), { once: true });
+addEventListener('motionchange', maybeRoad);
 
 // ── the display wheel ──
 // One sign faces you and the rest stand round a vertical axis. Drag or swipe
@@ -118,36 +123,53 @@ const list = document.querySelector('.signs__list');
 const cards = [...list.querySelectorAll('.sign')];
 const N = cards.length, STEP = 360 / N;
 
-// dots under the wheel
+const links = cards.map((li) => li.querySelector('a'));
+list.setAttribute('aria-roledescription', 'wheel');
+const hint = document.createElement('p');
+hint.className = 'sr';
+hint.id = 'wheel-hint';
+hint.textContent = 'Left and right arrow keys turn the wheel. Home and End go to the first and last sign.';
+signsEl.append(hint);
+links.forEach((a) => a.setAttribute('aria-describedby', 'wheel-hint'));
+
+// dots under the wheel, one per sign
 const dots = document.createElement('div');
 dots.className = 'wheel__dots';
-dots.setAttribute('aria-label', 'Choose a sign');
+dots.setAttribute('role', 'group');
+dots.setAttribute('aria-label', 'Turn the wheel to a sign');
 cards.forEach((li, i) => {
   const b = document.createElement('button');
   b.type = 'button';
-  b.setAttribute('aria-label', li.querySelector('.sign__name').textContent);
+  b.setAttribute('aria-label', 'Show ' + li.querySelector('.sign__name').textContent);
   b.addEventListener('click', () => goTo(i));
   dots.append(b);
 });
 signsEl.append(dots);
 
-let angle = 0, target = 0, vel = 0, raf = 0, prev = 0, dragging = false;
-const radius = () => cards[0].querySelector('a').offsetWidth * 0.98;
+let angle = 0, target = 0, vel = 0, raf = 0, prev = 0, dragging = false, R = 0, shown = -1;
+const measure = () => { R = links[0].offsetWidth * 0.98; };
+const mod = (n) => ((n % N) + N) % N;
+const frontOf = (deg) => mod(Math.round(deg / STEP));
 
 function layout() {
-  const R = radius();
   list.style.setProperty('transform', `translateZ(${-R}px) rotateY(${-angle}deg)`, 'important');
   cards.forEach((li, i) => {
     const a = i * STEP;
     li.style.setProperty('transform', `rotateY(${a}deg) translateZ(${R}px)`, 'important');
     const d = (((a - angle) % 360) + 540) % 360 - 180; // -180..180 from the front
-    const face = Math.cos((d * Math.PI) / 180);
-    li.style.opacity = String(Math.max(0, 0.15 + 0.85 * face));
-    li.querySelector('a').tabIndex = Math.abs(d) < STEP / 2 ? 0 : -1;
+    const face = Math.max(0, Math.cos((d * Math.PI) / 180));
+    // side signs fade faster than they turn, so the one in front always reads first
+    li.style.opacity = face > 0 ? String(Math.min(1, 0.05 + face * face)) : '0';
     li.style.pointerEvents = face > 0.2 ? '' : 'none';
   });
-  const front = ((Math.round(angle / STEP) % N) + N) % N;
-  [...dots.children].forEach((b, i) => b.setAttribute('aria-current', String(i === front)));
+  const front = frontOf(angle);
+  if (front !== shown) {
+    shown = front;
+    links.forEach((a, i) => { a.tabIndex = i === front ? 0 : -1; });
+    [...dots.children].forEach((b, i) => {
+      if (i === front) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
+    });
+  }
 }
 
 // a spring toward the target: lightly under-damped, so a throw settles with a hint of give
@@ -163,14 +185,16 @@ function tick(now) {
   else { angle = target; vel = 0; layout(); raf = 0; }
 }
 const run = () => { if (!raf) { prev = performance.now(); raf = requestAnimationFrame(tick); } };
+const snap = () => { angle = target; vel = 0; layout(); };
 
 function goTo(i) {
-  // the shortest way round to card i
-  const cur = Math.round(angle / STEP);
-  let k = i - (((cur % N) + N) % N);
+  // the shortest way round to card i, from where the wheel is headed, so
+  // quick presses queue instead of landing on the same card
+  const cur = Math.round(target / STEP);
+  let k = i - mod(cur);
   if (k > N / 2) k -= N; if (k < -N / 2) k += N;
   target = (cur + k) * STEP;
-  if (!motionOn()) { angle = target; vel = 0; layout(); return; }
+  if (!motionOn()) { snap(); return; }
   run();
 }
 
@@ -184,35 +208,39 @@ list.addEventListener('pointermove', (e) => {
   if (!dragging) return;
   const dx = e.clientX - x0;
   if (Math.abs(dx) > 8) moved = true;
-  const R = radius();
   angle = a0 - (dx / (2 * Math.PI * R)) * 360;
   hist.push([e.clientX, e.timeStamp]); if (hist.length > 6) hist.shift();
 });
-function release() {
+function release(e) {
   if (!dragging) return;
   dragging = false; list.classList.remove('is-dragging');
-  const [xa, ta] = hist[0], [xb, tb] = hist[hist.length - 1];
-  const vpx = tb > ta ? ((xb - xa) / (tb - ta)) * 1000 : 0;       // px per second
-  const R = radius();
-  const vdeg = -(vpx / (2 * Math.PI * R)) * 360;                   // degrees per second
-  const projected = angle + (vdeg / 1000) * 0.995 / (1 - 0.995);    // where the throw would land
+  // only movement in the last 100ms counts toward a throw
+  const recent = hist.filter(([, t]) => e.timeStamp - t <= 100);
+  let vpx = 0;
+  if (recent.length > 1) {
+    const [xa, ta] = recent[0], [xb, tb] = recent[recent.length - 1];
+    if (tb > ta) vpx = ((xb - xa) / (tb - ta)) * 1000;              // px per second
+  }
+  const vdeg = -(vpx / (2 * Math.PI * R)) * 360;                     // degrees per second
+  const projected = angle + (vdeg / 1000) * 0.995 / (1 - 0.995);      // where the throw would land
   target = Math.round(projected / STEP) * STEP;
+  if (!motionOn()) { snap(); return; }
   vel = vdeg; run();
 }
 list.addEventListener('pointerup', release);
 list.addEventListener('pointercancel', release);
-// a tap that did not drag is a click; on a side card it turns the wheel instead of leaving
+// A tap on a side sign turns the wheel instead of leaving. Clicks from the
+// keyboard, a screen reader or voice control (detail 0) always follow the link.
 list.addEventListener('click', (e) => {
-  const li = e.target.closest('.sign'); if (!li) return;
+  const li = e.target.closest('.sign'); if (!li || e.detail === 0) return;
   if (moved) { e.preventDefault(); return; }
   const i = cards.indexOf(li);
-  const front = ((Math.round(angle / STEP) % N) + N) % N;
-  if (i !== front) { e.preventDefault(); goTo(i); }
+  if (i !== frontOf(target)) { e.preventDefault(); goTo(i); }
 }, true);
-// pointing at a side card turns to it, after a short pause, on a mouse only
+// pointing at a side sign turns to it, after a short pause, on a mouse only
 let intent = 0;
 cards.forEach((li, i) => {
-  const a = li.querySelector('a');
+  const a = links[i];
   a.addEventListener('pointerenter', () => {
     if (!fine.matches || dragging) return;
     clearTimeout(intent); intent = setTimeout(() => goTo(i), 220);
@@ -220,13 +248,16 @@ cards.forEach((li, i) => {
   a.addEventListener('pointerleave', () => clearTimeout(intent));
   a.addEventListener('focus', () => goTo(i));
 });
-addEventListener('keydown', (e) => {
-  if (!list.contains(document.activeElement)) return;
-  const front = ((Math.round(angle / STEP) % N) + N) % N;
-  if (e.key === 'ArrowRight') { e.preventDefault(); goTo((front + 1) % N); cards[(front + 1) % N].querySelector('a').focus({ preventScroll: true }); }
-  if (e.key === 'ArrowLeft') { e.preventDefault(); goTo((front - 1 + N) % N); cards[(front - 1 + N) % N].querySelector('a').focus({ preventScroll: true }); }
+list.addEventListener('keydown', (e) => {
+  const now = frontOf(target);
+  const to = { ArrowRight: now + 1, ArrowLeft: now - 1, Home: 0, End: N - 1 }[e.key];
+  if (to === undefined) return;
+  e.preventDefault();
+  goTo(mod(to));
+  links[mod(to)].focus({ preventScroll: true });
 });
-new ResizeObserver(layout).observe(list.parentElement);
+new ResizeObserver(() => { measure(); layout(); }).observe(list.parentElement);
+measure();
 layout();
 
 }

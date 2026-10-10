@@ -91,3 +91,19 @@ glow on the top menu (frequent); moving numbers or text while being read.
 - Hero (2026-10-10): `index.html` hero, `future.css`, `js/hero.js`, `js/road.js`.
   Motion switch in the header, calm by default under reduced motion. The facts
   list moved to About on the home page, unchanged; the portrait stays on About.
+
+## Review and polish (2026-10-10)
+
+Impeccable critique and audit, Emil's improve-animations, then Impeccable polish.
+Fixed: screen readers and voice control can open every sign; focus rings on the
+current nav link and story chips; white panels on story pages read again at night;
+project colours as text pass AA; Three.js skipped with motion off and bloom
+skipped on phones; the wheel announces its keys, queues fast key presses, takes
+Home and End, ignores stale drags, honours motion off, hides the backs of signs;
+44px dots on touch; the sign tilt has one smoother; the road no longer surges on
+return; a shorter warp; glow kept to the centre line and the signs; the numbers
+keep their gutter; the slash shortcut removed.
+
+Held for David: a Centline number in the first screen; a code for the Skills
+sign; button labels other than "Tap to learn more" (his house style); the second
+Claude button under the kit.

@@ -4,16 +4,12 @@
 // and with motion off it draws one still frame.
 
 import * as THREE from 'three';
-import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
-import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
 const LINE = 0xffc72c;
 const TRAIL = new THREE.Color(0xffe6a0);
 const SKY_TOP = '#04060A', SKY_HORIZON = '#0B1222', GROUND = '#07090D';
 
-export function start(canvas) {
+export async function start(canvas) {
   const root = document.documentElement;
   const stage = canvas.parentElement;
   const small = matchMedia('(max-width: 52rem)');
@@ -103,8 +99,19 @@ export function start(canvas) {
   scene.add(glow);
 
   // bloom makes the line and trails glow; phones skip it
-  let composer = null;
+  // the bloom passes only download on screens that use them
+  let composer = null, post = null;
+  if (!lite()) {
+    const [ec, rp, ub, op] = await Promise.all([
+      import('three/addons/postprocessing/EffectComposer.js'),
+      import('three/addons/postprocessing/RenderPass.js'),
+      import('three/addons/postprocessing/UnrealBloomPass.js'),
+      import('three/addons/postprocessing/OutputPass.js'),
+    ]);
+    post = { EffectComposer: ec.EffectComposer, RenderPass: rp.RenderPass, UnrealBloomPass: ub.UnrealBloomPass, OutputPass: op.OutputPass };
+  }
   function buildComposer(w, h) {
+    const { EffectComposer, RenderPass, UnrealBloomPass, OutputPass } = post;
     composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
     composer.addPass(new UnrealBloomPass(new THREE.Vector2(w, h), 0.55, 0.4, 0.4));
@@ -157,7 +164,7 @@ export function start(canvas) {
     camera.setViewOffset(w, h, (0.5 - vx) * w, (0.5 - vy) * h, w, h);
     camera.updateProjectionMatrix();
     paintSky(vy);
-    if (lite()) composer = null;
+    if (lite() || !post) composer = null;
     else if (!composer) buildComposer(w, h);
     else composer.setSize(w, h);
   }
@@ -188,7 +195,7 @@ export function start(canvas) {
   };
   function run() {
     const go = visible && !document.hidden && root.dataset.motion === 'on';
-    if (go && !raf) { prev = performance.now(); raf = requestAnimationFrame(loop); }
+    if (go && !raf) { prev = performance.now(); lastY = scrollY; raf = requestAnimationFrame(loop); }
     if (!go && raf) { cancelAnimationFrame(raf); raf = 0; }
     if (!go) frame(0); // the still frame
   }
