@@ -105,32 +105,41 @@
 }
 
 /* ══ the signs ══ */
-/* One row of signs floating over the right shoulder, the nearest one first.
-   Each is placed in real 3D: same spot beside the road, further down it. */
-.signs{
-  position:absolute; inset:0; pointer-events:none;
-  perspective:1000px; perspective-origin:var(--vx) var(--vy);
-  --sx:19.5vw;            /* out from the road, to the right */
-  --sy:-41svh;            /* up from the horizon */
-  --gap:640px;            /* between one sign and the next */
-}
-.signs__h{
-  position:absolute; left:calc(var(--vx) + var(--sx)); top:calc(var(--vy) + var(--sy) - 2.4rem);
-  margin:0; font:500 .95rem/1 var(--mono); letter-spacing:.06em; color:var(--cl);
-}
-.signs__list{ position:absolute; inset:0; transform-style:preserve-3d; }
-.sign{
-  position:absolute; left:var(--vx); top:var(--vy); transform-origin:0 0;
-  transform:translate3d(var(--sx), var(--sy), calc(var(--p, var(--i)) * var(--gap) * -1));
-  transform-style:preserve-3d;
-}
-/* the row turns: the sign you point at comes to the front, the ones before
-   it go to the back of the line, in order */
-[data-motion="on"] .sign{
-  transition:transform .95s var(--ease-out);
-  transition-delay:calc(var(--p, 0) * 45ms);   /* a ripple, nearest first */
-}
+/* Without the script the signs are a plain list beside the words. With it
+   (.has-wheel) they stand round a display wheel: one faces you, the rest
+   turn away to the side, and the wheel turns on a spring. */
+.signs{ position:relative; margin-top:2rem; }
+.signs__h{ margin:0 0 .9rem; font:500 .95rem/1 var(--mono); letter-spacing:.06em; color:var(--cl); white-space:nowrap; }
+.signs__list{ display:grid; gap:.75rem; max-width:36rem; }
 .sign__arrive, .sign__float{ transform-style:preserve-3d; }
+
+.signs.has-wheel{
+  position:absolute; inset:0; margin:0; pointer-events:none;
+  perspective:1400px; perspective-origin:68% 40%;
+  --w:clamp(17rem,30vw,30rem);
+}
+.has-wheel .signs__h{ position:absolute; left:68%; top:calc(40% - 11rem); translate:-50% 0; }
+.has-wheel .signs__list{
+  position:absolute; inset:auto; left:68%; top:40%; width:0; height:0; max-width:none;
+  display:block; transform-style:preserve-3d; cursor:grab; touch-action:pan-y; pointer-events:auto;
+}
+.has-wheel .signs__list.is-dragging{ cursor:grabbing; }
+.has-wheel .sign{ position:absolute; left:0; top:0; transform-style:preserve-3d; }
+.has-wheel .sign a{ width:var(--w); min-height:calc(var(--w) * .46); translate:-50% -50%; backface-visibility:hidden; }
+.wheel__dots{
+  position:absolute; left:68%; top:calc(40% + 9.5rem); translate:-50% 0;
+  display:flex; gap:.5rem; pointer-events:auto;
+}
+.wheel__dots button{
+  width:1.5rem; height:1.5rem; padding:0; border:0; border-radius:50%; cursor:pointer;
+  background:none; display:grid; place-items:center;
+}
+.wheel__dots button::before{
+  content:""; width:.6rem; height:.6rem; border-radius:50%;
+  background:rgb(238 241 245 / .25); transition:background-color .2s ease, scale .2s var(--ease-out);
+}
+.wheel__dots button[aria-current="true"]::before{ background:var(--cl); scale:1.3; box-shadow:0 0 .5rem var(--cl-glow); }
+.wheel__dots button:focus-visible{ outline:2px solid var(--cl); outline-offset:1px; }
 .sign a{
   pointer-events:auto; position:relative; overflow:hidden;
   display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:end; gap:.25rem 1rem;
@@ -154,12 +163,7 @@
 .sign__arrow{ width:clamp(1.6rem,2.6vw,2.4rem); height:auto; color:var(--cl); }
 .sign a:focus-visible{ outline:3px solid var(--text); outline-offset:4px; }
 
-/* the glow each sign casts on the road below it */
-.sign__float::after{
-  content:""; position:absolute; left:10%; right:10%; top:calc(100% + 30%);
-  height:18%; border-radius:50%; background:rgb(255 199 44 / .22); filter:blur(14px);
-  pointer-events:none;
-}
+
 
 /* the scan line: one sweep each time the pointer arrives */
 .sign a::after{
@@ -209,7 +213,7 @@
   .sign a, .mo, .mo__dot, .road__gl{ transition-duration:.01s; }
 }
 
-/* ══ phones and narrow windows: no 3D, the signs become a plain list ══ */
+/* ══ phones and narrow windows: the road sits behind the words, the wheel below ══ */
 @media (max-width:52rem){
   :root{ --vx:50%; --vy:64%; }
   .nav--night{ position:relative; background:#04060A; }
@@ -224,12 +228,13 @@
   .nav--night .nav__in{ flex-direction:column; align-items:flex-start; gap:.5rem; }
   .road__copy{ max-width:none; }
   .nav--night .nav__links{ justify-content:flex-start; max-width:100%; }
-  .signs{ position:static; perspective:none; pointer-events:auto; margin-top:2rem; }
-  .signs__h{ position:static; margin:0 0 .9rem; }
-  .signs__list{ position:static; display:grid; gap:.75rem; transform-style:flat; }
-  .sign, .sign__arrive, .sign__float{ position:static; transform:none !important; animation:none !important; }
-  .sign__float::after{ display:none; }
-  .sign a{ width:auto; min-height:0; box-shadow:0 0 1rem rgb(255 199 44 / .25); }
+  .road__top{ min-height:auto; }
+  .signs.has-wheel{ position:relative; inset:auto; height:23rem; margin-top:1.5rem; perspective:1100px; perspective-origin:50% 45%; --w:min(78vw,22rem); }
+  .has-wheel .signs__h{ left:50%; top:0; }
+  .has-wheel .signs__list{ left:50%; top:45%; }
+  .has-wheel .sign a{ min-height:calc(var(--w) * .55); }
+  .wheel__dots{ left:50%; top:auto; bottom:0; }
+  .sign a{ box-shadow:0 0 1.2rem rgb(255 199 44 / .3); }
   .sign__name{ font-size:1.6rem; }
 }
 
@@ -469,13 +474,5 @@
 .kit__empty{ padding:0 1.65rem 1.4rem; color:var(--ink-3); }
 .kit__go{ margin-top:1.25rem; }
 
-/* ══ the signs fly past as the road scrolls away ══ */
-@supports (animation-timeline: scroll()){
-  @media (min-width:52.01rem){
-    [data-motion="on"] .signs__list{
-      animation:fly-past linear both; animation-timeline:scroll(root); animation-range:0 85svh;
-    }
-  }
-}
-@keyframes fly-past{ to{ transform:translate3d(0, 0, 1300px); } }
 .night .sign a{ color:var(--text); }
+.signs:not(.has-wheel) .sign a{ width:auto; min-height:0; }

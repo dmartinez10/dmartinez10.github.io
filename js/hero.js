@@ -106,50 +106,127 @@ const later = window.requestIdleCallback || ((fn) => setTimeout(fn, 200));
 if (document.readyState === 'complete') later(loadRoad, { timeout: 1500 });
 else addEventListener('load', () => later(loadRoad, { timeout: 1500 }), { once: true });
 
-// ── the row turns: point at a sign and it comes to the front ──
-// The others keep their order and the ones before it go to the back of the
-// line. A short pause before turning, and none again until the pointer moves
-// after the turn, so a sign sliding under a still pointer never sets off
-// another turn. Keyboard focus turns the row at once.
-const row = [...document.querySelectorAll('.sign')];
-if (row.length) {
-  let front = 0, armed = true, intent = 0, settle = 0;
-  const TURN_MS = 950;
-  const pos = row.map((_, i) => i);
-  const turnTo = (k) => {
-    if (k === front) return;
-    front = k;
-    row.forEach((li, i) => {
-      const next = (i - k + row.length) % row.length;
-      // a sign going from near to far takes the outside lane: it slips out to
-      // the right and fades, then rejoins at the end of the line, so it never
-      // passes through the signs that are moving up
-      if (next > pos[i] && motionOn()) {
-        const inner = li.querySelector('.sign__arrive');
-        inner.getAnimations().forEach((an) => an.cancel());
-        inner.animate([
-          { transform: 'none', opacity: 1, easing: 'cubic-bezier(0.77, 0, 0.175, 1)' },
-          { transform: 'translate3d(55%, -12%, 0)', opacity: 0, offset: 0.42 },
-          { transform: 'translate3d(55%, -12%, 0)', opacity: 0, offset: 0.58, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' },
-          { transform: 'none', opacity: 1 },
-        ], { duration: TURN_MS });
-      }
-      pos[i] = next;
-      li.style.setProperty('--p', String(next));
-    });
-    armed = false;
-    clearTimeout(settle);
-    settle = setTimeout(() => {
-      addEventListener('pointermove', () => { armed = true; }, { once: true });
-    }, motionOn() ? TURN_MS + 200 : 0);
-  };
-  row.forEach((li, i) => {
-    const a = li.querySelector('a');
-    a.addEventListener('pointermove', () => {
-      if (!armed || i === front || intent || !fine.matches || !wide.matches) return;
-      intent = setTimeout(() => { intent = 0; turnTo(i); }, 140);
-    });
-    a.addEventListener('pointerleave', () => { clearTimeout(intent); intent = 0; });
-    a.addEventListener('focus', () => { if (wide.matches) turnTo(i); });
+// ── the display wheel ──
+// One sign faces you and the rest stand round a vertical axis. Drag or swipe
+// it, point at or tap a side card, use the dots, or the arrow keys. A flick is
+// thrown: the release velocity projects where it lands, then a spring settles
+// it there. With motion off it turns at once.
+const signsEl = document.querySelector('.signs');
+if (signsEl) {
+signsEl.classList.add('has-wheel');
+const list = document.querySelector('.signs__list');
+const cards = [...list.querySelectorAll('.sign')];
+const N = cards.length, STEP = 360 / N;
+
+// dots under the wheel
+const dots = document.createElement('div');
+dots.className = 'wheel__dots';
+dots.setAttribute('aria-label', 'Choose a sign');
+cards.forEach((li, i) => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.setAttribute('aria-label', li.querySelector('.sign__name').textContent);
+  b.addEventListener('click', () => goTo(i));
+  dots.append(b);
+});
+signsEl.append(dots);
+
+let angle = 0, target = 0, vel = 0, raf = 0, prev = 0, dragging = false;
+const radius = () => cards[0].querySelector('a').offsetWidth * 0.98;
+
+function layout() {
+  const R = radius();
+  list.style.setProperty('transform', `translateZ(${-R}px) rotateY(${-angle}deg)`, 'important');
+  cards.forEach((li, i) => {
+    const a = i * STEP;
+    li.style.setProperty('transform', `rotateY(${a}deg) translateZ(${R}px)`, 'important');
+    const d = (((a - angle) % 360) + 540) % 360 - 180; // -180..180 from the front
+    const face = Math.cos((d * Math.PI) / 180);
+    li.style.opacity = String(Math.max(0, 0.15 + 0.85 * face));
+    li.querySelector('a').tabIndex = Math.abs(d) < STEP / 2 ? 0 : -1;
+    li.style.pointerEvents = face > 0.2 ? '' : 'none';
   });
+  const front = ((Math.round(angle / STEP) % N) + N) % N;
+  [...dots.children].forEach((b, i) => b.setAttribute('aria-current', String(i === front)));
+}
+
+// a spring toward the target: lightly under-damped, so a throw settles with a hint of give
+function tick(now) {
+  const dt = Math.min((now - prev) / 1000, 1 / 30); prev = now;
+  if (!dragging) {
+    const k = 90, c = 2 * 0.86 * Math.sqrt(k);
+    vel += (k * (target - angle) - c * vel) * dt;
+    angle += vel * dt;
+  }
+  layout();
+  if (dragging || Math.abs(target - angle) > 0.02 || Math.abs(vel) > 0.02) raf = requestAnimationFrame(tick);
+  else { angle = target; vel = 0; layout(); raf = 0; }
+}
+const run = () => { if (!raf) { prev = performance.now(); raf = requestAnimationFrame(tick); } };
+
+function goTo(i) {
+  // the shortest way round to card i
+  const cur = Math.round(angle / STEP);
+  let k = i - (((cur % N) + N) % N);
+  if (k > N / 2) k -= N; if (k < -N / 2) k += N;
+  target = (cur + k) * STEP;
+  if (!motionOn()) { angle = target; vel = 0; layout(); return; }
+  run();
+}
+
+// drag and swipe, 1:1, with the release velocity handed to the spring
+let x0 = 0, a0 = 0, hist = [], moved = false;
+list.addEventListener('pointerdown', (e) => {
+  dragging = true; moved = false; x0 = e.clientX; a0 = angle; hist = [[e.clientX, e.timeStamp]];
+  list.setPointerCapture(e.pointerId); list.classList.add('is-dragging'); run();
+});
+list.addEventListener('pointermove', (e) => {
+  if (!dragging) return;
+  const dx = e.clientX - x0;
+  if (Math.abs(dx) > 8) moved = true;
+  const R = radius();
+  angle = a0 - (dx / (2 * Math.PI * R)) * 360;
+  hist.push([e.clientX, e.timeStamp]); if (hist.length > 6) hist.shift();
+});
+function release() {
+  if (!dragging) return;
+  dragging = false; list.classList.remove('is-dragging');
+  const [xa, ta] = hist[0], [xb, tb] = hist[hist.length - 1];
+  const vpx = tb > ta ? ((xb - xa) / (tb - ta)) * 1000 : 0;       // px per second
+  const R = radius();
+  const vdeg = -(vpx / (2 * Math.PI * R)) * 360;                   // degrees per second
+  const projected = angle + (vdeg / 1000) * 0.995 / (1 - 0.995);    // where the throw would land
+  target = Math.round(projected / STEP) * STEP;
+  vel = vdeg; run();
+}
+list.addEventListener('pointerup', release);
+list.addEventListener('pointercancel', release);
+// a tap that did not drag is a click; on a side card it turns the wheel instead of leaving
+list.addEventListener('click', (e) => {
+  const li = e.target.closest('.sign'); if (!li) return;
+  if (moved) { e.preventDefault(); return; }
+  const i = cards.indexOf(li);
+  const front = ((Math.round(angle / STEP) % N) + N) % N;
+  if (i !== front) { e.preventDefault(); goTo(i); }
+}, true);
+// pointing at a side card turns to it, after a short pause, on a mouse only
+let intent = 0;
+cards.forEach((li, i) => {
+  const a = li.querySelector('a');
+  a.addEventListener('pointerenter', () => {
+    if (!fine.matches || dragging) return;
+    clearTimeout(intent); intent = setTimeout(() => goTo(i), 220);
+  });
+  a.addEventListener('pointerleave', () => clearTimeout(intent));
+  a.addEventListener('focus', () => goTo(i));
+});
+addEventListener('keydown', (e) => {
+  if (!list.contains(document.activeElement)) return;
+  const front = ((Math.round(angle / STEP) % N) + N) % N;
+  if (e.key === 'ArrowRight') { e.preventDefault(); goTo((front + 1) % N); cards[(front + 1) % N].querySelector('a').focus({ preventScroll: true }); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); goTo((front - 1 + N) % N); cards[(front - 1 + N) % N].querySelector('a').focus({ preventScroll: true }); }
+});
+new ResizeObserver(layout).observe(list.parentElement);
+layout();
+
 }
