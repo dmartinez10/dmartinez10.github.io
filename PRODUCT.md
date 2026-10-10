@@ -24,7 +24,15 @@ person, from Figma to shipped code, with real numbers** (confirmed 2026-10-10).
 ## Positioning
 
 The site is itself the proof of the "build" half: a designer's portfolio that is
-also an engineered piece of software. The wayfinding thread (people lost inside
+also an engineered piece of software.
+
+It also shows **his love for AI, for the Claude tooling he works with, and for
+ideas** (2026-10-10). The facts behind that live in `work/claude.html`: Claude
+Code with custom subagents (rule guard, verifier, breaker, walker, scribe),
+skills and plugins, his own `design-md` skill, Artifacts as a design canvas,
+Claude in Chrome, Figma and Notion through MCP, and "options before answers".
+Show what is on that page; do not invent tools, plugins or ideas he has not
+named. The wayfinding thread (people lost inside
 systems not designed for them: Japanese paperwork, commuter students, a freight
 load between delivered and paid) is the reason underneath, not the headline.
 
