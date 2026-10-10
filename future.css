@@ -478,3 +478,4 @@
   }
 }
 @keyframes fly-past{ to{ transform:translate3d(0, 0, 1300px); } }
+.night .sign a{ color:var(--text); }
