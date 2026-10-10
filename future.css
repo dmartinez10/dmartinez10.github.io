@@ -126,7 +126,10 @@
 }
 /* the row turns: the sign you point at comes to the front, the ones before
    it go to the back of the line, in order */
-[data-motion="on"] .sign{ transition:transform .75s var(--ease-in-out); }
+[data-motion="on"] .sign{
+  transition:transform .95s var(--ease-out);
+  transition-delay:calc(var(--p, 0) * 45ms);   /* a ripple, nearest first */
+}
 .sign__arrive, .sign__float{ transform-style:preserve-3d; }
 .sign a{
   pointer-events:auto; position:relative; overflow:hidden;

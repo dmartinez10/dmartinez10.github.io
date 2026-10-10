@@ -126,16 +126,34 @@ else addEventListener('load', () => later(loadRoad, { timeout: 1500 }), { once: 
 const row = [...document.querySelectorAll('.sign')];
 if (row.length) {
   let front = 0, armed = true, intent = 0, settle = 0;
-  const TURN_MS = 750;
+  const TURN_MS = 950;
+  const pos = row.map((_, i) => i);
   const turnTo = (k) => {
     if (k === front) return;
     front = k;
-    row.forEach((li, i) => li.style.setProperty('--p', String((i - k + row.length) % row.length)));
+    row.forEach((li, i) => {
+      const next = (i - k + row.length) % row.length;
+      // a sign going from near to far takes the outside lane: it slips out to
+      // the right and fades, then rejoins at the end of the line, so it never
+      // passes through the signs that are moving up
+      if (next > pos[i] && motionOn()) {
+        const inner = li.querySelector('.sign__arrive');
+        inner.getAnimations().forEach((an) => an.cancel());
+        inner.animate([
+          { transform: 'none', opacity: 1, easing: 'cubic-bezier(0.77, 0, 0.175, 1)' },
+          { transform: 'translate3d(55%, -12%, 0)', opacity: 0, offset: 0.42 },
+          { transform: 'translate3d(55%, -12%, 0)', opacity: 0, offset: 0.58, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' },
+          { transform: 'none', opacity: 1 },
+        ], { duration: TURN_MS });
+      }
+      pos[i] = next;
+      li.style.setProperty('--p', String(next));
+    });
     armed = false;
     clearTimeout(settle);
     settle = setTimeout(() => {
       addEventListener('pointermove', () => { armed = true; }, { once: true });
-    }, motionOn() ? TURN_MS : 0);
+    }, motionOn() ? TURN_MS + 200 : 0);
   };
   row.forEach((li, i) => {
     const a = li.querySelector('a');
