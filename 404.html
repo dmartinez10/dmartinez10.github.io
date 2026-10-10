@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="night">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Wrong way &middot; David Martinez</title>
 <meta name="description" content="That page is not on the map.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#EFE9DE">
+<meta name="theme-color" content="#07090D">
 <!-- GitHub Pages serves this for a missing page at any depth, so every path
      here starts at the root rather than being relative to this file. -->
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -14,6 +14,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;1,400&family=Overpass:wght@600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/future.css">
+<script>
+  /* motion is on unless reduced motion is set or he switched it off; the boot runs once per visit */
+  (function(){var d=document.documentElement,m;try{m=localStorage.getItem('motion');}catch(e){}
+  if(m!=='on'&&m!=='off')m=matchMedia('(prefers-reduced-motion: reduce)').matches?'off':'on';
+  d.dataset.motion=m;var b;try{b=sessionStorage.getItem('booted');}catch(e){}
+  if(m==='on'&&!b)d.classList.add('boot');})();
+</script>
+<script type="module" src="/js/site.js"></script>
 <style>
   .page-h .wrongway{
     display:inline-grid; place-items:center; margin:0 0 2rem; padding:.9rem 1.6rem .75rem;
@@ -40,6 +49,7 @@
       <a class="ns ns--work" href="/work/"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V5M10 4l-5 5M10 4l5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Work</a>
       <a class="ns ns--about" href="/about/"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="11" cy="4" r="2.1" fill="currentColor"/><path d="M11 7l-1 6-3 5m4-11l4 3m-4 3l3 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>About</a>
       <a class="ns ns--resume" href="/assets/resume.pdf"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2.5h6l4 4v11H5z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 11h5M7.5 14h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Resume</a>
+      <button class="mo" type="button" aria-label="Motion" aria-pressed="true" hidden><span class="mo__dot" aria-hidden="true"></span><span aria-hidden="true">Motion <span class="mo__on">on</span><span class="mo__off">off</span></span></button>
     </nav>
   </div>
 </header>
@@ -60,6 +70,7 @@
 <footer class="foot">
   <div class="foot__in">
     <div class="foot__rule" aria-hidden="true"></div>
+    <div class="foot__road" aria-hidden="true"></div>
     <p class="foot__end"><span class="foot__dot" aria-hidden="true"></span>End of the line</p>
     <div class="foot__say">
       <h2 class="foot__h">Tell me what you are building and who it is for.</h2>
@@ -74,7 +85,7 @@
     <div class="foot__grid">
       <div><h3>WHERE I AM</h3><p>Iowa City during term. West Liberty, Iowa.</p></div>
       <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, and Atkinson Hyperlegible, drawn for readers with low vision.</p></div>
-      <div><h3>HOW IT IS BUILT</h3><p>From scratch. No framework, no build step, and no JavaScript on the page.</p></div>
+      <div><h3>HOW IT IS BUILT</h3><p>From scratch. No framework and no build step. A little JavaScript adds the motion, and every page reads the same without it.</p></div>
     </div>
   </div>
 </footer>
