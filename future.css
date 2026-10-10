@@ -8,7 +8,7 @@
   --night:    #07090D;
   --night-2:  #0B1222;   /* the sky at the horizon */
   --asphalt:  #12161F;
-  --glass:    rgb(10 15 24 / .96);
+  --glass:    #0A0F18;
   --text:     #EEF1F5;
   --text-2:   #AEB6C4;   /* 9.6:1 on --night */
   --edge:     rgb(238 241 245 / .16);
@@ -121,9 +121,12 @@
 .signs__list{ position:absolute; inset:0; transform-style:preserve-3d; }
 .sign{
   position:absolute; left:var(--vx); top:var(--vy); transform-origin:0 0;
-  transform:translate3d(var(--sx), var(--sy), calc(var(--i) * var(--gap) * -1));
+  transform:translate3d(var(--sx), var(--sy), calc(var(--p, var(--i)) * var(--gap) * -1));
   transform-style:preserve-3d;
 }
+/* the row turns: the sign you point at comes to the front, the ones before
+   it go to the back of the line, in order */
+[data-motion="on"] .sign{ transition:transform .75s var(--ease-in-out); }
 .sign__arrive, .sign__float{ transform-style:preserve-3d; }
 .sign a{
   pointer-events:auto; position:relative; overflow:hidden;
@@ -188,7 +191,7 @@
 }
 @keyframes show{ to{ opacity:1; } }
 .boot[data-motion="on"] .sign__arrive{
-  animation:arrive 1.1s var(--ease-out) both;
+  animation:arrive 1.1s var(--ease-out) backwards;
   animation-delay:calc(.35s + var(--i) * 70ms);
 }
 .boot[data-motion="on"] .road__hi{ animation:blur-in .6s var(--ease-out) both; }

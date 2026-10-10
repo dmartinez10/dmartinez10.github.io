@@ -117,3 +117,33 @@ function loadRoad() {
 const later = window.requestIdleCallback || ((fn) => setTimeout(fn, 200));
 if (document.readyState === 'complete') later(loadRoad, { timeout: 1500 });
 else addEventListener('load', () => later(loadRoad, { timeout: 1500 }), { once: true });
+
+// ── the row turns: point at a sign and it comes to the front ──
+// The others keep their order and the ones before it go to the back of the
+// line. A short pause before turning, and none again until the pointer moves
+// after the turn, so a sign sliding under a still pointer never sets off
+// another turn. Keyboard focus turns the row at once.
+const row = [...document.querySelectorAll('.sign')];
+if (row.length) {
+  let front = 0, armed = true, intent = 0, settle = 0;
+  const TURN_MS = 750;
+  const turnTo = (k) => {
+    if (k === front) return;
+    front = k;
+    row.forEach((li, i) => li.style.setProperty('--p', String((i - k + row.length) % row.length)));
+    armed = false;
+    clearTimeout(settle);
+    settle = setTimeout(() => {
+      addEventListener('pointermove', () => { armed = true; }, { once: true });
+    }, motionOn() ? TURN_MS : 0);
+  };
+  row.forEach((li, i) => {
+    const a = li.querySelector('a');
+    a.addEventListener('pointermove', () => {
+      if (!armed || i === front || intent || !fine.matches || !wide.matches) return;
+      intent = setTimeout(() => { intent = 0; turnTo(i); }, 140);
+    });
+    a.addEventListener('pointerleave', () => { clearTimeout(intent); intent = 0; });
+    a.addEventListener('focus', () => { if (wide.matches) turnTo(i); });
+  });
+}
