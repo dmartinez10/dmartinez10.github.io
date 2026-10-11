@@ -84,13 +84,14 @@ else addEventListener('load', () => later(maybeRoad, { timeout: 1500 }), { once:
 addEventListener('motionchange', maybeRoad);
 
 // ── the display wheel ──
-// The signs stand round a wheel that turns by itself, slowly and without end,
-// so no sign is first. It starts on a random sign. Drag or swipe to spin it and
-// it carries on with your momentum, then eases back to its cruise; tap or point
-// at a side sign to bring it round; arrow keys step one sign. It holds still
+// The signs stand round a wheel that turns by itself without end, so no sign
+// is first: it rests with one sign square to you, then glides to the next. It
+// starts on a random sign. Drag or swipe to spin it; it lands square on the
+// sign your throw reaches. Tap a side sign to bring it round; arrow keys step. It holds still
 // while you point at it, touch it or tab into it, and with motion off.
 // Each sign is projected on its own (perspective inside its own transform),
 // not through a nested 3D turn, because Safari draws nested turns wrongly.
+// A drag still moves it like a wheel: one sign width is one step.
 const signsEl = document.querySelector('.signs');
 if (signsEl) {
 signsEl.classList.add('has-wheel');
@@ -106,23 +107,31 @@ hint.textContent = 'The wheel holds still while it has focus. Left and right arr
 signsEl.append(hint);
 links.forEach((a) => a.setAttribute('aria-describedby', 'wheel-hint'));
 
-const CRUISE = -9;                       // degrees per second when nobody is touching it
-let angle = Math.floor(Math.random() * N) * STEP;
+const DWELL = 3200;                      // ms each sign rests square in front
+let angle = Math.floor(Math.random() * N) * STEP;   // a random sign first
 let vel = 0, raf = 0, prev = 0, R = 0, P = 1100, shown = -1;
-let dragging = false, held = false, snapTo = null, resumeAt = 0, onScreen = true;
-const measure = () => { R = links[0].offsetWidth * 0.98; P = Math.max(900, R * 3.6); };
+let dragging = false, held = false, snapTo = null, nextAt = performance.now() + DWELL, onScreen = true;
+const measure = () => { R = links[0].offsetWidth * 0.98; P = Math.max(1100, R * 4); };
 const mod = (n) => ((n % N) + N) % N;
 const frontOf = (deg) => mod(Math.round(deg / STEP));
 
 function layout() {
+  // Cover flow on a loop: the sign in front is flat and square, its neighbours
+  // step back and turn gently away, and the far ones fade out. Positions come
+  // from a continuous offset, so a glide between signs is smooth.
+  const w = links[0].offsetWidth;
   cards.forEach((li, i) => {
-    const t = i * STEP - angle;
-    const d = (((t % 360) + 540) % 360) - 180;          // -180..180 from the front
-    const face = Math.cos((d * Math.PI) / 180);
-    li.style.setProperty('transform', `perspective(${P}px) translateZ(${-R}px) rotateY(${d}deg) translateZ(${R}px)`, 'important');
-    li.style.zIndex = String(Math.round((face + 1) * 50));
-    li.style.opacity = face > 0 ? String(Math.min(1, 0.05 + face * face)) : '0';
-    li.style.pointerEvents = face > 0.2 ? '' : 'none';
+    const d = ((((i * STEP - angle) % 360) + 540) % 360) - 180;   // -180..180 from the front
+    const o = d / STEP;                                           // signs away from the front
+    const a = Math.abs(o), sg = Math.sign(o);
+    const x = sg * (Math.min(a, 1) * 0.86 + Math.max(a - 1, 0) * 0.34) * w;
+    const z = -Math.min(a, 3) * 0.9 * w;
+    const turn = -sg * Math.min(a, 1) * 32;
+    li.style.setProperty('transform', `perspective(${P}px) translate3d(${x.toFixed(1)}px, 0, ${z.toFixed(1)}px) rotateY(${turn.toFixed(2)}deg)`, 'important');
+    li.style.zIndex = String(Math.round(100 - a * 20));
+    const op = a <= 1 ? 1 - 0.55 * a : a <= 2 ? 0.45 - 0.45 * (a - 1) : 0;
+    li.style.opacity = String(Math.max(0, op).toFixed(3));
+    li.style.pointerEvents = a < 1.6 ? '' : 'none';
   });
   const front = frontOf(angle);
   if (front !== shown) { shown = front; links.forEach((a, i) => { a.tabIndex = i === front ? 0 : -1; }); }
@@ -131,21 +140,18 @@ function layout() {
 function tick(now) {
   const dt = Math.min((now - prev) / 1000, 1 / 30); prev = now;
   if (!dragging) {
+    // after its rest, the wheel moves on to the next sign
+    if (snapTo === null && !held && motionOn() && now >= nextAt) snapTo = (Math.round(angle / STEP) + 1) * STEP;
     if (snapTo !== null) {
-      // a critically damped spring onto one sign
-      const k = 60, c = 2 * Math.sqrt(k);
+      // a critically damped spring, so every sign lands square with no wobble
+      const k = 38, c = 2 * Math.sqrt(k);
       vel += (k * (snapTo - angle) - c * vel) * dt;
       angle += vel * dt;
-      if (Math.abs(snapTo - angle) < 0.05 && Math.abs(vel) < 0.05) { angle = snapTo; vel = 0; snapTo = null; resumeAt = now + 2500; }
-    } else {
-      // momentum eases back to the cruise; held or recently handled, it eases to a stop
-      const want = held || now < resumeAt || !motionOn() ? 0 : CRUISE;
-      vel += (want - vel) * (1 - Math.exp(-dt * 1.6));
-      angle += vel * dt;
+      if (Math.abs(snapTo - angle) < 0.03 && Math.abs(vel) < 0.05) { angle = snapTo; vel = 0; snapTo = null; nextAt = now + DWELL; }
     }
   }
   layout();
-  const moving = dragging || snapTo !== null || Math.abs(vel) > 0.01 || (!held && motionOn());
+  const moving = dragging || snapTo !== null || (!held && motionOn());
   raf = moving && onScreen && !document.hidden ? requestAnimationFrame(tick) : 0;
 }
 const run = () => { if (!raf) { prev = performance.now(); raf = requestAnimationFrame(tick); } };
@@ -155,6 +161,7 @@ function bring(i) {
   let k = i - frontOf(angle);
   if (k > N / 2) k -= N; if (k < -N / 2) k += N;
   const to = (Math.round(angle / STEP) + k) * STEP;
+  nextAt = performance.now() + DWELL + 1500;
   if (!motionOn()) { angle = to; vel = 0; snapTo = null; layout(); return; }
   snapTo = to; run();
 }
@@ -170,7 +177,7 @@ list.addEventListener('pointermove', (e) => {
   if (!dragging) return;
   const dx = e.clientX - x0;
   if (Math.abs(dx) > 8) moved = true;
-  angle = a0 - (dx / (2 * Math.PI * R)) * 360;
+  angle = a0 - (dx / (links[0].offsetWidth * 0.86)) * STEP;
   hist.push([e.clientX, e.timeStamp]); if (hist.length > 6) hist.shift();
   layout();
 });
@@ -183,9 +190,13 @@ function release(e) {
     const [xa, ta] = recent[0], [xb, tb] = recent[recent.length - 1];
     if (tb > ta) vpx = ((xb - xa) / (tb - ta)) * 1000;
   }
-  vel = motionOn() ? -(vpx / (2 * Math.PI * R)) * 360 : 0;
-  resumeAt = performance.now() + 2500;
-  if (!motionOn()) bring(frontOf(angle)); else run();
+  const vdeg = -(vpx / (links[0].offsetWidth * 0.86)) * STEP;
+  // the throw decides where it lands, and it always lands square on a sign
+  const projected = angle + (vdeg / 1000) * 0.995 / (1 - 0.995);
+  const to = Math.round(projected / STEP) * STEP;
+  nextAt = performance.now() + DWELL + 1500;
+  if (!motionOn()) { angle = to; vel = 0; snapTo = null; layout(); return; }
+  vel = vdeg; snapTo = to; run();
 }
 list.addEventListener('pointerup', release);
 list.addEventListener('pointercancel', release);
@@ -199,12 +210,12 @@ list.addEventListener('click', (e) => {
 }, true);
 // it holds still while a mouse is over it or focus is inside it
 signsEl.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { held = true; run(); } });
-signsEl.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') { held = false; resumeAt = performance.now() + 600; run(); } });
+signsEl.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') { held = false; nextAt = Math.max(nextAt, performance.now() + 1200); run(); } });
 list.addEventListener('focusin', (e) => {
   held = true;
   const li = e.target.closest('.sign'); if (li) bring(cards.indexOf(li));
 });
-list.addEventListener('focusout', (e) => { if (!list.contains(e.relatedTarget)) { held = false; resumeAt = performance.now() + 1500; run(); } });
+list.addEventListener('focusout', (e) => { if (!list.contains(e.relatedTarget)) { held = false; nextAt = performance.now() + DWELL; run(); } });
 list.addEventListener('keydown', (e) => {
   const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
   if (!step) return;

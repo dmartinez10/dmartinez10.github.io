@@ -84,7 +84,7 @@
 .road__gl{ opacity:0; transition:opacity .8s var(--ease-out); }
 .road__gl.is-live{ opacity:1; }
 
-.road__copy{ position:relative; max-width:36rem; }
+.road__copy{ position:relative; z-index:1; max-width:36rem; }
 .road__hi{
   font:700 clamp(1.15rem,1.6vw,1.5rem)/1.2 var(--sans); color:var(--cl); margin:0 0 .6rem;
 }
@@ -115,16 +115,18 @@
 
 .signs.has-wheel{
   position:absolute; inset:0; margin:0; pointer-events:none;
-  perspective:1400px; perspective-origin:68% 40%;
-  --w:clamp(17rem,30vw,30rem);
+  z-index:0;   /* its own layer, so the words always sit above the wheel */
+  --w:clamp(16rem,26vw,27rem);
 }
-.has-wheel .signs__h{ position:absolute; left:68%; top:calc(40% - 11rem); translate:-50% 0; }
+.has-wheel .signs__h{ position:absolute; left:70%; top:calc(40% - 12.75rem); translate:-50% 0; }
 .has-wheel .signs__list{
-  position:absolute; inset:auto; left:68%; top:40%; width:0; height:0; max-width:none;
+  position:absolute; inset:auto; left:70%; top:40%; width:0; height:0; max-width:none;
   display:block; transform-style:preserve-3d; cursor:grab; touch-action:pan-y; pointer-events:auto;
 }
 .has-wheel .signs__list.is-dragging{ cursor:grabbing; }
-.has-wheel .sign{ position:absolute; left:0; top:0; transform-style:preserve-3d; }
+.has-wheel .sign{ position:absolute; left:0; top:0; width:0; height:0; transform-origin:0 0; }
+/* a zero-size sign with its card centred on it, so every sign turns about
+   its own middle and the wheel is the same on both sides */
 /* no backface-visibility here: WebKit judges it from the sign's own turn and
    ignores the wheel's, hiding the sign in front. The script fades the backs out. */
 .has-wheel .sign a{ width:var(--w); min-height:calc(var(--w) * .46); translate:-50% -50%; }
