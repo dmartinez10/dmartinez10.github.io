@@ -98,6 +98,7 @@ if (kit) {
 }
 
 // ── panels lean toward the pointer on a critically damped spring ──
+for (const el of document.querySelectorAll('.skills li, .moves > li, .exit__panel')) el.setAttribute('data-tilt', '');
 const fine = matchMedia('(hover: hover) and (pointer: fine)');
 for (const el of document.querySelectorAll('[data-tilt]')) {
   let tx = 0, ty = 0, x = 0, y = 0, vx = 0, vy = 0, raf = 0, prev = 0;
@@ -122,3 +123,87 @@ for (const el of document.querySelectorAll('[data-tilt]')) {
   });
   el.addEventListener('pointerleave', () => { tx = 0; ty = 0; go(); });
 }
+
+// ══ every page gets the road's motion, not only home ══
+
+// the headline decodes once per page per visit, like the HUD on home
+const DC_GLYPHS = 'ABCDEFGHJKLMNPRSTUVWXYZ0123456789/<>_';
+function decodeHeading(el, total = 520) {
+  const text = el.textContent;
+  const sr = document.createElement('span');
+  sr.className = 'sr';
+  sr.textContent = text;
+  const shown = document.createElement('span');
+  shown.setAttribute('aria-hidden', 'true');
+  const chars = [];
+  for (const word of text.split(/(\s+)/)) {
+    if (/^\s+$/.test(word)) { shown.append(word); continue; }
+    const w = document.createElement('span');
+    w.className = 'dc';
+    for (const c of word) {
+      const ch = document.createElement('span');
+      ch.className = 'ch is-hidden';
+      ch.textContent = c;
+      const g = document.createElement('i');
+      ch.append(g);
+      w.append(ch);
+      chars.push({ ch, g, at: 0 });
+    }
+    shown.append(w);
+  }
+  el.replaceChildren(sr, shown);
+  el.classList.add('is-decoding');
+  chars.forEach((c, i) => { c.at = (i / chars.length) * total * 0.7 + Math.random() * total * 0.3; });
+  const start = performance.now();
+  let last = 0;
+  const tick = (now) => {
+    const t = now - start;
+    let open = 0;
+    const swap = now - last > 40;
+    for (const c of chars) {
+      if (t >= c.at) { if (c.g.isConnected) { c.g.remove(); c.ch.classList.remove('is-hidden'); } }
+      else { open++; if (swap) c.g.textContent = DC_GLYPHS[(Math.random() * DC_GLYPHS.length) | 0]; }
+    }
+    if (swap) last = now;
+    if (open) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+if (root.classList.contains('dc-page')) {
+  // the home headline has its own boot in hero.js
+  const h = document.querySelector('main h1:not(.road__h)');
+  if (h && motionOn()) decodeHeading(h);
+  try { sessionStorage.setItem('dc:' + location.pathname, '1'); } catch {}
+}
+
+// blocks of content arrive up the road as they scroll in, in a short ripple
+const ARRIVE = [
+  '.proj', '.skills li', '.sec', '.story', '.nums li', '.wins li', '.moves > li',
+  '.roster details', '.route li', '.places > *', '.exit__panel', '.shots figure', '.brief',
+  '.off li', '.pcard', '.kit__panel', '.aboutme', '.split > *',
+].join(',');
+const more = [...document.querySelectorAll(ARRIVE)].filter((el) => !el.closest('.road') && !el.hasAttribute('data-arrive'));
+if (more.length && motionOn() && 'IntersectionObserver' in window) {
+  root.classList.add('js-arrive');
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+  }, { rootMargin: '0px 0px -8% 0px' });
+  more.forEach((el) => {
+    const sibs = [...el.parentElement.children].filter((c) => c.matches(ARRIVE));
+    el.style.setProperty('--k', String(sibs.indexOf(el) % 4));
+    el.setAttribute('data-arrive', '');
+    io.observe(el);
+  });
+}
+
+// every single number on a page counts up once, ending on its real value
+const NUMS = '.nums b, .wins b, .readout__row b';
+const single = /^[^\d]*[\d,]+[^\d]*$/;
+const counters = [...document.querySelectorAll(NUMS)].filter((b) => !b.hasAttribute('data-count') && single.test(b.textContent.trim()));
+if (counters.length && motionOn() && 'IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { countUp(e.target); io.unobserve(e.target); }
+  }, { threshold: 0.6 });
+  counters.forEach((el) => io.observe(el));
+}
+
