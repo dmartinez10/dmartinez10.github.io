@@ -106,12 +106,24 @@ hint.id = 'wheel-hint';
 hint.textContent = 'The wheel holds still while it has focus. Left and right arrow keys turn it.';
 signsEl.append(hint);
 links.forEach((a) => a.setAttribute('aria-describedby', 'wheel-hint'));
+// arrows under the front sign, so it is plain the wheel turns
+const chev = (d) => `<svg viewBox="0 0 20 20" aria-hidden="true"><path d="${d}" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const turner = document.createElement('div');
+turner.className = 'turn';
+turner.innerHTML = `<button class="turn__b" type="button" data-step="-1" aria-label="Turn to the previous sign">${chev('M12.5 4.5 7 10l5.5 5.5')}</button>`
+  + `<span class="turn__t" aria-hidden="true">${matchMedia('(pointer: coarse)').matches ? 'Swipe' : 'Drag'} to turn</span>`
+  + `<button class="turn__b" type="button" data-step="1" aria-label="Turn to the next sign">${chev('M7.5 4.5 13 10l-5.5 5.5')}</button>`;
+signsEl.append(turner);
 
 const DWELL = 3200;                      // ms each sign rests square in front
 let angle = Math.floor(Math.random() * N) * STEP;   // a random sign first
 let vel = 0, raf = 0, prev = 0, R = 0, P = 1100, shown = -1;
 let dragging = false, held = false, snapTo = null, nextAt = performance.now() + DWELL, onScreen = true;
-const measure = () => { R = links[0].offsetWidth * 0.98; P = Math.max(1100, R * 4); };
+const measure = () => {
+  R = links[0].offsetWidth * 0.98; P = Math.max(1100, R * 4);
+  // the arrows sit just under the tallest sign
+  signsEl.style.setProperty('--sign-h', Math.max(...links.map((a) => a.offsetHeight)) + 'px');
+};
 const mod = (n) => ((n % N) + N) % N;
 const frontOf = (deg) => mod(Math.round(deg / STEP));
 
@@ -227,6 +239,10 @@ list.addEventListener('keydown', (e) => {
   bring(to);
   links[to].focus({ preventScroll: true });
 });
+turner.addEventListener('click', (e) => {
+  const b = e.target.closest('.turn__b'); if (!b) return;
+  bring(mod((snapTo !== null ? frontOf(snapTo) : frontOf(angle)) + Number(b.dataset.step)));
+});
 // it only turns while it is on screen and the tab is showing
 new IntersectionObserver(([en]) => { onScreen = en.isIntersecting; if (onScreen) run(); }).observe(signsEl);
 document.addEventListener('visibilitychange', () => { if (!document.hidden) run(); });
@@ -255,12 +271,4 @@ function placeStage() {
 }
 new ResizeObserver(placeStage).observe(road);
 placeStage();
-}
-
-// "Scroll for projects" goes once the page has moved, and comes back at the top
-const more = document.querySelector('.road__more');
-if (more) {
-  const gone = () => more.classList.toggle('is-gone', scrollY > 40);
-  addEventListener('scroll', gone, { passive: true });
-  gone();
 }
