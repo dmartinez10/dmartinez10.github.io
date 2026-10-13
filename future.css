@@ -147,7 +147,7 @@
 .has-wheel .sign a{ width:var(--w); min-height:calc(var(--w) * .46); translate:-50% -50%; }
 .sign a{
   pointer-events:auto; position:relative; overflow:hidden;
-  display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:end; gap:.25rem 1rem;
+  display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:.25rem 1rem;
   width:clamp(19rem,39vw,35rem); min-height:clamp(9rem,17vw,16rem);
   padding:clamp(1rem,1.9vw,1.75rem); border-radius:16px;
   color:var(--text); text-decoration:none;
@@ -155,10 +155,6 @@
   border:2px solid var(--cl);
   box-shadow:0 0 1.6rem rgb(255 199 44 / .35), 0 2.5rem 4rem -1.5rem rgb(0 0 0 / .8);
   transition:box-shadow .2s ease;
-}
-.sign__code{
-  grid-column:1 / -1; align-self:start;
-  font:500 clamp(.8rem,1.1vw,1.05rem)/1 var(--mono); letter-spacing:.08em; color:var(--cl);
 }
 .sign__name{
   display:block; font-family:var(--display); font-weight:900;
