@@ -171,12 +171,14 @@ let x0 = 0, a0 = 0, hist = [], moved = false;
 list.addEventListener('pointerdown', (e) => {
   dragging = true; moved = false; snapTo = null; vel = 0;
   x0 = e.clientX; a0 = angle; hist = [[e.clientX, e.timeStamp]];
-  list.setPointerCapture(e.pointerId); list.classList.add('is-dragging'); run();
+  list.classList.add('is-dragging'); run();
 });
 list.addEventListener('pointermove', (e) => {
   if (!dragging) return;
   const dx = e.clientX - x0;
-  if (Math.abs(dx) > 8) moved = true;
+  // the pointer is captured only once it drags: captured from the press, the
+  // click lands on the list instead of the sign, and a tap never follows the link
+  if (!moved && Math.abs(dx) > 8) { moved = true; list.setPointerCapture(e.pointerId); }
   angle = a0 - (dx / (links[0].offsetWidth * 0.86)) * STEP;
   hist.push([e.clientX, e.timeStamp]); if (hist.length > 6) hist.shift();
   layout();
@@ -198,8 +200,9 @@ function release(e) {
   if (!motionOn()) { angle = to; vel = 0; snapTo = null; layout(); return; }
   vel = vdeg; snapTo = to; run();
 }
-list.addEventListener('pointerup', release);
-list.addEventListener('pointercancel', release);
+// on the document, since before a drag the press is not captured and may end off the wheel
+document.addEventListener('pointerup', release);
+document.addEventListener('pointercancel', release);
 // a tap on a side sign brings it round instead of leaving; clicks from the
 // keyboard, a screen reader or voice control (detail 0) always follow the link
 list.addEventListener('click', (e) => {
@@ -252,4 +255,12 @@ function placeStage() {
 }
 new ResizeObserver(placeStage).observe(road);
 placeStage();
+}
+
+// "Scroll for projects" goes once the page has moved, and comes back at the top
+const more = document.querySelector('.road__more');
+if (more) {
+  const gone = () => more.classList.toggle('is-gone', scrollY > 40);
+  addEventListener('scroll', gone, { passive: true });
+  gone();
 }
