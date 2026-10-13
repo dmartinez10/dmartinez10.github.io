@@ -563,8 +563,6 @@ a:hover{ text-decoration-thickness:2px; }
   color:#fff; margin-top:clamp(3rem,7vw,5rem); padding:clamp(2rem,4vw,2.75rem) 0 clamp(2.25rem,4vw,3rem); }
 .foot__in{ max-width:var(--max); margin:0 auto; padding-inline:var(--gut); display:grid; gap:1.5rem; }
 /* the dashes of a road, ending */
-.foot__rule{ height:4px; border-radius:2px; background:repeating-linear-gradient(90deg,var(--hi) 0 26px,transparent 26px 46px); }
-.foot__end{ display:flex; align-items:center; gap:.7rem; font-family:var(--display); font-weight:800; font-size:1.35rem; margin:0; }
 
 /* contact lives here now, and it is the loudest thing in the footer */
 .foot__say{ display:grid; gap:1rem; justify-items:start; }
