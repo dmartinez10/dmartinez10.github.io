@@ -711,3 +711,14 @@
   background:none !important; border:0 !important; border-top:2px solid var(--rule-2) !important;
   border-radius:0 !important; padding:1rem 0 0 !important;
 }
+
+/* Work holds two tabs: the projects and the skills behind them */
+.wtabs{ display:flex; gap:.25rem; margin:0 0 1.75rem; border-bottom:2px solid var(--rule); }
+.wtabs a{
+  display:inline-flex; align-items:center; min-height:44px; padding:.6rem 1rem; margin-bottom:-2px;
+  font:700 1.05rem/1 var(--display); color:var(--ink-2); text-decoration:none;
+  border-bottom:3px solid transparent;
+}
+.wtabs a:hover{ color:var(--ink); }
+.wtabs a[aria-current="page"]{ color:var(--ink); border-bottom-color:var(--cl); }
+.wtabs a:focus-visible{ outline:3px solid var(--cl); outline-offset:2px; }
