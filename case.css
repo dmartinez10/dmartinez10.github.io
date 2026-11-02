@@ -535,3 +535,39 @@
 .think dd{ margin:0; font-size:.98rem; line-height:1.55; color:var(--ink-2); }
 .think__result dd b{ display:block; font-family:var(--display); font-weight:800; font-size:clamp(1.35rem,2.6vw,1.75rem); line-height:1.1; color:var(--ink); margin-bottom:.25rem; overflow-wrap:anywhere; }
 .think__result dd .was{ display:block; font:500 .85rem/1.3 var(--mono); color:var(--ink-2); text-decoration:line-through; text-decoration-thickness:1px; margin-bottom:.2rem; }
+
+/* ══ The story of a project (2026-11-02, his schema): the hook, before and
+   after, how I worked it step by step, the turning point, the proof. One
+   read top to bottom, nothing to decode. ══ */
+.tension{ max-width:62ch; font-size:clamp(1.05rem,1.8vw,1.2rem); line-height:1.6; color:var(--ink-2); margin:1rem 0 0; }
+
+.ba{ display:grid; gap:1rem; margin:1.5rem 0 0; grid-template-columns:minmax(0,1fr); }
+@media (min-width:46rem){ .ba{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+.ba > div{ border-radius:var(--r); padding:1.25rem 1.35rem 1.4rem; border:1px solid var(--rule); background:var(--panel); min-width:0; }
+.ba > div:last-child{ border-color:var(--line,var(--sign)); box-shadow:inset 0 4px 0 var(--line,var(--sign)); }
+.ba__lab{ margin:0 0 .5rem; font:700 .82rem/1 var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--ink-2); }
+.ba p:not(.ba__lab){ margin:0; font-size:1.05rem; line-height:1.6; color:var(--ink); }
+
+.walk{ margin:1.5rem 0 0; padding:0; list-style:none; display:grid; gap:0; counter-reset:st; }
+.walk > li{ display:grid; grid-template-columns:2.75rem minmax(0,1fr); gap:0 1rem; counter-increment:st; position:relative; padding-bottom:1.5rem; }
+.walk > li::before{
+  content:counter(st); width:2.75rem; height:2.75rem; border-radius:50%; display:grid; place-items:center;
+  font:800 1.1rem/1 var(--display); color:var(--ink); background:var(--panel); border:2px solid var(--line,var(--sign));
+}
+.walk > li:not(:last-child)::after{ content:""; position:absolute; left:calc(1.375rem - 1px); top:2.75rem; bottom:0; width:2px; background:var(--rule-2); }
+.walk__k{ margin:.1rem 0 .15rem; font:700 .8rem/1.2 var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--ink-2); }
+.walk h3{ margin:0 0 .35rem; font:800 1.2rem/1.25 var(--display); color:var(--ink); }
+.walk p:not(.walk__k){ margin:0; max-width:62ch; line-height:1.6; color:var(--ink-2); }
+.walk > li > div{ min-width:0; }
+
+.pivot{ margin:1.5rem 0 0; border-left:6px solid var(--line,var(--sign)); padding:.25rem 0 .25rem 1.4rem; display:grid; gap:.6rem; max-width:64ch; }
+.pivot__lab{ margin:0; font:700 .82rem/1 var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--ink-2); }
+.pivot__big{ margin:0 0 .6rem; font:800 clamp(1.3rem,2.8vw,1.75rem)/1.3 var(--display); color:var(--ink); text-wrap:balance; }
+.pivot p:not(.pivot__lab):not(.pivot__big){ margin:0; line-height:1.6; color:var(--ink-2); font-size:1.05rem; }
+
+.proof__quote{ margin:2rem 0 0; padding:1.25rem 1.4rem; background:var(--panel); border:1px solid var(--rule); border-radius:var(--r); max-width:64ch; }
+.proof__quote p{ margin:0; font:700 clamp(1.15rem,2.2vw,1.4rem)/1.45 var(--display); color:var(--ink); }
+.proof__quote cite{ display:block; margin-top:.6rem; font:500 .9rem var(--mono); font-style:normal; color:var(--ink-2); }
+.proof__take{ margin:1.5rem 0 0; max-width:64ch; font-size:1.1rem; line-height:1.6; color:var(--ink); }
+.proof__take b{ font-family:var(--mono); font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-2); display:block; margin-bottom:.35rem; }
+.tension{ margin-bottom:2.5rem; }

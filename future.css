@@ -405,8 +405,8 @@
 @keyframes scan-y{ from{ translate:0 -100%; opacity:1; } to{ translate:0 100%; opacity:1; } }
 
 /* ══ the numbers: a speedometer readout ══ */
-.night .nums b{ font-size:clamp(2.75rem,6vw,4rem); line-height:1; }
-.night .nums span{ font-size:1rem; line-height:1.45; color:var(--ink-2); }
+.night .nums b{ display:block; font-size:clamp(3.25rem,7vw,5rem); line-height:1; letter-spacing:-.02em; }
+.night .nums li > span{ font-size:1rem; line-height:1.45; color:var(--ink-2); }
 .night .nums b [aria-hidden]{ display:inline-block; min-width:1ch; }
 
 /* ══ the Claude kit: a command palette you can actually search ══ */
@@ -649,3 +649,65 @@
 .nav .nav__links .ns, .nav .nav__sw .mo, .nav .nav__sw .th, .btn, .back, .foot__links a, .lightbox__close{ min-height:44px; }
 .btn, .back{ display:inline-flex; align-items:center; }
 .side .ns{ min-height:44px; }
+
+/* ══ 2026-11-02, round 3 (his review in Chrome) ══ */
+
+/* a proper site header: name on the left, plain text links on the right,
+   the page you are on underlined in the centre-line yellow */
+.night .nav:not(.nav--night){ position:sticky; top:env(safe-area-inset-top,0px); z-index:20; }
+.night .nav .nav__in{
+  max-width:72rem; margin:0 auto; display:flex; flex-direction:row; flex-wrap:wrap;
+  align-items:center; justify-content:space-between; gap:.25rem 1.5rem;
+  padding:.85rem max(16px,env(safe-area-inset-right,0px)) .85rem max(16px,env(safe-area-inset-left,0px));
+}
+.night .nav__me{ margin:0; font:800 1.15rem/1.2 var(--display); color:var(--ink); }
+.night .nav__links{ display:flex; flex-wrap:wrap; gap:0 .25rem; align-items:center; }
+.night .nav .ns{
+  font:700 1rem/1 var(--display); color:var(--ink-2); background:none; box-shadow:none; outline:0;
+  padding:.75rem .7rem; border-radius:6px; min-height:44px; display:inline-flex; align-items:center;
+  position:relative;
+}
+.night .nav .ns:hover{ color:var(--ink); background:var(--bg-raise); }
+.night .nav .ns[aria-current="page"]{ color:var(--ink); box-shadow:none; }
+.night .nav .ns[aria-current="page"]::after{
+  content:""; position:absolute; left:.7rem; right:.7rem; bottom:.3rem; height:3px; border-radius:2px; background:var(--cl);
+}
+.night .nav .ns:focus-visible{ outline:3px solid var(--cl); outline-offset:2px; }
+.night .nav .ns--resume{ border:1.5px solid var(--rule-2); margin-left:.35rem; }
+.night .nav .ns--resume:hover{ border-color:var(--ink); }
+@media (max-width:40rem){ .night .nav .nav__in{ justify-content:center; } .night .nav__me{ width:100%; text-align:center; } }
+
+/* the home intro: words on the left, his photo on the right */
+.intro{ grid-template-columns:minmax(0,1fr); align-items:center; column-gap:clamp(2rem,5vw,4rem); }
+.intro__me{ margin:0; justify-self:center; }
+.intro__me img{
+  width:clamp(11rem,26vw,19rem); height:auto; aspect-ratio:1; object-fit:cover; border-radius:50%;
+  box-shadow:0 0 0 6px var(--bg), 0 0 0 11px var(--cl); max-width:100%;
+}
+@media (min-width:52rem){
+  .intro{ grid-template-columns:minmax(0,1fr) auto; }
+  .intro > :not(.intro__me):not(.intro__nums){ grid-column:1; }
+  .intro__me{ grid-column:2; grid-row:1 / span 3; }
+  .intro__nums{ grid-column:1 / -1; }
+}
+.intro__nums{ margin-top:1.5rem; }
+
+/* skills read as facts, not buttons: no lift, no glow, no pointer */
+.night .skills li{ box-shadow:none !important; transform:none !important; cursor:default; border-left-width:1px; }
+.night .skills li::after{ display:none !important; }
+.night .skills li:hover{ border-color:var(--rule); }
+
+/* the route so far sits on one line: seven stops, seven columns, no second row */
+@media (min-width:62rem){
+  .route{ grid-template-columns:repeat(7,minmax(0,1fr)); }
+  .route li{ padding-right:.9rem; }
+  .route h3{ font-size:1.02rem; overflow-wrap:break-word; hyphens:manual; }
+  .route p{ font-size:.88rem; }
+}
+/* the count-up digits sit in spans inside the number: they keep its size */
+.nums b span{ display:inline; margin:0; font:inherit; color:inherit; line-height:inherit; }
+.nums b span[aria-hidden]{ display:inline-block; }
+.night .skills li, [data-theme="light"] .skills li{
+  background:none !important; border:0 !important; border-top:2px solid var(--rule-2) !important;
+  border-radius:0 !important; padding:1rem 0 0 !important;
+}
