@@ -39,8 +39,9 @@ if (th) {
     sync();
   });
   matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
-    let saved; try { saved = localStorage.getItem('theme'); } catch {}
-    if (saved !== 'light' && saved !== 'dark') { root.dataset.theme = e.matches ? 'light' : 'dark'; sync(); }
+    // the device always wins when it changes: light by day, dark at night
+    try { localStorage.removeItem('theme'); } catch {}
+    root.dataset.theme = e.matches ? 'light' : 'dark'; sync();
   });
 }
 

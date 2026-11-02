@@ -65,13 +65,13 @@
 
   <a class="back" href="./"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>All work</a>
 
-  <p class="case__kicker"><span class="stop stop--h" aria-hidden="true">H1</span>The interchange: every project I make runs through it</p>
+  <p class="case__kicker">The process behind every project</p>
   <h1 class="case__title">How I work with Claude</h1>
   <p class="case__thesis">
-    Claude is part of how I design, like a sketchbook and a second pair of eyes. It draws
-    the options, checks the work against rules I wrote, and tries to break what I think is
-    finished. I work this way because I&rsquo;m one person doing design and code, and I want
-    every call checked before it ships. The decisions stay mine.
+    I'm one person doing both design and code, so I need a second set of eyes on every
+    decision. Claude is that for me. It drafts the options I choose from, checks the work
+    against rules I wrote, and tries to break what I think is finished. The decisions stay
+    mine.
   </p>
 
   <div class="case__hero">
@@ -94,25 +94,28 @@
         <div class="term__next">NEXT: nothing running.</div>
       </div>
     </div>
-    <p class="demo-note">I even wrote it a style guide for talking to me in the terminal: my ask in a box, results on labelled lines, every question answerable with one letter. I did that because I want everything clear at a glance: what I asked, what got done, and what it needs from me. Try answering.</p>
+    <p class="demo-note">I wrote Claude a style guide for how it reports back to me: my request in a box, results on labelled lines, and every question answerable with one letter. That way I can see in a few seconds what I asked, what got done and what it needs from me. Try answering the question.</p>
   </div>
 
   <dl class="brief">
     <div>
       <dt>The setup</dt>
-      <dd>Claude Code in the terminal, custom subagents, skills and plugins, claude.ai
-        Artifacts as a design canvas, Claude in Chrome, MCP connectors to Figma and Notion,
-        and memory that carries rules from one session to the next.</dd>
+      <dd>Claude Code, an AI assistant that works in the terminal and the codebase. I've
+        added my own subagents (smaller assistants, each with one job), skills (written
+        instructions for a task), claude.ai Artifacts as a design canvas, Claude in Chrome,
+        connections to Figma and Notion, and memory that carries my rules from one session
+        to the next.</dd>
     </div>
     <div>
       <dt>What stays mine</dt>
       <dd>The product decisions, the design systems, and the rules everything is checked
-        against. Nothing merges without my word, because I&rsquo;m the one who answers for it.</dd>
+        against. Nothing merges into a product without my approval, because I'm accountable
+        for what ships.</dd>
     </div>
     <div>
       <dt>Where it shows</dt>
-      <dd>My own app in testing, a summer at Sollo with 70+ merged pull requests in eight
-        weeks, and this site.</dd>
+      <dd>Centline, my own app in testing. A summer at Sollo with 70+ merged pull requests
+        (reviewed code changes) in eight weeks. And this site.</dd>
     </div>
   </dl>
 
@@ -124,12 +127,12 @@
     </div>
     <div class="prose">
       <p>
-        I never ask for the answer. I ask for two to four options, drawn side by side on a
-        canvas with a recommendation marked, and I answer with a letter. Why: seeing them next
-        to each other makes the right one obvious, way faster than reading about it. The canvas
-        is a claude.ai Artifact, a live page, so I can click an option, resize it and read it in
-        both themes before a line of the product changes. The pick gets written down with its
-        date and reason, and only then does building start.
+        I don't ask Claude for one answer. I ask for two to four options, drawn side by side
+        with one marked as its recommendation, and I reply with a letter. Comparing real
+        options next to each other makes the right one clear much faster than a description
+        does. The canvas is a claude.ai Artifact, a live web page, so I can click through each
+        option and check it in light and dark mode before anything in the product changes.
+        Then the choice gets written down with its date and reason, and building starts.
       </p>
     </div>
 <figure class="fig">
@@ -152,39 +155,40 @@
     </div>
     <div class="prose">
       <p>
-        I keep agents narrow, because a builder that also checks its own work just passes
-        itself. Each one gets the model its job needs: the checks that run on every change get
-        the smallest, and the ones that need judgement get the strongest. These are the
-        checkers I run on my own app. Open any of them:
+        Each agent is a small AI assistant with exactly one job. I keep them separate
+        because an assistant that builds something and also checks it tends to approve its
+        own work. Each one also runs on the model size its job needs: fast, inexpensive
+        models (Haiku) for checks that run on every change, stronger ones (Opus, Sonnet) for
+        jobs that need judgement. These five check my own app. Open any of them:
       </p>
     </div>
     <div class="roster">
       <details>
-        <summary><b>Rule guard</b><i>Haiku</i><span>Checks a change against the project&rsquo;s written rules.</span></summary>
-        <p>Reports every violation and fixes none of them, so the report cannot hide a quiet rewrite.</p>
+        <summary><b>Rule guard</b><i>Haiku</i><span>Checks every change against the rules I wrote for the project.</span></summary>
+        <p>It reports every broken rule and fixes none of them, so a report can&rsquo;t hide a quiet change.</p>
       </details>
       <details>
-        <summary><b>Verifier</b><i>Haiku</i><span>Runs the checks and returns only what failed.</span></summary>
-        <p>The cheapest agent in the roster and the one that runs most, so it gets the smallest model.</p>
+        <summary><b>Verifier</b><i>Haiku</i><span>Runs the automated tests and reports only what failed.</span></summary>
+        <p>It runs more than any other agent, so it gets the smallest, cheapest model.</p>
       </details>
       <details>
-        <summary><b>Breaker</b><i>Opus</i><span>Tries to make a finished change fail.</span></summary>
-        <p>Mutation testing included. It reports only what it actually broke, with the failing case written out.</p>
+        <summary><b>Breaker</b><i>Opus</i><span>Tries to break a change after it&rsquo;s finished.</span></summary>
+        <p>It even plants bugs on purpose to see if the tests catch them (mutation testing). It reports only what it actually broke, with the failing case written out.</p>
       </details>
       <details>
-        <summary><b>Walker</b><i>Opus</i><span>Drives the running app on a simulator.</span></summary>
-        <p>It keeps the screenshots to itself and comes back with sentences, so my context stays clean.</p>
+        <summary><b>Walker</b><i>Opus</i><span>Uses the real app on a phone simulator, the way a person would.</span></summary>
+        <p>It keeps the screenshots to itself and reports back in plain sentences, so the main session stays focused.</p>
       </details>
       <details>
-        <summary><b>Scribe</b><i>Sonnet</i><span>Writes each decision into the project&rsquo;s rules after a merge.</span></summary>
-        <p>With its date and my own words, so the reason survives the session that made it.</p>
+        <summary><b>Scribe</b><i>Sonnet</i><span>Records each decision in the project&rsquo;s rules after a change merges.</span></summary>
+        <p>With its date and my own words, so the reason is still there months later.</p>
       </details>
     </div>
     <div class="prose">
       <p>
-        <strong>None of them commits, stages, pushes, branches or merges.</strong> If an agent
-        hits a question it can&rsquo;t answer, it stops and says so instead of guessing. I&rsquo;d
-        rather get asked than get surprised.
+        <strong>None of them can save, publish or merge a change.</strong> If an agent hits a
+        question it can&rsquo;t answer, it stops and asks instead of guessing. I&rsquo;d rather
+        be asked than surprised.
       </p>
     </div>
   </section>
@@ -202,9 +206,9 @@
     </dl>
     <div class="prose">
       <p style="margin-top:1.1rem">
-        At Sollo I added a hook that sends every push through the team&rsquo;s review agents,
-        and used parallel reviewers before each pull request, so every push got reviewed the
-        same way and nothing slipped through on a busy day.
+        At Sollo I added a hook (a step that runs automatically) that sent every push through
+        the team&rsquo;s review agents, and ran several reviewers in parallel before each pull
+        request. Every change got reviewed the same way, even on a busy day.
       </p>
     </div>
   </section>
@@ -215,12 +219,12 @@
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
     <ul class="lessons">
-      <li><b>Ask for options, not answers.</b><span>A recommendation you can overrule beats an answer you have to argue with.</span></li>
-      <li><b>Write the decision down.</b><span>Or the next session will undo it, and sound sure about it.</span></li>
-      <li><b>One agent, one job.</b><span>A builder that also checks its own work passes itself.</span></li>
-      <li><b>Green is not proof.</b><span>Put the bug back and watch the test go red. If it stays green, it was never guarding anything.</span></li>
-      <li><b>Look, then walk.</b><span>A screen at phone size and a walk on a real phone find what thousands of tests cannot.</span></li>
-      <li><b>It never merges. I do.</b><span>Every change passes the required checks, and the button is mine.</span></li>
+      <li><b>Ask for options, not answers.</b><span>A recommendation I can overrule is more useful than one answer I have to argue with.</span></li>
+      <li><b>Write the decision down.</b><span>Otherwise the next session undoes it and sounds sure about it.</span></li>
+      <li><b>One agent, one job.</b><span>Whoever builds something shouldn&rsquo;t be the only one checking it.</span></li>
+      <li><b>Passing tests aren&rsquo;t proof.</b><span>Put the bug back and make sure the test fails. If it still passes, it was never protecting anything.</span></li>
+      <li><b>Look, then use it.</b><span>Seeing a screen at phone size and using it on a real phone catches what thousands of tests can&rsquo;t.</span></li>
+      <li><b>It never merges. I do.</b><span>Every change passes the required checks, and the final approval is mine.</span></li>
     </ul>
   </section>
 
@@ -250,7 +254,7 @@
     </div>
     <div class="foot__grid">
       <div><h3>WHERE I AM</h3><p>Iowa City during term. West Liberty, Iowa.</p></div>
-      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, because this whole site is a road. And Atkinson Hyperlegible, drawn for readers with low vision, because I want anyone to be able to read it.</p></div>
+      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, set big for headings. And Atkinson Hyperlegible, drawn for readers with low vision, because I want anyone to be able to read it.</p></div>
       <div><h3>HOW IT IS BUILT</h3><p>From scratch. No framework and no build step. A little JavaScript adds the motion, and every page reads the same without it.</p></div>
     </div>
   </div>

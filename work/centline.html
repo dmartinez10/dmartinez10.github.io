@@ -65,11 +65,11 @@
 
   <a class="back" href="./"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>All work</a>
 
-  <p class="case__kicker"><span class="stop stop--c" aria-hidden="true">C1</span>My own app, 2026, in testing</p>
+  <p class="case__kicker">My own app, 2026, in testing</p>
   <h1 class="case__title">Centline</h1>
   <p class="case__thesis">
     A phone app for truck drivers who own their one truck. Every load is one record, from
-    saved to paid. I design it and I build it, on my own.
+    the day it's saved to the day it's paid. I design it and build it on my own.
   </p>
 <figure class="fig case__hero">
   <button class="zoom" type="button" popovertarget="lb-c-cover">
@@ -82,32 +82,32 @@
   <div class="story">
     <div>
       <h2>What Centline is</h2>
-      <p>It's for a driver who owns his one truck and runs it as his own business. A lot of
-        the time he's in his first year, holding his phone in one hand at a loading dock at
-        night. Centline keeps each load in one place, from the day it's saved to the day it's
-        paid: where it stands, its paperwork, and the invoice that goes out with that
-        paperwork attached.</p>
-      <p>It's in testing and not in the App Store yet, so nobody uses it for real yet.</p>
+      <p>Centline is for an owner-operator: a driver who owns one truck and runs it as his
+        own business. Often he's in his first year, using his phone one-handed at a loading
+        dock at night. Centline keeps each load in one place: where it stands, its
+        paperwork, and the invoice that goes to the broker (the company that hired him for
+        the load) with that paperwork attached.</p>
+      <p>It's in testing and not on the App Store yet, so no one uses it for real yet.</p>
     </div>
     <div>
       <h2>Why I built it</h2>
       <p>My dad has driven a truck for 35 years, and he owns his own. Driving is only half
         the job. The other half is paperwork, and the money waits on it. I built Centline
-        for that half, the stretch between delivering a load and getting paid for it,
-        because that's where I saw the most time go.</p>
+        for the stretch between delivering a load and getting paid for it, because that's
+        where I saw the most time lost.</p>
     </div>
     <div>
       <h2>What was mine</h2>
-      <p>All of it: the product decisions, the design system, the rules and the build.
-        Claude Code draws the options I pick from and checks the work against my rules.
-        Nothing merges until I say so, because I'm the one who has to answer for it.</p>
+      <p>All of it: the product decisions, the design system, the rules and the code.
+        Claude Code, an AI coding tool, draws the options I choose from and checks the work
+        against rules I wrote. Nothing merges into the app until I approve it, because I'm
+        accountable for what ships.</p>
     </div>
   </div>
-
   <ul class="nums">
-    <li><b>5,888</b><span>tests passing</span></li>
-    <li><b>144</b><span>pull requests merged since 29 July 2026</span></li>
-    <li><b>13</b><span>screen sizes measured: 8 phones, 5 tablet windows</span></li>
+    <li><b>5,888</b><span>automated tests passing</span></li>
+    <li><b>144</b><span>pull requests (reviewed changes) merged since 29 July 2026</span></li>
+    <li><b>13</b><span>screen sizes checked: 8 phones, 5 tablet windows</span></li>
     <li><b>28</b><span>design specs, written before the code</span></li>
   </ul>
 
@@ -117,18 +117,43 @@
       <h2 class="sec__title">What I did</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-    <ul class="did">
-      <li><b>Every product decision,</b> including cutting a whole half of the app when it
-        turned out to be the wrong half.</li>
-      <li><b>The design system.</b> Every colour comes from one set of tokens, checked for
-        WCAG contrast. There's a night palette because he's reading it at a loading dock at
-        2am.</li>
-      <li><b>Rules held by tests, not by memory.</b> Every screen fits every phone from 280 to
-        440 points wide, and nothing ever grades a driver&rsquo;s record. I put them in tests
-        because I'll forget a rule at some point, and a test won't.</li>
-      <li><b>Options before code.</b> Each change gets drawn two to four ways, I pick one and
-        write down why, then I build it and walk it on my own phone. I do it this way because
-        it's way easier to pick between real options than to argue about one.</li>
+    <ul class="gains">
+      <li>
+        <p class="gains__stat"><b>5,888</b><span>automated tests</span></p>
+        <div class="gains__body">
+          <h3>Rules held by tests, not by memory</h3>
+          <p>Every screen has to fit every phone from 280 to 440 points wide, and nothing in
+            the app ever grades a driver&rsquo;s inspection record. Tests check both on every
+            change. I rely on tests because a rule I remember today is one I can forget
+            later. A test runs every time.</p>
+        </div>
+      </li>
+      <li>
+        <p class="gains__stat"><b>28</b><span>design specs, written before the code</span></p>
+        <div class="gains__body">
+          <h3>Options before code</h3>
+          <p>Each change gets drawn two to four ways. I pick one, write down why, then build
+            it and test it on my own phone. Comparing real options side by side leads to a
+            better decision than debating a single idea.</p>
+        </div>
+      </li>
+      <li>
+        <p class="gains__stat"><b>13</b><span>screen sizes checked</span></p>
+        <div class="gains__body">
+          <h3>One design system</h3>
+          <p>Every colour comes from one set of design tokens (named colours the whole app
+            shares), each checked against WCAG, the accessibility standard for contrast.
+            There's a night palette because drivers read it at a loading dock at 2am.</p>
+        </div>
+      </li>
+      <li>
+        <p class="gains__stat"><b>5 &rarr; 2</b><span>jobs the app does</span></p>
+        <div class="gains__body">
+          <h3>Every product decision</h3>
+          <p>Including cutting half of the app when it turned out to be the wrong half. The
+            story is in section 03.</p>
+        </div>
+      </li>
     </ul>
   </section>
 
@@ -140,8 +165,9 @@
     </div>
     <div class="prose">
       <p>The app opens on the load he's on, drawn as a green highway sign, with one button
-        for where the load is right now. I went with one button because nobody with one
-        truck opens an app to read reports. If it wastes his time, he deletes it.</p>
+        for the next step. Pick a stage below to see the button change. I designed it around
+        one button because a driver with one truck doesn't open an app to read reports. If
+        an app wastes his time, he deletes it.</p>
     </div>
     <div class="now">
       <fieldset class="pick-row">
@@ -171,10 +197,10 @@
     </div>
     <div class="prose">
       <p>
-        Centline started as a tool for pricing loads. Six weeks in, I cut the whole cost side.
-        Honestly it was hard to do, but the real pain is getting from delivered to paid, not
-        pricing. What's left does two jobs well instead of five jobs halfway: move the load,
-        and get it paid.
+        Centline started as a tool for pricing loads. Six weeks in, I cut the whole cost
+        side. It was a hard call, but the real pain wasn't pricing. It was getting from
+        delivered to paid. What's left does two jobs well instead of five jobs halfway: move
+        the load, and get it paid.
       </p>
     </div>
     <div class="shots">
@@ -205,17 +231,60 @@
   <section class="sec">
     <div class="sec__head">
       <span class="sec__n">04</span>
-      <h2 class="sec__title">What changed</h2>
+      <h2 class="sec__title">How I thought it through</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-    <ul class="moves">
-      <li><span class="row"><span class="from">Five jobs</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Two</b></span><em>Pricing, deadhead, the load check and the broker network came out. What's left moves the load and gets it paid</em></li>
-      <li><span class="row"><span class="from">Five tabs</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Four</b></span><em>Now, Loads, Invoices, Profile. Fewer jobs meant one less tab to dig through</em></li>
-      <li><span class="row"><span class="from">1.4:1</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">3:1</b></span><em>An input&rsquo;s edge. WCAG asks for it to be visible, and the old hairline just wasn&rsquo;t</em></li>
-      <li><span class="row"><span class="from">A checklist you could tick</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">A packet that cannot lie</b></span><em>The invoice won&rsquo;t send without the signed bill of lading and the rate confirmation, because the money waits on that paperwork</em></li>
-      <li><span class="row"><span class="from">0</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">5,888</b></span><em>Tests holding the rules, including the ones a review would miss</em></li>
-      <li><span class="row"><span class="from">Trusting the suite</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Breaking it on purpose</b></span><em>11 real defects found in one night by the agent whose only job is to make a finished change fail. Green tests only prove what they check</em></li>
-    </ul>
+    <ol class="think">
+      <li>
+        <h3 class="think__h">The app tried to do too much</h3>
+        <dl>
+          <div><dt>What I saw</dt><dd>Centline did five jobs: pricing, deadhead (the empty
+            miles driven to reach a load), a load check, a broker network, and invoicing.
+            Only one of them was the real pain.</dd></div>
+          <div><dt>What I decided</dt><dd>Cut everything except moving the load and getting
+            it paid, and drop a tab with it.</dd></div>
+          <div><dt>Why</dt><dd>Drivers lose the most time between delivering a load and
+            getting paid. Doing two jobs well beats doing five halfway.</dd></div>
+          <div class="think__result"><dt>Result</dt><dd><span class="was">5 jobs, 5 tabs</span><b>2 jobs, 4 tabs</b>Now, Loads, Invoices and Profile. Less to dig through.</dd></div>
+        </dl>
+      </li>
+      <li>
+        <h3 class="think__h">An invoice could go out missing its paperwork</h3>
+        <dl>
+          <div><dt>What I saw</dt><dd>A broker won't pay without the signed bill of lading
+            (the receipt for the delivered freight) and the rate confirmation (the agreed
+            price). The old checklist let a driver tick boxes without attaching them.</dd></div>
+          <div><dt>What I decided</dt><dd>Turn the checklist into a packet: the invoice
+            won't send until both papers are in it.</dd></div>
+          <div><dt>Why</dt><dd>The money waits on that paperwork. A missing page means a
+            late payment.</dd></div>
+          <div class="think__result"><dt>Result</dt><dd><span class="was">A checklist you could tick</span><b>A packet that can&rsquo;t lie</b>Every invoice goes out complete.</dd></div>
+        </dl>
+      </li>
+      <li>
+        <h3 class="think__h">Input fields were hard to see</h3>
+        <dl>
+          <div><dt>What I saw</dt><dd>The edge of each input was a faint hairline at 1.4:1
+            contrast against the background.</dd></div>
+          <div><dt>What I decided</dt><dd>Darken the edge until it passes.</dd></div>
+          <div><dt>Why</dt><dd>WCAG asks for at least 3:1 so people can find where to type,
+            and this app gets used in bad light.</dd></div>
+          <div class="think__result"><dt>Result</dt><dd><span class="was">1.4:1</span><b>3:1</b>Every field is visible at a glance.</dd></div>
+        </dl>
+      </li>
+      <li>
+        <h3 class="think__h">Passing tests didn&rsquo;t mean nothing was broken</h3>
+        <dl>
+          <div><dt>What I saw</dt><dd>Tests only prove what they check. A change could pass
+            every test and still be wrong.</dd></div>
+          <div><dt>What I decided</dt><dd>Add a breaker: an AI agent whose only job is to
+            make a finished change fail before it merges.</dd></div>
+          <div><dt>Why</dt><dd>It's cheaper to find a defect myself than to have a driver
+            find it.</dd></div>
+          <div class="think__result"><dt>Result</dt><dd><b>11 defects</b>Real ones, found in one night, before any of them shipped.</dd></div>
+        </dl>
+      </li>
+    </ol>
   </section>
 
   <footer class="cfoot">
@@ -256,7 +325,7 @@
     </div>
     <div class="foot__grid">
       <div><h3>WHERE I AM</h3><p>Iowa City during term. West Liberty, Iowa.</p></div>
-      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, because this whole site is a road. And Atkinson Hyperlegible, drawn for readers with low vision, because I want anyone to be able to read it.</p></div>
+      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, set big for headings. And Atkinson Hyperlegible, drawn for readers with low vision, because I want anyone to be able to read it.</p></div>
       <div><h3>HOW IT IS BUILT</h3><p>From scratch. No framework and no build step. A little JavaScript adds the motion, and every page reads the same without it.</p></div>
     </div>
   </div>

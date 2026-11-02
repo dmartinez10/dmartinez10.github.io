@@ -65,12 +65,12 @@
 
   <a class="back" href="./"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>All work</a>
 
-  <p class="case__kicker"><span class="stop stop--s" aria-hidden="true">S1</span>Internship, Tokyo, June to August 2026</p>
+  <p class="case__kicker">Internship, Tokyo, June to August 2026</p>
   <h1 class="case__title">Sollo</h1>
   <p class="case__thesis">
-    I spent eight weeks in Tokyo as Sollo&rsquo;s UI/UX engineering intern. I designed and built
-    an app that helps foreign residents of Japan get through government paperwork, and it&rsquo;s
-    on the App Store now.
+    Eight weeks in Tokyo as Sollo&rsquo;s UI/UX engineering intern. I designed and built an app
+    that helps foreign residents of Japan get through government paperwork, and it shipped to
+    the App Store.
   </p>
 
   <div class="story">
@@ -80,36 +80,32 @@
         help: visas and residency, benefits, healthcare, housing and local services. Its
         assistant, Ask Sollo, answers from real government documents, in plain language and in
         nine languages.</p>
-      <p>The app is called Sollo Life Nav, and it&rsquo;s been on the App Store since 18 August 2026.</p>
+      <p>The app, Sollo Life Nav, has been on the App Store since 18 August 2026.</p>
     </div>
     <div>
       <h2>Why I was there</h2>
-      <p>Japan was the dream first. Before the school year started I told my parents I&rsquo;d be
-        interning in Japan the next summer, and then I went and chased it. Tech is what I&rsquo;ve
-        always been into, and Japan is where I wanted to see it made.</p>
-      <p>I applied through CIEE, and I still remember the interview. They kept pushing me and
-        testing what I knew, and honestly I loved it. Sollo gave me UI/UX work I&rsquo;d never had
-        before, believed in me, let me go all out on the designs, and then made me defend
-        them. Defending them is what taught me the most.</p>
-      <p>For those eight weeks I was a foreigner in Tokyo too. That mattered, because I never
-        had to guess who I was designing for. I was living it.</p>
+      <p>Working in Japan was a goal I set before the school year started, and I followed
+        through. I applied through CIEE, and the interview pushed hard on what I knew. I liked
+        that. Sollo gave me real UI/UX ownership, let me go all out on the designs, and then
+        asked me to defend them. Defending my work is what taught me the most.</p>
+      <p>For those eight weeks I was a foreigner in Tokyo too, so I was designing for a
+        situation I was living every day.</p>
     </div>
     <div>
       <h2>What was mine</h2>
-      <p>I designed and I built. There was already a design when I got there. From then on,
-        every new feature or idea meant I redrew the page myself, showed the team options, and
-        built the one they agreed on. I did it that way because a team picks better when it
-        can see the choices side by side. Plenty of pages got built more than once.</p>
-      <p>The design system and its light and dark theme were mine, and so was every new string
-        in nine languages.</p>
+      <p>I designed and I built. When a new feature came in, I redrew the page, showed the team
+        options side by side, and built the one they chose. Seeing the options together lets a
+        team decide faster and with fewer surprises.</p>
+      <p>The design system, its light and dark theme, and every new string in nine languages
+        were mine.</p>
     </div>
   </div>
 
   <ul class="nums">
     <li><b>70+</b><span>pull requests merged in eight weeks</span></li>
-    <li><b>9</b><span>languages shipped, including Easy Japanese</span></li>
+    <li><b>9</b><span>languages shipped, Easy Japanese included</span></li>
     <li><b>8&times;</b><span>faster core browse flow, 1,033ms to 125ms</span></li>
-    <li><b>2,949</b><span>tests green at handoff</span></li>
+    <li><b>2,949</b><span>automated tests passing at handoff</span></li>
   </ul>
 
   <section class="sec">
@@ -118,34 +114,63 @@
       <h2 class="sec__title">What I did</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-    <ul class="did">
-      <li><b>Redesigned the navigation.</b> I drew it eleven ways in three turns, rebuilt the
-        signed-in app to the pick, and wired it to the live services. I drew that many because
-        the first idea is almost never the best one.</li>
-      <li><b>Redrew the pages as the product moved.</b> A new feature meant a new design from
-        me, options to the team, then I built whichever one they agreed on. Some pages went
-        through several versions until they were right, and I&rsquo;d rather do that than ship
-        one that&rsquo;s almost right.</li>
-      <li><b>Built the design system.</b> Colour, spacing and type tokens, a shared widget and
-        icon library, and a light and dark theme, all under an automated WCAG AA contrast
-        check. I automated the check so contrast couldn&rsquo;t slip just because someone was
-        in a hurry.</li>
-      <li><b>Shipped every string in nine languages.</b> Nothing went out as English with a
-        fallback, Easy Japanese included. The whole point of the app is people who don&rsquo;t
-        read official Japanese, so English-only would have left them out.</li>
-      <li><b>Caught accessibility misses before readers did.</b> A colour in a design handoff
-        measured 2.72:1, so I shipped it at 4.60:1, one step up the designer&rsquo;s own palette.
-        A tap target the spec sized at 36 points shipped at 48. I moved up inside the
-        designer&rsquo;s palette on purpose, so it still looked like their design.</li>
-      <li><b>Made it faster on purpose.</b> A thirty pull request performance sprint cut 3.1 MB
-        from the app bundle and made a card open eight times quicker. Slow feels broken, and
-        people already stressed about paperwork don&rsquo;t need that.</li>
-      <li><b>Shipped feedback end to end.</b> In-app feedback and bug reporting, from the button
-        a reader taps to the report landing where the team reads it. I wanted the people using
-        it to be able to tell us what was wrong without leaving the app.</li>
-      <li><b>Worked across the whole stack:</b> design, the mobile app and the Python
-        backend. I did all three because a design only counts once it works for real, and I
-        wanted to be the one who got it there.</li>
+    <ul class="gains">
+      <li>
+        <p class="gains__stat"><b>11</b><span>navigation designs, in 3 rounds</span></p>
+        <div class="gains__body">
+          <h3>Redesigned the navigation</h3>
+          <p>I drew the app&rsquo;s navigation eleven ways over three rounds, rebuilt the signed-in
+            app around the one we picked, and connected it to the live services. Comparing many
+            options early is cheaper than rebuilding the wrong one later.</p>
+        </div>
+      </li>
+      <li>
+        <p class="gains__stat"><b>9</b><span>languages, every new string</span></p>
+        <div class="gains__body">
+          <h3>Shipped every string in nine languages</h3>
+          <p>Nothing went out in English with a fallback, Easy Japanese included. The app exists
+            for people who don&rsquo;t read official Japanese, so an English-only screen would
+            have shut out the people it was built for.</p>
+        </div>
+      </li>
+      <li>
+        <p class="gains__stat"><b>8&times;</b><span>faster, and 3.1 MB lighter</span></p>
+        <div class="gains__body">
+          <h3>Made the app faster on purpose</h3>
+          <p>A thirty pull request performance sprint cut 3.1 MB from the app bundle, the code a
+            phone downloads, and made the core browse flow go from 1,033ms to 125ms. People
+            dealing with paperwork are already stressed; a slow app reads as a broken one.</p>
+        </div>
+      </li>
+      <li>
+        <p class="gains__stat"><b>2.72 &#8594; 4.60</b><span>contrast ratio, now passing</span></p>
+        <div class="gains__body">
+          <h3>Caught accessibility misses before readers did</h3>
+          <p>Contrast ratio measures how readable text is against its background. A colour in a
+            design handoff measured 2.72:1, below the WCAG AA minimum, so I shipped it at 4.60:1,
+            one step up the designer&rsquo;s own palette so it still looked like their design. A
+            tap target, the area a finger can press, was specced at 36 points and shipped at 48.</p>
+        </div>
+      </li>
+      <li>
+        <p class="gains__stat"><b>1</b><span>design system, light and dark</span></p>
+        <div class="gains__body">
+          <h3>Built the design system</h3>
+          <p>Colour, spacing and type tokens (named values every screen shares), a shared widget
+            and icon library, and a light and dark theme, all checked automatically against WCAG
+            AA contrast. An automated check keeps contrast from slipping when a deadline is close.</p>
+        </div>
+      </li>
+      <li>
+        <p class="gains__stat"><b>3</b><span>layers: design, app, backend</span></p>
+        <div class="gains__body">
+          <h3>Worked across the whole stack, feedback included</h3>
+          <p>I worked in design, the mobile app and the Python backend, and shipped in-app
+            feedback and bug reporting end to end, from the button a reader taps to the report
+            the team reads. A design only counts once it works for real, and owning every layer
+            meant I could get it there.</p>
+        </div>
+      </li>
     </ul>
   </section>
 
@@ -157,8 +182,8 @@
     </div>
     <div class="prose">
       <p>Before I rebuilt the app, I drew its navigation on a design canvas, a board of phones
-        side by side, three times over. I like seeing every option at once because it makes
-        the differences obvious. Pick a turn:</p>
+        side by side, three times over. Seeing every option at once makes the differences
+        obvious. Pick a turn:</p>
     </div>
 
     <div class="turns">
@@ -207,10 +232,9 @@
     <div class="prose">
       <p>
         Sixteen days after I built the five-tab navigation, I cut it down to a single screen for
-        the public beta. I did it because three of the five tabs were still &ldquo;coming
-        soon&rdquo;, and a row of doors that open onto nothing isn&rsquo;t navigation. It was hard
-        to cut something I&rsquo;d just built, but it was the right call. I parked the dock instead
-        of deleting it, so it&rsquo;s ready when those parts ship.
+        the public beta. Three of the five tabs were still &ldquo;coming soon&rdquo;, and tabs
+        that open onto nothing aren&rsquo;t navigation. I parked the dock instead of deleting it,
+        so it&rsquo;s ready when those parts ship.
       </p>
     </div>
     <div class="shots">
@@ -243,19 +267,47 @@
   <section class="sec">
     <div class="sec__head">
       <span class="sec__n">04</span>
-      <h2 class="sec__title">What changed</h2>
+      <h2 class="sec__title">How I thought it through</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-    <ul class="moves">
-      <li><span class="row"><span class="from">1,033ms</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">125ms</b></span><em>The core browse flow, eight times faster</em></li>
-      <li><span class="row"><span class="from">2.72:1</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">4.60:1</b></span><em>A handoff colour I measured and moved one step up the designer&rsquo;s own palette, so it passed and still looked like theirs. 7.75:1 in dark mode</em></li>
-      <li><span class="row"><span class="from">36 points</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">48 points</b></span><em>The tap target on the way out of a failing search, because that&rsquo;s the button you need most when you&rsquo;re stuck</em></li>
-      <li><span class="row"><span class="from">Five tabs</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">One surface</b></span><em>Cut sixteen days after I built it, because three of the five were still coming soon</em></li>
-      <li><span class="row"><span class="from">English with a fallback</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Nine languages</b></span><em>Every new string, Easy Japanese included, before I even proposed the change</em></li>
-      <li><span class="row"><span class="from">3.1 MB heavier</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">3.1 MB lighter</b></span><em>Cut from the app bundle across a thirty pull request performance sprint</em></li>
-      <li><span class="row"><span class="from">Not in the app</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Feedback in two taps</b></span><em>In-app feedback and bug reporting, shipped end to end</em></li>
-      <li><span class="row"><span class="from">Nothing</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">On the App Store</b></span><em>Sollo Life Nav, live since 18 August 2026</em></li>
-    </ul>
+    <ol class="think">
+      <li>
+        <h3 class="think__h">The core screen took a full second to open</h3>
+        <dl>
+          <div><dt>What I saw</dt><dd>Browsing guides, the thing people do most in the app, took 1,033ms to respond.</dd></div>
+          <div><dt>What I decided</dt><dd>Run a focused performance sprint, thirty pull requests, instead of patching one slow spot.</dd></div>
+          <div><dt>Why</dt><dd>People open this app when they&rsquo;re already stressed about paperwork. A delay that long reads as broken.</dd></div>
+          <div class="think__result"><dt>Result</dt><dd><span class="was">1,033ms</span><b>125ms</b>Eight times faster, and 3.1 MB less for every phone to download.</dd></div>
+        </dl>
+      </li>
+      <li>
+        <h3 class="think__h">A colour in the design was too faint to read</h3>
+        <dl>
+          <div><dt>What I saw</dt><dd>A colour in a design handoff measured 2.72:1 against its background, below the WCAG AA minimum for readable text.</dd></div>
+          <div><dt>What I decided</dt><dd>Move it one step up the designer&rsquo;s own palette instead of picking a new colour.</dd></div>
+          <div><dt>Why</dt><dd>It had to pass for readers with low vision and still look like the designer&rsquo;s work.</dd></div>
+          <div class="think__result"><dt>Result</dt><dd><span class="was">2.72:1</span><b>4.60:1</b>Passes AA, and 7.75:1 in dark mode.</dd></div>
+        </dl>
+      </li>
+      <li>
+        <h3 class="think__h">The way out of a failed search was too small</h3>
+        <dl>
+          <div><dt>What I saw</dt><dd>The button that gets you out of a search with no results was specced at 36 points.</dd></div>
+          <div><dt>What I decided</dt><dd>Ship it at 48 points, the larger tap target, the area a finger can press.</dd></div>
+          <div><dt>Why</dt><dd>That&rsquo;s the button you need most when you&rsquo;re stuck, so it should be the easiest to hit.</dd></div>
+          <div class="think__result"><dt>Result</dt><dd><span class="was">36 points</span><b>48 points</b>Easier to hit one handed, on the screen where people are most frustrated.</dd></div>
+        </dl>
+      </li>
+      <li>
+        <h3 class="think__h">Three of five tabs led nowhere</h3>
+        <dl>
+          <div><dt>What I saw</dt><dd>Sixteen days after I built the five-tab navigation, three tabs were still &ldquo;coming soon&rdquo;.</dd></div>
+          <div><dt>What I decided</dt><dd>Cut it to one surface for the public beta and park the dock for later.</dd></div>
+          <div><dt>Why</dt><dd>Tabs that open onto nothing teach people the app is unfinished. Fewer, working doors beat more, empty ones.</dd></div>
+          <div class="think__result"><dt>Result</dt><dd><span class="was">Five tabs</span><b>One surface</b>Shipped to the App Store on 18 August 2026, with the dock ready when the rest ships.</dd></div>
+        </dl>
+      </li>
+    </ol>
   </section>
 
   <footer class="cfoot">
@@ -304,7 +356,7 @@
     </div>
     <div class="foot__grid">
       <div><h3>WHERE I AM</h3><p>Iowa City during term. West Liberty, Iowa.</p></div>
-      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, because this whole site is a road. And Atkinson Hyperlegible, drawn for readers with low vision, because I want anyone to be able to read it.</p></div>
+      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, set big for headings. And Atkinson Hyperlegible, drawn for readers with low vision, because I want anyone to be able to read it.</p></div>
       <div><h3>HOW IT IS BUILT</h3><p>From scratch. No framework and no build step. A little JavaScript adds the motion, and every page reads the same without it.</p></div>
     </div>
   </div>

@@ -66,7 +66,7 @@
 
   <a class="back" href="./"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>All work</a>
 
-  <p class="case__kicker"><span class="stop stop--u" aria-hidden="true">U1</span>Course project, University of Iowa, 2026</p>
+  <p class="case__kicker">Course project, University of Iowa, 2026</p>
   <h1 class="case__title">CommU</h1>
   <p class="case__thesis">
     A web app that helps students who commute find out what&rsquo;s happening on campus, and find
@@ -83,32 +83,30 @@
   <div class="story">
     <div>
       <h2>What CommU is</h2>
-      <p>Students who commute show up for class and leave again. CommU puts campus events in
-        one place, lets commuters find each other by the days they&rsquo;re on campus, and lets
-        any student post a meetup of their own.</p>
-      <p>I made it for a human-computer interaction course that asked for a working web app,
-        not a prototype in a design tool. I liked that, because a prototype can&rsquo;t tell you
-        if the thing actually works.</p>
+      <p>Students who commute come to campus for class and leave again. CommU puts campus
+        events in one place, lets commuters find each other by the days they&rsquo;re on
+        campus, and lets any student post a meetup of their own.</p>
+      <p>The course asked for a working web app, not a clickable mockup. A mockup can show an
+        idea, but only a working app shows whether the idea holds up.</p>
     </div>
     <div>
       <h2>Why this project</h2>
-      <p>It was my project for Human-Computer Interaction, CS 2520. I picked commuters because
-        most campus tools are built for students who live in the dorms, and commuters a lot of
-        the time struggle to feel like they belong.</p>
+      <p>It was my project for Human-Computer Interaction, CS 2520. I chose commuters because
+        most campus tools are built around students who live in the dorms, and commuters often
+        struggle to feel like they belong.</p>
     </div>
     <div>
       <h2>What was mine</h2>
-      <p>Everything. I recruited and ran the five interviews, analysed them, designed the
-        app, and built the front end and the back end. I had one semester, and the course
-        required that it actually run.</p>
+      <p>All of it, in one semester. I recruited and ran the five interviews, analysed them,
+        designed the app, and built the front end and the back end.</p>
     </div>
   </div>
 
   <ul class="nums">
-    <li><b>5</b><span>interviews at three schools, so it wasn&rsquo;t just one campus talking</span></li>
-    <li><b>19</b><span>questions, a guide not a script, so people could go where they wanted</span></li>
-    <li><b>3</b><span>findings, each one answered by a part of the app</span></li>
-    <li><b>1</b><span>answer that changed what I built, so I listened</span></li>
+    <li><b>5</b><span>interviews, across three schools</span></li>
+    <li><b>19</b><span>questions in the interview guide</span></li>
+    <li><b>3</b><span>findings, each answered by one part of the app</span></li>
+    <li><b>1</b><span>answer that changed what I built</span></li>
   </ul>
 
   <section class="sec">
@@ -117,15 +115,34 @@
       <h2 class="sec__title">What I did</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-    <ul class="did">
-      <li><b>Recruited and ran five interviews:</b> four commuters and one student who lives
-        on campus. I added that one on purpose, because if you only talk to people who agree
-        with you, nobody can prove you wrong.</li>
-      <li><b>Turned them into three findings,</b> and built nothing a finding didn&rsquo;t ask
-        for. I didn&rsquo;t want to add stuff just to add it.</li>
-      <li><b>Designed and built the whole app:</b> eight pages in HTML, CSS and JavaScript,
-        with a Flask and MongoDB backend. The course wanted it working for real, so I built
-        both ends myself.</li>
+    <ul class="gains">
+      <li>
+        <p class="gains__stat"><b>5</b><span>interviews: 4 commuters, 1 on campus</span></p>
+        <div class="gains__body">
+          <h3>Recruited and ran the interviews</h3>
+          <p>I talked with four commuters and one student who lives on campus. I included the
+            on-campus student on purpose: hearing from someone outside the group I was designing
+            for showed me which problems were truly about commuting.</p>
+        </div>
+      </li>
+      <li>
+        <p class="gains__stat"><b>19 &#8594; 3</b><span>questions to findings</span></p>
+        <div class="gains__body">
+          <h3>Turned the interviews into three findings</h3>
+          <p>A 19-question guide, a list of topics rather than a fixed script, produced three
+            findings. I built nothing a finding didn&rsquo;t ask for, so every feature traces
+            back to something a student said.</p>
+        </div>
+      </li>
+      <li>
+        <p class="gains__stat"><b>8</b><span>pages, front end and back end</span></p>
+        <div class="gains__body">
+          <h3>Designed and built the whole app</h3>
+          <p>Eight pages in HTML, CSS and JavaScript, with a Flask and MongoDB backend, the
+            server and database that store events and profiles. The course required a working
+            app, so I built both ends myself.</p>
+        </div>
+      </li>
     </ul>
   </section>
 
@@ -190,11 +207,9 @@
     </blockquote>
     <div class="prose">
       <p>
-        He didn&rsquo;t want a better feed. He wanted to call the meeting himself. So I made
-        posting something any student can do: an event shows up right away and expires on its
-        own when the date passes. And a profile leads with <strong>which days you&rsquo;re on
-        campus</strong>, because your schedule is what decides whether two commuters can ever
-        meet.
+        He didn&rsquo;t want a better list of events. He wanted to start the meetup himself. That
+        changed the app from something students read into something they use, and the decisions
+        below follow from it.
       </p>
     </div>
     <div class="shots">
@@ -219,23 +234,56 @@
     </div>
     <div class="call">
       <span class="call__lab">What I would do next time</span>
-      <p>Take it back to the people I interviewed and watch them use it. The whole idea is
-        that they have no time, and honestly I never measured whether CommU costs them any.</p>
+      <p>Take it back to the people I interviewed and watch them use it. The whole premise is
+        that they have no spare time, and I haven&rsquo;t yet measured how much of it CommU
+        takes.</p>
     </div>
   </section>
 
   <section class="sec">
     <div class="sec__head">
       <span class="sec__n">04</span>
-      <h2 class="sec__title">What changed</h2>
+      <h2 class="sec__title">How I thought it through</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-    <ul class="moves">
-      <li><span class="row"><span class="from">A feed to read</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">An event anyone can post</b></span><em>I changed this because one student told me he wanted to set up the meetup himself, not just read about other people&rsquo;s</em></li>
-      <li><span class="row"><span class="from">Year and interests</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Which days you are on campus</b></span><em>I put this first on a profile because your schedule decides whether two commuters can ever meet. Year and interests don&rsquo;t</em></li>
-      <li><span class="row"><span class="from">Somebody maintaining a list</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">It expires on its own</b></span><em>An event disappears once its date passes. I did it this way because nobody is going to clean up a list, and old events make the whole thing feel dead</em></li>
-      <li><span class="row"><span class="from">19 questions</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">3 findings</b></span><em>I boiled it down to three because I only wanted to build what students actually asked for, and each one became a part of the app</em></li>
-    </ul>
+    <ol class="think">
+      <li>
+        <h3 class="think__h">Students wanted to make plans, not just read about them</h3>
+        <dl>
+          <div><dt>What I saw</dt><dd>Asked what he would change, one student (P4) said he wanted a way to host an event, because he had neighbours in his own complex he never knew about.</dd></div>
+          <div><dt>What I decided</dt><dd>Let any student post an event, and show it right away with no approval step.</dd></div>
+          <div><dt>Why</dt><dd>An events feed only helps people who already have time to browse. Posting lets a commuter create the moment that fits their own schedule.</dd></div>
+          <div class="think__result"><dt>Result</dt><dd><span class="was">A feed to read</span><b>An event anyone can post</b>The third card on the home page, Post Your Own.</dd></div>
+        </dl>
+      </li>
+      <li>
+        <h3 class="think__h">Two commuters can only meet if they&rsquo;re on campus the same day</h3>
+        <dl>
+          <div><dt>What I saw</dt><dd>Commuters arrive for class and leave right after. Shared interests mean little if your days never overlap.</dd></div>
+          <div><dt>What I decided</dt><dd>Lead every profile with which days you&rsquo;re on campus, then major and where you commute from.</dd></div>
+          <div><dt>Why</dt><dd>Schedule is the deciding factor, so it should be the first thing you see when choosing who to reach out to.</dd></div>
+          <div class="think__result"><dt>Result</dt><dd><span class="was">Year and interests first</span><b>Campus days first</b>You can see at a glance who you could actually meet this week.</dd></div>
+        </dl>
+      </li>
+      <li>
+        <h3 class="think__h">A list nobody maintains goes stale fast</h3>
+        <dl>
+          <div><dt>What I saw</dt><dd>Events come from students, and nobody is assigned to clean up old ones.</dd></div>
+          <div><dt>What I decided</dt><dd>Every event removes itself once its date passes.</dd></div>
+          <div><dt>Why</dt><dd>Past events crowd out real ones and make the app look abandoned. Expiry keeps it accurate with no one tending it.</dd></div>
+          <div class="think__result"><dt>Result</dt><dd><span class="was">Somebody maintaining a list</span><b>It expires on its own</b>Everything on the events page is something you can still go to.</dd></div>
+        </dl>
+      </li>
+      <li>
+        <h3 class="think__h">Five interviews give a lot of answers; the app needed a focus</h3>
+        <dl>
+          <div><dt>What I saw</dt><dd>Five interviews on a 19-question guide produced far more ideas than one semester could build.</dd></div>
+          <div><dt>What I decided</dt><dd>Group what students said into three findings, and build only what a finding called for.</dd></div>
+          <div><dt>Why</dt><dd>Every feature should answer a real problem a student described. Anything else adds weight without helping.</dd></div>
+          <div class="think__result"><dt>Result</dt><dd><span class="was">19 questions</span><b>3 findings</b>Each one became a card on the home page: Event Discovery, Commuter Connect, Post Your Own.</dd></div>
+        </dl>
+      </li>
+    </ol>
   </section>
 
   <footer class="cfoot">
@@ -276,7 +324,7 @@
     </div>
     <div class="foot__grid">
       <div><h3>WHERE I AM</h3><p>Iowa City during term. West Liberty, Iowa.</p></div>
-      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, because this whole site is a road. And Atkinson Hyperlegible, drawn for readers with low vision, because I want anyone to be able to read it.</p></div>
+      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, set big for headings. And Atkinson Hyperlegible, drawn for readers with low vision, because I want anyone to be able to read it.</p></div>
       <div><h3>HOW IT IS BUILT</h3><p>From scratch. No framework and no build step. A little JavaScript adds the motion, and every page reads the same without it.</p></div>
     </div>
   </div>
