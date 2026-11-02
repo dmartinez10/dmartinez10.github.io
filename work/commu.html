@@ -65,8 +65,8 @@
 
   <p class="case__kicker">Course project, University of Iowa, 2026</p>
   <h1 class="case__title">CommU</h1>
-    <p class="case__thesis">I turned five interviews with commuting students into a working web app that helps them find campus events and each other, front end and back end.</p>
-  <p class="tension">Students who commute come to campus for class and leave again. Most campus tools are built around students who live in the dorms, so commuters miss what&rsquo;s happening and struggle to feel like they belong.</p>
+    <p class="case__thesis">I talked to five commuting students and built them a working web app to find campus events and each other. I built the front end and the back end.</p>
+  <p class="tension">Campus apps are built for students who live on campus. Commuters come in for class and leave, so they miss what&rsquo;s going on and have a harder time feeling like they belong.</p>
 
   <section class="sec">
     <div class="sec__head">
@@ -74,7 +74,7 @@
       <h2 class="sec__title">Before and after</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-    <div class="ba"><div><p class="ba__lab">Before</p><p>Events reached commuters through scattered emails, word of mouth and posters on buildings. There was no way to find other commuters on campus the same days, and no easy place to meet.</p></div><div><p class="ba__lab">After</p><p>Every campus event sits in one place, with search and filters. Commuters find each other by the days they&rsquo;re on campus, and any student can post a meetup of their own. Past events remove themselves, so the list stays current.</p></div></div>
+    <div class="ba"><div><p class="ba__lab">Before</p><p>Commuters heard about events through scattered emails, word of mouth and posters. They had no way to find other commuters on campus the same days, and no easy place to meet.</p></div><div><p class="ba__lab">After</p><p>Every campus event is in one place, with search and filters. Commuters find each other by the days they&rsquo;re on campus, and any student can post their own meetup. Past events remove themselves, so the list stays current.</p></div></div>
   </section>
   <section class="sec">
     <div class="sec__head">
@@ -83,20 +83,18 @@
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
     <ol class="walk">
-      <li><div><p class="walk__k">Research</p><h3>Five interviews, three schools</h3><p>I recruited four commuters and one student who lives on campus, using a 19-question guide, a list of topics rather than a fixed script. The on-campus student showed me which problems were really about commuting.</p></div></li>
-      <li><div><p class="walk__k">Define</p><h3>Three findings, nothing extra</h3><p>Time on campus is only for class. Nobody knows what&rsquo;s going on, because the information is scattered. And students want to connect but have nowhere to do it. I built nothing a finding didn&rsquo;t ask for.</p></div></li>
-      <li><div><p class="walk__k">Design</p><h3>Profiles lead with campus days</h3><p>A profile shows which days you&rsquo;re on campus, your major and where you commute from. Those three things decide whether two people can actually meet, so they come first.</p>
+      <li><div><p class="walk__k">Research</p><h3>Five interviews, three schools</h3><p>I interviewed four commuters and one student who lives on campus, using a 19-question guide: a list of topics, not a fixed script. Talking to the on-campus student showed me which problems were really about commuting.</p></div></li>
+      <li><div><p class="walk__k">Define</p><h3>Three findings, nothing extra</h3><p>Commuters are on campus only for class. They don&rsquo;t know what&rsquo;s going on, because the information is scattered. They want to connect, but have nowhere to do it. If a finding didn&rsquo;t ask for a feature, I didn&rsquo;t build it.</p></div></li>
+      <li><div><p class="walk__k">Design</p><h3>Profiles lead with campus days</h3><p>A profile shows which days you&rsquo;re on campus, your major and where you commute from. Those three things decide whether two people can actually meet, so I put them first.</p>
 <figure class="fig">
   <button class="zoom" type="button" popovertarget="lb-u-3">
     <img src="../assets/commu/commu-connect.webp" width="1400" height="667" loading="lazy" decoding="async" alt="The Commuter Connect page, showing four commuter profiles with major, where they commute from, and which days they are on campus.">
     <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
   </button>
-  <figcaption>Connect, answering finding 3. A profile shows major, where you commute from, and
-        which days you are on campus, because those are the three things that decide
-        whether two people can actually meet.</figcaption>
+  <figcaption>Connect, built for finding 3. Each profile shows major, where you commute from and which days you&rsquo;re on campus.</figcaption>
 </figure>
       </div></li>
-      <li><div><p class="walk__k">Build</p><h3>Eight working pages, both ends</h3><p>I built it in HTML, CSS and JavaScript with a Flask and MongoDB backend, the server and database that store events and profiles. Each event removes itself once its date passes, so nobody has to clean up the list.</p>
+      <li><div><p class="walk__k">Build</p><h3>Eight working pages, both ends</h3><p>I built it in HTML, CSS and JavaScript, with Flask and MongoDB as the server and database that store events and profiles. Each event removes itself once its date passes, so nobody has to clean up the list.</p>
 <figure class="fig">
   <button class="zoom" type="button" popovertarget="lb-u-1">
     <img src="../assets/commu/commu-home.webp" width="1400" height="989" loading="lazy" decoding="async" alt="CommU home page, headed &#x27;Your campus, connected&#x27;, with three cards: Event Discovery, Commuter Connect, and Post Your Own.">
@@ -105,7 +103,7 @@
   <figcaption>The three cards are the three findings, in order.</figcaption>
 </figure>
       </div></li>
-      <li><div><p class="walk__k">Test</p><h3>What I&rsquo;d test next</h3><p>I haven&rsquo;t put it in front of the students yet. Next I&rsquo;d take it back to the people I interviewed and watch them use it, because the whole premise is that they have no spare time, and I haven&rsquo;t measured how much of it CommU takes.</p></div></li>
+      <li><div><p class="walk__k">Test</p><h3>What I&rsquo;d test next</h3><p>I haven&rsquo;t tested it with students yet. Next, I&rsquo;d take it back to the people I interviewed and watch them use it. The whole idea is that they have no spare time, so I need to know how much of it CommU takes.</p></div></li>
     </ol>
   </section>
   <section class="sec">
@@ -114,7 +112,7 @@
       <h2 class="sec__title">The turning point</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-    <div class="pivot"><p class="pivot__lab">The fork in the road</p><p class="pivot__big">I first pitched CommU as a place to find events. Then one student told me he wanted to host one himself.</p><p class="pivot__lab">Why I went this way</p><p>He didn&rsquo;t want a better list. He had neighbours in his own complex he&rsquo;d never met. A feed only helps people with time to browse; posting lets a commuter create a moment that fits their own schedule. The easier path was a polished events list. I added Post Your Own instead, with no approval step.</p></div>
+    <div class="pivot"><p class="pivot__lab">The fork in the road</p><p class="pivot__big">I started out building a place to find events. Then one student told me he wanted to host one himself.</p><p class="pivot__lab">Why I went this way</p><p>He had neighbours in his own complex he&rsquo;d never met. A list of events only helps people who have time to browse. Posting lets a commuter set up something that fits their own schedule. The easier path was a polished events list. I added Post Your Own instead, with no approval step.</p></div>
   </section>
   <section class="sec">
     <div class="sec__head">
@@ -124,12 +122,12 @@
     </div>
     <ul class="nums">
       <li><b>5</b><span>students interviewed, at three schools</span></li>
-      <li><b>19</b><span>questions in the guide, topics not a script</span></li>
+      <li><b>19</b><span>questions in the guide, topics instead of a script</span></li>
       <li><b>3</b><span>findings, each one a card on the home page</span></li>
       <li><b>8</b><span>working pages, front end and back end</span></li>
     </ul>
     <blockquote class="proof__quote"><p>&ldquo;It would be to host some sort of event to meet other people, because there have been people that I&rsquo;ve met that live in my same complex and I had no idea.&rdquo;</p><cite>P4, asked what he would change</cite></blockquote>
-    <p class="proof__take"><b>What it means</b>Every feature traces back to something a student said, so nothing is there just to fill space. It&rsquo;s a working product, not a mockup, ready to put in front of the students it was built for.</p>
+    <p class="proof__take"><b>What it means</b>Every feature comes from something a student told me, so nothing is there just to fill space. It&rsquo;s a working app, ready to put in front of the students it was built for.</p>
   </section>
   <footer class="cfoot">
     <a class="btn btn--back" href="./"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Back to all work</a>
@@ -141,9 +139,7 @@
 </div>
 <div class="lightbox" id="lb-u-3" popover>
   <button class="lightbox__close" type="button" popovertarget="lb-u-3" popovertargetaction="hide" autofocus>Close</button>
-  <figure><img src="../assets/commu/commu-connect.webp" width="1400" height="667" loading="lazy" decoding="async" alt="The Commuter Connect page, showing four commuter profiles with major, where they commute from, and which days they are on campus."><figcaption>Connect, answering finding 3. A profile shows major, where you commute from, and
-        which days you are on campus, because those are the three things that decide
-        whether two people can actually meet.</figcaption></figure>
+  <figure><img src="../assets/commu/commu-connect.webp" width="1400" height="667" loading="lazy" decoding="async" alt="The Commuter Connect page, showing four commuter profiles with major, where they commute from, and which days they are on campus."><figcaption>Connect, built for finding 3. Each profile shows major, where you commute from and which days you&rsquo;re on campus.</figcaption></figure>
 </div>
 </main>
 

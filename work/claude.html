@@ -64,8 +64,8 @@
 
   <p class="case__kicker">The process behind every project</p>
   <h1 class="case__title">How I work with Claude</h1>
-  <p class="case__thesis">I'm one person doing both design and code. Claude gives me a second set of eyes on every decision, and the decisions stay mine.</p>
-  <p class="tension">Working alone, I'm the designer, the engineer and the only reviewer. An assistant that builds something and also checks it tends to approve its own work, and a session that forgets yesterday's decision will undo it and sound sure about it.</p>
+  <p class="case__thesis">I'm one person doing the design and the code, so I use Claude as a second set of eyes. It lays out the options, and I pick. Nothing goes live until I say so.</p>
+  <p class="tension">Working alone, I'm the designer, the engineer and the only reviewer. An assistant that builds something and then checks it tends to approve its own work. A session that forgets yesterday's decision will undo it and sound sure about it.</p>
 
   <section class="sec">
     <div class="sec__head">
@@ -74,8 +74,8 @@
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
     <div class="ba">
-      <div><p class="ba__lab">Before</p><p>I asked for an answer, got one, and had to argue with it. Rules lived in my head, so each new session could break one without anyone noticing.</p></div>
-      <div><p class="ba__lab">After</p><p>Every decision comes as two to four drawn options with one recommended, and I reply with a letter. Five small AI agents, each with one job, check the work against rules I wrote. None of them can merge a change. I do.</p></div>
+      <div><p class="ba__lab">Before</p><p>I asked for an answer, got one and had to argue with it. My rules only lived in my head, so any new session could break one without anyone noticing.</p></div>
+      <div><p class="ba__lab">After</p><p>Every decision comes as two to four drawn options with one recommended, and I reply with a letter. Five small AI agents, each with one job, check the work against rules I wrote. None of them can merge a change. Only I can.</p></div>
     </div>
   </section>
   <section class="sec">
@@ -85,8 +85,8 @@
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
     <ol class="walk">
-      <li><div><p class="walk__k">Research</p><h3>Every session starts from my written rules</h3><p>Claude Code, an AI assistant that works inside the codebase, reads the project's rules and a memory of past decisions before it touches anything. Each decision is saved with its date and my reason, so it's still there months later.</p></div></li>
-      <li><div><p class="walk__k">Define</p><h3>I set how it reports back to me</h3><p>I wrote Claude a style guide: my request in a box, results on labelled lines, and every question answerable with one letter. I can see in a few seconds what I asked, what got done and what it needs from me. Try answering the question below.</p>
+      <li><div><p class="walk__k">Research</p><h3>Every session starts from my written rules</h3><p>Claude Code, an AI assistant that works inside the code, reads the project's rules and a record of past decisions before it touches anything. I save each decision with its date and my reason, so it's still there months later.</p></div></li>
+      <li><div><p class="walk__k">Define</p><h3>I set how it reports back to me</h3><p>I wrote Claude a style guide: my request in a box, results on labelled lines, and every question answerable with one letter. In a few seconds I can see what I asked, what got done and what it needs from me. Try answering the question below.</p>
         <div class="term" role="group" aria-label="A terminal showing how I asked Claude to talk to me">
         <div class="term__bar" aria-hidden="true"><i></i><i></i><i></i><span>claude</span></div>
         <div class="term__body">
@@ -107,7 +107,7 @@
         </div>
       </div>
         </div></li>
-      <li><div><p class="walk__k">Design</p><h3>Options before answers</h3><p>I ask for two to four options drawn side by side on a claude.ai Artifact, a live web page I can click through in light and dark mode. Comparing real options makes the right one clear much faster than a description does.</p>
+      <li><div><p class="walk__k">Design</p><h3>Options before answers</h3><p>I ask for two to four options drawn side by side on a claude.ai Artifact, a live web page I can click through in light and dark mode. When I can see the real options, I pick faster than I would from a description.</p>
         <figure class="fig">
           <button class="zoom" type="button" popovertarget="lb-h-canvas">
             <img src="../assets/sollo/nav-turn-3.webp" width="1600" height="870" loading="lazy" decoding="async" alt="A design canvas of five phones labelled 3a to 3f, with 3a marked recommended and 3c marked runner-up.">
@@ -116,7 +116,7 @@
           <figcaption>A canvas from the Sollo navigation: five options, one recommendation, one runner-up.</figcaption>
         </figure>
         </div></li>
-      <li><div><p class="walk__k">Build</p><h3>One agent, one job</h3><p>I wrote five agents: a rule guard that checks every change against the rules, a verifier that runs the tests and reports only failures, a breaker, a walker that uses the app on a phone simulator, and a scribe that records each decision. Quick checks run on a small, inexpensive model; jobs that need judgement get a stronger one.</p></div></li>
+      <li><div><p class="walk__k">Build</p><h3>One agent, one job</h3><p>I wrote five agents: a rule guard that checks every change against the rules, a verifier that runs the tests and reports only what failed, a breaker, a walker that uses the app on a phone simulator, and a scribe that records each decision. Quick checks run on a small, cheaper model. Jobs that need judgement get a stronger one.</p></div></li>
       <li><div><p class="walk__k">Test</p><h3>Try to break it, then use it myself</h3><p>The breaker plants bugs on purpose to see if the tests catch them. If a test still passes, it was never protecting anything. Then I use the change on a real phone, because that catches what thousands of tests can't.</p></div></li>
     </ol>
   </section>
@@ -130,7 +130,7 @@
       <p class="pivot__lab">The fork in the road</p>
       <p class="pivot__big">I stopped asking Claude for an answer and started asking for options, with one marked as its pick.</p>
       <p class="pivot__lab">Why I went this way</p>
-      <p>Taking the first answer is faster in the moment, but I ended up arguing with it. A recommendation I can overrule keeps the decision mine, and seeing the options together shows me what I'd have missed.</p>
+      <p>Taking the first answer felt faster, but I kept arguing with it. With a recommendation I can overrule, the decision stays mine, and seeing the options together shows me what I would have missed.</p>
     </div>
   </section>
   <section class="sec">
@@ -145,7 +145,7 @@
       <li><b>5</b><span>agents I wrote, each with exactly one job</span></li>
       <li><b>11</b><span>real defects the breaker caught in one night on Centline, before they shipped</span></li>
     </ul>
-    <p class="proof__take"><b>What it means</b>I get the speed of a bigger team without handing over the calls. At Sollo a hook (a step that runs automatically) sent every push through the team's review agents, so every change got reviewed the same way, even on a busy day.</p>
+    <p class="proof__take"><b>What it means</b>I get the speed of a bigger team and still make every call. At Sollo, a hook (a step that runs automatically) sent every push through the team's review agents, so every change got reviewed the same way, even on a busy day.</p>
     <p class="pcard__go" style="margin:1.5rem 0 0">
       <a class="btn btn--open" href="sollo.html">Open the Sollo story</a>
       <a class="btn btn--open" href="centline.html">Open the Centline story</a>

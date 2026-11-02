@@ -64,8 +64,8 @@
 
   <p class="case__kicker">My own app, 2026, in testing</p>
   <h1 class="case__title">Centline</h1>
-  <p class="case__thesis">An invoicing app for truck drivers who own one truck: the load they're on, one button for the next step, and an invoice that can't leave without its paperwork.</p>
-  <p class="tension">For an owner-operator, driving is only half the job. The other half is paperwork, and the money waits on it. A broker (the company that hired him for the load) won't pay until the signed bill of lading and the rate confirmation arrive with the invoice. One missing page means a late payment.</p>
+  <p class="case__thesis">I built an invoicing app for truck drivers who own one truck. It shows the load they're on, gives them one button for the next step, and won't send an invoice without its paperwork.</p>
+  <p class="tension">For an owner-operator, driving is half the job. The other half is paperwork, and the money waits on it. A broker (the company that hired him for the load) won't pay until the signed bill of lading and the rate confirmation come with the invoice. One missing page means a late payment.</p>
 
   <section class="sec">
     <div class="sec__head">
@@ -74,8 +74,8 @@
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
     <div class="ba">
-      <div><p class="ba__lab">Before</p><p>After a delivery he has to gather the signed bill of lading (the receipt for the freight) and the rate confirmation (the agreed price), write an invoice and send it, often from a loading dock at night. My first version of Centline didn't fix that. It tried to do five jobs at once, and a checklist let him tick boxes without attaching anything.</p></div>
-      <div><p class="ba__lab">After</p><p>The app opens on the load he's on, with one button for the moment: picked up, delivered, write the invoice. The invoice goes out as one PDF packet, and it won't send until both papers are in it.</p></div>
+      <div><p class="ba__lab">Before</p><p>After a delivery he has to gather the signed bill of lading (the receipt for the freight) and the rate confirmation (the agreed price), then write the invoice and send it, often from a loading dock at night. My first version didn't fix that. It tried to do five jobs at once, and its checklist let him tick boxes without attaching anything.</p></div>
+      <div><p class="ba__lab">After</p><p>The app opens on the load he's on, with one button for what comes next: picked up, delivered, write the invoice. The invoice goes out as one PDF packet, and it won't send until both papers are in it.</p></div>
     </div>
   </section>
   <section class="sec">
@@ -85,9 +85,9 @@
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
     <ol class="walk">
-      <li><div><p class="walk__k">Research</p><h3>The slow part was after delivery</h3><p>My dad has driven a truck for 35 years and owns his own. Watching that work up close, the time didn't go into driving. It went into the stretch between delivering a load and getting paid for it.</p></div></li>
-      <li><div><p class="walk__k">Define</p><h3>One driver, one truck, one hand on the phone</h3><p>The person is an owner-operator, often in his first year, using a phone one-handed at a dock at night. He doesn't open an app to read reports, and he deletes one that wastes his time. So the brief became two jobs: move the load, and get it paid.</p></div></li>
-      <li><div><p class="walk__k">Design</p><h3>Every change drawn two to four ways first</h3><p>Before any code, I draw the options side by side, pick one and write down why. That's 28 design specs so far. Seeing the options together makes the right one obvious faster than describing it.</p>
+      <li><div><p class="walk__k">Research</p><h3>The slow part was after delivery</h3><p>My dad has driven a truck for 35 years and owns his own. Watching him, I saw the time didn't go into driving. It went into the stretch between delivering a load and getting paid for it.</p></div></li>
+      <li><div><p class="walk__k">Define</p><h3>One driver, one truck, one hand on the phone</h3><p>The user is an owner-operator, often in his first year, using a phone one-handed at a dock at night. He won't open an app to read reports, and he'll delete one that wastes his time. So I kept it to two jobs: move the load, and get it paid.</p></div></li>
+      <li><div><p class="walk__k">Design</p><h3>Every change drawn two to four ways first</h3><p>Before any code, I draw the options side by side, pick one and write down why. That's 28 design specs so far. When the options sit next to each other, the right one is easy to spot.</p>
         <figure class="fig">
           <button class="zoom" type="button" popovertarget="lb-c-paid">
             <img src="../assets/centline/getting-paid-options.webp" width="1600" height="670" loading="lazy" decoding="async" alt="Four phone screens titled Getting paid, labelled A to D. A shows three small cells: Not sent, Not due yet and Late. B is one card with a row per pile. C puts the late money first in a dark card. D turns the piles into filter chips.">
@@ -96,7 +96,7 @@
           <figcaption>The top of Getting paid, drawn four ways, with A marked as the pick. Names and numbers are made up.</figcaption>
         </figure>
         </div></li>
-      <li><div><p class="walk__k">Build</p><h3>From the broker's email to a signed packet</h3><p>A rate confirmation shared from his mail lands on the right load, gets signed on the phone, and joins the invoice. I design and build it myself. Claude Code, an AI coding tool, drafts options and checks the work against rules I wrote, and nothing merges until I approve it.</p>
+      <li><div><p class="walk__k">Build</p><h3>From the broker's email to a signed packet</h3><p>He shares the rate confirmation from his email, it lands on the right load, he signs it on the phone and it joins the invoice. I design and build all of it myself. Claude Code, an AI coding tool, drafts options and checks the work against rules I wrote. Nothing merges until I approve it.</p>
         <figure class="fig">
           <button class="zoom" type="button" popovertarget="lb-c-inbox">
             <img src="../assets/centline/app-flow.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Four screens from the Centline app, in order: checking a load read from the rate confirmation before booking it; the delivered load with one button, Write the invoice; the invoice packet with the signed bill of lading and rate confirmation in and the lumper receipt marked missing; and Getting paid, with $6,775 owed and a They paid it button on each sent invoice.">
@@ -118,7 +118,7 @@
       <p class="pivot__lab">The fork in the road</p>
       <p class="pivot__big">Six weeks in, I cut the whole cost side of my own app: pricing, deadhead (the empty miles driven to reach a load), a load check and a broker network.</p>
       <p class="pivot__lab">Why I went this way</p>
-      <p>The easy path was keeping what I'd already built. But the real pain wasn't pricing, it was getting from delivered to paid. Two jobs done well beats five done halfway, and it took the app from 5 tabs to 4: Now, Loads, Invoices and Profile.</p>
+      <p>The easy path was to keep what I'd already built. But drivers weren't losing time on pricing. They were losing it between delivered and paid. I'd rather do two jobs well than five halfway, and the cut took the app from 5 tabs to 4: Now, Loads, Invoices and Profile.</p>
     </div>
   </section>
   <section class="sec">
@@ -133,7 +133,7 @@
       <li><b>0</b><span>invoices that can be sent without the signed bill of lading</span></li>
       <li><b>5 &rarr; 2</b><span>jobs the app does, after cutting what wasn't the pain</span></li>
     </ul>
-    <p class="proof__take"><b>What it means</b>For a driver, the invoice is the paycheck. Designing around the one moment after delivery, and refusing to send an incomplete packet, protects money he has already earned. For the product, a focused app is one a skeptical driver keeps instead of deleting. It's in testing now and not on the App Store yet.</p>
+    <p class="proof__take"><b>What it means</b>For a driver, the invoice is the paycheck. Building around the moment after delivery, and refusing to send an incomplete packet, protects money he's already earned. A focused app is also one a skeptical driver keeps instead of deleting. It's in testing now and not on the App Store yet.</p>
   </section>
 
   <footer class="cfoot">

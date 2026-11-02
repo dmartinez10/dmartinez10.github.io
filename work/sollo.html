@@ -64,8 +64,8 @@
 
   <p class="case__kicker">Internship, Tokyo, June to August 2026</p>
   <h1 class="case__title">Sollo</h1>
-    <p class="case__thesis">I redesigned and built Sollo&rsquo;s app for foreign residents of Japan, shipped it to the App Store in nine languages, and made its core screen eight times faster.</p>
-  <p class="tension">Sollo helps foreign residents of Japan with visas, healthcare, housing and benefits. The people using it are often stressed and don&rsquo;t read official Japanese. An app that is slow, hard to read or English-only fails exactly the people it was built for.</p>
+    <p class="case__thesis">I redesigned and built Sollo&rsquo;s app for foreign residents of Japan. It shipped to the App Store in nine languages, and its main screen got eight times faster.</p>
+  <p class="tension">Sollo helps foreign residents of Japan with visas, healthcare, housing and benefits. The people using it are often stressed, and most don&rsquo;t read official Japanese. If the app is slow, hard to read or only in English, it lets down the exact people it&rsquo;s for.</p>
 
   <section class="sec">
     <div class="sec__head">
@@ -73,7 +73,7 @@
       <h2 class="sec__title">Before and after</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-    <div class="ba"><div><p class="ba__lab">Before</p><p>Browsing guides, the thing people do most, took 1,033ms to respond. A colour from a design handoff measured 2.72:1 against its background, too faint to pass WCAG AA, the accessibility standard for readable text. The way out of a failed search was a 36 point button, and the navigation had five tabs, three of them still &ldquo;coming soon&rdquo;.</p></div><div><p class="ba__lab">After</p><p>Browsing responds in 125ms. That colour passes at 4.60:1, and 7.75:1 in dark mode. The way out of a failed search is 48 points, and the app opens on one working screen. Every new string ships in nine languages, Easy Japanese included. Sollo Life Nav has been on the App Store since 18 August 2026.</p></div></div>
+    <div class="ba"><div><p class="ba__lab">Before</p><p>Browsing guides, the thing people do most, took 1,033ms. One colour from a design handoff measured 2.72:1 against its background, too faint to pass WCAG AA, the accessibility standard for readable text. The button out of a failed search was 36 points, and three of the five tabs still said &ldquo;coming soon&rdquo;.</p></div><div><p class="ba__lab">After</p><p>Browsing takes 125ms. That colour passes at 4.60:1, and 7.75:1 in dark mode. The button out of a failed search is 48 points, and the app opens on one working screen. Every new string ships in nine languages, Easy Japanese included. Sollo Life Nav has been on the App Store since 18 August 2026.</p></div></div>
   </section>
   <section class="sec">
     <div class="sec__head">
@@ -82,19 +82,19 @@
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
     <ol class="walk">
-      <li><div><p class="walk__k">Research</p><h3>I was living the problem</h3><p>For eight weeks I was a foreigner in Tokyo too, so I used the app the way its readers would. Then I measured what I could: how long the core screen took, how readable each colour was, and how big each button was.</p></div></li>
-      <li><div><p class="walk__k">Define</p><h3>Four rules before any drawing</h3><p>The navigation had to meet four rules: labels always visible, targets of 60px or more, a high-contrast active state, and nothing hidden. People reading in their second or third language shouldn&rsquo;t have to guess what a button does.</p></div></li>
-      <li><div><p class="walk__k">Design</p><h3>Eleven options, three rounds</h3><p>I drew the navigation eleven ways over three rounds on a design canvas, a board of phones side by side, and showed the team every option together. Seeing them at once makes the differences obvious and the decision faster.</p>
+      <li><div><p class="walk__k">Research</p><h3>I was living the problem</h3><p>For eight weeks I was a foreigner in Tokyo too, so I used the app the way its users would. Then I measured it: how long the main screen took, how readable each colour was and how big each button was.</p></div></li>
+      <li><div><p class="walk__k">Define</p><h3>Four rules before any drawing</h3><p>I set four rules for the navigation first: labels always visible, targets of 60px or more, a high-contrast active state and nothing hidden. Someone reading in their second or third language shouldn&rsquo;t have to guess what a button does.</p></div></li>
+      <li><div><p class="walk__k">Design</p><h3>Eleven options, three rounds</h3><p>I drew the navigation eleven ways over three rounds on a design canvas, a board of phones side by side. I showed the team every option at once, so the differences were easy to see and we could pick fast.</p>
 <figure class="fig">
   <button class="zoom" type="button" popovertarget="lb-s-turn3">
     <img src="../assets/sollo/nav-turn-3.webp" width="1600" height="870" loading="lazy" decoding="async" alt="Turn 3, titled Best of, mixed, accessible and foolproof: five phones, 3a a big labelled dock marked recommended, 3b a portal dock, 3c tabs at the top marked runner-up, 3e an always-there bar, and 3f a segmented pill.">
     <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
   </button>
-  <figcaption>Turn 3: five options, each held to the same four rules: labels always visible, targets of 60px or more, a high-contrast active state, and nothing hidden.</figcaption>
+  <figcaption>Turn 3: five options, each held to the same four rules.</figcaption>
 </figure>
       </div></li>
-      <li><div><p class="walk__k">Build</p><h3>Design and code, same person</h3><p>I rebuilt the signed-in app around the option we picked and connected it to the live services, across the mobile app and the Python backend. I also built the design system: colour, spacing and type tokens (named values every screen shares) and a light and dark theme.</p></div></li>
-      <li><div><p class="walk__k">Test</p><h3>Measured, then fixed</h3><p>A thirty pull request performance sprint took browsing from 1,033ms to 125ms and cut 3.1 MB from what each phone downloads. An automated check holds every colour to WCAG AA, and 2,949 automated tests were passing at handoff.</p></div></li>
+      <li><div><p class="walk__k">Build</p><h3>Design and code, same person</h3><p>I rebuilt the signed-in app around the option we picked and connected it to the live services, in the mobile app and the Python backend. I also built the design system: colour, spacing and type tokens (named values every screen shares) and a light and dark theme.</p></div></li>
+      <li><div><p class="walk__k">Test</p><h3>Measured, then fixed</h3><p>Over thirty pull requests focused on speed, I took browsing from 1,033ms to 125ms and cut 3.1 MB from what each phone downloads. An automated check holds every colour to WCAG AA, and 2,949 automated tests were passing when I handed it off.</p></div></li>
     </ol>
   </section>
   <section class="sec">
@@ -103,7 +103,7 @@
       <h2 class="sec__title">The turning point</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-    <div class="pivot"><p class="pivot__lab">The fork in the road</p><p class="pivot__big">Sixteen days after building the five-tab navigation, I cut it down to a single screen for the public beta.</p><p class="pivot__lab">Why I went this way</p><p>Three of the five tabs still said &ldquo;coming soon&rdquo;. A tab that opens onto nothing isn&rsquo;t navigation; it tells people the app is unfinished. The easier path was to keep the tabs and wait. I parked the dock instead of deleting it, so it&rsquo;s ready when those parts ship.</p></div>
+    <div class="pivot"><p class="pivot__lab">The fork in the road</p><p class="pivot__big">Sixteen days after I built the five-tab navigation, I cut it down to one screen for the public beta.</p><p class="pivot__lab">Why I went this way</p><p>Three of the five tabs still said &ldquo;coming soon&rdquo;. A tab that opens onto nothing tells people the app is unfinished. The easier path was to keep the tabs and wait. I parked the tab bar instead of deleting it, so it&rsquo;s ready when those parts ship.</p></div>
     <div class="shots">
 <figure class="fig">
   <button class="zoom" type="button" popovertarget="lb-s-surface">
@@ -121,12 +121,12 @@
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
     <ul class="nums">
-      <li><b>8&times;</b><span>faster to browse guides: 1,033ms down to 125ms</span></li>
+      <li><b>8&times;</b><span>faster to browse guides, 1,033ms down to 125ms</span></li>
       <li><b>9</b><span>languages for every new string, Easy Japanese included</span></li>
       <li><b>4.60:1</b><span>contrast on a colour that failed at 2.72:1</span></li>
       <li><b>48pt</b><span>way out of a failed search, up from 36pt</span></li>
     </ul>
-    <p class="proof__take"><b>What it means</b>Sollo&rsquo;s promise is help for people who don&rsquo;t read official Japanese. A fast, readable, fully translated app is what keeps that promise, and it shipped to the App Store on 18 August 2026 with 70+ of my pull requests in it.</p>
+    <p class="proof__take"><b>What it means</b>Sollo is for people who don&rsquo;t read official Japanese. Fast, readable and fully translated is how it keeps that promise. It shipped to the App Store on 18 August 2026 with 70+ of my pull requests in it.</p>
   </section>
   <footer class="cfoot">
     <a class="btn btn--back" href="./"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Back to all work</a>
