@@ -342,7 +342,10 @@
 
 /* lightboxes open like a material arriving, not a cut */
 .night .lightbox::backdrop{ background:rgb(4 6 10 / .92); }
-.night .lightbox__close{ background:var(--panel); border-color:var(--ink); }
+/* the backdrop is dark in both themes, so the button keeps its own colours:
+   --panel turns cream in light mode and white text vanished on it */
+.night .lightbox__close{ background:#0C1119; border-color:#FFFFFF; color:#FFFFFF; }
+.night .lightbox__close:hover{ background:#24305A; }
 .lightbox{
   opacity:0; transform:scale(.96);
   transition:opacity .22s var(--ease-out), transform .26s var(--ease-out), overlay .26s allow-discrete, display .26s allow-discrete;
