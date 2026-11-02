@@ -310,7 +310,9 @@ a:hover{ text-decoration-thickness:2px; }
 }
 
 /* ══ section scaffolding ══ */
-.sect{ padding-block:clamp(3rem,7vw,5rem); }
+/* one rhythm: two sections sit 6rem apart on a desktop (3rem each side),
+   4.5rem on a phone. It was 5rem each side, so 10rem of empty between them. */
+.sect{ padding-block:clamp(2.25rem,4.5vw,3rem); }
 .sect__h{
   display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between;
   gap:.4rem 1rem; margin:0 0 2.25rem; padding-bottom:.85rem;
@@ -523,7 +525,7 @@ a:hover{ text-decoration-thickness:2px; }
 }
 
 /* ══ contact: the exit sign ══ */
-.exit{ padding-block:clamp(1rem,3vw,2rem) clamp(3rem,7vw,5rem); }
+.exit{ padding-block:clamp(1rem,3vw,2rem) clamp(2.25rem,4.5vw,3rem); }
 .exit__panel{
   background:var(--sign); color:#fff; border-radius:var(--r);
   padding:clamp(1.75rem,5vw,3.5rem);
@@ -560,7 +562,7 @@ a:hover{ text-decoration-thickness:2px; }
   background:
     linear-gradient(90deg, #0E2A1F00 0, #0E2A1FE0 16%, #0E2A1FE0 84%, #0E2A1F00 100%),
     #0E2A1F url("assets/bg/board-dark.svg") center top / 1300px auto repeat;
-  color:#fff; margin-top:clamp(3rem,7vw,5rem); padding:clamp(2rem,4vw,2.75rem) 0 clamp(2.25rem,4vw,3rem); }
+  color:#fff; margin-top:clamp(2.25rem,4.5vw,3rem); padding:clamp(2rem,4vw,2.75rem) 0 clamp(2.25rem,4vw,3rem); }
 .foot__in{ max-width:var(--max); margin:0 auto; padding-inline:var(--gut); display:grid; gap:1.5rem; }
 /* the dashes of a road, ending */
 
