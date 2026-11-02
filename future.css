@@ -631,7 +631,7 @@
 
 /* ══ the home intro (2026-11-02): the road and the sign wheel are gone, his
    ask. A plain, high contrast opening: who, what, and the numbers. ══ */
-.intro{ display:grid; gap:1.1rem; padding-block:clamp(3rem,9vw,6rem) clamp(2rem,5vw,3.5rem); }
+.intro{ display:grid; gap:1.1rem; padding-block:clamp(2.5rem,6vw,4.5rem) clamp(1.5rem,3vw,2.25rem); }
 .intro__hi{ margin:0; font:700 clamp(1.1rem,2.4vw,1.35rem)/1.2 var(--display); color:var(--ink-2); }
 .intro__h{ margin:0; font-family:var(--display); font-weight:800; font-size:clamp(2.4rem,7.5vw,5rem); line-height:1.02; letter-spacing:-.01em; color:var(--ink); text-wrap:balance; max-width:16ch; }
 .intro__p{ margin:0; max-width:60ch; font-size:clamp(1.05rem,1.8vw,1.2rem); line-height:1.6; color:var(--ink-2); }

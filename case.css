@@ -5,7 +5,7 @@
    proj--s, proj--u), so --line is that project's colour here too.
    ══════════════════════════════════════════════════════════════ */
 
-.case{ padding-block:clamp(2.5rem,6vw,4rem) clamp(3rem,7vw,5rem); }
+.case{ padding-block:clamp(2.5rem,6vw,4rem) clamp(2.25rem,4.5vw,3rem); }
 
 
 /* ── title ── */
@@ -44,6 +44,8 @@
 /* ── numbered sections: the order is the argument, so the numbers stay ── */
 .sec{ margin:0 0 3.5rem; }
 .sec:last-of-type{ margin-bottom:0; }
+/* a closing paragraph's own margin used to stretch some gaps past 3.5rem */
+.sec > :last-child{ margin-bottom:0; }
 .sec__head{ display:flex; align-items:baseline; gap:.85rem; margin:0 0 1.15rem; }
 .sec__n{
   font-family:var(--label); font-size:.95rem; font-weight:800;
@@ -145,7 +147,7 @@
 
 /* ── foot ── */
 .cfoot{
-  margin:4rem 0 0; padding-top:2rem; border-top:4px solid var(--ink);
+  margin:3.5rem 0 0; padding-top:2rem; border-top:4px solid var(--ink);
   display:flex; flex-wrap:wrap; gap:.75rem 1.75rem; align-items:center;
   font-size:.95rem;
 }
