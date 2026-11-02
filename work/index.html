@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Work &middot; David Martinez</title>
-<meta name="description" content="Five projects by David Martinez: Centline, Sollo, CommU, a React component lab, and how he works with Claude.">
+<meta name="description" content="Four projects by David Martinez: Centline, Sollo, CommU, and how he works with Claude.">
 <meta name="author" content="David Martinez">
 
 <meta property="og:type" content="website">
@@ -35,12 +35,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;1,400&family=Overpass:wght@600;700;800;900&display=swap" rel="stylesheet">
+<script>
+  /* light or dark: whatever the device is set to */
+  (function(){var d=document.documentElement,t;t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.dataset.theme=t;})();
+</script>
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="../future.css">
 <script>
-  /* motion is on unless reduced motion is set or he switched it off; the boot runs once per visit */
-  (function(){var d=document.documentElement,m;try{m=localStorage.getItem('motion');}catch(e){}
-  if(m!=='on'&&m!=='off')m=matchMedia('(prefers-reduced-motion: reduce)').matches?'off':'on';
+  /* motion follows the device's reduced motion setting; the boot runs once per visit */
+  (function(){var d=document.documentElement,m;m=matchMedia('(prefers-reduced-motion: reduce)').matches?'off':'on';
   d.dataset.motion=m;var b;try{b=sessionStorage.getItem('booted');}catch(e){}
   if(m==='on'&&!b)d.classList.add('boot');var p;try{p=sessionStorage.getItem('dc:'+location.pathname);}catch(e){}
   if(m==='on'&&!p)d.classList.add('dc-page');})();
@@ -57,11 +60,10 @@
       <span>David Martinez</span>
     </p>
     <nav class="nav__links" aria-label="Pages">
-      <a class="ns ns--home" href="../"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.6 9.6 10 3.2l7.4 6.4V17h-5.1v-4.7H7.7V17H2.6z" fill="currentColor"/></svg>Home</a>
-      <a class="ns ns--work" href="../work/" aria-current="page"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V5M10 4l-5 5M10 4l5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Work</a>
-      <a class="ns ns--about" href="../about/"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="11" cy="4" r="2.1" fill="currentColor"/><path d="M11 7l-1 6-3 5m4-11l4 3m-4 3l3 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>About</a>
-      <a class="ns ns--resume" href="../assets/resume.pdf"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2.5h6l4 4v11H5z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 11h5M7.5 14h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Resume</a>
-      <button class="mo" type="button" aria-label="Motion" aria-pressed="true" hidden><span class="mo__dot" aria-hidden="true"></span><span aria-hidden="true">Motion <span class="mo__on">on</span><span class="mo__off">off</span></span></button>
+      <a class="ns ns--home" href="../">Home</a>
+      <a class="ns ns--work" href="../work/" aria-current="page">Work</a>
+      <a class="ns ns--about" href="../about/">About</a>
+      <a class="ns ns--resume" href="../assets/resume.pdf">Resume</a>
     </nav>
   </div>
 </header>
@@ -69,14 +71,8 @@
 
 <section class="page-h wrap">
   <p class="kick">Work</p>
-  <h1>What I have worked on.</h1>
-  <p>A short story for each. Tap to learn more, and each one opens a page of its own.</p>
-  <div class="side">
-    <span class="side__lab">Also here</span>
-    <a class="ns ns--claude" href="claude.html"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 18V9m0 0L4 4m6 5l6-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>How I work with Claude</a>
-    <a class="ns ns--skills" href="../skills/"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M13.6 2.6a4.4 4.4 0 0 0-5.3 5.6l-5.3 5.3a1.9 1.9 0 0 0 2.7 2.7l5.3-5.3a4.4 4.4 0 0 0 5.6-5.3l-2.6 2.6-2.3-.7-.7-2.3z" fill="currentColor"/></svg>Skills</a>
-    <a class="ns ns--comp" href="../components/"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3" width="6" height="6" rx="1.4" fill="currentColor"/><rect x="11" y="3" width="6" height="6" rx="1.4" fill="currentColor"/><rect x="3" y="11" width="6" height="6" rx="1.4" fill="currentColor"/><rect x="11" y="11" width="6" height="6" rx="1.4" fill="currentColor"/></svg>Component lab</a>
-  </div>
+  <h1>What I&rsquo;ve worked on.</h1>
+  <p>What each project is, the numbers, and why I built it. Tap to learn more for the full story.</p>
 </section>
 
 <section class="wrap work-list">
@@ -87,17 +83,17 @@
         <h2 class="proj__name">Centline</h2>
         <span class="tag tag--wip">In testing</span>
       </div>
-      <p class="proj__for">My own phone app for truck drivers who own their one truck: every load as one record, from saved to paid.</p>
-      <p class="proj__body">My dad has driven a truck for 35 years, and the hard half of the job is paperwork. I design and build Centline on my own. It is in testing, not yet in the App Store.</p>
+      <p class="proj__for">A phone app for truck drivers who own one truck. Every load is one record, from the day it&rsquo;s booked to the day it&rsquo;s paid.</p>
+      <p class="proj__body">My dad has driven a truck for 35 years, and the paperwork is the hardest part of his job. I built Centline to take that off his day. I design and build it on my own, and it&rsquo;s in testing now.</p>
       <ul class="wins"><li><b>5,888</b>tests passing</li><li><b>144</b>pull requests merged</li><li><b>28</b>design specs before code</li></ul>
       <p class="proj__go"><a class="btn btn--open" href="centline.html">Tap to learn more<span class="sr"> about Centline</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
     </div>
 <figure class="proj__fig">
   <button class="zoom" type="button" popovertarget="lb-w-centline">
-    <img src="../assets/centline/cover.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="A design preview of Centline: a rate confirmation being signed on one phone and the invoice packet on another.">
+    <img src="../assets/centline/app-cover.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="Three screens from the Centline app: a delivered load with its one button, Write the invoice; the invoice packet with the signed bill of lading and rate confirmation in; and Getting paid, showing $6,775 owed.">
     <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
   </button>
-  <figcaption>A design preview. Names and numbers are made up.</figcaption>
+  <figcaption>The real app on a simulator. Example data.</figcaption>
 </figure>
   </article>
   <article class="proj proj--s" id="sollo">
@@ -107,8 +103,8 @@
         <h2 class="proj__name">Sollo</h2>
         <span class="tag">Internship, shipped</span>
       </div>
-      <p class="proj__for">Eight weeks in Tokyo as a UI/UX engineering intern, on an app that helps foreign residents of Japan through government paperwork.</p>
-      <p class="proj__body">Japan was always the dream, and I chased it. I redesigned the navigation, built the design system, and shipped every string in nine languages. It is on the App Store.</p>
+      <p class="proj__for">Eight weeks in Tokyo as a UI/UX engineering intern, on an app that helps foreign residents of Japan with government paperwork.</p>
+      <p class="proj__body">I redesigned the navigation, built the design system and shipped every string in nine languages, because the people using it don&rsquo;t all read Japanese. It&rsquo;s on the App Store.</p>
       <ul class="wins"><li><b>70+</b>pull requests in eight weeks</li><li><b>9</b>languages shipped</li><li><b>8&times;</b>faster core browse flow</li></ul>
       <p class="proj__go"><a class="btn btn--open" href="sollo.html">Tap to learn more<span class="sr"> about Sollo</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
     </div>
@@ -127,8 +123,8 @@
         <h2 class="proj__name">CommU</h2>
         <span class="tag">Research, then a working app</span>
       </div>
-      <p class="proj__for">A web app for students who commute to campus, built from five interviews for my Human-Computer Interaction course.</p>
-      <p class="proj__body">Most campus tools are built for students in the dorms. I ran the research, designed the app and built it, and one student&rsquo;s answer changed what it became.</p>
+      <p class="proj__for">A web app for commuter students, built from five interviews for my Human-Computer Interaction course.</p>
+      <p class="proj__body">Campus apps are built for students who live there, and commuters get left out. I talked to five of them, built what they asked for, and one answer changed the whole app.</p>
       <ul class="wins"><li><b>5</b>interviews</li><li><b>3</b>findings, each built in</li><li><b>8</b>pages, front end to back end</li></ul>
       <p class="proj__go"><a class="btn btn--open" href="commu.html">Tap to learn more<span class="sr"> about CommU</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
     </div>
@@ -140,38 +136,15 @@
   <figcaption>The three cards on the home page are the three findings, in order.</figcaption>
 </figure>
   </article>
-  <article class="proj proj--l" id="lab">
-    <div class="proj__text">
-      <img class="logo" src="../assets/logos/react.svg" width="48" height="48" alt="">
-      <div class="proj__top">
-        <h2 class="proj__name">Component lab</h2>
-        <span class="tag">React and TypeScript</span>
-      </div>
-      <p class="proj__for">A small set of accessible components in React and TypeScript, with no UI library.</p>
-      <p class="proj__body">Built to show the interaction craft rather than describe it: one token file themes every piece, and every control works by keyboard.</p>
-      <ul class="wins"><li><b>22</b>colour pairs, all WCAG AA</li><li><b>2</b>themes, one switch</li><li><b>0</b>UI libraries</li></ul>
-      <p class="proj__go"><a class="btn btn--open" href="../components/">Tap to learn more<span class="sr"> about the component lab</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
-    </div>
-    <figure class="proj__fig">
-      <button class="zoom" type="button" popovertarget="lb-w-lab">
-        <div class="twin">
-          <img src="../assets/lab/lab-light.webp" width="1120" height="620" loading="lazy" decoding="async" alt="The lab's multi-select and buttons in the light theme, with the same components in the dark theme on the right.">
-          <img src="../assets/lab/lab-dark.webp" width="1120" height="620" loading="lazy" decoding="async" alt="">
-        </div>
-        <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
-      </button>
-      <figcaption>The same components, one token switch apart.</figcaption>
-    </figure>
-  </article>
   <article class="proj proj--h proj--solo" id="claude">
     <div class="proj__text">
       <img class="logo" src="../assets/logos/claude.svg" width="48" height="48" alt="">
       <div class="proj__top">
         <h2 class="proj__name">How I work with Claude</h2>
-        <span class="tag">The interchange</span>
+        <span class="tag">AI in my process</span>
       </div>
-      <p class="proj__for">How the work above gets made.</p>
-      <p class="proj__body">Claude draws the options I choose between and checks the work against rules I wrote. The decisions stay mine, and nothing merges without my word.</p>
+      <p class="proj__for">How I make everything above.</p>
+      <p class="proj__body">I&rsquo;m one person doing the design and the code, so I use Claude, an AI assistant, as a second set of eyes. It lays out the options and checks the work against rules I wrote. I pick, and nothing goes live until I approve it.</p>
       <p class="proj__go"><a class="btn btn--open" href="claude.html">Tap to learn more<span class="sr"> about how I work with Claude</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
     </div>
 
@@ -181,7 +154,7 @@
 
 <div class="lightbox" id="lb-w-centline" popover>
   <button class="lightbox__close" type="button" popovertarget="lb-w-centline" popovertargetaction="hide" autofocus>Close</button>
-  <figure><img src="../assets/centline/cover.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="A design preview of Centline: a rate confirmation being signed on one phone and the invoice packet on another."><figcaption>A design preview. Names and numbers are made up.</figcaption></figure>
+  <figure><img src="../assets/centline/app-cover.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="Three screens from the Centline app: a delivered load with its one button, Write the invoice; the invoice packet with the signed bill of lading and rate confirmation in; and Getting paid, showing $6,775 owed."><figcaption>The real app on a simulator. Example data.</figcaption></figure>
 </div>
 <div class="lightbox" id="lb-w-sollo" popover>
   <button class="lightbox__close" type="button" popovertarget="lb-w-sollo" popovertargetaction="hide" autofocus>Close</button>
@@ -191,17 +164,11 @@
   <button class="lightbox__close" type="button" popovertarget="lb-w-commu" popovertargetaction="hide" autofocus>Close</button>
   <figure><img src="../assets/commu/commu-home.webp" width="1400" height="989" loading="lazy" decoding="async" alt="CommU home page, headed &#x27;Your campus, connected&#x27;, with three cards: Event Discovery, Commuter Connect, and Post Your Own."><figcaption>The three cards on the home page are the three findings, in order.</figcaption></figure>
 </div>
-<div class="lightbox" id="lb-w-lab" popover>
-  <button class="lightbox__close" type="button" popovertarget="lb-w-lab" popovertargetaction="hide" autofocus>Close</button>
-  <figure><img src="../assets/lab/lab-dark.webp" width="1120" height="620" loading="lazy" decoding="async" alt="The lab's multi-select and buttons in the dark theme."><figcaption>The component lab in its dark theme.</figcaption></figure>
-</div>
-
 </main>
 
 <footer class="foot">
   <div class="foot__in">
     <div class="foot__say">
-      <h2 class="foot__h">Tell me what you are building and who it is for.</h2>
       <a class="foot__mail" href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a>
       <div class="foot__links">
         <a href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a>
@@ -209,11 +176,6 @@
         <a href="/assets/resume.pdf">Resume (PDF)</a>
         <a href="/contact/">More ways to reach me</a>
       </div>
-    </div>
-    <div class="foot__grid">
-      <div><h3>WHERE I AM</h3><p>Iowa City during term. West Liberty, Iowa.</p></div>
-      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, and Atkinson Hyperlegible, drawn for readers with low vision.</p></div>
-      <div><h3>HOW IT IS BUILT</h3><p>From scratch. No framework and no build step. A little JavaScript adds the motion, and every page reads the same without it.</p></div>
     </div>
   </div>
 </footer>

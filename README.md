@@ -14,8 +14,7 @@ page of its own.
 index.html          home: who I am, the directory sign, one card per project
 work/index.html     Work: a short story per project, each with a Tap to learn more button
 work/*.html         one page per project; claude.html is how I work with Claude
-skills/index.html   Skills: what I can do, and where each one was used
-about/index.html    About: photos, story, skills, the route so far
+about/index.html    About: photos, story, the route so far
 contact/index.html  Contact: the exit sign
 styles.css          design tokens, layout, shared components, the lightbox
 case.css            story layout and the interactive pieces, loaded after styles.css

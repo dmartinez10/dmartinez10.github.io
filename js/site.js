@@ -1,27 +1,22 @@
-// Every page: the motion switch, panels arriving as you scroll, numbers
+// Every page: light, dark and motion from the device, panels arriving as you scroll, numbers
 // that count up once, and the page-to-page warp held back when motion is off.
 // All of it is an enhancement; the page reads the same without it.
 
 const root = document.documentElement;
 const motionOn = () => root.dataset.motion === 'on';
 
-// ── the motion switch ──
-const sw = document.querySelector('.mo');
-if (sw) {
-  sw.hidden = false;
-  const sync = () => sw.setAttribute('aria-pressed', String(motionOn()));
-  sync();
-  sw.addEventListener('click', () => {
-    root.dataset.motion = motionOn() ? 'off' : 'on';
-    try { localStorage.setItem('motion', root.dataset.motion); } catch {}
-    sync();
-    if (!motionOn()) {
-      root.classList.remove('js-arrive');
-      document.querySelectorAll('[data-arrive]').forEach((el) => el.classList.add('is-in'));
-    }
-    window.dispatchEvent(new CustomEvent('motionchange'));
-  });
-}
+// ── light, dark and motion follow the device, live: no switches (his ask 2026-11-02) ──
+matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+  root.dataset.theme = e.matches ? 'light' : 'dark';
+});
+matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
+  root.dataset.motion = e.matches ? 'off' : 'on';
+  if (!motionOn()) {
+    root.classList.remove('js-arrive');
+    document.querySelectorAll('[data-arrive]').forEach((el) => el.classList.add('is-in'));
+  }
+  window.dispatchEvent(new CustomEvent('motionchange'));
+});
 
 // ── the warp between pages, only with motion on ──
 addEventListener('pageswap', (e) => { if (!motionOn() && e.viewTransition) e.viewTransition.skipTransition(); });

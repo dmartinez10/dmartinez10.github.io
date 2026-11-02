@@ -25,13 +25,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;1,400&family=Overpass:wght@600;700;800;900&display=swap" rel="stylesheet">
+<script>
+  /* light or dark: whatever the device is set to */
+  (function(){var d=document.documentElement,t;t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.dataset.theme=t;})();
+</script>
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="../case.css">
 <link rel="stylesheet" href="../future.css">
 <script>
-  /* motion is on unless reduced motion is set or he switched it off; the boot runs once per visit */
-  (function(){var d=document.documentElement,m;try{m=localStorage.getItem('motion');}catch(e){}
-  if(m!=='on'&&m!=='off')m=matchMedia('(prefers-reduced-motion: reduce)').matches?'off':'on';
+  /* motion follows the device's reduced motion setting; the boot runs once per visit */
+  (function(){var d=document.documentElement,m;m=matchMedia('(prefers-reduced-motion: reduce)').matches?'off':'on';
   d.dataset.motion=m;var b;try{b=sessionStorage.getItem('booted');}catch(e){}
   if(m==='on'&&!b)d.classList.add('boot');var p;try{p=sessionStorage.getItem('dc:'+location.pathname);}catch(e){}
   if(m==='on'&&!p)d.classList.add('dc-page');})();
@@ -48,11 +51,10 @@
       <span>David Martinez</span>
     </p>
     <nav class="nav__links" aria-label="Pages">
-      <a class="ns ns--home" href="../"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.6 9.6 10 3.2l7.4 6.4V17h-5.1v-4.7H7.7V17H2.6z" fill="currentColor"/></svg>Home</a>
-      <a class="ns ns--work" href="../work/" aria-current="page"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V5M10 4l-5 5M10 4l5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Work</a>
-      <a class="ns ns--about" href="../about/"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="11" cy="4" r="2.1" fill="currentColor"/><path d="M11 7l-1 6-3 5m4-11l4 3m-4 3l3 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>About</a>
-      <a class="ns ns--resume" href="../assets/resume.pdf"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2.5h6l4 4v11H5z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 11h5M7.5 14h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Resume</a>
-      <button class="mo" type="button" aria-label="Motion" aria-pressed="true" hidden><span class="mo__dot" aria-hidden="true"></span><span aria-hidden="true">Motion <span class="mo__on">on</span><span class="mo__off">off</span></span></button>
+      <a class="ns ns--home" href="../">Home</a>
+      <a class="ns ns--work" href="../work/" aria-current="page">Work</a>
+      <a class="ns ns--about" href="../about/">About</a>
+      <a class="ns ns--resume" href="../assets/resume.pdf">Resume</a>
     </nav>
   </div>
 </header>
@@ -60,174 +62,92 @@
 
   <a class="back" href="./"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>All work</a>
 
-  <p class="case__kicker"><span class="stop stop--c" aria-hidden="true">C1</span>My own app, 2026, in testing</p>
+  <p class="case__kicker">My own app, 2026, in testing</p>
   <h1 class="case__title">Centline</h1>
-  <p class="case__thesis">
-    A phone app for truck drivers who own their one truck: every load as one record, from
-    saved to paid. I design it and build it, on my own.
-  </p>
-<figure class="fig case__hero">
-  <button class="zoom" type="button" popovertarget="lb-c-cover">
-    <img src="../assets/centline/cover.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="A design preview of Centline on a green background: a rate confirmation being signed on one phone, and the invoice packet on another, with the signed bill of lading and the rate confirmation ticked.">
-    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
-  </button>
-  <figcaption>A design preview of the invoice packet. Names and numbers are made up.</figcaption>
-</figure>
-
-  <div class="story">
-    <div>
-      <h2>What Centline is</h2>
-      <p>It is for a driver who owns his one truck and runs it as his own business, often in
-        his first year, reading his phone one-handed at a loading dock at night. Centline keeps
-        each load in one place, from the day it is saved to the day it is paid: where it
-        stands, its paperwork, and the invoice that goes out with that paperwork attached.</p>
-      <p>It is in testing and not yet in the App Store, so no one uses it for real yet.</p>
-    </div>
-    <div>
-      <h2>Why I built it</h2>
-      <p>My dad has driven a truck for 35 years, and he owns his own. Driving is only half
-        of that job; the other half is paperwork, and the money waits on it. I built
-        Centline for that half: the stretch between delivering a load and getting paid for
-        it.</p>
-    </div>
-    <div>
-      <h2>What was mine</h2>
-      <p>All of it: the product decisions, the design system, the rules, and the build.
-        Claude Code draws the options I choose between and checks the work against those
-        rules. Nothing merges without my word.</p>
-    </div>
-  </div>
-
-  <ul class="nums">
-    <li><b>5,888</b><span>tests passing</span></li>
-    <li><b>144</b><span>pull requests merged since 29 July 2026</span></li>
-    <li><b>13</b><span>screen sizes measured: 8 phones, 5 tablet windows</span></li>
-    <li><b>28</b><span>design specs, written before the code</span></li>
-  </ul>
+  <p class="case__thesis">I built an invoicing app for truck drivers who own one truck. It shows the load they're on, gives them one button for the next step, and won't send an invoice without its paperwork.</p>
+  <p class="tension">For an owner-operator, driving is half the job. The other half is paperwork, and the money waits on it. A broker (the company that hired him for the load) won't pay until the signed bill of lading and the rate confirmation come with the invoice. One missing page means a late payment.</p>
 
   <section class="sec">
     <div class="sec__head">
       <span class="sec__n">01</span>
-      <h2 class="sec__title">What I did</h2>
+      <h2 class="sec__title">Before and after</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-    <ul class="did">
-      <li><b>Every product decision,</b> including cutting a whole half of the app when it
-        turned out to be the wrong half.</li>
-      <li><b>The design system.</b> Every colour comes from one set of tokens, checked for
-        WCAG contrast, with a night palette for a loading dock at 2am.</li>
-      <li><b>Rules held by tests, not by memory.</b> Every screen fits every phone from 280 to
-        440 points wide, and nothing ever grades a driver&rsquo;s record.</li>
-      <li><b>Options before code.</b> Each change is drawn two to four ways, picked, written
-        down, then built and walked on my own phone. Claude Code is in the loop: it draws the
-        options I choose between and checks the work against my rules.</li>
-    </ul>
+    <div class="ba">
+      <div><p class="ba__lab">Before</p><p>After a delivery he has to gather the signed bill of lading (the receipt for the freight) and the rate confirmation (the agreed price), then write the invoice and send it, often from a loading dock at night. My first version didn't fix that. It tried to do five jobs at once, and its checklist let him tick boxes without attaching anything.</p></div>
+      <div><p class="ba__lab">After</p><p>The app opens on the load he's on, with one button for what comes next: picked up, delivered, write the invoice. The invoice goes out as one PDF packet, and it won't send until both papers are in it.</p></div>
+    </div>
   </section>
-
   <section class="sec">
     <div class="sec__head">
       <span class="sec__n">02</span>
-      <h2 class="sec__title">Try it: one button for the moment</h2>
+      <h2 class="sec__title">How I worked</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-    <div class="prose">
-      <p>The app opens on the load he is on, drawn as a green highway sign, with one button
-        that matches where the load is:</p>
-    </div>
-    <div class="now">
-      <fieldset class="pick-row">
-        <legend>Where is the load?</legend>
-        <label class="pick-opt"><input type="radio" name="stage" value="booked" checked><span>Booked</span></label>
-        <label class="pick-opt"><input type="radio" name="stage" value="rolling"><span>Rolling</span></label>
-        <label class="pick-opt"><input type="radio" name="stage" value="delivered"><span>Delivered</span></label>
-      </fieldset>
-      <div aria-live="polite">
-        <div class="now__sign">
-          <p class="now__stage"><span data-s="booked">Booked</span><span data-s="rolling">Rolling</span><span data-s="delivered">Delivered</span>, Tuesday</p>
-          <p class="now__lane">Laredo, TX to Memphis, TN</p>
-          <span class="now__dash" aria-hidden="true"></span>
-          <p class="now__meta">$2,850, load 48213</p>
-        </div>
-        <p class="now__btn">The one button: <span data-s="booked">Picked up</span><span data-s="rolling">Delivered</span><span data-s="delivered">Write the invoice</span></p>
-      </div>
-    </div>
-    <p class="demo-note">Drawn in HTML and CSS, in Centline&rsquo;s colours. The load is made up.</p>
+    <ol class="walk">
+      <li><div><p class="walk__k">Research</p><h3>The slow part was after delivery</h3><p>My dad has driven a truck for 35 years and owns his own. Watching him, I saw the time didn't go into driving. It went into the stretch between delivering a load and getting paid for it.</p></div></li>
+      <li><div><p class="walk__k">Define</p><h3>One driver, one truck, one hand on the phone</h3><p>The user is an owner-operator, often in his first year, using a phone one-handed at a dock at night. He won't open an app to read reports, and he'll delete one that wastes his time. So I kept it to two jobs: move the load, and get it paid.</p></div></li>
+      <li><div><p class="walk__k">Design</p><h3>Every change drawn two to four ways first</h3><p>Before any code, I draw the options side by side, pick one and write down why. That's 28 design specs so far. When the options sit next to each other, the right one is easy to spot.</p>
+        <figure class="fig">
+          <button class="zoom" type="button" popovertarget="lb-c-paid">
+            <img src="../assets/centline/getting-paid-options.webp" width="1600" height="670" loading="lazy" decoding="async" alt="Four phone screens titled Getting paid, labelled A to D. A shows three small cells: Not sent, Not due yet and Late. B is one card with a row per pile. C puts the late money first in a dark card. D turns the piles into filter chips.">
+            <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+          </button>
+          <figcaption>The top of Getting paid, drawn four ways, with A marked as the pick. Names and numbers are made up.</figcaption>
+        </figure>
+        </div></li>
+      <li><div><p class="walk__k">Build</p><h3>From the broker's email to a signed packet</h3><p>He shares the rate confirmation from his email, it lands on the right load, he signs it on the phone and it joins the invoice. I design and build all of it myself. Claude Code, an AI coding tool, drafts options and checks the work against rules I wrote. Nothing merges until I approve it.</p>
+        <figure class="fig">
+          <button class="zoom" type="button" popovertarget="lb-c-inbox">
+            <img src="../assets/centline/app-flow.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Four screens from the Centline app, in order: checking a load read from the rate confirmation before booking it; the delivered load with one button, Write the invoice; the invoice packet with the signed bill of lading and rate confirmation in and the lumper receipt marked missing; and Getting paid, with $6,775 owed and a They paid it button on each sent invoice.">
+            <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
+          </button>
+          <figcaption>The real app on a simulator: check the rate con, write the invoice, fill the packet, get paid. Example data.</figcaption>
+        </figure>
+        </div></li>
+      <li><div><p class="walk__k">Test</p><h3>Rules held by tests, then someone trying to break it</h3><p>Automated tests check every rule on every change, including that each screen fits phones from 280 to 466 points wide. Tests only prove what they check, so a separate AI agent, the breaker, tries to make each finished change fail. In one night it found 11 real defects before any of them shipped.</p></div></li>
+    </ol>
   </section>
-
   <section class="sec">
     <div class="sec__head">
       <span class="sec__n">03</span>
-      <h2 class="sec__title">The call I would make again</h2>
+      <h2 class="sec__title">The turning point</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-    <div class="prose">
-      <p>
-        Centline began as a tool for pricing loads. Six weeks in, I cut the entire cost side,
-        because the real pain is getting from delivered to paid. What is left does two jobs
-        well instead of five jobs halfway: move the load, and get it paid.
-      </p>
-    </div>
-    <div class="shots">
-<figure class="fig">
-  <button class="zoom" type="button" popovertarget="lb-c-inbox">
-    <img src="../assets/centline/inbox-to-invoice.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="Four phones in sequence: an email from Example Logistics with a rate confirmation shared to Centline, picking the invoice it belongs to, signing the rate confirmation on the phone, and invoice 1042 with the signed bill of lading and the rate confirmation ticked in the packet.">
-    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
-  </button>
-  <figcaption>From your inbox to the invoice, in four steps. A design preview: names and numbers are made up.</figcaption>
-</figure>
-<figure class="fig">
-  <button class="zoom" type="button" popovertarget="lb-c-paid">
-    <img src="../assets/centline/getting-paid-options.webp" width="1600" height="670" loading="lazy" decoding="async" alt="Four phone screens titled Getting paid, labelled A to D. A shows three small cells: Not sent, Not due yet and Late. B is one card with a row per pile. C puts the late money first in a dark card. D turns the piles into filter chips.">
-    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
-  </button>
-  <figcaption>The top of Getting paid, drawn four ways, with A marked as the pick. Names and numbers are made up.</figcaption>
-</figure>
-<figure class="fig">
-  <button class="zoom" type="button" popovertarget="lb-c-sign">
-    <img src="../assets/centline/signing-up-close.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="Three phones signing a carrier agreement: a signature drawn once and placed on its line, Jane Doe typed into a text box, and a date picked from a calendar with a choice of how it is written.">
-    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
-  </button>
-  <figcaption>Signing, up close: a signature drawn once, a text box, and a date that cannot be mistyped. Names are made up.</figcaption>
-</figure>
+    <div class="pivot">
+      <p class="pivot__lab">The fork in the road</p>
+      <p class="pivot__big">Six weeks in, I cut the whole cost side of my own app: pricing, deadhead (the empty miles driven to reach a load), a load check and a broker network.</p>
+      <p class="pivot__lab">Why I went this way</p>
+      <p>The easy path was to keep what I'd already built. But drivers weren't losing time on pricing. They were losing it between delivered and paid. I'd rather do two jobs well than five halfway, and the cut took the app from 5 tabs to 4: Now, Loads, Invoices and Profile.</p>
     </div>
   </section>
-
   <section class="sec">
     <div class="sec__head">
       <span class="sec__n">04</span>
-      <h2 class="sec__title">What changed</h2>
+      <h2 class="sec__title">The proof</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-    <ul class="moves">
-      <li><span class="row"><span class="from">Five jobs</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Two</b></span><em>Pricing, deadhead, the load check and the broker network came out. What is left moves the load and gets it paid</em></li>
-      <li><span class="row"><span class="from">Five tabs</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Four</b></span><em>Now, Loads, Invoices, Profile</em></li>
-      <li><span class="row"><span class="from">1.4:1</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">3:1</b></span><em>An input&rsquo;s edge, which WCAG asks to be visible. The old hairline was not</em></li>
-      <li><span class="row"><span class="from">A checklist you could tick</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">A packet that cannot lie</b></span><em>The invoice will not send without the signed bill of lading and the rate confirmation</em></li>
-      <li><span class="row"><span class="from">0</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">5,888</b></span><em>Tests holding the rules, including the ones review would miss</em></li>
-      <li><span class="row"><span class="from">Trusting the suite</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Breaking it on purpose</b></span><em>11 real defects found in one night by the agent whose only job is to make a finished change fail</em></li>
+    <ul class="nums">
+      <li><b>1</b><span>button on the home screen, always the next step for the load</span></li>
+      <li><b>4</b><span>steps from the broker's email to a signed invoice packet</span></li>
+      <li><b>0</b><span>invoices that can be sent without the signed bill of lading</span></li>
+      <li><b>5 &rarr; 2</b><span>jobs the app does, after cutting what wasn't the pain</span></li>
     </ul>
+    <p class="proof__take"><b>What it means</b>For a driver, the invoice is the paycheck. Building around the moment after delivery, and refusing to send an incomplete packet, protects money he's already earned. A focused app is also one a skeptical driver keeps instead of deleting. It's in testing now and not on the App Store yet.</p>
   </section>
 
   <footer class="cfoot">
-    <a class="btn btn--open" href="https://centline.co" rel="noopener">See centline.co<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     <a class="btn btn--back" href="./"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Back to all work</a>
+    <a class="btn btn--open" href="https://centline.co" rel="noopener">See centline.co<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
   </footer>
 
-<div class="lightbox" id="lb-c-cover" popover>
-  <button class="lightbox__close" type="button" popovertarget="lb-c-cover" popovertargetaction="hide" autofocus>Close</button>
-  <figure><img src="../assets/centline/cover.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="A design preview of Centline on a green background: a rate confirmation being signed on one phone, and the invoice packet on another, with the signed bill of lading and the rate confirmation ticked."><figcaption>A design preview of the invoice packet. Names and numbers are made up.</figcaption></figure>
-</div>
 <div class="lightbox" id="lb-c-paid" popover>
   <button class="lightbox__close" type="button" popovertarget="lb-c-paid" popovertargetaction="hide" autofocus>Close</button>
   <figure><img src="../assets/centline/getting-paid-options.webp" width="1600" height="670" loading="lazy" decoding="async" alt="Four phone screens titled Getting paid, labelled A to D. A shows three small cells: Not sent, Not due yet and Late. B is one card with a row per pile. C puts the late money first in a dark card. D turns the piles into filter chips."><figcaption>The top of Getting paid, drawn four ways, with A marked as the pick. Names and numbers are made up.</figcaption></figure>
 </div>
 <div class="lightbox" id="lb-c-inbox" popover>
   <button class="lightbox__close" type="button" popovertarget="lb-c-inbox" popovertargetaction="hide" autofocus>Close</button>
-  <figure><img src="../assets/centline/inbox-to-invoice.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="Four phones in sequence: an email from Example Logistics with a rate confirmation shared to Centline, picking the invoice it belongs to, signing the rate confirmation on the phone, and invoice 1042 with the signed bill of lading and the rate confirmation ticked in the packet."><figcaption>From your inbox to the invoice, in four steps. A design preview: names and numbers are made up.</figcaption></figure>
-</div>
-<div class="lightbox" id="lb-c-sign" popover>
-  <button class="lightbox__close" type="button" popovertarget="lb-c-sign" popovertargetaction="hide" autofocus>Close</button>
-  <figure><img src="../assets/centline/signing-up-close.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="Three phones signing a carrier agreement: a signature drawn once and placed on its line, Jane Doe typed into a text box, and a date picked from a calendar with a choice of how it is written."><figcaption>Signing, up close: a signature drawn once, a text box, and a date that cannot be mistyped. Names are made up.</figcaption></figure>
+  <figure><img src="../assets/centline/app-flow.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Four screens from the Centline app, in order: checking a load read from the rate confirmation before booking it; the delivered load with one button, Write the invoice; the invoice packet with the signed bill of lading and rate confirmation in and the lumper receipt marked missing; and Getting paid, with $6,775 owed and a They paid it button on each sent invoice."><figcaption>The real app on a simulator: check the rate con, write the invoice, fill the packet, get paid. Example data.</figcaption></figure>
 </div>
 
 </main>
@@ -235,7 +155,6 @@
 <footer class="foot">
   <div class="foot__in">
     <div class="foot__say">
-      <h2 class="foot__h">Tell me what you are building and who it is for.</h2>
       <a class="foot__mail" href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a>
       <div class="foot__links">
         <a href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a>
@@ -243,11 +162,6 @@
         <a href="/assets/resume.pdf">Resume (PDF)</a>
         <a href="/contact/">More ways to reach me</a>
       </div>
-    </div>
-    <div class="foot__grid">
-      <div><h3>WHERE I AM</h3><p>Iowa City during term. West Liberty, Iowa.</p></div>
-      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, and Atkinson Hyperlegible, drawn for readers with low vision.</p></div>
-      <div><h3>HOW IT IS BUILT</h3><p>From scratch. No framework and no build step. A little JavaScript adds the motion, and every page reads the same without it.</p></div>
     </div>
   </div>
 </footer>

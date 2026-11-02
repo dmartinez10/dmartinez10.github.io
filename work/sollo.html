@@ -25,13 +25,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;1,400&family=Overpass:wght@600;700;800;900&display=swap" rel="stylesheet">
+<script>
+  /* light or dark: whatever the device is set to */
+  (function(){var d=document.documentElement,t;t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.dataset.theme=t;})();
+</script>
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="../case.css">
 <link rel="stylesheet" href="../future.css">
 <script>
-  /* motion is on unless reduced motion is set or he switched it off; the boot runs once per visit */
-  (function(){var d=document.documentElement,m;try{m=localStorage.getItem('motion');}catch(e){}
-  if(m!=='on'&&m!=='off')m=matchMedia('(prefers-reduced-motion: reduce)').matches?'off':'on';
+  /* motion follows the device's reduced motion setting; the boot runs once per visit */
+  (function(){var d=document.documentElement,m;m=matchMedia('(prefers-reduced-motion: reduce)').matches?'off':'on';
   d.dataset.motion=m;var b;try{b=sessionStorage.getItem('booted');}catch(e){}
   if(m==='on'&&!b)d.classList.add('boot');var p;try{p=sessionStorage.getItem('dc:'+location.pathname);}catch(e){}
   if(m==='on'&&!p)d.classList.add('dc-page');})();
@@ -48,11 +51,10 @@
       <span>David Martinez</span>
     </p>
     <nav class="nav__links" aria-label="Pages">
-      <a class="ns ns--home" href="../"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.6 9.6 10 3.2l7.4 6.4V17h-5.1v-4.7H7.7V17H2.6z" fill="currentColor"/></svg>Home</a>
-      <a class="ns ns--work" href="../work/" aria-current="page"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V5M10 4l-5 5M10 4l5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Work</a>
-      <a class="ns ns--about" href="../about/"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="11" cy="4" r="2.1" fill="currentColor"/><path d="M11 7l-1 6-3 5m4-11l4 3m-4 3l3 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>About</a>
-      <a class="ns ns--resume" href="../assets/resume.pdf"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2.5h6l4 4v11H5z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 11h5M7.5 14h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Resume</a>
-      <button class="mo" type="button" aria-label="Motion" aria-pressed="true" hidden><span class="mo__dot" aria-hidden="true"></span><span aria-hidden="true">Motion <span class="mo__on">on</span><span class="mo__off">off</span></span></button>
+      <a class="ns ns--home" href="../">Home</a>
+      <a class="ns ns--work" href="../work/" aria-current="page">Work</a>
+      <a class="ns ns--about" href="../about/">About</a>
+      <a class="ns ns--resume" href="../assets/resume.pdf">Resume</a>
     </nav>
   </div>
 </header>
@@ -60,143 +62,48 @@
 
   <a class="back" href="./"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>All work</a>
 
-  <p class="case__kicker"><span class="stop stop--s" aria-hidden="true">S1</span>Internship, Tokyo, June to August 2026</p>
+  <p class="case__kicker">Internship, Tokyo, June to August 2026</p>
   <h1 class="case__title">Sollo</h1>
-  <p class="case__thesis">
-    Eight weeks in Tokyo as Sollo&rsquo;s UI/UX engineering intern, designing and building an
-    app that helps foreign residents of Japan get through government paperwork. It is on the
-    App Store now.
-  </p>
-
-  <div class="story">
-    <div>
-      <h2>What Sollo is</h2>
-      <p>Sollo is a company in Tokyo. Its app helps foreign residents of Japan find official
-        help: visas and residency, benefits, healthcare, housing and local services. Its
-        assistant, Ask Sollo, answers from real government documents, in plain language and in
-        nine languages.</p>
-      <p>The app, Sollo Life Nav, has been on the App Store since 18 August 2026.</p>
-    </div>
-    <div>
-      <h2>Why I was there</h2>
-      <p>Japan was the dream first. Before the school year started I told my parents that the
-        next summer I would be interning in Japan, and then I went and chased it. Tech is what
-        I have always been into, and Japan is where I wanted to see it made.</p>
-      <p>I applied through CIEE, and I still remember the interview: they kept pushing me and
-        testing what I knew, and I loved it. Sollo handed me the UI/UX work I had never had
-        before, believed in me, let me go all out on the designs, and then made me defend
-        them. Defending them taught me the most.</p>
-      <p>For those eight weeks I was a foreigner in Tokyo too, so the reader was never hard
-        to picture.</p>
-    </div>
-    <div>
-      <h2>What was mine</h2>
-      <p>I designed and I built. A design existed when I arrived, and from there every new
-        feature or idea meant I redrew the page myself, showed the team the options, and built
-        the one they agreed on. Plenty of pages got built more than once.</p>
-      <p>The design system and its light and dark theme were mine, and so was every new string
-        in nine languages.</p>
-    </div>
-  </div>
-
-  <ul class="nums">
-    <li><b>70+</b><span>pull requests merged in eight weeks</span></li>
-    <li><b>9</b><span>languages shipped, including Easy Japanese</span></li>
-    <li><b>8&times;</b><span>faster core browse flow, 1,033ms to 125ms</span></li>
-    <li><b>2,949</b><span>tests green at handoff</span></li>
-  </ul>
+    <p class="case__thesis">I redesigned and built Sollo&rsquo;s app for foreign residents of Japan. It shipped to the App Store in nine languages, and its main screen got eight times faster.</p>
+  <p class="tension">Sollo helps foreign residents of Japan with visas, healthcare, housing and benefits. The people using it are often stressed, and most don&rsquo;t read official Japanese. If the app is slow, hard to read or only in English, it lets down the exact people it&rsquo;s for.</p>
 
   <section class="sec">
     <div class="sec__head">
       <span class="sec__n">01</span>
-      <h2 class="sec__title">What I did</h2>
+      <h2 class="sec__title">Before and after</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-    <ul class="did">
-      <li><b>Redesigned the navigation.</b> I drew it eleven ways in three turns, rebuilt the
-        signed-in app to the pick, and wired it to the live services.</li>
-      <li><b>Redrew the pages as the product moved.</b> A new feature meant a new design from
-        me, options to the team, then I built whichever one they agreed on. Several versions of
-        the same page, until it was right.</li>
-      <li><b>Built the design system.</b> Colour, spacing and type tokens, a shared widget and
-        icon library, and a light and dark theme, all under an automated WCAG AA contrast
-        check.</li>
-      <li><b>Shipped every string in nine languages.</b> Nothing went out as English with a
-        fallback, Easy Japanese included.</li>
-      <li><b>Caught accessibility misses before readers did.</b> A colour in a design handoff
-        measured 2.72:1, so it shipped at 4.60:1, one step up the designer&rsquo;s own palette.
-        A tap target the spec sized at 36 points shipped at 48.</li>
-      <li><b>Made it faster on purpose.</b> A thirty pull request performance sprint cut 3.1 MB
-        from the app bundle and made a card open eight times quicker.</li>
-      <li><b>Shipped feedback end to end.</b> In-app feedback and bug reporting, from the entry
-        point a reader taps to the report landing where the team reads it.</li>
-      <li><b>Worked across the whole stack:</b> design, the mobile app and the Python
-        backend.</li>
-    </ul>
+    <div class="ba"><div><p class="ba__lab">Before</p><p>Browsing guides, the thing people do most, took 1,033ms. One colour from a design handoff measured 2.72:1 against its background, too faint to pass WCAG AA, the accessibility standard for readable text. The button out of a failed search was 36 points, and three of the five tabs still said &ldquo;coming soon&rdquo;.</p></div><div><p class="ba__lab">After</p><p>Browsing takes 125ms. That colour passes at 4.60:1, and 7.75:1 in dark mode. The button out of a failed search is 48 points, and the app opens on one working screen. Every new string ships in nine languages, Easy Japanese included. Sollo Life Nav has been on the App Store since 18 August 2026.</p></div></div>
   </section>
-
   <section class="sec">
     <div class="sec__head">
       <span class="sec__n">02</span>
-      <h2 class="sec__title">Try it: the navigation, in three turns</h2>
+      <h2 class="sec__title">How I worked</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-    <div class="prose">
-      <p>Before I rebuilt the app, I drew its navigation on a design canvas, a board of phones
-        side by side, three times over. Pick a turn:</p>
-    </div>
-
-    <div class="turns">
-      <fieldset class="pick-row">
-        <legend class="sr">Show a turn</legend>
-        <label class="pick-opt"><input type="radio" name="turn" value="1" checked><span>Turn 1 <small>A switcher</small></span></label>
-        <label class="pick-opt"><input type="radio" name="turn" value="2"><span>Turn 2 <small>Wild cards</small></span></label>
-        <label class="pick-opt"><input type="radio" name="turn" value="3"><span>Turn 3 <small>The rules</small></span></label>
-      </fieldset>
-      <div class="turns__panel" data-t="1">
-<figure class="fig">
-  <button class="zoom" type="button" popovertarget="lb-s-turn1">
-    <img src="../assets/sollo/nav-turn-1.webp" width="1200" height="1098" loading="lazy" decoding="async" alt="Turn 1, titled A switcher that looks like Sollo, not a stock tab bar: three phones showing a ticket-stub dock at the bottom, stamped pass tabs at the top, and a floating navigator orb fanned open.">
-    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
-  </button>
-  <figcaption>Turn 1: three switchers that look like Sollo, not a stock tab bar.</figcaption>
-</figure>
-      </div>
-      <div class="turns__panel" data-t="2">
-<figure class="fig">
-  <button class="zoom" type="button" popovertarget="lb-s-turn2">
-    <img src="../assets/sollo/nav-turn-2.webp" width="1200" height="1046" loading="lazy" decoding="async" alt="Turn 2, titled Three from imagination, no brief attached: a phone with a slim vertical rail on the left, a dark home with glowing round portals along the bottom, and a pull-up sheet listing the four surfaces.">
-    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
-  </button>
-  <figcaption>Turn 2: three wild cards, with no brief attached.</figcaption>
-</figure>
-      </div>
-      <div class="turns__panel" data-t="3">
+    <ol class="walk">
+      <li><div><p class="walk__k">Research</p><h3>I was living the problem</h3><p>For eight weeks I was a foreigner in Tokyo too, so I used the app the way its users would. Then I measured it: how long the main screen took, how readable each colour was and how big each button was.</p></div></li>
+      <li><div><p class="walk__k">Define</p><h3>Four rules before any drawing</h3><p>I set four rules for the navigation first: labels always visible, targets of 60px or more, a high-contrast active state and nothing hidden. Someone reading in their second or third language shouldn&rsquo;t have to guess what a button does.</p></div></li>
+      <li><div><p class="walk__k">Design</p><h3>Eleven options, three rounds</h3><p>I drew the navigation eleven ways over three rounds on a design canvas, a board of phones side by side. I showed the team every option at once, so the differences were easy to see and we could pick fast.</p>
 <figure class="fig">
   <button class="zoom" type="button" popovertarget="lb-s-turn3">
     <img src="../assets/sollo/nav-turn-3.webp" width="1600" height="870" loading="lazy" decoding="async" alt="Turn 3, titled Best of, mixed, accessible and foolproof: five phones, 3a a big labelled dock marked recommended, 3b a portal dock, 3c tabs at the top marked runner-up, 3e an always-there bar, and 3f a segmented pill.">
     <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
   </button>
-  <figcaption>Turn 3: five options, each held to the same four rules: labels always visible, targets of 60px or more, a high-contrast active state, and nothing hidden.</figcaption>
+  <figcaption>Turn 3: five options, each held to the same four rules.</figcaption>
 </figure>
-      </div>
-    </div>
+      </div></li>
+      <li><div><p class="walk__k">Build</p><h3>Design and code, same person</h3><p>I rebuilt the signed-in app around the option we picked and connected it to the live services, in the mobile app and the Python backend. I also built the design system: colour, spacing and type tokens (named values every screen shares) and a light and dark theme.</p></div></li>
+      <li><div><p class="walk__k">Test</p><h3>Measured, then fixed</h3><p>Over thirty pull requests focused on speed, I took browsing from 1,033ms to 125ms and cut 3.1 MB from what each phone downloads. An automated check holds every colour to WCAG AA, and 2,949 automated tests were passing when I handed it off.</p></div></li>
+    </ol>
   </section>
-
   <section class="sec">
     <div class="sec__head">
       <span class="sec__n">03</span>
-      <h2 class="sec__title">The call I would make again</h2>
+      <h2 class="sec__title">The turning point</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-    <div class="prose">
-      <p>
-        Sixteen days after I built the five-tab navigation, I cut it to a single screen for the
-        public beta. Three of the five tabs were still &ldquo;coming soon&rdquo;, and a row of
-        doors that open onto nothing is not navigation. The dock was parked, not deleted, for
-        when those parts ship.
-      </p>
-    </div>
+    <div class="pivot"><p class="pivot__lab">The fork in the road</p><p class="pivot__big">Sixteen days after I built the five-tab navigation, I cut it down to one screen for the public beta.</p><p class="pivot__lab">Why I went this way</p><p>Three of the five tabs still said &ldquo;coming soon&rdquo;. A tab that opens onto nothing tells people the app is unfinished. The easier path was to keep the tabs and wait. I parked the tab bar instead of deleting it, so it&rsquo;s ready when those parts ship.</p></div>
     <div class="shots">
 <figure class="fig">
   <button class="zoom" type="button" popovertarget="lb-s-surface">
@@ -205,56 +112,26 @@
   </button>
   <figcaption>The single screen, in the night palette and the day palette.</figcaption>
 </figure>
-      <div>
-<figure class="fig">
-  <button class="zoom" type="button" popovertarget="lb-s-figma">
-    <img src="../assets/sollo/onboarding-figma.webp" width="1600" height="845" loading="lazy" decoding="async" alt="Four onboarding frames from Figma, one per language: English, Japanese, Easy Japanese and Vietnamese. The Japanese frame labels the name field with kanji, and the Easy Japanese frame writes the same labels in hiragana.">
-    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
-  </button>
-  <figcaption>Onboarding in four of the nine languages. Easy Japanese writes the same labels in hiragana, for readers who know some Japanese but not the official kind.</figcaption>
-</figure>
-<figure class="fig" style="margin-top:1.5rem">
-  <button class="zoom" type="button" popovertarget="lb-s-journeys">
-    <img src="../assets/sollo/journeys-bar.webp" width="1600" height="384" loading="lazy" decoding="async" alt="Twelve small designs of the Your Journeys bar, labelled A to L: stacked rings, a warm feature card, a minimal link with dots, a dark accent bar, a two-stat split, inline chips, and six compact slim lines.">
-    <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
-  </button>
-  <figcaption>One component, the bar back into a checklist in progress, drawn twelve ways before one was built.</figcaption>
-</figure>
-      </div>
     </div>
   </section>
-
   <section class="sec">
     <div class="sec__head">
       <span class="sec__n">04</span>
-      <h2 class="sec__title">What changed</h2>
+      <h2 class="sec__title">The proof</h2>
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
-    <ul class="moves">
-      <li><span class="row"><span class="from">1,033ms</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">125ms</b></span><em>The core browse flow, eight times faster</em></li>
-      <li><span class="row"><span class="from">2.72:1</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">4.60:1</b></span><em>A handoff colour I measured and moved, one step up the designer&rsquo;s own palette. 7.75:1 in dark mode</em></li>
-      <li><span class="row"><span class="from">36 points</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">48 points</b></span><em>The tap target on the escape hatch out of a failing search</em></li>
-      <li><span class="row"><span class="from">Five tabs</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">One surface</b></span><em>Cut sixteen days after I built it, because three of the five were still coming soon</em></li>
-      <li><span class="row"><span class="from">English with a fallback</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Nine languages</b></span><em>Every new string, Easy Japanese included, before the change was proposed</em></li>
-      <li><span class="row"><span class="from">3.1 MB heavier</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">3.1 MB lighter</b></span><em>Cut from the app bundle across a thirty pull request performance sprint</em></li>
-      <li><span class="row"><span class="from">Not in the app</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Feedback in two taps</b></span><em>In-app feedback and bug reporting, shipped end to end</em></li>
-      <li><span class="row"><span class="from">Nothing</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">On the App Store</b></span><em>Sollo Life Nav, live since 18 August 2026</em></li>
+    <ul class="nums">
+      <li><b>8&times;</b><span>faster to browse guides, 1,033ms down to 125ms</span></li>
+      <li><b>9</b><span>languages for every new string, Easy Japanese included</span></li>
+      <li><b>4.60:1</b><span>contrast on a colour that failed at 2.72:1</span></li>
+      <li><b>48pt</b><span>way out of a failed search, up from 36pt</span></li>
     </ul>
+    <p class="proof__take"><b>What it means</b>Sollo is for people who don&rsquo;t read official Japanese. Fast, readable and fully translated is how it keeps that promise. It shipped to the App Store on 18 August 2026 with 70+ of my pull requests in it.</p>
   </section>
-
   <footer class="cfoot">
-    <a class="btn btn--open" href="https://apps.apple.com/us/app/sollo-life-nav/id6781235016" rel="noopener">Sollo on the App Store<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     <a class="btn btn--back" href="./"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Back to all work</a>
+    <a class="btn btn--open" href="https://apps.apple.com/us/app/sollo-life-nav/id6781235016" rel="noopener">Sollo on the App Store<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
   </footer>
-
-<div class="lightbox" id="lb-s-turn1" popover>
-  <button class="lightbox__close" type="button" popovertarget="lb-s-turn1" popovertargetaction="hide" autofocus>Close</button>
-  <figure><img src="../assets/sollo/nav-turn-1.webp" width="1200" height="1098" loading="lazy" decoding="async" alt="Turn 1, titled A switcher that looks like Sollo, not a stock tab bar: three phones showing a ticket-stub dock at the bottom, stamped pass tabs at the top, and a floating navigator orb fanned open."><figcaption>Turn 1: three switchers that look like Sollo, not a stock tab bar.</figcaption></figure>
-</div>
-<div class="lightbox" id="lb-s-turn2" popover>
-  <button class="lightbox__close" type="button" popovertarget="lb-s-turn2" popovertargetaction="hide" autofocus>Close</button>
-  <figure><img src="../assets/sollo/nav-turn-2.webp" width="1200" height="1046" loading="lazy" decoding="async" alt="Turn 2, titled Three from imagination, no brief attached: a phone with a slim vertical rail on the left, a dark home with glowing round portals along the bottom, and a pull-up sheet listing the four surfaces."><figcaption>Turn 2: three wild cards, with no brief attached.</figcaption></figure>
-</div>
 <div class="lightbox" id="lb-s-turn3" popover>
   <button class="lightbox__close" type="button" popovertarget="lb-s-turn3" popovertargetaction="hide" autofocus>Close</button>
   <figure><img src="../assets/sollo/nav-turn-3.webp" width="1600" height="870" loading="lazy" decoding="async" alt="Turn 3, titled Best of, mixed, accessible and foolproof: five phones, 3a a big labelled dock marked recommended, 3b a portal dock, 3c tabs at the top marked runner-up, 3e an always-there bar, and 3f a segmented pill."><figcaption>Turn 3: five options, each held to the same four rules.</figcaption></figure>
@@ -263,21 +140,11 @@
   <button class="lightbox__close" type="button" popovertarget="lb-s-surface" popovertargetaction="hide" autofocus>Close</button>
   <figure><img src="../assets/sollo/one-surface.webp" width="1200" height="1611" loading="lazy" decoding="async" alt="Two rows of three phones titled One surface, night and day: open with search as the app, a straight answer with its official source, and an answer built from the official documents when no guide matched, first in a dark palette and then in a light one."><figcaption>The single screen, in the night palette and the day palette.</figcaption></figure>
 </div>
-<div class="lightbox" id="lb-s-figma" popover>
-  <button class="lightbox__close" type="button" popovertarget="lb-s-figma" popovertargetaction="hide" autofocus>Close</button>
-  <figure><img src="../assets/sollo/onboarding-figma.webp" width="1600" height="845" loading="lazy" decoding="async" alt="Four onboarding frames from Figma, one per language: English, Japanese, Easy Japanese and Vietnamese. The Japanese frame labels the name field with kanji, and the Easy Japanese frame writes the same labels in hiragana."><figcaption>Onboarding in four of the nine languages.</figcaption></figure>
-</div>
-<div class="lightbox" id="lb-s-journeys" popover>
-  <button class="lightbox__close" type="button" popovertarget="lb-s-journeys" popovertargetaction="hide" autofocus>Close</button>
-  <figure><img src="../assets/sollo/journeys-bar.webp" width="1600" height="384" loading="lazy" decoding="async" alt="Twelve small designs of the Your Journeys bar, labelled A to L: stacked rings, a warm feature card, a minimal link with dots, a dark accent bar, a two-stat split, inline chips, and six compact slim lines."><figcaption>One component drawn twelve ways before one was built.</figcaption></figure>
-</div>
-
 </main>
 
 <footer class="foot">
   <div class="foot__in">
     <div class="foot__say">
-      <h2 class="foot__h">Tell me what you are building and who it is for.</h2>
       <a class="foot__mail" href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a>
       <div class="foot__links">
         <a href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a>
@@ -285,11 +152,6 @@
         <a href="/assets/resume.pdf">Resume (PDF)</a>
         <a href="/contact/">More ways to reach me</a>
       </div>
-    </div>
-    <div class="foot__grid">
-      <div><h3>WHERE I AM</h3><p>Iowa City during term. West Liberty, Iowa.</p></div>
-      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, and Atkinson Hyperlegible, drawn for readers with low vision.</p></div>
-      <div><h3>HOW IT IS BUILT</h3><p>From scratch. No framework and no build step. A little JavaScript adds the motion, and every page reads the same without it.</p></div>
     </div>
   </div>
 </footer>

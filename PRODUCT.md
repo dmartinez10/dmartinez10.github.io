@@ -57,7 +57,14 @@ load between delivered and paid) is the reason underneath, not the headline.
 - **Copy (decided 2026-10-10):** numbers, facts, project names and the order of
   projects stay exactly as written. Headings and short lines may be rewritten to
   fit the new direction, each rewrite approved by David before it ships.
-- "You are here. Where to?" and "End of the line" are kept.
+- **Removed on his ask (2026-11-02):** the sign wheel, "You are here. Where to?" and
+  the Three.js road. The home page opens on a plain intro with the numbers.
+- **Light and dark follow the device (2026-11-02)**, and switch when the device does.
+  Dark mode text is white.
+- **Tone (2026-11-02):** professional first person in his plain voice, stat-led, with a
+  reason for each decision, and any design or engineering term explained so anyone
+  understands it on first read. No slang, no long dashes.
+- "End of the line" is kept.
 
 ## Brand Commitments
 

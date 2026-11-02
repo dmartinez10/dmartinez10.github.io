@@ -9,8 +9,8 @@
   --night-2:  #0B1222;   /* the sky at the horizon */
   --asphalt:  #12161F;
   --glass:    #0A0F18;
-  --text:     #EEF1F5;
-  --text-2:   #AEB6C4;   /* 9.6:1 on --night */
+  --text:     #FFFFFF;
+  --text-2:   #DCE1E9;   /* white text at night, his ask 2026-11-02 */
   --edge:     rgb(238 241 245 / .16);
   --cl:       #FFC72C;   /* the centre line, the one accent */
   --cl-glow:  rgb(255 199 44 / .55);
@@ -267,10 +267,10 @@
   --bg-sub:    #0B0F16;
   --bg-raise:  #161C27;
   --panel:     #0C1119;
-  --ink:       #EEF1F5;
-  --ink-2:     #C3CAD5;
-  --ink-3:     #9AA3B2;   /* 7.4:1 on --panel */
-  --ink-4:     #9AA3B2;
+  --ink:       #FFFFFF;
+  --ink-2:     #EEF1F6;
+  --ink-3:     #C9D0DB;
+  --ink-4:     #C9D0DB;
   --rule:      #1E2531;
   --rule-2:    #3A4454;
   --sign:      #1A2440;   /* a panel, not a button, at night */
@@ -405,7 +405,8 @@
 @keyframes scan-y{ from{ translate:0 -100%; opacity:1; } to{ translate:0 100%; opacity:1; } }
 
 /* ══ the numbers: a speedometer readout ══ */
-.night .nums b{ font-size:clamp(2.4rem,5vw,3.4rem); }
+.night .nums b{ display:block; font-size:clamp(3.25rem,7vw,5rem); line-height:1; letter-spacing:-.02em; }
+.night .nums li > span{ font-size:1rem; line-height:1.45; color:var(--ink-2); }
 .night .nums b [aria-hidden]{ display:inline-block; min-width:1ch; }
 
 /* ══ the Claude kit: a command palette you can actually search ══ */
@@ -467,7 +468,7 @@
 .night .zoom img, .night .phones img, .night .twin{ background:var(--bg-raise); }
 /* the wheel's dots: a 44px target on touch */
 @media (max-width:52rem){
-  .nav--night .mo{ position:absolute; top:.9rem; right:clamp(1rem,4vw,3.5rem); margin:0; }
+  .nav--night .nav__sw{ position:absolute; top:.9rem; right:clamp(1rem,4vw,3.5rem); margin:0; }
 }
 .road__p--also{ margin-top:.5rem; }
 .boot[data-motion="on"] .road__p--also{ animation-delay:.55s; }
@@ -553,3 +554,161 @@
 /* dragging the wheel never selects its words or drags its links */
 .has-wheel .signs__list{ -webkit-user-select:none; user-select:none; -webkit-touch-callout:none; }
 .has-wheel .sign a{ -webkit-user-drag:none; }
+
+/* ══════════════════════════════════════════════════════════════════
+   Light and dark (2026-11-02). Dark is the night above with white text.
+   Light turns the tokens back to the paper of styles.css. The road in
+   the hero stays a night road in both: it is a scene, not a surface.
+   The switch follows the phone or computer until it is pressed.
+   ══════════════════════════════════════════════════════════════════ */
+.nav__sw{ display:inline-flex; align-items:center; gap:.35rem; margin-left:.35rem; }
+.nav__sw .mo{ margin-left:0; }
+.th{
+  display:inline-flex; align-items:center; gap:.45rem;
+  min-height:2.6rem; padding:.45rem .85rem; border-radius:999px; cursor:pointer;
+  font:500 .84rem/1 var(--mono); color:var(--ink);
+  background:rgb(238 241 245 / .06); border:1px solid var(--edge);
+  transition:background-color .15s ease, transform .16s var(--ease-out);
+}
+.nav--night .th{ color:var(--text); }
+.th:active{ transform:scale(.97); }
+.th svg{ width:1rem; height:1rem; }
+.th__sun, .th__moon{ display:none; }
+[data-theme="light"] .th__sun, :root:not([data-theme="light"]) .th__moon{ display:inline; }
+.th[hidden]{ display:none; }
+@media (hover:hover) and (pointer:fine){ .th:hover{ background:rgb(238 241 245 / .11); } }
+
+.night[data-theme="light"]{
+  --bg:        #EFE9DE;
+  --bg-sub:    #FBF8F2;
+  --bg-raise:  #E4DCCB;
+  --panel:     #FBF8F2;
+  --ink:       #14171F;
+  --ink-2:     #2E3440;
+  --ink-3:     #4A5160;
+  --ink-4:     #4A5160;
+  --rule:      #DCD3C2;
+  --rule-2:    #BCB09C;
+  --sign:      #14224A;
+  --sign-2:    #AEB9D6;
+  --sign-3:    #22346A;
+  --accent:    #14224A;
+  --accent-d:  #0B1533;
+  --accent-bg: #E3E7F2;
+  --edge:      rgb(20 23 31 / .16);
+  color-scheme:light;
+}
+[data-theme="light"] .nav:not(.nav--night){ background:rgb(239 233 222 / .86); }
+[data-theme="light"] .ns:hover{ background:rgb(20 23 31 / .06); }
+[data-theme="light"] .nav:not(.nav--night) .th, [data-theme="light"] .nav:not(.nav--night) .mo{ background:var(--panel); border-color:var(--rule-2); color:var(--ink); }
+[data-theme="light"] .pcard{ background:var(--panel); box-shadow:0 1.25rem 2.5rem -2rem rgb(20 23 31 / .35); }
+@media (hover:hover) and (pointer:fine){
+  [data-theme="light"] .pcard:hover{ border-color:rgb(180 120 0 / .6); box-shadow:0 1.5rem 3rem -2rem rgb(20 23 31 / .45); }
+  [data-theme="light"] .nav:not(.nav--night) .th:hover{ background:var(--bg-raise); }
+}
+[data-theme="light"] .kit__panel{ box-shadow:0 1.5rem 3rem -2.5rem rgb(20 23 31 / .35); }
+[data-theme="light"] .kit__item + .kit__item{ border-top-color:var(--rule); }
+[data-theme="light"] .logo{ box-shadow:0 0 0 1px var(--rule); }
+[data-theme="light"] .readout__row--true b{ color:#B42318; }
+[data-theme="light"] .sec__n, [data-theme="light"] .moves .arrow{ color:color-mix(in oklab, var(--line, #8A6200) 75%, black); }
+[data-theme="light"] .nums li, [data-theme="light"] .sect:has(.nums) .nums li{ border-top-color:#E0A800; }
+[data-theme="light"] .foot{ background:var(--bg-sub); }
+[data-theme="light"] .foot__links a:hover{ border-color:var(--ink); color:var(--ink); }
+[data-theme="light"] ::selection{ background:var(--cl); color:var(--ink); }
+/* the hero keeps its night: its words stay white on the road */
+[data-theme="light"] .road, [data-theme="light"] .road h1, [data-theme="light"] .road h2, [data-theme="light"] .road p{ color:var(--text); }
+[data-theme="light"] .nav--night .nav__me{ color:var(--text); }
+[data-theme="light"] .foot__h, [data-theme="light"] .foot__mail, [data-theme="light"] .foot__mail:hover{ color:var(--ink); }
+[data-theme="light"] .nav--night .ns{ color:var(--text-2); }
+[data-theme="light"] .nav--night .ns:hover, [data-theme="light"] .nav--night .ns[aria-current="page"]{ color:var(--text); }
+[data-theme="light"] .nav--night .ns[aria-current="page"]{ box-shadow:inset 0 0 0 1px rgb(238 241 245 / .16); }
+[data-theme="light"] .nav--night .ns:hover{ background:rgb(238 241 245 / .07); }
+/* on the narrowest phones the switch shows only its sun or moon, so it clears the name */
+@media (max-width:26rem){
+  .nav--night .th{ padding:.45rem .7rem; }
+  .nav--night .th__word{ display:none; }
+}
+
+/* ══ the home intro (2026-11-02): the road and the sign wheel are gone, his
+   ask. A plain, high contrast opening: who, what, and the numbers. ══ */
+.intro{ display:grid; gap:1.1rem; padding-block:clamp(3rem,9vw,6rem) clamp(2rem,5vw,3.5rem); }
+.intro__hi{ margin:0; font:700 clamp(1.1rem,2.4vw,1.35rem)/1.2 var(--display); color:var(--ink-2); }
+.intro__h{ margin:0; font-family:var(--display); font-weight:800; font-size:clamp(2.4rem,7.5vw,5rem); line-height:1.02; letter-spacing:-.01em; color:var(--ink); text-wrap:balance; max-width:16ch; }
+.intro__p{ margin:0; max-width:60ch; font-size:clamp(1.05rem,1.8vw,1.2rem); line-height:1.6; color:var(--ink-2); }
+.intro__nums{ margin-top:1rem; }
+.intro__go{ display:flex; flex-wrap:wrap; gap:.75rem; margin:.5rem 0 0; }
+
+/* ══ contrast and touch (2026-11-02): section numbers read in both themes,
+   the contact panel turns with the page, and every control is 44px tall ══ */
+.night .sec__n, [data-theme="light"] .sec__n{ color:var(--ink-2); }
+[data-theme="light"] .exit__panel{ background:var(--sign); box-shadow:none; }
+[data-theme="light"] .exit__label{ color:var(--sign-2); }
+[data-theme="light"] .foot__links a{ color:var(--ink); border-color:var(--rule-2); }
+.night .ns, .nav--night .ns, .mo, .th{ min-height:2.75rem; }
+[data-theme="light"] .exit__h, [data-theme="light"] .exit__mail, [data-theme="light"] .exit .btn{ color:#fff; }
+.nav .nav__links .ns, .nav .nav__sw .mo, .nav .nav__sw .th, .btn, .back, .foot__links a, .lightbox__close{ min-height:44px; }
+.btn, .back{ display:inline-flex; align-items:center; }
+.side .ns{ min-height:44px; }
+
+/* ══ 2026-11-02, round 3 (his review in Chrome) ══ */
+
+/* a proper site header: name on the left, plain text links on the right,
+   the page you are on underlined in the centre-line yellow */
+.night .nav:not(.nav--night){ position:sticky; top:env(safe-area-inset-top,0px); z-index:20; }
+.night .nav .nav__in{
+  max-width:72rem; margin:0 auto; display:flex; flex-direction:row; flex-wrap:wrap;
+  align-items:center; justify-content:space-between; gap:.25rem 1.5rem;
+  padding:.85rem max(16px,env(safe-area-inset-right,0px)) .85rem max(16px,env(safe-area-inset-left,0px));
+}
+.night .nav__me{ margin:0; font:800 1.15rem/1.2 var(--display); color:var(--ink); }
+.night .nav__links{ display:flex; flex-wrap:wrap; gap:0 .25rem; align-items:center; }
+.night .nav .ns{
+  font:700 1rem/1 var(--display); color:var(--ink-2); background:none; box-shadow:none; outline:0;
+  padding:.75rem .7rem; border-radius:6px; min-height:44px; display:inline-flex; align-items:center;
+  position:relative;
+}
+.night .nav .ns:hover{ color:var(--ink); background:var(--bg-raise); }
+.night .nav .ns[aria-current="page"]{ color:var(--ink); box-shadow:none; }
+.night .nav .ns[aria-current="page"]::after{
+  content:""; position:absolute; left:.7rem; right:.7rem; bottom:.3rem; height:3px; border-radius:2px; background:var(--cl);
+}
+.night .nav .ns:focus-visible{ outline:3px solid var(--cl); outline-offset:2px; }
+.night .nav .ns--resume{ border:1.5px solid var(--rule-2); margin-left:.35rem; }
+.night .nav .ns--resume:hover{ border-color:var(--ink); }
+@media (max-width:40rem){ .night .nav .nav__in{ justify-content:center; } .night .nav__me{ width:100%; text-align:center; } }
+
+/* the home intro: words on the left, his photo on the right */
+.intro{ grid-template-columns:minmax(0,1fr); align-items:center; column-gap:clamp(2rem,5vw,4rem); }
+.intro__me{ margin:0; justify-self:center; }
+.intro__me img{
+  width:clamp(11rem,26vw,19rem); height:auto; aspect-ratio:1; object-fit:cover; border-radius:50%;
+  box-shadow:0 0 0 6px var(--bg), 0 0 0 11px var(--cl); max-width:100%;
+}
+@media (min-width:52rem){
+  .intro{ grid-template-columns:minmax(0,1fr) auto; }
+  .intro > :not(.intro__me):not(.intro__nums){ grid-column:1; }
+  .intro__me{ grid-column:2; grid-row:1 / span 3; }
+  .intro__nums{ grid-column:1 / -1; }
+}
+.intro__nums{ margin-top:1.5rem; }
+
+/* skills read as facts, not buttons: no lift, no glow, no pointer */
+.night .skills li{ box-shadow:none !important; transform:none !important; cursor:default; border-left-width:1px; }
+.night .skills li::after{ display:none !important; }
+.night .skills li:hover{ border-color:var(--rule); }
+
+/* the route so far sits on one line: seven stops, seven columns, no second row */
+@media (min-width:62rem){
+  .route{ grid-template-columns:repeat(7,minmax(0,1fr)); }
+  .route li{ padding-right:.9rem; }
+  .route h3{ font-size:1.02rem; overflow-wrap:break-word; hyphens:manual; }
+  .route p{ font-size:.88rem; }
+}
+/* the count-up digits sit in spans inside the number: they keep its size */
+.nums b span{ display:inline; margin:0; font:inherit; color:inherit; line-height:inherit; }
+.nums b span[aria-hidden]{ display:inline-block; }
+.night .skills li, [data-theme="light"] .skills li{
+  background:none !important; border:0 !important; border-top:2px solid var(--rule-2) !important;
+  border-radius:0 !important; padding:1rem 0 0 !important;
+}
+
