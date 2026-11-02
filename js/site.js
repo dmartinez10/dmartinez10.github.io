@@ -23,6 +23,27 @@ if (sw) {
   });
 }
 
+// ── light and dark: follows the device until pressed, then remembers ──
+const th = document.querySelector('.th');
+if (th) {
+  th.hidden = false;
+  const dark = () => root.dataset.theme !== 'light';
+  const sync = () => {
+    th.setAttribute('aria-pressed', String(dark()));
+    th.querySelector('.th__word').textContent = dark() ? 'Dark' : 'Light';
+  };
+  sync();
+  th.addEventListener('click', () => {
+    root.dataset.theme = dark() ? 'light' : 'dark';
+    try { localStorage.setItem('theme', root.dataset.theme); } catch {}
+    sync();
+  });
+  matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+    let saved; try { saved = localStorage.getItem('theme'); } catch {}
+    if (saved !== 'light' && saved !== 'dark') { root.dataset.theme = e.matches ? 'light' : 'dark'; sync(); }
+  });
+}
+
 // ── the warp between pages, only with motion on ──
 addEventListener('pageswap', (e) => { if (!motionOn() && e.viewTransition) e.viewTransition.skipTransition(); });
 addEventListener('pagereveal', (e) => { if (!motionOn() && e.viewTransition) e.viewTransition.skipTransition(); });

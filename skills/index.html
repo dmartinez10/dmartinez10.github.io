@@ -26,6 +26,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;1,400&family=Overpass:wght@600;700;800;900&display=swap" rel="stylesheet">
+<script>
+  /* light or dark: his saved pick, else the device's */
+  (function(){var d=document.documentElement,t;try{t=localStorage.getItem('theme');}catch(e){}
+  if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.dataset.theme=t;})();
+</script>
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="../future.css">
 <script>
@@ -52,7 +57,7 @@
       <a class="ns ns--work" href="../work/"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V5M10 4l-5 5M10 4l5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Work</a>
       <a class="ns ns--about" href="../about/"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="11" cy="4" r="2.1" fill="currentColor"/><path d="M11 7l-1 6-3 5m4-11l4 3m-4 3l3 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>About</a>
       <a class="ns ns--resume" href="../assets/resume.pdf"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2.5h6l4 4v11H5z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 11h5M7.5 14h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Resume</a>
-      <button class="mo" type="button" aria-label="Motion" aria-pressed="true" hidden><span class="mo__dot" aria-hidden="true"></span><span aria-hidden="true">Motion <span class="mo__on">on</span><span class="mo__off">off</span></span></button>
+      <span class="nav__sw"><button class="th" type="button" aria-label="Dark mode" aria-pressed="true" hidden><svg class="th__moon" viewBox="0 0 20 20" aria-hidden="true"><path d="M15.5 12.6A6.5 6.5 0 0 1 7.4 4.5a6.5 6.5 0 1 0 8.1 8.1z" fill="currentColor"/></svg><svg class="th__sun" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.6" fill="currentColor"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="th__word" aria-hidden="true">Dark</span></button><button class="mo" type="button" aria-label="Motion" aria-pressed="true" hidden><span class="mo__dot" aria-hidden="true"></span><span aria-hidden="true">Motion <span class="mo__on">on</span><span class="mo__off">off</span></span></button></span>
     </nav>
   </div>
 </header>
@@ -62,8 +67,8 @@
   <a class="back" href="../work/"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>All work</a>
   <p class="kick">Skills</p>
   <h1>What I can do, and where I proved it.</h1>
-  <p>Every line here has a job attached to it. If it only ever happened in a tutorial, it is not
-    on this page.</p>
+  <p>Every line here has a real job attached to it. If I only ever did it in a tutorial, it&rsquo;s
+    not on this page, because I want you to be able to check all of it.</p>
 </section>
 
 <section class="sect wrap">
@@ -175,7 +180,7 @@
 <footer class="foot">
   <div class="foot__in">
     <div class="foot__say">
-      <h2 class="foot__h">Tell me what you are building and who it is for.</h2>
+      <h2 class="foot__h">Tell me what you&rsquo;re building and who it&rsquo;s for.</h2>
       <a class="foot__mail" href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a>
       <div class="foot__links">
         <a href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a>
@@ -186,7 +191,7 @@
     </div>
     <div class="foot__grid">
       <div><h3>WHERE I AM</h3><p>Iowa City during term. West Liberty, Iowa.</p></div>
-      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, and Atkinson Hyperlegible, drawn for readers with low vision.</p></div>
+      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, because this whole site is a road. And Atkinson Hyperlegible, drawn for readers with low vision, because I want anyone to be able to read it.</p></div>
       <div><h3>HOW IT IS BUILT</h3><p>From scratch. No framework and no build step. A little JavaScript adds the motion, and every page reads the same without it.</p></div>
     </div>
   </div>

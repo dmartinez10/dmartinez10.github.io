@@ -25,6 +25,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;1,400&family=Overpass:wght@600;700;800;900&display=swap" rel="stylesheet">
+<script>
+  /* light or dark: his saved pick, else the device's */
+  (function(){var d=document.documentElement,t;try{t=localStorage.getItem('theme');}catch(e){}
+  if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.dataset.theme=t;})();
+</script>
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="../case.css">
 <link rel="stylesheet" href="../future.css">
@@ -52,7 +57,7 @@
       <a class="ns ns--work" href="../work/" aria-current="page"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V5M10 4l-5 5M10 4l5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Work</a>
       <a class="ns ns--about" href="../about/"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="11" cy="4" r="2.1" fill="currentColor"/><path d="M11 7l-1 6-3 5m4-11l4 3m-4 3l3 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>About</a>
       <a class="ns ns--resume" href="../assets/resume.pdf"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2.5h6l4 4v11H5z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 11h5M7.5 14h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Resume</a>
-      <button class="mo" type="button" aria-label="Motion" aria-pressed="true" hidden><span class="mo__dot" aria-hidden="true"></span><span aria-hidden="true">Motion <span class="mo__on">on</span><span class="mo__off">off</span></span></button>
+      <span class="nav__sw"><button class="th" type="button" aria-label="Dark mode" aria-pressed="true" hidden><svg class="th__moon" viewBox="0 0 20 20" aria-hidden="true"><path d="M15.5 12.6A6.5 6.5 0 0 1 7.4 4.5a6.5 6.5 0 1 0 8.1 8.1z" fill="currentColor"/></svg><svg class="th__sun" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.6" fill="currentColor"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="th__word" aria-hidden="true">Dark</span></button><button class="mo" type="button" aria-label="Motion" aria-pressed="true" hidden><span class="mo__dot" aria-hidden="true"></span><span aria-hidden="true">Motion <span class="mo__on">on</span><span class="mo__off">off</span></span></button></span>
     </nav>
   </div>
 </header>
@@ -63,8 +68,8 @@
   <p class="case__kicker"><span class="stop stop--c" aria-hidden="true">C1</span>My own app, 2026, in testing</p>
   <h1 class="case__title">Centline</h1>
   <p class="case__thesis">
-    A phone app for truck drivers who own their one truck: every load as one record, from
-    saved to paid. I design it and build it, on my own.
+    A phone app for truck drivers who own their one truck. Every load is one record, from
+    saved to paid. I design it and I build it, on my own.
   </p>
 <figure class="fig case__hero">
   <button class="zoom" type="button" popovertarget="lb-c-cover">
@@ -77,24 +82,25 @@
   <div class="story">
     <div>
       <h2>What Centline is</h2>
-      <p>It is for a driver who owns his one truck and runs it as his own business, often in
-        his first year, reading his phone one-handed at a loading dock at night. Centline keeps
-        each load in one place, from the day it is saved to the day it is paid: where it
-        stands, its paperwork, and the invoice that goes out with that paperwork attached.</p>
-      <p>It is in testing and not yet in the App Store, so no one uses it for real yet.</p>
+      <p>It's for a driver who owns his one truck and runs it as his own business. A lot of
+        the time he's in his first year, holding his phone in one hand at a loading dock at
+        night. Centline keeps each load in one place, from the day it's saved to the day it's
+        paid: where it stands, its paperwork, and the invoice that goes out with that
+        paperwork attached.</p>
+      <p>It's in testing and not in the App Store yet, so nobody uses it for real yet.</p>
     </div>
     <div>
       <h2>Why I built it</h2>
       <p>My dad has driven a truck for 35 years, and he owns his own. Driving is only half
-        of that job; the other half is paperwork, and the money waits on it. I built
-        Centline for that half: the stretch between delivering a load and getting paid for
-        it.</p>
+        the job. The other half is paperwork, and the money waits on it. I built Centline
+        for that half, the stretch between delivering a load and getting paid for it,
+        because that's where I saw the most time go.</p>
     </div>
     <div>
       <h2>What was mine</h2>
-      <p>All of it: the product decisions, the design system, the rules, and the build.
-        Claude Code draws the options I choose between and checks the work against those
-        rules. Nothing merges without my word.</p>
+      <p>All of it: the product decisions, the design system, the rules and the build.
+        Claude Code draws the options I pick from and checks the work against my rules.
+        Nothing merges until I say so, because I'm the one who has to answer for it.</p>
     </div>
   </div>
 
@@ -115,12 +121,14 @@
       <li><b>Every product decision,</b> including cutting a whole half of the app when it
         turned out to be the wrong half.</li>
       <li><b>The design system.</b> Every colour comes from one set of tokens, checked for
-        WCAG contrast, with a night palette for a loading dock at 2am.</li>
+        WCAG contrast. There's a night palette because he's reading it at a loading dock at
+        2am.</li>
       <li><b>Rules held by tests, not by memory.</b> Every screen fits every phone from 280 to
-        440 points wide, and nothing ever grades a driver&rsquo;s record.</li>
-      <li><b>Options before code.</b> Each change is drawn two to four ways, picked, written
-        down, then built and walked on my own phone. Claude Code is in the loop: it draws the
-        options I choose between and checks the work against my rules.</li>
+        440 points wide, and nothing ever grades a driver&rsquo;s record. I put them in tests
+        because I'll forget a rule at some point, and a test won't.</li>
+      <li><b>Options before code.</b> Each change gets drawn two to four ways, I pick one and
+        write down why, then I build it and walk it on my own phone. I do it this way because
+        it's way easier to pick between real options than to argue about one.</li>
     </ul>
   </section>
 
@@ -131,8 +139,9 @@
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
     <div class="prose">
-      <p>The app opens on the load he is on, drawn as a green highway sign, with one button
-        that matches where the load is:</p>
+      <p>The app opens on the load he's on, drawn as a green highway sign, with one button
+        for where the load is right now. I went with one button because nobody with one
+        truck opens an app to read reports. If it wastes his time, he deletes it.</p>
     </div>
     <div class="now">
       <fieldset class="pick-row">
@@ -162,9 +171,10 @@
     </div>
     <div class="prose">
       <p>
-        Centline began as a tool for pricing loads. Six weeks in, I cut the entire cost side,
-        because the real pain is getting from delivered to paid. What is left does two jobs
-        well instead of five jobs halfway: move the load, and get it paid.
+        Centline started as a tool for pricing loads. Six weeks in, I cut the whole cost side.
+        Honestly it was hard to do, but the real pain is getting from delivered to paid, not
+        pricing. What's left does two jobs well instead of five jobs halfway: move the load,
+        and get it paid.
       </p>
     </div>
     <div class="shots">
@@ -173,7 +183,7 @@
     <img src="../assets/centline/inbox-to-invoice.webp" width="1600" height="1041" loading="lazy" decoding="async" alt="Four phones in sequence: an email from Example Logistics with a rate confirmation shared to Centline, picking the invoice it belongs to, signing the rate confirmation on the phone, and invoice 1042 with the signed bill of lading and the rate confirmation ticked in the packet.">
     <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
   </button>
-  <figcaption>From your inbox to the invoice, in four steps. A design preview: names and numbers are made up.</figcaption>
+  <figcaption>From your inbox to the invoice in four steps. A design preview, names and numbers are made up.</figcaption>
 </figure>
 <figure class="fig">
   <button class="zoom" type="button" popovertarget="lb-c-paid">
@@ -199,12 +209,12 @@
       <span class="sec__rule" aria-hidden="true"></span>
     </div>
     <ul class="moves">
-      <li><span class="row"><span class="from">Five jobs</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Two</b></span><em>Pricing, deadhead, the load check and the broker network came out. What is left moves the load and gets it paid</em></li>
-      <li><span class="row"><span class="from">Five tabs</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Four</b></span><em>Now, Loads, Invoices, Profile</em></li>
-      <li><span class="row"><span class="from">1.4:1</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">3:1</b></span><em>An input&rsquo;s edge, which WCAG asks to be visible. The old hairline was not</em></li>
-      <li><span class="row"><span class="from">A checklist you could tick</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">A packet that cannot lie</b></span><em>The invoice will not send without the signed bill of lading and the rate confirmation</em></li>
-      <li><span class="row"><span class="from">0</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">5,888</b></span><em>Tests holding the rules, including the ones review would miss</em></li>
-      <li><span class="row"><span class="from">Trusting the suite</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Breaking it on purpose</b></span><em>11 real defects found in one night by the agent whose only job is to make a finished change fail</em></li>
+      <li><span class="row"><span class="from">Five jobs</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Two</b></span><em>Pricing, deadhead, the load check and the broker network came out. What's left moves the load and gets it paid</em></li>
+      <li><span class="row"><span class="from">Five tabs</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Four</b></span><em>Now, Loads, Invoices, Profile. Fewer jobs meant one less tab to dig through</em></li>
+      <li><span class="row"><span class="from">1.4:1</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">3:1</b></span><em>An input&rsquo;s edge. WCAG asks for it to be visible, and the old hairline just wasn&rsquo;t</em></li>
+      <li><span class="row"><span class="from">A checklist you could tick</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">A packet that cannot lie</b></span><em>The invoice won&rsquo;t send without the signed bill of lading and the rate confirmation, because the money waits on that paperwork</em></li>
+      <li><span class="row"><span class="from">0</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">5,888</b></span><em>Tests holding the rules, including the ones a review would miss</em></li>
+      <li><span class="row"><span class="from">Trusting the suite</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Breaking it on purpose</b></span><em>11 real defects found in one night by the agent whose only job is to make a finished change fail. Green tests only prove what they check</em></li>
     </ul>
   </section>
 
@@ -235,7 +245,7 @@
 <footer class="foot">
   <div class="foot__in">
     <div class="foot__say">
-      <h2 class="foot__h">Tell me what you are building and who it is for.</h2>
+      <h2 class="foot__h">Tell me what you&rsquo;re building and who it&rsquo;s for.</h2>
       <a class="foot__mail" href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a>
       <div class="foot__links">
         <a href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a>
@@ -246,7 +256,7 @@
     </div>
     <div class="foot__grid">
       <div><h3>WHERE I AM</h3><p>Iowa City during term. West Liberty, Iowa.</p></div>
-      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, and Atkinson Hyperlegible, drawn for readers with low vision.</p></div>
+      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, because this whole site is a road. And Atkinson Hyperlegible, drawn for readers with low vision, because I want anyone to be able to read it.</p></div>
       <div><h3>HOW IT IS BUILT</h3><p>From scratch. No framework and no build step. A little JavaScript adds the motion, and every page reads the same without it.</p></div>
     </div>
   </div>

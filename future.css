@@ -9,8 +9,8 @@
   --night-2:  #0B1222;   /* the sky at the horizon */
   --asphalt:  #12161F;
   --glass:    #0A0F18;
-  --text:     #EEF1F5;
-  --text-2:   #AEB6C4;   /* 9.6:1 on --night */
+  --text:     #FFFFFF;
+  --text-2:   #DCE1E9;   /* white text at night, his ask 2026-11-02 */
   --edge:     rgb(238 241 245 / .16);
   --cl:       #FFC72C;   /* the centre line, the one accent */
   --cl-glow:  rgb(255 199 44 / .55);
@@ -267,10 +267,10 @@
   --bg-sub:    #0B0F16;
   --bg-raise:  #161C27;
   --panel:     #0C1119;
-  --ink:       #EEF1F5;
-  --ink-2:     #C3CAD5;
-  --ink-3:     #9AA3B2;   /* 7.4:1 on --panel */
-  --ink-4:     #9AA3B2;
+  --ink:       #FFFFFF;
+  --ink-2:     #EEF1F6;
+  --ink-3:     #C9D0DB;
+  --ink-4:     #C9D0DB;
   --rule:      #1E2531;
   --rule-2:    #3A4454;
   --sign:      #1A2440;   /* a panel, not a button, at night */
@@ -467,7 +467,7 @@
 .night .zoom img, .night .phones img, .night .twin{ background:var(--bg-raise); }
 /* the wheel's dots: a 44px target on touch */
 @media (max-width:52rem){
-  .nav--night .mo{ position:absolute; top:.9rem; right:clamp(1rem,4vw,3.5rem); margin:0; }
+  .nav--night .nav__sw{ position:absolute; top:.9rem; right:clamp(1rem,4vw,3.5rem); margin:0; }
 }
 .road__p--also{ margin-top:.5rem; }
 .boot[data-motion="on"] .road__p--also{ animation-delay:.55s; }
@@ -553,3 +553,77 @@
 /* dragging the wheel never selects its words or drags its links */
 .has-wheel .signs__list{ -webkit-user-select:none; user-select:none; -webkit-touch-callout:none; }
 .has-wheel .sign a{ -webkit-user-drag:none; }
+
+/* ══════════════════════════════════════════════════════════════════
+   Light and dark (2026-11-02). Dark is the night above with white text.
+   Light turns the tokens back to the paper of styles.css. The road in
+   the hero stays a night road in both: it is a scene, not a surface.
+   The switch follows the phone or computer until it is pressed.
+   ══════════════════════════════════════════════════════════════════ */
+.nav__sw{ display:inline-flex; align-items:center; gap:.35rem; margin-left:.35rem; }
+.nav__sw .mo{ margin-left:0; }
+.th{
+  display:inline-flex; align-items:center; gap:.45rem;
+  min-height:2.6rem; padding:.45rem .85rem; border-radius:999px; cursor:pointer;
+  font:500 .84rem/1 var(--mono); color:var(--ink);
+  background:rgb(238 241 245 / .06); border:1px solid var(--edge);
+  transition:background-color .15s ease, transform .16s var(--ease-out);
+}
+.nav--night .th{ color:var(--text); }
+.th:active{ transform:scale(.97); }
+.th svg{ width:1rem; height:1rem; }
+.th__sun, .th__moon{ display:none; }
+[data-theme="light"] .th__sun, :root:not([data-theme="light"]) .th__moon{ display:inline; }
+.th[hidden]{ display:none; }
+@media (hover:hover) and (pointer:fine){ .th:hover{ background:rgb(238 241 245 / .11); } }
+
+.night[data-theme="light"]{
+  --bg:        #EFE9DE;
+  --bg-sub:    #FBF8F2;
+  --bg-raise:  #E4DCCB;
+  --panel:     #FBF8F2;
+  --ink:       #14171F;
+  --ink-2:     #2E3440;
+  --ink-3:     #4A5160;
+  --ink-4:     #4A5160;
+  --rule:      #DCD3C2;
+  --rule-2:    #BCB09C;
+  --sign:      #14224A;
+  --sign-2:    #AEB9D6;
+  --sign-3:    #22346A;
+  --accent:    #14224A;
+  --accent-d:  #0B1533;
+  --accent-bg: #E3E7F2;
+  --edge:      rgb(20 23 31 / .16);
+  color-scheme:light;
+}
+[data-theme="light"] .nav:not(.nav--night){ background:rgb(239 233 222 / .86); }
+[data-theme="light"] .ns:hover{ background:rgb(20 23 31 / .06); }
+[data-theme="light"] .nav:not(.nav--night) .th, [data-theme="light"] .nav:not(.nav--night) .mo{ background:var(--panel); border-color:var(--rule-2); color:var(--ink); }
+[data-theme="light"] .pcard{ background:var(--panel); box-shadow:0 1.25rem 2.5rem -2rem rgb(20 23 31 / .35); }
+@media (hover:hover) and (pointer:fine){
+  [data-theme="light"] .pcard:hover{ border-color:rgb(180 120 0 / .6); box-shadow:0 1.5rem 3rem -2rem rgb(20 23 31 / .45); }
+  [data-theme="light"] .nav:not(.nav--night) .th:hover{ background:var(--bg-raise); }
+}
+[data-theme="light"] .kit__panel{ box-shadow:0 1.5rem 3rem -2.5rem rgb(20 23 31 / .35); }
+[data-theme="light"] .kit__item + .kit__item{ border-top-color:var(--rule); }
+[data-theme="light"] .logo{ box-shadow:0 0 0 1px var(--rule); }
+[data-theme="light"] .readout__row--true b{ color:#B42318; }
+[data-theme="light"] .sec__n, [data-theme="light"] .moves .arrow{ color:color-mix(in oklab, var(--line, #8A6200) 75%, black); }
+[data-theme="light"] .nums li, [data-theme="light"] .sect:has(.nums) .nums li{ border-top-color:#E0A800; }
+[data-theme="light"] .foot{ background:var(--bg-sub); }
+[data-theme="light"] .foot__links a:hover{ border-color:var(--ink); color:var(--ink); }
+[data-theme="light"] ::selection{ background:var(--cl); color:var(--ink); }
+/* the hero keeps its night: its words stay white on the road */
+[data-theme="light"] .road, [data-theme="light"] .road h1, [data-theme="light"] .road h2, [data-theme="light"] .road p{ color:var(--text); }
+[data-theme="light"] .nav--night .nav__me{ color:var(--text); }
+[data-theme="light"] .foot__h, [data-theme="light"] .foot__mail, [data-theme="light"] .foot__mail:hover{ color:var(--ink); }
+[data-theme="light"] .nav--night .ns{ color:var(--text-2); }
+[data-theme="light"] .nav--night .ns:hover, [data-theme="light"] .nav--night .ns[aria-current="page"]{ color:var(--text); }
+[data-theme="light"] .nav--night .ns[aria-current="page"]{ box-shadow:inset 0 0 0 1px rgb(238 241 245 / .16); }
+[data-theme="light"] .nav--night .ns:hover{ background:rgb(238 241 245 / .07); }
+/* on the narrowest phones the switch shows only its sun or moon, so it clears the name */
+@media (max-width:26rem){
+  .nav--night .th{ padding:.45rem .7rem; }
+  .nav--night .th__word{ display:none; }
+}

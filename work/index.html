@@ -35,6 +35,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;1,400&family=Overpass:wght@600;700;800;900&display=swap" rel="stylesheet">
+<script>
+  /* light or dark: his saved pick, else the device's */
+  (function(){var d=document.documentElement,t;try{t=localStorage.getItem('theme');}catch(e){}
+  if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.dataset.theme=t;})();
+</script>
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="../future.css">
 <script>
@@ -61,7 +66,7 @@
       <a class="ns ns--work" href="../work/" aria-current="page"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V5M10 4l-5 5M10 4l5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Work</a>
       <a class="ns ns--about" href="../about/"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="11" cy="4" r="2.1" fill="currentColor"/><path d="M11 7l-1 6-3 5m4-11l4 3m-4 3l3 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>About</a>
       <a class="ns ns--resume" href="../assets/resume.pdf"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2.5h6l4 4v11H5z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 11h5M7.5 14h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Resume</a>
-      <button class="mo" type="button" aria-label="Motion" aria-pressed="true" hidden><span class="mo__dot" aria-hidden="true"></span><span aria-hidden="true">Motion <span class="mo__on">on</span><span class="mo__off">off</span></span></button>
+      <span class="nav__sw"><button class="th" type="button" aria-label="Dark mode" aria-pressed="true" hidden><svg class="th__moon" viewBox="0 0 20 20" aria-hidden="true"><path d="M15.5 12.6A6.5 6.5 0 0 1 7.4 4.5a6.5 6.5 0 1 0 8.1 8.1z" fill="currentColor"/></svg><svg class="th__sun" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.6" fill="currentColor"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="th__word" aria-hidden="true">Dark</span></button><button class="mo" type="button" aria-label="Motion" aria-pressed="true" hidden><span class="mo__dot" aria-hidden="true"></span><span aria-hidden="true">Motion <span class="mo__on">on</span><span class="mo__off">off</span></span></button></span>
     </nav>
   </div>
 </header>
@@ -69,8 +74,8 @@
 
 <section class="page-h wrap">
   <p class="kick">Work</p>
-  <h1>What I have worked on.</h1>
-  <p>A short story for each. Tap to learn more, and each one opens a page of its own.</p>
+  <h1>What I&rsquo;ve worked on.</h1>
+  <p>A quick story for each one. Tap to learn more and it opens its own page.</p>
   <div class="side">
     <span class="side__lab">Also here</span>
     <a class="ns ns--claude" href="claude.html"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 18V9m0 0L4 4m6 5l6-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>How I work with Claude</a>
@@ -88,7 +93,7 @@
         <span class="tag tag--wip">In testing</span>
       </div>
       <p class="proj__for">My own phone app for truck drivers who own their one truck: every load as one record, from saved to paid.</p>
-      <p class="proj__body">My dad has driven a truck for 35 years, and the hard half of the job is paperwork. I design and build Centline on my own. It is in testing, not yet in the App Store.</p>
+      <p class="proj__body">My dad has driven a truck for 35 years, and the hard half of the job is paperwork. I built Centline so that half takes less of his day. I design and build it on my own. It&rsquo;s in testing, not in the App Store yet.</p>
       <ul class="wins"><li><b>5,888</b>tests passing</li><li><b>144</b>pull requests merged</li><li><b>28</b>design specs before code</li></ul>
       <p class="proj__go"><a class="btn btn--open" href="centline.html">Tap to learn more<span class="sr"> about Centline</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
     </div>
@@ -108,7 +113,7 @@
         <span class="tag">Internship, shipped</span>
       </div>
       <p class="proj__for">Eight weeks in Tokyo as a UI/UX engineering intern, on an app that helps foreign residents of Japan through government paperwork.</p>
-      <p class="proj__body">Japan was always the dream, and I chased it. I redesigned the navigation, built the design system, and shipped every string in nine languages. It is on the App Store.</p>
+      <p class="proj__body">Japan was always the dream, so I went after it. I redesigned the navigation, built the design system, and shipped every string in nine languages, because the people using it don&rsquo;t all read Japanese. It&rsquo;s on the App Store.</p>
       <ul class="wins"><li><b>70+</b>pull requests in eight weeks</li><li><b>9</b>languages shipped</li><li><b>8&times;</b>faster core browse flow</li></ul>
       <p class="proj__go"><a class="btn btn--open" href="sollo.html">Tap to learn more<span class="sr"> about Sollo</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
     </div>
@@ -128,7 +133,7 @@
         <span class="tag">Research, then a working app</span>
       </div>
       <p class="proj__for">A web app for students who commute to campus, built from five interviews for my Human-Computer Interaction course.</p>
-      <p class="proj__body">Most campus tools are built for students in the dorms. I ran the research, designed the app and built it, and one student&rsquo;s answer changed what it became.</p>
+      <p class="proj__body">I made it because most campus tools are built for students in the dorms. I ran the research, designed the app and built it, and one student&rsquo;s answer changed what it became.</p>
       <ul class="wins"><li><b>5</b>interviews</li><li><b>3</b>findings, each built in</li><li><b>8</b>pages, front end to back end</li></ul>
       <p class="proj__go"><a class="btn btn--open" href="commu.html">Tap to learn more<span class="sr"> about CommU</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
     </div>
@@ -148,7 +153,7 @@
         <span class="tag">React and TypeScript</span>
       </div>
       <p class="proj__for">A small set of accessible components in React and TypeScript, with no UI library.</p>
-      <p class="proj__body">Built to show the interaction craft rather than describe it: one token file themes every piece, and every control works by keyboard.</p>
+      <p class="proj__body">I built it to show the interaction stuff instead of just describing it: one token file themes every piece, and every control works by keyboard.</p>
       <ul class="wins"><li><b>22</b>colour pairs, all WCAG AA</li><li><b>2</b>themes, one switch</li><li><b>0</b>UI libraries</li></ul>
       <p class="proj__go"><a class="btn btn--open" href="../components/">Tap to learn more<span class="sr"> about the component lab</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
     </div>
@@ -171,7 +176,7 @@
         <span class="tag">The interchange</span>
       </div>
       <p class="proj__for">How the work above gets made.</p>
-      <p class="proj__body">Claude draws the options I choose between and checks the work against rules I wrote. The decisions stay mine, and nothing merges without my word.</p>
+      <p class="proj__body">Claude draws the options I choose between and checks the work against rules I wrote. I work this way because a recommendation I can overrule beats an answer I have to argue with. The decisions stay mine, and nothing merges without my word.</p>
       <p class="proj__go"><a class="btn btn--open" href="claude.html">Tap to learn more<span class="sr"> about how I work with Claude</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
     </div>
 
@@ -201,7 +206,7 @@
 <footer class="foot">
   <div class="foot__in">
     <div class="foot__say">
-      <h2 class="foot__h">Tell me what you are building and who it is for.</h2>
+      <h2 class="foot__h">Tell me what you&rsquo;re building and who it&rsquo;s for.</h2>
       <a class="foot__mail" href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a>
       <div class="foot__links">
         <a href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a>
@@ -212,7 +217,7 @@
     </div>
     <div class="foot__grid">
       <div><h3>WHERE I AM</h3><p>Iowa City during term. West Liberty, Iowa.</p></div>
-      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, and Atkinson Hyperlegible, drawn for readers with low vision.</p></div>
+      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, because this whole site is a road. And Atkinson Hyperlegible, drawn for readers with low vision, because I want anyone to be able to read it.</p></div>
       <div><h3>HOW IT IS BUILT</h3><p>From scratch. No framework and no build step. A little JavaScript adds the motion, and every page reads the same without it.</p></div>
     </div>
   </div>

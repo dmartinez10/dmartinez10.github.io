@@ -35,6 +35,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;1,400&family=Overpass:wght@600;700;800;900&display=swap" rel="stylesheet">
+<script>
+  /* light or dark: his saved pick, else the device's */
+  (function(){var d=document.documentElement,t;try{t=localStorage.getItem('theme');}catch(e){}
+  if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.dataset.theme=t;})();
+</script>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="future.css">
 <script>
@@ -68,7 +73,7 @@
       <a class="ns ns--work" href="work/"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V5M10 4l-5 5M10 4l5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Work</a>
       <a class="ns ns--about" href="about/"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="11" cy="4" r="2.1" fill="currentColor"/><path d="M11 7l-1 6-3 5m4-11l4 3m-4 3l3 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>About</a>
       <a class="ns ns--resume" href="assets/resume.pdf"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2.5h6l4 4v11H5z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 11h5M7.5 14h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Resume</a>
-          <button class="mo" type="button" aria-label="Motion" aria-pressed="true" hidden><span class="mo__dot" aria-hidden="true"></span><span aria-hidden="true">Motion <span class="mo__on">on</span><span class="mo__off">off</span></span></button>
+      <span class="nav__sw"><button class="th" type="button" aria-label="Dark mode" aria-pressed="true" hidden><svg class="th__moon" viewBox="0 0 20 20" aria-hidden="true"><path d="M15.5 12.6A6.5 6.5 0 0 1 7.4 4.5a6.5 6.5 0 1 0 8.1 8.1z" fill="currentColor"/></svg><svg class="th__sun" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.6" fill="currentColor"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="th__word" aria-hidden="true">Dark</span></button><button class="mo" type="button" aria-label="Motion" aria-pressed="true" hidden><span class="mo__dot" aria-hidden="true"></span><span aria-hidden="true">Motion <span class="mo__on">on</span><span class="mo__off">off</span></span></button></span>
     </nav>
   </div>
 </header>
@@ -84,8 +89,8 @@
       <p class="road__hi">Hi, I&rsquo;m David.</p>
       <h1 class="road__h" id="hero-h">I design and build software.</h1>
     </div>
-    <p class="road__p">Product designer and UX engineer. 70+ pull requests merged in eight weeks at Sollo in Tokyo.</p>
-    <p class="road__p road__p--also">Centline, my own app: 5,888 tests and 144 merged pull requests.</p>
+    <p class="road__p">Product designer and UX engineer. I merged 70+ pull requests in eight weeks at Sollo in Tokyo.</p>
+    <p class="road__p road__p--also">And Centline, my own app: 5,888 tests and 144 merged pull requests.</p>
   </div>
   <nav class="signs" aria-labelledby="signs-h">
     <p class="signs__h" id="signs-h">You are here. Where to?</p>
@@ -114,7 +119,7 @@
 <section class="sect wrap" id="projects">
   <div class="sect__h">
     <h2 class="sect__t">Projects</h2>
-    <span class="sect__n">A short story each, then tap to learn more</span>
+    <span class="sect__n">A quick story for each one, then tap to learn more</span>
   </div>
 
   <div class="cards">
@@ -128,7 +133,7 @@
   <figcaption>A design preview. Names and numbers are made up.</figcaption>
 </figure>
       <p class="pcard__for">My own phone app for truck drivers who own their one truck: every load as one record, from saved to paid.</p>
-      <p class="pcard__body">Trucking is the work I grew up around. I design and build it on my own: 5,888 tests and 144 merged pull requests so far.</p>
+      <p class="pcard__body">I built it because trucking is the work I grew up around, and the hard half of the job is the paperwork. I design and build it on my own: 5,888 tests and 144 merged pull requests so far.</p>
       <p class="pcard__go"><a class="btn btn--open" href="work/centline.html">Tap to learn more<span class="sr"> about Centline</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
     </article>
 
@@ -142,7 +147,7 @@
   <figcaption>Turn three of the navigation, on the design canvas.</figcaption>
 </figure>
       <p class="pcard__for">Eight weeks in Tokyo on an app that helps foreign residents of Japan through government paperwork.</p>
-      <p class="pcard__body">Japan was always the dream, and I chased it. 70+ pull requests merged, the navigation redesigned, and every string shipped in nine languages. It is on the App Store.</p>
+      <p class="pcard__body">Japan was always the dream, so I went after it. I merged 70+ pull requests, redesigned the navigation and shipped every string in nine languages, because the people using it don&rsquo;t all read Japanese. It&rsquo;s on the App Store.</p>
       <p class="pcard__go"><a class="btn btn--open" href="work/sollo.html">Tap to learn more<span class="sr"> about Sollo</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
     </article>
 
@@ -156,7 +161,7 @@
   <figcaption>The three cards on the home page are the three findings, in order.</figcaption>
 </figure>
       <p class="pcard__for">A web app for students who commute to campus, built from five interviews.</p>
-      <p class="pcard__body">I ran the research, designed it and built it, and one student&rsquo;s answer changed what it became.</p>
+      <p class="pcard__body">I made it because most campus tools are built for students in the dorms. I ran the research, designed it and built it, and one student&rsquo;s answer changed what it became.</p>
       <p class="pcard__go"><a class="btn btn--open" href="work/commu.html">Tap to learn more<span class="sr"> about CommU</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
     </article>
 
@@ -173,14 +178,14 @@
         <figcaption>The same components, one token switch apart.</figcaption>
       </figure>
       <p class="pcard__for">Accessible components in React and TypeScript, with no UI library.</p>
-      <p class="pcard__body">One token file themes every piece, and every control works by keyboard. Put the mouse down and try it.</p>
+      <p class="pcard__body">I built it to show the interaction stuff instead of just talking about it. One token file themes every piece, and every control works by keyboard. Put the mouse down and try it.</p>
       <p class="pcard__go"><a class="btn btn--open" href="components/">Tap to learn more<span class="sr"> about the component lab</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
     </article>
 
     <article class="pcard pcard--wide proj--h" data-arrive data-tilt style="--k:0">
       <div class="pcard__top"><img class="logo" src="assets/logos/claude.svg" width="48" height="48" alt=""><div><h3 class="pcard__name">How I work with Claude</h3><p class="pcard__tag">The interchange every project runs through</p></div></div>
       <p class="pcard__for">Claude draws the options I choose between and checks the work against rules I wrote.</p>
-      <p class="pcard__body">The decisions stay mine, and nothing merges without my word.</p>
+      <p class="pcard__body">I work this way because a recommendation I can overrule beats an answer I have to argue with. The decisions stay mine, and nothing merges without my word.</p>
       <p class="pcard__go"><a class="btn btn--open" href="work/claude.html">Tap to learn more<span class="sr"> about how I work with Claude</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
       <div class="pcard__side">
         <div class="term" role="img" aria-label="A terminal: my ask in a box, results on labelled lines, and a question answerable with one letter.">
@@ -200,7 +205,7 @@
 <section class="sect wrap">
   <div class="sect__h">
     <h2 class="sect__t">Measured, not estimated</h2>
-    <span class="sect__n">From shipped work at Sollo</span>
+    <span class="sect__n">From shipped work at Sollo. Real numbers, so you don&rsquo;t have to take my word for it</span>
   </div>
   <ul class="nums">
     <li><b data-count>70+</b><span>pull requests merged in eight weeks</span></li>
@@ -249,10 +254,10 @@
     <div class="prose">
       <p>
         I study informatics at the University of Iowa, human-computer interaction, with minors
-        in Spanish and psychology. Almost everything I build is for someone operating inside a
-        language or a system that was not designed with them in mind.
+        in Spanish and psychology. Almost everything I build is for someone stuck inside a
+        language or a system that wasn&rsquo;t made with them in mind. That&rsquo;s the stuff I care about.
       </p>
-      <p>The design half of my training asks who is on the other side of the screen. The engineering half means I can build the answer rather than hand it off.</p>
+      <p>Design taught me to ask who&rsquo;s on the other side of the screen. Engineering means I can build the answer myself instead of handing it off, and honestly that&rsquo;s why I learned both.</p>
       <ul class="facts" style="margin-top:1.25rem">
         <li>Iowa City, Iowa</li>
         <li>Open to product design and UX engineer roles</li>
@@ -292,7 +297,7 @@
 <footer class="foot">
   <div class="foot__in">
     <div class="foot__say">
-      <h2 class="foot__h">Tell me what you are building and who it is for.</h2>
+      <h2 class="foot__h">Tell me what you&rsquo;re building and who it&rsquo;s for.</h2>
       <a class="foot__mail" href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a>
       <div class="foot__links">
         <a href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a>
@@ -303,7 +308,7 @@
     </div>
     <div class="foot__grid">
       <div><h3>WHERE I AM</h3><p>Iowa City during term. West Liberty, Iowa.</p></div>
-      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, and Atkinson Hyperlegible, drawn for readers with low vision.</p></div>
+      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, because this whole site is a road. And Atkinson Hyperlegible, drawn for readers with low vision, because I want anyone to be able to read it.</p></div>
       <div><h3>HOW IT IS BUILT</h3><p>From scratch. No framework and no build step. The road is Three.js, loaded after the words, and the page reads the same without it.</p></div>
     </div>
   </div>

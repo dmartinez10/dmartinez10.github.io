@@ -25,6 +25,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;1,400&family=Overpass:wght@600;700;800;900&display=swap" rel="stylesheet">
+<script>
+  /* light or dark: his saved pick, else the device's */
+  (function(){var d=document.documentElement,t;try{t=localStorage.getItem('theme');}catch(e){}
+  if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.dataset.theme=t;})();
+</script>
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="../case.css">
 <link rel="stylesheet" href="../future.css">
@@ -52,7 +57,7 @@
       <a class="ns ns--work" href="../work/"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V5M10 4l-5 5M10 4l5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Work</a>
       <a class="ns ns--about" href="../about/"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="11" cy="4" r="2.1" fill="currentColor"/><path d="M11 7l-1 6-3 5m4-11l4 3m-4 3l3 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>About</a>
       <a class="ns ns--resume" href="../assets/resume.pdf"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2.5h6l4 4v11H5z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 11h5M7.5 14h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Resume</a>
-      <button class="mo" type="button" aria-label="Motion" aria-pressed="true" hidden><span class="mo__dot" aria-hidden="true"></span><span aria-hidden="true">Motion <span class="mo__on">on</span><span class="mo__off">off</span></span></button>
+      <span class="nav__sw"><button class="th" type="button" aria-label="Dark mode" aria-pressed="true" hidden><svg class="th__moon" viewBox="0 0 20 20" aria-hidden="true"><path d="M15.5 12.6A6.5 6.5 0 0 1 7.4 4.5a6.5 6.5 0 1 0 8.1 8.1z" fill="currentColor"/></svg><svg class="th__sun" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.6" fill="currentColor"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="th__word" aria-hidden="true">Dark</span></button><button class="mo" type="button" aria-label="Motion" aria-pressed="true" hidden><span class="mo__dot" aria-hidden="true"></span><span aria-hidden="true">Motion <span class="mo__on">on</span><span class="mo__off">off</span></span></button></span>
     </nav>
   </div>
 </header>
@@ -60,12 +65,13 @@
 
   <a class="back" href="./"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>All work</a>
 
-  <p class="case__kicker"><span class="stop stop--h" aria-hidden="true">H1</span>The interchange: every project runs through it</p>
+  <p class="case__kicker"><span class="stop stop--h" aria-hidden="true">H1</span>The interchange: every project I make runs through it</p>
   <h1 class="case__title">How I work with Claude</h1>
   <p class="case__thesis">
-    Claude is part of how I design, the way a sketchbook and a second pair of eyes are. It
-    draws the options, checks the work against rules I wrote, and tries to break what I think
-    is finished. The decisions stay mine.
+    Claude is part of how I design, like a sketchbook and a second pair of eyes. It draws
+    the options, checks the work against rules I wrote, and tries to break what I think is
+    finished. I work this way because I&rsquo;m one person doing design and code, and I want
+    every call checked before it ships. The decisions stay mine.
   </p>
 
   <div class="case__hero">
@@ -88,7 +94,7 @@
         <div class="term__next">NEXT: nothing running.</div>
       </div>
     </div>
-    <p class="demo-note">I even wrote it a style guide for talking to me in the terminal: my ask in a box, results on labelled lines, every question answerable with one letter. Try answering.</p>
+    <p class="demo-note">I even wrote it a style guide for talking to me in the terminal: my ask in a box, results on labelled lines, every question answerable with one letter. I did that because I want everything clear at a glance: what I asked, what got done, and what it needs from me. Try answering.</p>
   </div>
 
   <dl class="brief">
@@ -101,7 +107,7 @@
     <div>
       <dt>What stays mine</dt>
       <dd>The product decisions, the design systems, and the rules everything is checked
-        against. Nothing merges without my word.</dd>
+        against. Nothing merges without my word, because I&rsquo;m the one who answers for it.</dd>
     </div>
     <div>
       <dt>Where it shows</dt>
@@ -119,10 +125,11 @@
     <div class="prose">
       <p>
         I never ask for the answer. I ask for two to four options, drawn side by side on a
-        canvas with a recommendation marked, and I answer with a letter. The canvas is a
-        claude.ai Artifact: a live page, so an option can be clicked, resized and read in both
-        themes before a line of the product changes. The pick is written down with its date
-        and reason, and only then does building start.
+        canvas with a recommendation marked, and I answer with a letter. Why: seeing them next
+        to each other makes the right one obvious, way faster than reading about it. The canvas
+        is a claude.ai Artifact, a live page, so I can click an option, resize it and read it in
+        both themes before a line of the product changes. The pick gets written down with its
+        date and reason, and only then does building start.
       </p>
     </div>
 <figure class="fig">
@@ -145,9 +152,10 @@
     </div>
     <div class="prose">
       <p>
-        I keep agents narrow, and give each one the model its job needs: the checks that run
-        on every change get the smallest, and the ones that need judgement get the strongest.
-        These are the checkers I run on my own app. Open any of them:
+        I keep agents narrow, because a builder that also checks its own work just passes
+        itself. Each one gets the model its job needs: the checks that run on every change get
+        the smallest, and the ones that need judgement get the strongest. These are the
+        checkers I run on my own app. Open any of them:
       </p>
     </div>
     <div class="roster">
@@ -174,8 +182,9 @@
     </div>
     <div class="prose">
       <p>
-        <strong>None of them commits, stages, pushes, branches or merges.</strong> An agent
-        that hits a question it cannot answer stops and says so instead of guessing.
+        <strong>None of them commits, stages, pushes, branches or merges.</strong> If an agent
+        hits a question it can&rsquo;t answer, it stops and says so instead of guessing. I&rsquo;d
+        rather get asked than get surprised.
       </p>
     </div>
   </section>
@@ -194,7 +203,8 @@
     <div class="prose">
       <p style="margin-top:1.1rem">
         At Sollo I added a hook that sends every push through the team&rsquo;s review agents,
-        and used parallel reviewers before each pull request.
+        and used parallel reviewers before each pull request, so every push got reviewed the
+        same way and nothing slipped through on a busy day.
       </p>
     </div>
   </section>
@@ -206,7 +216,7 @@
     </div>
     <ul class="lessons">
       <li><b>Ask for options, not answers.</b><span>A recommendation you can overrule beats an answer you have to argue with.</span></li>
-      <li><b>Write the decision down.</b><span>Or the next session will undo it, confidently.</span></li>
+      <li><b>Write the decision down.</b><span>Or the next session will undo it, and sound sure about it.</span></li>
       <li><b>One agent, one job.</b><span>A builder that also checks its own work passes itself.</span></li>
       <li><b>Green is not proof.</b><span>Put the bug back and watch the test go red. If it stays green, it was never guarding anything.</span></li>
       <li><b>Look, then walk.</b><span>A screen at phone size and a walk on a real phone find what thousands of tests cannot.</span></li>
@@ -229,7 +239,7 @@
 <footer class="foot">
   <div class="foot__in">
     <div class="foot__say">
-      <h2 class="foot__h">Tell me what you are building and who it is for.</h2>
+      <h2 class="foot__h">Tell me what you&rsquo;re building and who it&rsquo;s for.</h2>
       <a class="foot__mail" href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a>
       <div class="foot__links">
         <a href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a>
@@ -240,7 +250,7 @@
     </div>
     <div class="foot__grid">
       <div><h3>WHERE I AM</h3><p>Iowa City during term. West Liberty, Iowa.</p></div>
-      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, and Atkinson Hyperlegible, drawn for readers with low vision.</p></div>
+      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, because this whole site is a road. And Atkinson Hyperlegible, drawn for readers with low vision, because I want anyone to be able to read it.</p></div>
       <div><h3>HOW IT IS BUILT</h3><p>From scratch. No framework and no build step. A little JavaScript adds the motion, and every page reads the same without it.</p></div>
     </div>
   </div>

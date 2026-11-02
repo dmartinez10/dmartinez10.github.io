@@ -25,6 +25,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;1,400&family=Overpass:wght@600;700;800;900&display=swap" rel="stylesheet">
+<script>
+  /* light or dark: his saved pick, else the device's */
+  (function(){var d=document.documentElement,t;try{t=localStorage.getItem('theme');}catch(e){}
+  if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.dataset.theme=t;})();
+</script>
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="../case.css">
 <link rel="stylesheet" href="../future.css">
@@ -52,7 +57,7 @@
       <a class="ns ns--work" href="../work/" aria-current="page"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V5M10 4l-5 5M10 4l5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Work</a>
       <a class="ns ns--about" href="../about/"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="11" cy="4" r="2.1" fill="currentColor"/><path d="M11 7l-1 6-3 5m4-11l4 3m-4 3l3 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>About</a>
       <a class="ns ns--resume" href="../assets/resume.pdf"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2.5h6l4 4v11H5z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 11h5M7.5 14h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Resume</a>
-      <button class="mo" type="button" aria-label="Motion" aria-pressed="true" hidden><span class="mo__dot" aria-hidden="true"></span><span aria-hidden="true">Motion <span class="mo__on">on</span><span class="mo__off">off</span></span></button>
+      <span class="nav__sw"><button class="th" type="button" aria-label="Dark mode" aria-pressed="true" hidden><svg class="th__moon" viewBox="0 0 20 20" aria-hidden="true"><path d="M15.5 12.6A6.5 6.5 0 0 1 7.4 4.5a6.5 6.5 0 1 0 8.1 8.1z" fill="currentColor"/></svg><svg class="th__sun" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.6" fill="currentColor"/><path d="M10 1.8v2.2M10 16v2.2M1.8 10H4M16 10h2.2M4.2 4.2l1.6 1.6M14.2 14.2l1.6 1.6M4.2 15.8l1.6-1.6M14.2 5.8l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="th__word" aria-hidden="true">Dark</span></button><button class="mo" type="button" aria-label="Motion" aria-pressed="true" hidden><span class="mo__dot" aria-hidden="true"></span><span aria-hidden="true">Motion <span class="mo__on">on</span><span class="mo__off">off</span></span></button></span>
     </nav>
   </div>
 </header>
@@ -63,9 +68,9 @@
   <p class="case__kicker"><span class="stop stop--s" aria-hidden="true">S1</span>Internship, Tokyo, June to August 2026</p>
   <h1 class="case__title">Sollo</h1>
   <p class="case__thesis">
-    Eight weeks in Tokyo as Sollo&rsquo;s UI/UX engineering intern, designing and building an
-    app that helps foreign residents of Japan get through government paperwork. It is on the
-    App Store now.
+    I spent eight weeks in Tokyo as Sollo&rsquo;s UI/UX engineering intern. I designed and built
+    an app that helps foreign residents of Japan get through government paperwork, and it&rsquo;s
+    on the App Store now.
   </p>
 
   <div class="story">
@@ -75,25 +80,26 @@
         help: visas and residency, benefits, healthcare, housing and local services. Its
         assistant, Ask Sollo, answers from real government documents, in plain language and in
         nine languages.</p>
-      <p>The app, Sollo Life Nav, has been on the App Store since 18 August 2026.</p>
+      <p>The app is called Sollo Life Nav, and it&rsquo;s been on the App Store since 18 August 2026.</p>
     </div>
     <div>
       <h2>Why I was there</h2>
-      <p>Japan was the dream first. Before the school year started I told my parents that the
-        next summer I would be interning in Japan, and then I went and chased it. Tech is what
-        I have always been into, and Japan is where I wanted to see it made.</p>
-      <p>I applied through CIEE, and I still remember the interview: they kept pushing me and
-        testing what I knew, and I loved it. Sollo handed me the UI/UX work I had never had
+      <p>Japan was the dream first. Before the school year started I told my parents I&rsquo;d be
+        interning in Japan the next summer, and then I went and chased it. Tech is what I&rsquo;ve
+        always been into, and Japan is where I wanted to see it made.</p>
+      <p>I applied through CIEE, and I still remember the interview. They kept pushing me and
+        testing what I knew, and honestly I loved it. Sollo gave me UI/UX work I&rsquo;d never had
         before, believed in me, let me go all out on the designs, and then made me defend
-        them. Defending them taught me the most.</p>
-      <p>For those eight weeks I was a foreigner in Tokyo too, so the reader was never hard
-        to picture.</p>
+        them. Defending them is what taught me the most.</p>
+      <p>For those eight weeks I was a foreigner in Tokyo too. That mattered, because I never
+        had to guess who I was designing for. I was living it.</p>
     </div>
     <div>
       <h2>What was mine</h2>
-      <p>I designed and I built. A design existed when I arrived, and from there every new
-        feature or idea meant I redrew the page myself, showed the team the options, and built
-        the one they agreed on. Plenty of pages got built more than once.</p>
+      <p>I designed and I built. There was already a design when I got there. From then on,
+        every new feature or idea meant I redrew the page myself, showed the team options, and
+        built the one they agreed on. I did it that way because a team picks better when it
+        can see the choices side by side. Plenty of pages got built more than once.</p>
       <p>The design system and its light and dark theme were mine, and so was every new string
         in nine languages.</p>
     </div>
@@ -114,24 +120,32 @@
     </div>
     <ul class="did">
       <li><b>Redesigned the navigation.</b> I drew it eleven ways in three turns, rebuilt the
-        signed-in app to the pick, and wired it to the live services.</li>
+        signed-in app to the pick, and wired it to the live services. I drew that many because
+        the first idea is almost never the best one.</li>
       <li><b>Redrew the pages as the product moved.</b> A new feature meant a new design from
-        me, options to the team, then I built whichever one they agreed on. Several versions of
-        the same page, until it was right.</li>
+        me, options to the team, then I built whichever one they agreed on. Some pages went
+        through several versions until they were right, and I&rsquo;d rather do that than ship
+        one that&rsquo;s almost right.</li>
       <li><b>Built the design system.</b> Colour, spacing and type tokens, a shared widget and
         icon library, and a light and dark theme, all under an automated WCAG AA contrast
-        check.</li>
+        check. I automated the check so contrast couldn&rsquo;t slip just because someone was
+        in a hurry.</li>
       <li><b>Shipped every string in nine languages.</b> Nothing went out as English with a
-        fallback, Easy Japanese included.</li>
+        fallback, Easy Japanese included. The whole point of the app is people who don&rsquo;t
+        read official Japanese, so English-only would have left them out.</li>
       <li><b>Caught accessibility misses before readers did.</b> A colour in a design handoff
-        measured 2.72:1, so it shipped at 4.60:1, one step up the designer&rsquo;s own palette.
-        A tap target the spec sized at 36 points shipped at 48.</li>
+        measured 2.72:1, so I shipped it at 4.60:1, one step up the designer&rsquo;s own palette.
+        A tap target the spec sized at 36 points shipped at 48. I moved up inside the
+        designer&rsquo;s palette on purpose, so it still looked like their design.</li>
       <li><b>Made it faster on purpose.</b> A thirty pull request performance sprint cut 3.1 MB
-        from the app bundle and made a card open eight times quicker.</li>
-      <li><b>Shipped feedback end to end.</b> In-app feedback and bug reporting, from the entry
-        point a reader taps to the report landing where the team reads it.</li>
+        from the app bundle and made a card open eight times quicker. Slow feels broken, and
+        people already stressed about paperwork don&rsquo;t need that.</li>
+      <li><b>Shipped feedback end to end.</b> In-app feedback and bug reporting, from the button
+        a reader taps to the report landing where the team reads it. I wanted the people using
+        it to be able to tell us what was wrong without leaving the app.</li>
       <li><b>Worked across the whole stack:</b> design, the mobile app and the Python
-        backend.</li>
+        backend. I did all three because a design only counts once it works for real, and I
+        wanted to be the one who got it there.</li>
     </ul>
   </section>
 
@@ -143,7 +157,8 @@
     </div>
     <div class="prose">
       <p>Before I rebuilt the app, I drew its navigation on a design canvas, a board of phones
-        side by side, three times over. Pick a turn:</p>
+        side by side, three times over. I like seeing every option at once because it makes
+        the differences obvious. Pick a turn:</p>
     </div>
 
     <div class="turns">
@@ -191,10 +206,11 @@
     </div>
     <div class="prose">
       <p>
-        Sixteen days after I built the five-tab navigation, I cut it to a single screen for the
-        public beta. Three of the five tabs were still &ldquo;coming soon&rdquo;, and a row of
-        doors that open onto nothing is not navigation. The dock was parked, not deleted, for
-        when those parts ship.
+        Sixteen days after I built the five-tab navigation, I cut it down to a single screen for
+        the public beta. I did it because three of the five tabs were still &ldquo;coming
+        soon&rdquo;, and a row of doors that open onto nothing isn&rsquo;t navigation. It was hard
+        to cut something I&rsquo;d just built, but it was the right call. I parked the dock instead
+        of deleting it, so it&rsquo;s ready when those parts ship.
       </p>
     </div>
     <div class="shots">
@@ -218,7 +234,7 @@
     <img src="../assets/sollo/journeys-bar.webp" width="1600" height="384" loading="lazy" decoding="async" alt="Twelve small designs of the Your Journeys bar, labelled A to L: stacked rings, a warm feature card, a minimal link with dots, a dark accent bar, a two-stat split, inline chips, and six compact slim lines.">
     <span class="zoom__hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span><span class="sr">, enlarge</span>
   </button>
-  <figcaption>One component, the bar back into a checklist in progress, drawn twelve ways before one was built.</figcaption>
+  <figcaption>One component, the bar that takes you back into a checklist in progress, drawn twelve ways before I built one.</figcaption>
 </figure>
       </div>
     </div>
@@ -232,10 +248,10 @@
     </div>
     <ul class="moves">
       <li><span class="row"><span class="from">1,033ms</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">125ms</b></span><em>The core browse flow, eight times faster</em></li>
-      <li><span class="row"><span class="from">2.72:1</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">4.60:1</b></span><em>A handoff colour I measured and moved, one step up the designer&rsquo;s own palette. 7.75:1 in dark mode</em></li>
-      <li><span class="row"><span class="from">36 points</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">48 points</b></span><em>The tap target on the escape hatch out of a failing search</em></li>
+      <li><span class="row"><span class="from">2.72:1</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">4.60:1</b></span><em>A handoff colour I measured and moved one step up the designer&rsquo;s own palette, so it passed and still looked like theirs. 7.75:1 in dark mode</em></li>
+      <li><span class="row"><span class="from">36 points</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">48 points</b></span><em>The tap target on the way out of a failing search, because that&rsquo;s the button you need most when you&rsquo;re stuck</em></li>
       <li><span class="row"><span class="from">Five tabs</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">One surface</b></span><em>Cut sixteen days after I built it, because three of the five were still coming soon</em></li>
-      <li><span class="row"><span class="from">English with a fallback</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Nine languages</b></span><em>Every new string, Easy Japanese included, before the change was proposed</em></li>
+      <li><span class="row"><span class="from">English with a fallback</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Nine languages</b></span><em>Every new string, Easy Japanese included, before I even proposed the change</em></li>
       <li><span class="row"><span class="from">3.1 MB heavier</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">3.1 MB lighter</b></span><em>Cut from the app bundle across a thirty pull request performance sprint</em></li>
       <li><span class="row"><span class="from">Not in the app</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">Feedback in two taps</b></span><em>In-app feedback and bug reporting, shipped end to end</em></li>
       <li><span class="row"><span class="from">Nothing</span><span class="arrow" aria-hidden="true">&#8594;</span><b class="to">On the App Store</b></span><em>Sollo Life Nav, live since 18 August 2026</em></li>
@@ -269,7 +285,7 @@
 </div>
 <div class="lightbox" id="lb-s-journeys" popover>
   <button class="lightbox__close" type="button" popovertarget="lb-s-journeys" popovertargetaction="hide" autofocus>Close</button>
-  <figure><img src="../assets/sollo/journeys-bar.webp" width="1600" height="384" loading="lazy" decoding="async" alt="Twelve small designs of the Your Journeys bar, labelled A to L: stacked rings, a warm feature card, a minimal link with dots, a dark accent bar, a two-stat split, inline chips, and six compact slim lines."><figcaption>One component drawn twelve ways before one was built.</figcaption></figure>
+  <figure><img src="../assets/sollo/journeys-bar.webp" width="1600" height="384" loading="lazy" decoding="async" alt="Twelve small designs of the Your Journeys bar, labelled A to L: stacked rings, a warm feature card, a minimal link with dots, a dark accent bar, a two-stat split, inline chips, and six compact slim lines."><figcaption>One component drawn twelve ways before I built one.</figcaption></figure>
 </div>
 
 </main>
@@ -277,7 +293,7 @@
 <footer class="foot">
   <div class="foot__in">
     <div class="foot__say">
-      <h2 class="foot__h">Tell me what you are building and who it is for.</h2>
+      <h2 class="foot__h">Tell me what you&rsquo;re building and who it&rsquo;s for.</h2>
       <a class="foot__mail" href="mailto:dailydavidm@gmail.com">dailydavidm@gmail.com</a>
       <div class="foot__links">
         <a href="https://www.linkedin.com/in/davidmuiux" rel="noopener">LinkedIn</a>
@@ -288,7 +304,7 @@
     </div>
     <div class="foot__grid">
       <div><h3>WHERE I AM</h3><p>Iowa City during term. West Liberty, Iowa.</p></div>
-      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, and Atkinson Hyperlegible, drawn for readers with low vision.</p></div>
+      <div><h3>WHAT IT IS SET IN</h3><p>Overpass, from the lettering on American highway signs, because this whole site is a road. And Atkinson Hyperlegible, drawn for readers with low vision, because I want anyone to be able to read it.</p></div>
       <div><h3>HOW IT IS BUILT</h3><p>From scratch. No framework and no build step. A little JavaScript adds the motion, and every page reads the same without it.</p></div>
     </div>
   </div>
